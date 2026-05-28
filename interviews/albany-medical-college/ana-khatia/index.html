@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Khatia, MS2 — Albany Medical College | DocStory</title>
+  <meta name="description" content="Read Ana Khatia's first-hand experience at Albany Medical College, covering curriculum, culture, and life as a medical student.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-container':'#efecfc','surface-container-low':'#f5f2ff',
+          'surface-container-high':'#e9e6f6','surface-container-highest':'#e3e0f1',
+          'surface-container-lowest':'#ffffff','soft-surface':'#F8FAFB',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff',
+          'on-background':'#1b1b26','primary-fixed':'#d8e3f7','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','tertiary-fixed':'#e6deff',
+          'tertiary-fixed-dim':'#c9beff','outline':'#75777c','outline-variant':'#c5c6cc',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .interview-body h1 { font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h2 { font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h3 {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
+    }
+    .interview-body p  { color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }
+    .interview-body strong { color: #333e4d; }
+    .interview-body ul, .interview-body ol { color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .interview-body li { margin-bottom: 0.25rem; line-height: 1.7; }
+    .interview-body blockquote {
+      border-left: 4px solid #9580FF; padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic; color: #333e4d;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      
+      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
+
+  <nav aria-label="breadcrumb" class="mb-lg">
+    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      Back to Directory
+    </a>
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-xl">
+
+    <!-- Main Article -->
+    <article class="flex-1 min-w-0">
+      <header class="mb-lg">
+        <div class="flex flex-wrap items-center gap-xs mb-md">
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Student Interview</span>
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Allopathic (MD)</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">Ana Khatia, MS2 — Albany Medical College</h1>
+        <div class="flex items-center gap-sm pb-md border-b border-primary/5">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">AK</div>
+          <div>
+            <div class="font-label-md text-label-md text-primary">Ana Khatia</div>
+            <div class="font-body-md text-xs text-slate-gray">MS2 at Albany Medical College · September 2022</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="interview-body">
+        <h3>What does your typical day of medical school look like?</h3>
+<p>I wake up around 7:30AM and get started by 8AM. Most mornings I start by doing Anki. I do new cards first, take a short break and then work through all the reviews that are due. After I take a lunch break I start working on the new material. During first year I watched my schools lectures since that's what we were being tested. But as an MS2 I will strictly be using outside resources. Depending on the theme we are in, I finish somewhere around 5-7PM, at which point I try to work out or do something not related to medical school in order to recharge for the next morning. If I am working on research then I try to get a paragraph or so written before I walk away from my computer for the day.</p>
+<h3>How do your classes and lectures compare to those at your undergraduate institution?</h3>
+<p>UCLA had a quarter system in which we went through materials fairly quickly, but it still does not compare to medical school. The amount of information being covered is immense and we do it at record speed. Not all lectures are a full hour like they were back at undergrad, but there is definitely a lot more material being coved. Classes so far have been completely online, which I enjoy since I can watch them on my own time. Instructors are nice but there are definitely few topic that I have had to look up on my own to either review the background information on or help me understand better what was being taught. Compared to undergrad the instructors at AMC have been a lot easier to get in touch with. Many of them are willing to get on the zoom call with you right away and work with you/ help you understand whatever topics might be confusing, which I have found to be really helpful.</p>
+<h3>How has your approach to learning and/or studying changed since you were an undergrad?</h3>
+<p>I definitely had more free time in undergrad and even while doing psychology and pre-med I would often wait till the last week before the finals to really sit down and study. I never had any issues with that approach while at UCLA and often earned high grades. In medical school I do my very best to study every single day. There is no waiting till the week of the exam to study. It would be impossible to pass any of the exams if that was the approach I took. Nowadays I prioritize doing work daily and trying to retain what I learned yesterday as I tackle new material the next day.</p>
+<h3>How would you describe the student culture at your school? Are there special events or activities that you consider very representative of the culture at your institution? What influence has this culture had on your experience in medical school thus far?</h3>
+<p>Everyone at AMC is very friendly and willing to help out. Starting from upperclassmen to my own classmates. Everyone shares resources and is willing to give you guidance on how to be successful in the upcoming theme. The students at AMC very much have the "we are all in this together" mentality. I feel very lucky to attend a medical school were we support each other and celebrate each others accomplishments.</p>
+<h3>Can you give us a brief description of the area surrounding your school and the things you do for fun? What are some things you like and dislike about the city/town you are located in as a student?</h3>
+<p>Coming from Los Angeles to move to a smaller city like Albany was quite a bit of an adjustment for me. I am used to a city where there is always something to do where as Albany is much smaller and there are just a handful of bars that everyone frequents, meaning that its almost guaranteed that you will run into the people you know from school while you are out. Albany is in a great location if you are willing to drive a bit. You can visit Boston, NYC etc. There are A LOT of places to hike at which are beautiful. There are lakes, places to go skiing/snowboarding. You can go apple picking in fall. Spring is absolutely beautiful here although…I wont lie…Winters can be quite brutal and dark. If you are an outdoorsy person you will enjoy living in upstate NY. If you are looking for bars and clubs, then Albany will probably not be the place for you (although you can always take a train down to NYC).</p>
+<h3>What would you consider strengths of your medical school?</h3>
+<p>A strength of AMC is how much support your peers and faculty are willing to provide you with. I had some family emergencies during my first year of medical school and the school was extremely understanding and accommodating, making sure I had time to be with my family without falling behind. At the end of the day it means the world to me to know that I am supported and my well being is prioritized by my school</p>
+<h3>What resources have been most useful to you in self-learning medical school material or in expanding on material taught in class? Can you briefly describe how you have incorporated them into your learning routine?</h3>
+<p>For first year I used a lot of Ninja Nerd. I would skim the power point for my schools lecture to see what material would be covered and then watch his videos, paying extra attention to parts that overlapped with my schools material. It helped me gain a better understanding of multiple topics that were being taught. BNB and First Aid were also helpful although they give a bit too much information for a first year med student.</p>
+<h3>How much/well have you been able to develop clinical skills alongside your classroom work first and second year? What does your institution do to help you develop clinical skills before the clinical years?</h3>
+<p>We have a longitudinal theme in clinical skill which has been the most helpful in developing clinical skills. I will also say that physicians that I have shadowed at AMC are very hands-on when it comes to first and second year medical students and they encourage you to be involved in patient interactions.</p>
+<h3>What is one thing you would do differently if you could go back to your undergraduate years or the time between undergrad and medical school?</h3>
+<p>I am inclined to say that I wish I had studied more or studied better in undergrad, but looking back I know I gave it my best at the time. I also tried really hard to spend time with my friends when I was living in LA. Regardless of the "mistakes" I might have made in my approach then it still got me where I am today and I am proud of that. My only true regret right now is the fact that I moved so far away from my family. I wish I had considered that more when picking a school to attend.</p>
+<h3>Given the number of obstacles we face en route to a career in medicine, everyone at some point feels doubtful of themselves. How has this affected you and what has helped you persevere through these sorts of feelings?</h3>
+<p>There are days when I still feel doubtful of myself, and if I get too caught up in those feelings it might even interfere with what I had planned to do that day. During such times I try to remind myself how far I have come in my journey so far and that I am here for a reason. My loved ones and my classmates also play a huge role in helping me overcome these feelings since we are so supportive of each other.</p>
+<h3>How do you maintain your mental health while balancing school, work, family, and other social obligations?</h3>
+<p>Working out a schedule that works for me has been a huge help in maintaining my mental health. Planning out the week ahead and setting timelines for myself allows me to not feel overwhelmed and take things one day at a time. On there I try to schedule time to call my family, work out etc. It's unfortunate that I have to plan these activities for myself but otherwise I feel I would solely focus on how much I have to study and never leave the house.</p>
+<h3>Does your medical school provide access to lecture recordings/podcasts?</h3>
+<p>Given that all our lectures are online we definitely have access to the recordings.</p>
+<h3>How are your pre-clinical and clinical course work graded? (Pass/Fail, Honors, etc.)</h3>
+<p>First two years are P/F where passing grade is broken down into Excellent with Honors, Excellent, Good, etc. Although I believe the school is switching to simply P/F in the upcoming year.</p>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-72 flex-shrink-0 flex flex-col gap-md">
+      <div class="bg-soft-surface border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris">info</span>Quick Facts
+        </h2>
+        <ul class="space-y-md">
+          <li class="flex justify-between items-start pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">School</span><span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">Albany Medical College</span></li>
+<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Year</span><span class="font-body-md text-body-md text-primary font-medium">MS2</span></li>
+<li class="flex justify-between items-start pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Undergrad</span><span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">UCLA (B.S. in Psychology)</span></li>
+<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Hometown</span><span class="font-body-md text-body-md text-primary font-medium">Los Angeles, California</span></li>
+<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">September 2022</span></li>
+
+        </ul>
+      </div>
+
+      <div class="bg-white border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md">More Interviews</h2>
+        <ul class="space-y-sm">
+          
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Justin · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Michele Cabeza · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/california-university-of-science-and-medicine/bao-vu/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">BV</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">California University of Science and Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Bao Vu · MS1</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

@@ -244,6 +244,11 @@ SCHOOLS = {
         city='Fort Worth', state='TX', type='md', public=False, founded=2019,
         hospital='Baylor Scott & White All Saints Medical Center', class_size=60,
     ),
+    'albany-medical-college': dict(
+        name='Albany Medical College',
+        city='Albany', state='NY', type='md', public=False, founded=1839,
+        hospital='Albany Medical Center Hospital', class_size=135,
+    ),
 }
 
 # ── Handcrafted school pages ──────────────────────────────────────────────────
