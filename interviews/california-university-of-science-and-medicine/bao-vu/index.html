@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bao Vu, MS1 — California University of Science and Medicine | DocStory</title>
+  <meta name="description" content="Read Bao Vu's first-hand experience at California University of Science and Medicine, covering curriculum, culture, and life as a medical student.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-container':'#efecfc','surface-container-low':'#f5f2ff',
+          'surface-container-high':'#e9e6f6','surface-container-highest':'#e3e0f1',
+          'surface-container-lowest':'#ffffff','soft-surface':'#F8FAFB',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff',
+          'on-background':'#1b1b26','primary-fixed':'#d8e3f7','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','tertiary-fixed':'#e6deff',
+          'tertiary-fixed-dim':'#c9beff','outline':'#75777c','outline-variant':'#c5c6cc',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .interview-body h1 { font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h2 { font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h3 {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
+    }
+    .interview-body p  { color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }
+    .interview-body strong { color: #333e4d; }
+    .interview-body ul, .interview-body ol { color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .interview-body li { margin-bottom: 0.25rem; line-height: 1.7; }
+    .interview-body blockquote {
+      border-left: 4px solid #9580FF; padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic; color: #333e4d;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      
+      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
+
+  <nav aria-label="breadcrumb" class="mb-lg">
+    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      Back to Directory
+    </a>
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-xl">
+
+    <!-- Main Article -->
+    <article class="flex-1 min-w-0">
+      <header class="mb-lg">
+        <div class="flex flex-wrap items-center gap-xs mb-md">
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Student Interview</span>
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Allopathic (MD)</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">Bao Vu, MS1 — California University of Science and Medicine</h1>
+        <div class="flex items-center gap-sm pb-md border-b border-primary/5">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">BV</div>
+          <div>
+            <div class="font-label-md text-label-md text-primary">Bao Vu</div>
+            <div class="font-body-md text-xs text-slate-gray">MS1 at California University of Science and Medicine · March 2020</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="interview-body">
+        <h3>What does your typical day of medical school look like?</h3>
+<p>Bao's schedule reflects the demands of a newer medical school focused on community health. Classes run throughout the morning and afternoon with significant self-study time built around video resources and question banks.</p>
+<h3>How has your approach to learning/studying changed since undergrad?</h3>
+<p>He has adopted a highly structured routine centered on Boards and Beyond, Pathoma, and Zanki flashcard decks. These resources replaced the traditional lecture-note approach he used in undergrad.</p>
+<h3>What would you consider strengths of your medical school?</h3>
+<p>CUSM is a newer school with a community-focused mission and a modern integrated curriculum. The small class size allows for personalized faculty attention and a close-knit student community.</p>
+<h3>Can you describe the area surrounding your school?</h3>
+<p>The school is located in the Inland Empire of Southern California, close to San Bernardino. The location provides access to a diverse patient population and proximity to Los Angeles and outdoor recreation in the nearby mountains.</p>
+<h3>What resources have been most useful to you?</h3>
+<p>Boards and Beyond, Pathoma, and Zanki (an Anki deck set for medical school). These three resources form the core of his board preparation strategy.</p>
+<h3>What advice would you give about the interview process?</h3>
+<p>Prepare thoroughly, know your application well, and be authentic. Research each school's mission and values before interviewing so you can speak specifically to why you are a good fit.</p>
+<h3>How do you maintain your mental health?</h3>
+<p>He emphasizes maintaining perspective and remembering that medical school is a marathon, not a sprint. Taking breaks and staying connected to people outside of medicine helps maintain balance.</p>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-72 flex-shrink-0 flex flex-col gap-md">
+      <div class="bg-soft-surface border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris">info</span>Quick Facts
+        </h2>
+        <ul class="space-y-md">
+          <li class="flex justify-between items-start pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">School</span><span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">California University of Science and Medicine</span></li>
+<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Year</span><span class="font-body-md text-body-md text-primary font-medium">MS1</span></li>
+<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">March 2020</span></li>
+
+        </ul>
+      </div>
+
+      <div class="bg-white border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md">More Interviews</h2>
+        <ul class="space-y-sm">
+          
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Justin · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Michele Cabeza · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/creighton-university-school-of-medicine/eric-nguyen/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">EN</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Creighton University School of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Eric Nguyen · MS2</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

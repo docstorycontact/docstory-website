@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy Storck, OSM3 — Kentucky College of Osteopathic Medicine | DocStory</title>
+  <meta name="description" content="Read Jeremy Storck's first-hand experience at Kentucky College of Osteopathic Medicine, covering curriculum, culture, and life as a medical student.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-container':'#efecfc','surface-container-low':'#f5f2ff',
+          'surface-container-high':'#e9e6f6','surface-container-highest':'#e3e0f1',
+          'surface-container-lowest':'#ffffff','soft-surface':'#F8FAFB',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff',
+          'on-background':'#1b1b26','primary-fixed':'#d8e3f7','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','tertiary-fixed':'#e6deff',
+          'tertiary-fixed-dim':'#c9beff','outline':'#75777c','outline-variant':'#c5c6cc',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .interview-body h1 { font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h2 { font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h3 {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
+    }
+    .interview-body p  { color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }
+    .interview-body strong { color: #333e4d; }
+    .interview-body ul, .interview-body ol { color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .interview-body li { margin-bottom: 0.25rem; line-height: 1.7; }
+    .interview-body blockquote {
+      border-left: 4px solid #9580FF; padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic; color: #333e4d;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      
+      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
+
+  <nav aria-label="breadcrumb" class="mb-lg">
+    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      Back to Directory
+    </a>
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-xl">
+
+    <!-- Main Article -->
+    <article class="flex-1 min-w-0">
+      <header class="mb-lg">
+        <div class="flex flex-wrap items-center gap-xs mb-md">
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-primary-fixed text-primary">Student Interview</span>
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-primary-fixed text-primary">Osteopathic (DO)</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">Jeremy Storck, OSM3 — Kentucky College of Osteopathic Medicine</h1>
+        <div class="flex items-center gap-sm pb-md border-b border-primary/5">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">JS</div>
+          <div>
+            <div class="font-label-md text-label-md text-primary">Jeremy Storck</div>
+            <div class="font-body-md text-xs text-slate-gray">OSM3 at Kentucky College of Osteopathic Medicine · October 2018</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="interview-body">
+        <h3>What does your typical day of medical school look like?</h3>
+<p>I snooze 3 alarms from 6:15 to 7AM. I'll read something non-school related while making breakfast, get ready. I don't touch school material before 8AM. Head to campus and make my notes from that day's lectures. Depending on the amount of lectures that day, I might be done making notes in 4-6 hours. After these I'll review the previous day's material, and then either review older material unrelated to the current block, or from earlier in the block, depending on how close to test day I am.</p>
+<p>Since we do 4 weeks of material between tests, my early-block schedule varies a little from my late-block schedule. Early on in the first 1-2 weeks I'll try and go get a workout in in the morning, and play catch-up with errands around 7-8PM, then wind down with some Netflix or video games for an hour or so. During Block Week though, I tend to focus 110% on preparing for the exam, going from 8AM to 10PM, with breaks just for meals, walking the dog, and naps.</p>
+<h3>How do your classes and lectures compare to those at your undergraduate institution?</h3>
+<p>Medical school lectures are definitely a lot faster paced and the level of detail is both more and less at the same time. Using biochem as an example, during undergrad we focused on molecular structures and the mechanisms, energy changes, and the details of reactions. In medical school you emphasize the overall purpose of each process, and the pathology arising from different parts. This is the overall theme and can be extrapolated to all our classes; material is taught to the depth required to be clinically relevant, while undergrad was more molecular/research focused.</p>
+<p>As for class structure, with the exception of our Osteopathic Principles and Practices course, all of our classes are held in a single classroom and are back to back throughout the day, with lectures going as long as 8am-5pm on a bad day. My class size is ~140 people. We're taught by a mix of MDs, DOs, and PhDs, depending on the course.</p>
+<p>The biggest difference between medical school and undergrad is the amount of self-learning that is expected of you. In medical school all of our lectures are available on our student portal and we can go back and listen to them on our own schedule. It's physically impossible to teach every single disease to the depth we might need for boards and rotations. So there is a certain amount of responsibility on each student to have the discipline to fill in the blanks on their own, even if it isn't immediately "High-Yield."</p>
+<h3>What did you like about the teaching practices at your institution?</h3>
+<p>One of my favorite things about the curriculum at my school is dedicated internal medicine, pediatrics, OB/GYN, and surgery courses, all taught by practicing physicians in the community and covering all of the systems.</p>
+<p>The only real change I would like to see with our curriculum structure is to have the material more dispersed and possibly end earlier. We learn new material up until mid-May with our students taking boards late-June through July, so a little more board prep time than I'd prefer was spent going over the newer material than I would've liked.</p>
+<h3>What are the most important things to learn about a medical school when deciding fit?</h3>
+<p>Personally I got accepted to KYCOM the week after my interview, and it was my first. There wasn't anything specific about it that got me to accept the offer, but rather just a feeling of "You belong here, this is where you're going to medical school" while I was there.</p>
+<p>The first thing I would recommend is to assess your goals. Do you want to go into academic medicine and run research projects, barely interacting with patients? Do you want to go into a very specific residency in a very specific specialty/subspecialty? Find a school that has the same mission. A popular saying from one of my professors at KYCOM is "Don't come here if your goal is to become the world's most famous fetal cardiothoracic-neuro-dermatologic surgeon." My school's mission is to train doctors who will embrace primary care specialties in underserved areas.</p>
+<p>The next most important factor is the class environment and student relationships. Do you thrive on competition where everyone is only out for themselves, or do you want your class to feel like family?</p>
+<p>Finally, location. I knew from the start I didn't want to go to school in a big city. I'd get major FOMO knowing my friends were 15 minutes away. Fortunately, KYCOM is in a small town in the mountains.</p>
+<h3>Can you describe the area surrounding your school?</h3>
+<p>My school is in a small town of ~6,000 in Eastern Kentucky, about a 2 hour drive from Lexington. It's a quiet area, and great if you like the outdoors. There is a ton of hiking, camping, fishing, golfing, etc. in the immediate vicinity. Perfect for medical students, since there aren't a ton of distractions.</p>
+<p>It's also smack-dab in the middle of Coal Country, with all of the good and bad that comes with that — high unemployment, the opioid crisis, healthcare access, and environmental issues immediately come to mind. But at the same time the people are friendlier and more welcoming than anywhere else I've lived, and there are ample opportunities for the medical students to fulfill the mission of our school and give back to the community before we even graduate.</p>
+<h3>What organizations are you involved in?</h3>
+<p>Emergency Medicine Club, Wilderness Medicine Club, Humanity First Student Organization (HFSO). As for unique organizations: the annual Mission Trip (a collaboration between first year students, a professor, and the college chaplain to deliver healthcare in the Dominican Republic every summer) and the Mental Health Awareness committee.</p>
+<h3>How have you been able to develop clinical skills?</h3>
+<p>We have an OMT clinic on campus where students get to practice physical exams and OMT skills with members of the community. During second year we also have to do 4 separate clinic days per semester, 2 in a primary care specialty and 2 in any specialty of our choosing. We also have mandatory clinic days where we learn procedures such as gowning/gloving for surgery, suturing, intubation, joint injections, and putting in chest tubes.</p>
+<h3>What is one way your outlook on medicine has changed?</h3>
+<p>Overall I would say that medicine is less cut and dry than I had interpreted it to be during undergrad. Standards of care are always evolving, our understanding of diseases changes every year, and managing illness is much more complicated than I had thought coming in.</p>
+<h3>What resources have been most useful to you?</h3>
+<p>My indispensable resources would have to be Anki, Boards and Beyond, Pathoma, and Sketchy Microbiology. Anki is my way of note taking, and I exclusively use it to study the raw facts after I've made the lecture notes into cards. Pathoma is essential as a review source for pathology, and Sketchy is a great tool not only during a dedicated microbiology course, but you can always fit in 3-4 videos a day, and keep all those bugs memorized with minimal effort. Boards and Beyond has to be my all time favorite lecture series. I discovered it with 2 weeks to go before Step 1, but I felt that it covered both breadth and depth of information for every subject.</p>
+<h3>If a young undergraduate came to you asking about the best major, what would you say?</h3>
+<p>I would tell them to study something that they could see themselves doing as a career if they never got into medical school. You can always incorporate the required sciences into your regular classwork if you study something that isn't the classic biology/chemistry/neuroscience premed. If you don't get into medical school, you have to do something with that degree you earned, ideally without needing more schooling as an alternative.</p>
+<h3>What do you wish you had known as an undergraduate?</h3>
+<p>I wish I'd known about the advice I gave above about picking schools whose missions align with your goals. I basically wasted a ton of money shotgunning my applications to 25+ schools around the country. It's pretty tough to individually tailor applications to fit the mission of that many different schools, and they can tell just from your writing whether or not you're BS-ing them.</p>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-72 flex-shrink-0 flex flex-col gap-md">
+      <div class="bg-soft-surface border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris">info</span>Quick Facts
+        </h2>
+        <ul class="space-y-md">
+          <li class="flex justify-between items-start pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">School</span><span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">Kentucky College of Osteopathic Medicine</span></li>
+<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Year</span><span class="font-body-md text-body-md text-primary font-medium">OSM3</span></li>
+<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">October 2018</span></li>
+
+        </ul>
+      </div>
+
+      <div class="bg-white border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md">More Interviews</h2>
+        <ul class="space-y-sm">
+          
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Justin · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Michele Cabeza · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/california-university-of-science-and-medicine/bao-vu/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">BV</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">California University of Science and Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Bao Vu · MS1</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

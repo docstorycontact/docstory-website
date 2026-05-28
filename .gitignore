@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Screenshots (local only, per CLAUDE.md)
+.screenshots/
+
+# Claude local config
+.claude/
+.mcp.json
+
+# Draft / working files
+DocStory Homepage _standalone_.html
+Editorial dashboard.html
+Tab toggle.html
+proscons.html
+
+# Analytics / visitor data
+visitors.now_*.json
+
+# Unnamed scratch file
+.md
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+
+# Node (if ever added)
+node_modules/

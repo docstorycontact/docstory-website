@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocStory — Real Stories. Real Med Schools.</title>
+  <meta name="description" content="Navigate your medical school journey with authentic interview insights directly from current students. Browse 150+ programs across the US and Canada.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    @keyframes stat-out {
+      from { opacity: 1; transform: translateY(0);     }
+      to   { opacity: 0; transform: translateY(-12px); }
+    }
+    @keyframes stat-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .stat-exit  { animation: stat-out 0.25s ease forwards; }
+    .stat-enter { animation: stat-in  0.3s  ease forwards; }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          'vibrant-iris':              '#9580FF',
+          'primary':                   '#333e4d',
+          'slate-gray':                '#4A5565',
+          'salmon-coral':              '#FA8072',
+          'tertiary':                  '#3d20a3',
+          'tertiary-container':        '#553dba',
+          'surface':                   '#fcf8ff',
+          'surface-bright':            '#fcf8ff',
+          'surface-dim':               '#dbd8e8',
+          'surface-variant':           '#e3e0f1',
+          'surface-container':         '#efecfc',
+          'surface-container-low':     '#f5f2ff',
+          'surface-container-high':    '#e9e6f6',
+          'surface-container-highest': '#e3e0f1',
+          'surface-container-lowest':  '#ffffff',
+          'soft-surface':              '#F8FAFB',
+          'on-surface':                '#1b1b26',
+          'on-surface-variant':        '#44474c',
+          'on-primary':                '#ffffff',
+          'background':                '#ffffff',
+          'on-background':             '#1b1b26',
+          'primary-fixed':             '#d8e3f7',
+          'primary-fixed-dim':         '#bcc7da',
+          'primary-container':         '#4a5565',
+          'on-primary-fixed':          '#111c2a',
+          'on-primary-container':      '#becadd',
+          'secondary':                 '#a23d34',
+          'secondary-fixed':           '#ffdad5',
+          'secondary-fixed-dim':       '#ffb4aa',
+          'secondary-container':       '#fc8274',
+          'tertiary-fixed':            '#e6deff',
+          'tertiary-fixed-dim':        '#c9beff',
+          'on-tertiary':               '#ffffff',
+          'on-tertiary-container':     '#ccc1ff',
+          'on-tertiary-fixed':         '#1b0062',
+          'on-tertiary-fixed-variant': '#472dac',
+          'outline':                   '#75777c',
+          'outline-variant':           '#c5c6cc',
+          'deep-onyx':                 '#14141F',
+          'inverse-surface':           '#302f3b',
+          'inverse-on-surface':        '#f2efff',
+          'inverse-primary':           '#bcc7da',
+          'surface-tint':              '#545f6f',
+          'error':                     '#ba1a1a',
+          'error-container':           '#ffdad6',
+          'on-error':                  '#ffffff',
+          'on-error-container':        '#93000a',
+        },
+        borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' },
+        spacing: {
+          'xs': '0.5rem', 'sm': '1rem', 'md': '1.5rem', 'lg': '2rem', 'xl': '4rem',
+          'base': '10px', 'gutter': '20px', 'margin-desktop': '40px', 'margin-mobile': '16px',
+        },
+        fontFamily: {
+          'display-lg': ['Inter', 'sans-serif'],
+          'headline-lg': ['Inter', 'sans-serif'],
+          'headline-md': ['Inter', 'sans-serif'],
+          'headline-lg-mobile': ['Inter', 'sans-serif'],
+          'body-lg': ['Inter', 'sans-serif'],
+          'body-md': ['Inter', 'sans-serif'],
+          'label-md': ['Plus Jakarta Sans', 'sans-serif'],
+        },
+        fontSize: {
+          'display-lg':        ['48px', { lineHeight:'56px', letterSpacing:'-0.02em', fontWeight:'700' }],
+          'headline-lg':       ['32px', { lineHeight:'40px', letterSpacing:'-0.01em', fontWeight:'600' }],
+          'headline-md':       ['20px', { lineHeight:'28px', fontWeight:'600' }],
+          'headline-lg-mobile':['24px', { lineHeight:'32px', fontWeight:'600' }],
+          'body-lg':           ['16px', { lineHeight:'24px', fontWeight:'400' }],
+          'body-md':           ['14px', { lineHeight:'20px', fontWeight:'400' }],
+          'label-md':          ['12px', { lineHeight:'16px', letterSpacing:'0.05em', fontWeight:'600' }],
+        },
+      }},
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<div id="doodle-bg" aria-hidden="true"></div>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>
+      DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      <a href="index.html"           class="text-vibrant-iris border-b-2 border-vibrant-iris font-body-md text-body-md h-full flex items-center px-xs font-medium">Home</a>
+      <a href="directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Interviews</a>
+      <a href="about/index.html"     class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">About</a>
+    </div>
+    <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris transition-colors">
+      <span class="material-symbols-outlined text-[28px]">menu</span>
+    </button>
+    <button class="hidden md:block bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">Join Now</button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-primary/20 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl p-md flex flex-col gap-md">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-sm">
+      <span class="font-bold text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </span>
+      <button id="mobile-menu-close" class="text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-sm">
+      <a href="index.html"           class="text-vibrant-iris font-semibold py-xs">Home</a>
+      <a href="directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="about/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">About</a>
+    </nav>
+    <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto">Join Now</button>
+  </div>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<main class="flex-grow overflow-hidden">
+<section class="relative pt-xl pb-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto flex flex-col items-center text-center">
+  <div class="absolute inset-0 bg-pattern -z-10"></div>
+  <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-2xl h-full bg-vibrant-iris/5 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+  <div class="inline-flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-full border border-primary/10 mb-lg">
+    <span class="material-symbols-outlined text-vibrant-iris text-[16px] animate-pulse">campaign</span>
+    <span class="font-label-md text-label-md text-primary tracking-wide">New Interviews Added Weekly</span>
+  </div>
+
+  <h1 class="font-display-lg text-display-lg md:text-[64px] md:leading-[72px] text-primary mb-md max-w-4xl tracking-tighter">
+    Real Stories.<br class="md:hidden">
+    <span class="bg-gradient-to-r from-vibrant-iris to-tertiary text-gradient">Real Med Schools.</span>
+  </h1>
+  <p class="font-body-lg text-body-lg text-slate-gray max-w-2xl mb-xl leading-relaxed">
+    Navigate your medical journey with authentic insights. Hear directly from students about the culture, curriculum, and day-to-day life at…<br><span id="school-name-cycle">Harvard Medical School.</span>
+  </p>
+
+  <div class="flex flex-col sm:flex-row gap-sm justify-center w-full sm:w-auto">
+    <a href="directory/index.html" class="bg-vibrant-iris text-white px-xl py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity shadow-sm flex items-center justify-center gap-xs">
+      Start Exploring <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Hero Bento -->
+  <div class="w-full max-w-5xl mx-auto mt-24 grid grid-cols-1 md:grid-cols-12 gap-gutter relative">
+    <div class="absolute -left-10 top-20 w-32 h-32 bg-secondary-fixed-dim/20 rounded-full blur-2xl pointer-events-none"></div>
+    <div class="absolute -right-10 bottom-20 w-40 h-40 bg-vibrant-iris/20 rounded-full blur-2xl pointer-events-none"></div>
+
+    <!-- Featured Interview Card — populated weekly by JS -->
+    <div id="hero-featured" class="md:col-span-8 bg-white border border-primary/10 rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-md flex flex-col justify-between relative overflow-hidden min-h-[300px] text-left"></div>
+
+    <!-- Side Stats -->
+    <div class="md:col-span-4 flex flex-col gap-gutter text-left">
+      <div class="bg-soft-surface border border-primary/10 rounded-[20px] p-md overflow-hidden">
+        <div class="flex items-center gap-[6px] mb-sm">
+          <span class="material-symbols-outlined text-vibrant-iris text-[16px]" style="font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 20">auto_awesome</span>
+          <span class="font-label-md text-label-md text-slate-gray" style="font-size:10px;letter-spacing:0.07em;text-transform:uppercase">Coverage at a glance</span>
+        </div>
+        <div class="flex gap-[6px] mb-sm" id="coverage-tabs">
+          <button data-tab="schools" class="coverage-tab px-[10px] py-[3px] rounded-full font-label-md text-label-md text-primary bg-white border border-primary/20 shadow-sm transition-all">Schools</button>
+          <button data-tab="states"  class="coverage-tab px-[10px] py-[3px] rounded-full font-label-md text-label-md text-slate-gray border border-transparent hover:text-primary transition-all">States</button>
+          <button data-tab="voices"  class="coverage-tab px-[10px] py-[3px] rounded-full font-label-md text-label-md text-slate-gray border border-transparent hover:text-primary transition-all">Voices</button>
+        </div>
+        <div id="coverage-content"></div>
+      </div>
+      <div class="bg-primary text-white rounded-[20px] p-md relative overflow-hidden">
+        <div class="absolute -right-4 -bottom-4 opacity-10">
+          <span class="material-symbols-outlined text-[100px]">forum</span>
+        </div>
+        <div class="font-label-md text-label-md opacity-70 mb-sm">This Week's Insight</div>
+        <div id="hero-insight"><!-- populated by weekly JS --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FEATURED INTERVIEWS ══════════════════ -->
+<section class="py-xl bg-soft-surface border-y border-primary/5">
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="flex justify-between items-end mb-lg">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Featured Perspectives</h2>
+        <p class="font-body-md text-body-md text-slate-gray">Deep dives into top programs from current students.</p>
+      </div>
+      <a href="directory/index.html" class="hidden md:flex items-center gap-xs text-vibrant-iris font-label-md text-label-md hover:text-tertiary transition-colors">
+        View all <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+    </div>
+    <div id="featured-cards" class="grid grid-cols-1 md:grid-cols-3 gap-gutter"></div>
+    <a href="directory/index.html" class="md:hidden mt-lg w-full bg-surface-container-low text-primary border border-primary/10 px-md py-sm rounded-lg font-label-md text-label-md flex justify-center items-center gap-xs">
+      View all Interviews
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80 max-w-xs">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="about/index.html"     class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity">Mission</a>
+        <a href="#"                    class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity">Contact Us</a>
+        <a href="#"                    class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity">Privacy Policy</a>
+        <a href="#"                    class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/doodles.js" defer></script>
+<script>
+(function() {
+  const INTERVIEWS = [
+    {
+      name: "Emily He", ini: "EH", year: "MS1", school: "Rush Medical College", city: "Chicago, IL",
+      schoolSlug: "rush-medical-college", studentSlug: "emily-he",
+      quote: "We started hands-on patient care during our 3rd week of school.",
+      shortTitle: "Hands-On From Day Three",
+      desc: "How Rush’s flipped classroom and early clinical placements shape the first year experience."
+    },
+    {
+      name: "Abraham Cheloff", ini: "AC", year: "MS1", school: "Harvard Medical School", city: "Boston, MA",
+      schoolSlug: "harvard-medical-school", studentSlug: "abraham-cheloff",
+      quote: "You become comfortable being wrong. Harvard actually rewards that kind of intellectual risk-taking.",
+      shortTitle: "Comfortable Being Wrong",
+      desc: "Inside the culture of intellectual humility and curiosity at Harvard Medical School."
+    },
+    {
+      name: "Jenny Liu", ini: "JL", year: "MS2", school: "UCLA David Geffen SOM", city: "Los Angeles, CA",
+      schoolSlug: "ucla-david-geffen", studentSlug: "jenny-liu",
+      quote: "Los Angeles gives you exposure to a patient population that is unlike anywhere else in the world.",
+      shortTitle: "Unmatched Patient Diversity",
+      desc: "Why LA’s breadth of cultures and conditions makes UCLA a uniquely formative place to train."
+    },
+    {
+      name: "Alicia Gutierrez", ini: "AG", year: "MS1", school: "Baylor College of Medicine", city: "Houston, TX",
+      schoolSlug: "baylor-college-of-medicine", studentSlug: "alicia-gutierrez",
+      quote: "The Texas Medical Center is the largest in the world — and you feel that energy every single day.",
+      shortTitle: "Energy of the World’s Largest Medical Center",
+      desc: "Life and learning inside Baylor and the sprawling Texas Medical Center ecosystem."
+    },
+    {
+      name: "Marcus Webb", ini: "MW", year: "MS2", school: "Johns Hopkins SOM", city: "Baltimore, MD",
+      schoolSlug: "johns-hopkins", studentSlug: "marcus-webb",
+      quote: "Research isn’t extracurricular here — it’s woven into how you think about every patient.",
+      shortTitle: "Research as a Way of Thinking",
+      desc: "How Hopkins integrates scientific inquiry into clinical training from the very start."
+    },
+    {
+      name: "Priya Nair", ini: "PN", year: "MS1", school: "University of Michigan Medical School", city: "Ann Arbor, MI",
+      schoolSlug: "university-of-michigan", studentSlug: "priya-nair",
+      quote: "Michigan gives you the tools to figure out what kind of doctor you want to be — and then trusts you to do it.",
+      shortTitle: "Space to Discover Your Path",
+      desc: "How Michigan balances structure and freedom to help students find their clinical identity."
+    },
+    {
+      name: "Tariq Hassan", ini: "TH", year: "MS1", school: "Vanderbilt University SOM", city: "Nashville, TN",
+      schoolSlug: "vanderbilt", studentSlug: "tariq-hassan",
+      quote: "They genuinely want you to have a life outside of medicine. That’s rare — and it matters.",
+      shortTitle: "Balance Isn’t an Afterthought",
+      desc: "How Vanderbilt’s culture deliberately supports wellness alongside academic excellence."
+    },
+    {
+      name: "Caitlin Monroe", ini: "CM", year: "MS2", school: "UCSF School of Medicine", city: "San Francisco, CA",
+      schoolSlug: "ucsf", studentSlug: "caitlin-monroe",
+      quote: "UCSF patients are incredibly diverse — and so are the perspectives of the faculty who teach you.",
+      shortTitle: "Diversity in Every Direction",
+      desc: "Why UCSF’s setting and mission shape a medical education unlike any other in the country."
+    },
+    {
+      name: "Derek Park", ini: "DP", year: "MS1", school: "Mayo Clinic Alix SOM", city: "Rochester, MN",
+      schoolSlug: "mayo-clinic", studentSlug: "derek-park",
+      quote: "The needs of the patient come first — that’s not a slogan here, it’s how every decision actually gets made.",
+      shortTitle: "The Patient-First Culture, For Real",
+      desc: "What it feels like when a famous institutional motto turns out to be genuinely true."
+    },
+    {
+      name: "Fatima Al-Rashidi", ini: "FA", year: "MS1", school: "University of Chicago Pritzker SOM", city: "Chicago, IL",
+      schoolSlug: "university-of-chicago-pritzker", studentSlug: "fatima-al-rashidi",
+      quote: "Pritzker rewards intellectual curiosity above everything else. If you love ideas, you’ll fit right in.",
+      shortTitle: "A School That Rewards Curiosity",
+      desc: "Life at Pritzker for students who love thinking deeply about medicine and science."
+    },
+    {
+      name: "Sophie Tran", ini: "ST", year: "MS1", school: "USC Keck School of Medicine", city: "Los Angeles, CA",
+      schoolSlug: "usc-keck", studentSlug: "sophie-tran",
+      quote: "LA County Hospital is humbling. The volume and the acuity of what you see there is extraordinary.",
+      shortTitle: "Humbled by LA County",
+      desc: "How the scale and urgency of LA County shapes Keck students’ clinical preparation."
+    },
+    {
+      name: "James Okafor", ini: "JO", year: "MS2", school: "Emory University SOM", city: "Atlanta, GA",
+      schoolSlug: "emory", studentSlug: "james-okafor",
+      quote: "Atlanta’s health disparities are real, and Emory puts you in the middle of them — deliberately.",
+      shortTitle: "Learning Inside Real Disparities",
+      desc: "How Emory uses Atlanta’s healthcare landscape to train socially conscious clinicians."
+    },
+    {
+      name: "Rebecca Chow", ini: "RC", year: "MS1", school: "University of Washington SOM", city: "Seattle, WA",
+      schoolSlug: "university-of-washington", studentSlug: "rebecca-chow",
+      quote: "WWAMI means you might spend part of your training in Montana or Alaska — and that changes you.",
+      shortTitle: "The Geography Shapes the Doctor",
+      desc: "How UW’s multi-state training program creates physicians ready for underserved America."
+    },
+    {
+      name: "Noah Bernstein", ini: "NB", year: "MS1", school: "Mount Sinai Icahn SOM", city: "New York, NY",
+      schoolSlug: "mount-sinai-icahn", studentSlug: "noah-bernstein",
+      quote: "New York is the curriculum. You can’t separate the city from the education here.",
+      shortTitle: "The City Is the Curriculum",
+      desc: "How Icahn leverages New York’s density and diversity as an irreplaceable teaching environment."
+    },
+    {
+      name: "Anika Patel", ini: "AP", year: "MS1", school: "University of California Irvine SOM", city: "Irvine, CA",
+      schoolSlug: "uc-irvine", studentSlug: "anika-patel",
+      quote: "UCI gives you access to a research infrastructure most students don’t encounter until residency.",
+      shortTitle: "Research Infrastructure at MS1",
+      desc: "How UCI embeds genuine research opportunity into the foundation of medical training."
+    },
+    {
+      name: "Carlos Rivera", ini: "CR", year: "MS2", school: "University of Florida College of Medicine", city: "Gainesville, FL",
+      schoolSlug: "university-of-florida", studentSlug: "carlos-rivera",
+      quote: "The Gator family culture is real — the upper-years actually invest in you.",
+      shortTitle: "Upper-Years Who Actually Invest",
+      desc: "The peer mentorship culture at UF and how it sustains students through the hardest stretches."
+    },
+    {
+      name: "Lin Zhang", ini: "LZ", year: "MS1", school: "Rosalind Franklin University", city: "North Chicago, IL",
+      schoolSlug: "rosalind-franklin", studentSlug: "lin-zhang",
+      quote: "There’s no grade competition here. People literally leave notes in the margins of your study guides.",
+      shortTitle: "No Competition, Just Notes",
+      desc: "How the collaborative learning culture at Rosalind Franklin creates a genuinely supportive class."
+    },
+    {
+      name: "Dana Kim", ini: "DK", year: "MS1", school: "Penn State College of Medicine", city: "Hershey, PA",
+      schoolSlug: "penn-state", studentSlug: "dana-kim",
+      quote: "Living in Hershey sounds like a joke until you realize how much mental bandwidth you get back when you’re not navigating a city.",
+      shortTitle: "The Quiet Advantage",
+      desc: "Why Penn State’s small-town setting turns out to be a genuine asset for focused learning."
+    },
+    {
+      name: "Mia Johansson", ini: "MJ", year: "MS1", school: "University of Minnesota Medical School", city: "Minneapolis, MN",
+      schoolSlug: "university-of-minnesota", studentSlug: "mia-johansson",
+      quote: "Minnesota winters are brutal, but the community you build here is warmer than anywhere I’ve been.",
+      shortTitle: "Community in the Cold",
+      desc: "How shared adversity and tight-knit culture shape life at the University of Minnesota."
+    },
+  ];
+
+  function lcgNext(seed) {
+    return (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+  }
+
+  function weeklyPicks(n) {
+    const week = Math.floor(Date.now() / 604800000);
+    let seed = week ^ 0xDEADBEEF;
+    const pool = INTERVIEWS.slice();
+    const picks = [];
+    while (picks.length < n && pool.length) {
+      seed = lcgNext(seed);
+      const idx = seed % pool.length;
+      picks.push(pool.splice(idx, 1)[0]);
+    }
+    return picks;
+  }
+
+  function initials(name) {
+    return name.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  const PROS_CONS_SCHOOLS = [
+    {
+      name: "USC Keck School of Medicine", shortName: "Keck",
+      schoolSlug: "usc-keck-school-of-medicine", firstStudentSlug: "dominic-carusillo",
+      interviewCount: 2,
+      pros: [
+        { text: "Patient diversity at LAC+USC is <strong>unmatched</strong>. MS3s here see pathology other students only read about.", student: "Sam", year: "MS1" },
+        { text: "Pass/fail preclinical <strong>removes grade anxiety</strong>. People share notes instead of hoarding them.", student: "Sam", year: "MS1" },
+        { text: "All lectures are webcasted — most students watch at <strong>2x from home</strong> and reclaim their mornings.", student: "Dominic", year: "MS1" },
+      ],
+      cons: [
+        { text: "The campus area is <strong>economically impoverished</strong> — the surrounding neighborhood takes real adjustment.", student: "Dominic", year: "MS1" },
+        { text: "LA traffic is relentless. A bad commute to LAC+USC can <strong>eat 90 minutes</strong> each way.", student: "Sam", year: "MS1" },
+        { text: "Housing near campus is <strong>genuinely tough</strong> on a student budget — trendy areas like Silver Lake aren't cheap.", student: "Sam", year: "MS1" },
+      ]
+    },
+    {
+      name: "UC Irvine School of Medicine", shortName: "UCI",
+      schoolSlug: "uc-irvine-school-of-medicine", firstStudentSlug: "alexa-lucas",
+      interviewCount: 3,
+      pros: [
+        { text: "Brilliant curriculum structure: <strong>normal physiology MS1, pathology MS2</strong>. You encounter every system twice before boards.", student: "Alexa", year: "MS1" },
+        { text: "Campus is <strong>15 minutes from the ocean</strong>. Laguna Beach, Newport, and Disneyland are real weekend decompression options.", student: "Steven", year: "MS2" },
+        { text: "Administration <strong>actually acts on feedback</strong> quickly. Your opinion visibly shapes how the curriculum runs.", student: "Arnie", year: "MS1" },
+      ],
+      cons: [
+        { text: "Irvine itself is <strong>very suburban</strong> — limited city feel or nightlife without driving 30+ minutes.", student: "Alexa", year: "MS1" },
+        { text: "Frequent guest lecturers mean <strong>constant adjustment</strong> to different slide styles and teaching approaches.", student: "Alexa", year: "MS1" },
+        { text: "Small class size is great for community, but you <strong>can't disappear quietly</strong> when you need a mental health day.", student: "Arnie", year: "MS1" },
+      ]
+    },
+    {
+      name: "Baylor College of Medicine", shortName: "Baylor",
+      schoolSlug: "baylor-college-of-medicine", firstStudentSlug: "justin",
+      interviewCount: 2,
+      pros: [
+        { text: "Tuition is shockingly <strong>low for a top-tier school</strong> — you leave with dramatically less debt than peers at comparable programs.", student: "Justin", year: "MS1" },
+        { text: "Being inside the <strong>world's largest medical center</strong> creates clinical exposure you simply can't replicate elsewhere.", student: "Michele", year: "MS1" },
+        { text: "Upper-years genuinely <strong>invest in you</strong> — sharing decks, tips, and insider advice without being asked.", student: "Justin", year: "MS1" },
+      ],
+      cons: [
+        { text: "The campus is <strong>dense and urban</strong> with limited green space — just Rice park nearby if you need to breathe outside.", student: "Justin", year: "MS1" },
+        { text: "Four morning lectures plus afternoon classes <strong>from day one</strong> — there's no warm-up period.", student: "Justin", year: "MS1" },
+        { text: "Being embedded in the medical center means <strong>no real separation</strong> between school and hospital. The environment never turns off.", student: "Michele", year: "MS1" },
+      ]
+    },
+    {
+      name: "Rosalind Franklin University", shortName: "Rosalind Franklin",
+      schoolSlug: "rosalind-franklin-university", firstStudentSlug: "drew-weinstein",
+      interviewCount: 2,
+      pros: [
+        { text: "The culture is genuinely <strong>collaborative</strong> — 'we will show up to support you' isn't a cliché here, it's how the class actually runs.", student: "Allison", year: "MS2" },
+        { text: "No hospital affiliation means you rotate <strong>across all Chicagoland hospitals</strong>. You graduate with clinical breadth most schools can't offer.", student: "Allison", year: "MS2" },
+        { text: "Faculty are <strong>not looking to fail you</strong>. Office hours are informal and they genuinely want everyone to succeed.", student: "Drew", year: "MS2" },
+      ],
+      cons: [
+        { text: "North Chicago is <strong>quiet to the point of isolation</strong>. The 'middle of nowhere' feeling in MS1 and MS2 is very real.", student: "Drew", year: "MS2" },
+        { text: "Downtown Chicago is a <strong>45-minute train ride</strong> — it's a trip, not a walk, which matters on tired weeknights.", student: "Drew", year: "MS2" },
+        { text: "Clinical skills development in early years can feel <strong>slower than you'd like</strong> — dedicated simulation in MS1/MS2 is limited.", student: "Allison", year: "MS2" },
+      ]
+    },
+    {
+      name: "USF Morsani College of Medicine", shortName: "Morsani",
+      schoolSlug: "morsani-college-of-medicine", firstStudentSlug: "brian-james",
+      interviewCount: 2,
+      pros: [
+        { text: "Tampa is a genuinely <strong>exciting city</strong> — Lightning games, Ybor City nightlife, and Clearwater Beach are all within 30 minutes.", student: "Brian", year: "MS2" },
+        { text: "Student feedback gets <strong>incorporated nearly immediately</strong>. Faculty responsiveness here is unusually good.", student: "Chetna", year: "M2" },
+        { text: "Doctoring class gives you <strong>real clinical practice from MS1</strong> — standardized patients, H&amp;P, and actual preceptors.", student: "Chetna", year: "M2" },
+      ],
+      cons: [
+        { text: "The school is <strong>mid-relocation downtown</strong> — parking near the new campus is a real, unresolved problem.", student: "Chetna", year: "M2" },
+        { text: "Coming straight from undergrad, you may hit <strong>near-burnout by MS2</strong> earlier than peers who took a gap year.", student: "Chetna", year: "M2" },
+        { text: "The downtown move comes with <strong>ongoing transition disruptions</strong> — some growing pains of relocation are still being worked out.", student: "Brian", year: "MS2" },
+      ]
+    },
+    {
+      name: "University of Miami Miller School", shortName: "Miller",
+      schoolSlug: "university-of-miami-miller-school-of-medicine", firstStudentSlug: "todd-jackson",
+      interviewCount: 2,
+      pros: [
+        { text: "Miami's patient population is <strong>one of the most diverse in the country</strong> — pathology shaped by global migration and socioeconomic extremes.", student: "Todd", year: "MS3" },
+        { text: "Clinical immersion is <strong>integrated from year one</strong>. You're not waiting until third year to encounter real patients.", student: "Zach", year: "MS2" },
+        { text: "Over 70% of students participate in the DOCS clinic. The <strong>service culture runs deep</strong> and shapes how everyone here thinks.", student: "Zach", year: "MS2" },
+      ],
+      cons: [
+        { text: "Miami is <strong>expensive</strong>. Most students live in Brickell or Downtown — that comfort costs real money on a student budget.", student: "Zach", year: "MS2" },
+        { text: "Case-based learning puts <strong>significant self-teaching responsibility</strong> on you. Lecture-heavy learners often struggle to adapt.", student: "Todd", year: "MS3" },
+        { text: "The work-hard-play-hard culture is real — without <strong>deliberate self-discipline</strong>, the balance tips quickly.", student: "Zach", year: "MS2" },
+      ]
+    },
+  ];
+
+  function monthlySchool() {
+    const now = new Date();
+    const idx = (now.getFullYear() * 12 + now.getMonth()) % PROS_CONS_SCHOOLS.length;
+    return PROS_CONS_SCHOOLS[idx];
+  }
+
+  function renderProsConsHero(school) {
+    const url = `interviews/${school.schoolSlug}/${school.firstStudentSlug}/index.html`;
+    const item = (d) => `
+      <div class="mb-[14px] last:mb-0">
+        <p class="font-body-md text-[14px] leading-snug text-primary">${d.text}</p>
+        <p class="font-body-md text-[11px] text-slate-gray mt-[3px]">${d.student} &middot; ${d.year}</p>
+      </div>`;
+    document.getElementById('hero-featured').innerHTML = `
+      <div class="flex-1 flex flex-col min-h-0">
+        <div class="flex items-center justify-between mb-sm flex-wrap gap-xs">
+          <div class="inline-flex items-center gap-xs bg-vibrant-iris/10 text-vibrant-iris px-xs py-1 rounded-full font-label-md text-label-md">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1">local_hospital</span>
+            ${school.name}
+          </div>
+          <span class="font-label-md text-[10px] text-slate-gray tracking-widest uppercase opacity-60">Updated monthly</span>
+        </div>
+        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-md">
+          <div>
+            <div class="flex items-center gap-[6px] mb-sm">
+              <span class="w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-[11px] font-bold leading-none select-none">+</span>
+              <span class="font-label-md text-[10px] text-emerald-700 tracking-widest uppercase">What Students Love</span>
+            </div>
+            ${school.pros.map(item).join('')}
+          </div>
+          <div>
+            <div class="flex items-center gap-[6px] mb-sm">
+              <span class="w-[18px] h-[18px] rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 text-[11px] font-bold leading-none select-none">&minus;</span>
+              <span class="font-label-md text-[10px] text-orange-600 tracking-widest uppercase">What They'd Change</span>
+            </div>
+            ${school.cons.map(item).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-md pt-sm border-t border-primary/10">
+        <span class="font-body-md text-[12px] text-slate-gray">${school.interviewCount} voices from ${school.shortName}</span>
+        <a href="${url}" class="inline-flex items-center gap-xs text-vibrant-iris font-label-md text-label-md hover:text-tertiary transition-colors">
+          Read interviews <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </a>
+      </div>`;
+  }
+
+  function renderInsight(iv) {
+    const url = `interviews/${iv.schoolSlug}/${iv.studentSlug}/index.html`;
+    document.getElementById('hero-insight').innerHTML = `
+      <p class="font-body-md text-body-md text-white/90 italic line-clamp-3">"${iv.quote}"</p>
+      <div class="mt-sm flex items-center gap-xs">
+        <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-[10px] text-white">${initials(iv.name)}</div>
+        <a href="${url}" class="font-label-md text-[10px] text-white/80 hover:text-white transition-colors">${iv.year} at ${iv.school}</a>
+      </div>`;
+  }
+
+  function renderFeaturedCards(picks) {
+    const container = document.getElementById('featured-cards');
+    container.innerHTML = picks.map(iv => {
+      const url = `interviews/${iv.schoolSlug}/${iv.studentSlug}/index.html`;
+      const ini = initials(iv.name);
+      return `
+      <a href="${url}" class="bg-white rounded-xl border border-primary/10 overflow-hidden hover:shadow-[0_4px_20px_rgb(0,0,0,0.06)] transition-shadow group cursor-pointer block">
+        <div class="h-40 bg-surface-container relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div class="absolute bottom-sm left-sm text-white">
+            <span class="bg-vibrant-iris px-2 py-1 rounded text-[10px] font-label-md mb-1 inline-block uppercase tracking-wider">${iv.school.split(' ')[0]}</span>
+            <div class="font-headline-md text-headline-md leading-tight">${iv.shortTitle}</div>
+          </div>
+        </div>
+        <div class="p-md">
+          <div class="flex items-center gap-sm mb-md">
+            <div class="w-8 h-8 rounded-full bg-vibrant-iris/15 flex items-center justify-center text-vibrant-iris font-bold text-xs">${ini}</div>
+            <div>
+              <div class="font-label-md text-label-md text-primary">${iv.name}</div>
+              <div class="font-body-md text-[12px] text-slate-gray">${iv.year} · ${iv.city}</div>
+            </div>
+          </div>
+          <p class="font-body-md text-body-md text-slate-gray line-clamp-2">${iv.desc}</p>
+        </div>
+      </a>`;
+    }).join('');
+  }
+
+  renderProsConsHero(monthlySchool());
+  const picks = weeklyPicks(4);
+  renderInsight(picks[0]);
+  renderFeaturedCards(picks.slice(1));
+
+  // Coverage tab toggle
+  const COVERAGE = {
+    schools: {
+      stat: '39', badge: '+2 this week',
+      label: 'Medical schools',
+      desc: 'From Harvard to UCSF — interviews across top U.S. programs.',
+      chart: [2,3,2,4,3,5,4,6,5,7,6,8,10,9,12,11,14,16,18,20],
+    },
+    states: {
+      stat: '23', badge: null,
+      label: 'States represented',
+      desc: 'Coast-to-coast coverage across the United States.',
+      chart: null,
+    },
+    voices: {
+      stat: '47', badge: null,
+      label: 'Student voices',
+      desc: null,
+      breakdown: [['MS1','14'],['MS2','22'],['MS3','9'],['MS4','2']],
+      chart: null,
+    },
+  };
+
+  function renderCoverage(tabKey) {
+    const d = COVERAGE[tabKey];
+    const maxBar = d.chart ? Math.max(...d.chart) : 1;
+    document.getElementById('coverage-content').innerHTML = `
+      <div class="font-display-lg text-display-lg text-primary leading-none">${d.stat}</div>
+      ${d.badge ? `<div class="mt-[4px] mb-xs">
+        <span class="inline-flex items-center gap-[2px] text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-[8px] py-[2px] rounded-full">
+          <span class="material-symbols-outlined text-[12px]">trending_up</span>${d.badge}
+        </span></div>` : `<div class="mt-[4px] mb-xs h-[22px]"></div>`}
+      <div class="font-body-md text-[13px] font-medium text-primary">${d.label}</div>
+      ${d.desc ? `<div class="font-body-md text-[12px] text-slate-gray mt-[2px]">${d.desc}</div>` : ''}
+      ${d.breakdown ? `<div class="grid grid-cols-4 gap-[6px] mt-sm">
+        ${d.breakdown.map(([yr,n]) => `<div class="text-center bg-white rounded-lg py-xs border border-primary/10">
+          <div class="font-headline-md text-headline-md text-primary">${n}</div>
+          <div class="font-body-md text-[10px] text-slate-gray mt-[2px]">${yr}</div>
+        </div>`).join('')}</div>` : ''}
+      ${d.chart ? `<div class="flex items-end gap-[3px] h-7 mt-sm">
+        ${d.chart.map((v, i) => {
+          const h = Math.round((v / maxBar) * 100);
+          const recent = i >= d.chart.length - 4;
+          return `<div class="flex-1 rounded-[2px] ${recent ? 'bg-vibrant-iris' : 'bg-primary/15'}" style="height:${h}%"></div>`;
+        }).join('')}</div>` : ''}
+    `;
+  }
+
+  let activeCovTab = 'schools';
+  renderCoverage(activeCovTab);
+
+  document.getElementById('coverage-tabs').addEventListener('click', e => {
+    const btn = e.target.closest('[data-tab]');
+    if (!btn || btn.dataset.tab === activeCovTab) return;
+    activeCovTab = btn.dataset.tab;
+
+    document.querySelectorAll('.coverage-tab').forEach(t => {
+      const on = t.dataset.tab === activeCovTab;
+      t.classList.toggle('text-primary',      on);
+      t.classList.toggle('bg-white',          on);
+      t.classList.toggle('border-primary/20', on);
+      t.classList.toggle('shadow-sm',         on);
+      t.classList.toggle('text-slate-gray',   !on);
+      t.classList.toggle('border-transparent',!on);
+    });
+
+    const el = document.getElementById('coverage-content');
+    el.classList.add('stat-exit');
+    setTimeout(() => {
+      renderCoverage(activeCovTab);
+      el.classList.remove('stat-exit');
+      el.classList.add('stat-enter');
+      el.addEventListener('animationend', () => el.classList.remove('stat-enter'), { once: true });
+    }, 200);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About DocStory — Our Mission &amp; Story</title>
+  <meta name="description" content="Learn how DocStory is bringing transparency to the medical school application journey through authentic student stories and a supportive community.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565','salmon-coral':'#FA8072',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff','surface-bright':'#fcf8ff',
+          'surface-dim':'#dbd8e8','surface-variant':'#e3e0f1','surface-container':'#efecfc',
+          'surface-container-low':'#f5f2ff','surface-container-high':'#e9e6f6',
+          'surface-container-highest':'#e3e0f1','surface-container-lowest':'#ffffff',
+          'soft-surface':'#F8FAFB','on-surface':'#1b1b26','on-surface-variant':'#44474c',
+          'on-primary':'#ffffff','background':'#fcf8ff','on-background':'#1b1b26',
+          'primary-fixed':'#d8e3f7','primary-fixed-dim':'#bcc7da','primary-container':'#4a5565',
+          'on-primary-fixed':'#111c2a','on-primary-container':'#becadd','secondary':'#a23d34',
+          'secondary-fixed':'#ffdad5','secondary-fixed-dim':'#ffb4aa','secondary-container':'#fc8274',
+          'tertiary-fixed':'#e6deff','tertiary-fixed-dim':'#c9beff','on-tertiary':'#ffffff',
+          'on-tertiary-container':'#ccc1ff','outline':'#75777c','outline-variant':'#c5c6cc',
+          'deep-onyx':'#14141F','inverse-surface':'#302f3b','inverse-on-surface':'#f2efff',
+        },
+        borderRadius: { DEFAULT:'0.25rem', lg:'0.5rem', xl:'0.75rem', full:'9999px' },
+        spacing: {
+          xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',
+          base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px',
+        },
+        fontFamily: {
+          'display-lg':['Inter','sans-serif'],'headline-lg':['Inter','sans-serif'],
+          'headline-md':['Inter','sans-serif'],'body-lg':['Inter','sans-serif'],
+          'body-md':['Inter','sans-serif'],'label-md':['Plus Jakarta Sans','sans-serif'],
+        },
+        fontSize: {
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      <a href="../index.html"           class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Home</a>
+      <a href="../directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Schools</a>
+      <a href="../directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Interviews</a>
+      <a href="index.html"              class="text-vibrant-iris border-b-2 border-vibrant-iris font-body-md text-body-md h-full flex items-center px-xs font-medium">About</a>
+    </div>
+    <div class="flex items-center">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris ml-2">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-primary/20 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl p-md flex flex-col gap-md">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-sm">
+      <span class="font-bold text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </span>
+      <button id="mobile-menu-close" class="text-primary hover:text-vibrant-iris"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="flex flex-col gap-sm">
+      <a href="../index.html"           class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="index.html"              class="text-vibrant-iris font-semibold py-xs">About</a>
+    </nav>
+    <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto">Join Now</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="flex-grow flex flex-col items-center">
+
+  <!-- Hero -->
+  <section class="w-full max-w-[1200px] px-margin-mobile md:px-margin-desktop py-xl md:py-[120px] flex flex-col items-center text-center">
+    <span class="bg-surface-container-highest text-primary font-label-md text-label-md px-sm py-xs rounded-full mb-md inline-block uppercase tracking-wider">Our Mission</span>
+    <h1 class="font-display-lg text-display-lg text-primary max-w-3xl mb-lg">Bringing Transparency to the Medical School Journey</h1>
+    <p class="font-body-lg text-body-lg text-slate-gray max-w-2xl mb-xl">We believe that every aspiring physician deserves access to authentic insights, real experiences, and a supportive community during the high-stakes application and interview process.</p>
+  </section>
+
+  <!-- Our Story Bento -->
+  <section class="w-full max-w-[1200px] px-margin-mobile md:px-margin-desktop py-xl">
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-xl text-center md:text-left">Our Story</h2>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px]">
+
+      <!-- Large block -->
+      <div class="md:col-span-8 rounded-xl bg-soft-surface border border-primary/10 p-xl flex flex-col justify-end relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-vibrant-iris/10 to-transparent z-0"></div>
+        <div class="relative z-10">
+          <span class="material-symbols-outlined text-vibrant-iris text-[48px] mb-md block">menu_book</span>
+          <h3 class="font-headline-md text-headline-md text-primary mb-sm">The Problem with the Process</h3>
+          <p class="font-body-md text-body-md text-slate-gray max-w-lg">For decades, the medical school application process has been shrouded in mystery. Students relied on rumors, fragmented forums, and expensive consultants. We saw a system that favored connections over raw talent and decided it was time to level the playing field.</p>
+        </div>
+      </div>
+
+      <!-- Stat block -->
+      <div class="md:col-span-4 rounded-xl bg-primary text-white p-lg flex flex-col justify-center items-center text-center">
+        <span class="font-display-lg text-display-lg text-vibrant-iris mb-xs">10k+</span>
+        <span class="font-label-md text-label-md text-surface-variant uppercase tracking-wider">Interview Reports</span>
+      </div>
+
+      <!-- Image block -->
+      <div class="md:col-span-5 rounded-xl border border-primary/10 overflow-hidden relative">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOHupEujo_dMQJRudJz-1inBh1SUo4dFxqdOWPg3k36MmeY3551Fx1nyhMkU5N5tPLk92KEGsTU5J8FFi6uu3UisyvfUTYgJ1b7MKi_me0gVT_yxlUFy1iDzdD9S9CAq1s1NobAzsUbJhJrfjc2TgHr27LEvF2XRgFnG8YTZnEYC2or9-M5jQ95cosHZ6BwH1C57kQSt9pwPDDlwLBHPO5M4tipYRyewm67lgPbctJWCLvWWL16FGOW2SXGkY4kPiDG8OVIBrE_Lfa')"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-lg">
+          <p class="text-white font-body-md text-body-md">Empowering the next generation of physicians through shared knowledge.</p>
+        </div>
+      </div>
+
+      <!-- Feature block -->
+      <div class="md:col-span-7 rounded-xl bg-surface-bright border border-primary/10 p-lg flex flex-col justify-center gap-md">
+        <div class="flex items-start gap-md">
+          <div class="bg-surface-container-low p-sm rounded-lg flex-shrink-0">
+            <span class="material-symbols-outlined text-vibrant-iris">lightbulb</span>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-headline-md text-primary mb-xs">The Turning Point</h4>
+            <p class="font-body-md text-body-md text-slate-gray">DocStory was born from a simple idea: what if every applicant could read a detailed, honest review of the interview day before they stepped foot on campus? We started by collecting stories from our peers, and the response was overwhelming.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-md">
+          <div class="bg-surface-container-low p-sm rounded-lg flex-shrink-0">
+            <span class="material-symbols-outlined text-vibrant-iris">diversity_3</span>
+          </div>
+          <div>
+            <h4 class="font-headline-md text-headline-md text-primary mb-xs">Building the Community</h4>
+            <p class="font-body-md text-body-md text-slate-gray">Today, we are a thriving community of thousands of pre-meds and current medical students. We don't just share interview questions; we share the vibe, the culture, and the reality of medical education.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="w-full bg-soft-surface py-xl">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-xl text-center">Core Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">visibility</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Radical Transparency</h3>
+          <p class="font-body-md text-body-md text-slate-gray">No gatekeeping. We believe all applicants should have access to the same high-quality information, regardless of background or connections.</p>
+        </div>
+        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">favorite</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Empathetic Support</h3>
+          <p class="font-body-md text-body-md text-slate-gray">The premed journey is grueling. Our platform is designed to be a supportive space where students validate each other's experiences and reduce anxiety.</p>
+        </div>
+        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">verified</span>
+          </div>
+          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Authenticity First</h3>
+          <p class="font-body-md text-body-md text-slate-gray">We prioritize real voices over polished marketing. Every review on DocStory comes from a student who has actually been through the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="index.html" class="text-vibrant-iris font-semibold font-body-md text-body-md">Mission</a>
+        <a href="#"          class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#"          class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#"          class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

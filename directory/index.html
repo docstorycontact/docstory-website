@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocStory — School Directory</title>
+  <meta name="description" content="Explore 150+ medical schools across the US and Canada. Filter by program type, read real interview experiences, and find your perfect fit.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../js/lib/leaflet.css">
+  <script src="../js/lib/leaflet.js"></script>
+  <style>
+    /* Ensure the map wrapper fills main regardless of Tailwind CDN timing */
+    #map-wrapper { position: absolute; inset: 0; }
+    /* Leaflet container */
+    #map { position: absolute; inset: 0; z-index: 0; }
+    #map .leaflet-control-attribution { font-size: 9px; opacity: 0.5; background: transparent; }
+    /* Branded markers */
+    .school-marker { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .school-marker .pulse-ring {
+      position: absolute; inset: -6px; border-radius: 50%;
+      border: 2px solid currentColor; opacity: 0;
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(0.85); opacity: 0.6; }
+      100% { transform: scale(1.6);  opacity: 0; }
+    }
+    .leaflet-marker-icon { background: none !important; border: none !important; }
+
+    /* Mobile bottom sheet */
+    #mobile-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 45;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -4px 32px rgba(0,0,0,0.10);
+      transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
+      height: 220px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    #mobile-sheet.expanded { height: 72vh; }
+    #mobile-sheet-chevron { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+    @media (min-width: 768px) { #mobile-sheet { display: none; } }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565','salmon-coral':'#FA8072',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-dim':'#dbd8e8','surface-variant':'#e3e0f1','surface-container':'#efecfc',
+          'surface-container-low':'#f5f2ff','surface-container-high':'#e9e6f6',
+          'surface-container-highest':'#e3e0f1','surface-container-lowest':'#ffffff',
+          'soft-surface':'#F8FAFB','on-surface':'#1b1b26','on-surface-variant':'#44474c',
+          'background':'#fcf8ff','on-background':'#1b1b26','primary-fixed':'#d8e3f7',
+          'on-primary-fixed':'#111c2a','on-primary-container':'#becadd','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','on-tertiary':'#ffffff','outline':'#75777c',
+          'outline-variant':'#c5c6cc','deep-onyx':'#14141F',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'headline-lg-mobile':['Inter'],'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'headline-lg-mobile':['24px',{lineHeight:'32px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col h-screen overflow-hidden selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<header class="bg-surface-container-lowest/90 backdrop-blur-md border-b border-primary/5 z-50 flex-shrink-0 h-[70px]">
+  <div class="flex justify-between items-center px-margin-desktop max-w-[1400px] mx-auto w-full h-full">
+    <a href="../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <nav class="hidden md:flex gap-lg items-center">
+      <a href="../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="index.html"     class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Schools</a>
+      <a href="index.html"     class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+    </nav>
+    <div class="flex items-center">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris ml-2">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+<div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-primary/20 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl p-md flex flex-col gap-md">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-sm">
+      <span class="font-bold text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </span>
+      <button id="mobile-menu-close" class="text-primary hover:text-vibrant-iris"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="flex flex-col gap-sm">
+      <a href="../index.html"       class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="index.html"          class="text-vibrant-iris font-semibold py-xs">Schools</a>
+      <a href="index.html"          class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="../about/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">About</a>
+    </nav>
+    <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto">Join Now</button>
+  </div>
+</div>
+
+<!-- MAP CANVAS -->
+<main class="flex-grow p-4 md:p-6 relative overflow-hidden">
+  <div id="map-wrapper" class="rounded-2xl shadow-xl border border-primary/5 overflow-hidden" style="margin: -1rem; position: absolute; inset: 1rem;">
+
+    <!-- Leaflet map fills the wrapper -->
+    <div id="map"></div>
+
+    <!-- Map Controls -->
+    <div class="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-xs z-20">
+      <button id="zoom-in" class="bg-white/90 backdrop-blur-md p-2 rounded-lg border border-primary/10 text-primary hover:bg-surface-container transition-colors shadow-md">
+        <span class="material-symbols-outlined">add</span>
+      </button>
+      <button id="zoom-out" class="bg-white/90 backdrop-blur-md p-2 rounded-lg border border-primary/10 text-primary hover:bg-surface-container transition-colors shadow-md">
+        <span class="material-symbols-outlined">remove</span>
+      </button>
+    </div>
+
+    <!-- Search + Filter Dock (desktop only) -->
+    <div class="absolute bottom-4 left-4 right-4 md:right-[452px] z-30 hidden md:flex justify-center">
+      <div class="w-full md:w-auto bg-white/95 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-full px-6 py-3 flex flex-col md:flex-row items-center gap-md">
+        <div class="flex items-center w-full md:w-auto">
+          <span class="material-symbols-outlined text-slate-gray mr-3">search</span>
+          <input id="school-search" type="text" placeholder="Search schools…" class="w-full md:w-64 bg-transparent border-none focus:outline-none focus:ring-0 font-body-md text-primary placeholder:text-slate-gray/60">
+        </div>
+        <div class="hidden md:block w-px h-8 bg-primary/10"></div>
+        <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 hide-scrollbar">
+          <span id="filter-all" class="bg-vibrant-iris text-white px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer whitespace-nowrap shadow-sm transition-all">All</span>
+          <span id="filter-md"  class="bg-surface-container-high text-slate-gray px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer hover:bg-surface-dim whitespace-nowrap transition-all">Allopathic (MD)</span>
+          <span id="filter-do"  class="bg-surface-container-high text-slate-gray px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer hover:bg-surface-dim whitespace-nowrap transition-all">Osteopathic (DO)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- School List Panel -->
+    <div class="absolute top-4 right-4 bottom-4 w-full md:w-[420px] z-40 pointer-events-none hidden md:block">
+      <div class="h-full bg-white/90 backdrop-blur-2xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-2xl p-6 flex flex-col pointer-events-auto">
+        <div class="mb-md border-b border-primary/5 pb-4">
+          <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Discover Medical Schools</h1>
+          <p class="font-body-md text-xs text-slate-gray leading-relaxed">Explore top programs, read real interview experiences, and find the perfect fit for your medical journey.</p>
+        </div>
+        <div class="mb-sm flex-shrink-0">
+          <h2 class="font-headline-md text-sm font-bold text-primary mb-1">Medical Schools</h2>
+          <p id="results-count" class="font-body-md text-[11px] text-slate-gray">Loading…</p>
+        </div>
+        <div id="school-list" class="scrollable-list flex-grow overflow-y-auto pr-1 flex flex-col gap-sm">
+        </div><!-- /#school-list -->
+      </div>
+    </div><!-- /panel -->
+
+  </div><!-- /#map-wrapper -->
+
+  <!-- Mobile School Sheet (mobile only) -->
+  <div id="mobile-sheet" class="md:hidden">
+    <!-- Handle — tapping here expands/collapses -->
+    <div id="mobile-sheet-handle" class="pt-3 px-4 pb-2 cursor-pointer select-none flex-shrink-0">
+      <div class="w-10 h-1 bg-primary/20 rounded-full mx-auto mb-3"></div>
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="font-headline-md text-sm font-bold text-primary">Medical Schools</h2>
+          <p id="mobile-results-count" class="font-body-md text-[11px] text-slate-gray">Loading…</p>
+        </div>
+        <span id="mobile-sheet-chevron" class="material-symbols-outlined text-slate-gray">expand_less</span>
+      </div>
+    </div>
+    <!-- Search + filters (not part of the handle tap target) -->
+    <div class="px-4 pb-2 flex-shrink-0">
+      <div class="flex items-center bg-surface-container-high rounded-full px-4 py-2 mb-2">
+        <span class="material-symbols-outlined text-slate-gray text-[20px] mr-2">search</span>
+        <input id="mobile-school-search" type="text" placeholder="Search schools…"
+          class="bg-transparent border-none focus:outline-none focus:ring-0 font-body-md text-sm text-primary placeholder:text-slate-gray/60 w-full">
+      </div>
+      <div class="flex gap-2 overflow-x-auto pb-1 hide-scrollbar">
+        <span id="mobile-filter-all" class="bg-vibrant-iris text-white px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer whitespace-nowrap shadow-sm transition-all">All</span>
+        <span id="mobile-filter-md"  class="bg-surface-container-high text-slate-gray px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer hover:bg-surface-dim whitespace-nowrap transition-all">Allopathic (MD)</span>
+        <span id="mobile-filter-do"  class="bg-surface-container-high text-slate-gray px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer hover:bg-surface-dim whitespace-nowrap transition-all">Osteopathic (DO)</span>
+      </div>
+    </div>
+    <!-- Scrollable card list -->
+    <div id="mobile-school-list" class="overflow-y-auto flex-1 px-4 pb-6 flex flex-col gap-3"></div>
+  </div>
+</main>
+
+<script src="../js/main.js"></script>
+<script>
+const SCHOOLS = [
+  { id:'harvard',       name:'Harvard Medical School',                        city:'Boston, MA',        type:'md', lat:42.3359, lng:-71.1048,  slug:'harvard-medical-school',                        label:'Harvard',     ivs:[{n:'Abraham Cheloff',s:'abraham-cheloff'}] },
+  { id:'yale',          name:'Yale School of Medicine',                        city:'New Haven, CT',     type:'md', lat:41.3059, lng:-72.9283,  slug:'yale-school-of-medicine',                       label:'Yale',        ivs:[{n:'Hadrian Mendoza',s:'hadrian-mendoza'}] },
+  { id:'hopkins',       name:'Johns Hopkins School of Medicine',               city:'Baltimore, MD',     type:'md', lat:39.2986, lng:-76.5934,  slug:'johns-hopkins-school-of-medicine',              label:'Hopkins',     ivs:[{n:'Will Tobolowsky',s:'will-tobolowsky'}] },
+  { id:'duke',          name:'Duke University School of Medicine',             city:'Durham, NC',        type:'md', lat:35.9963, lng:-78.9063,  slug:'duke-university-school-of-medicine',            label:'Duke',        ivs:[{n:'Alex',s:'alex'}] },
+  { id:'cornell',       name:'Weill Cornell Medical College',                  city:'New York, NY',      type:'md', lat:40.7655, lng:-73.9540,  slug:'weill-cornell-medical-college',                 label:'Cornell',     ivs:[{n:'Annie Yau',s:'annie-yau'}] },
+  { id:'northwestern',  name:'Northwestern Feinberg School of Medicine',       city:'Chicago, IL',       type:'md', lat:41.8988, lng:-87.6231,  slug:'northwestern-feinberg-school-of-medicine',      label:'Northwestern',ivs:[{n:'Regine Goh',s:'regine-goh'}] },
+  { id:'uab',           name:'UAB School of Medicine',                         city:'Birmingham, AL',    type:'md', lat:33.5044, lng:-86.7997,  slug:'university-of-alabama-birmingham',               label:'UAB',         ivs:[{n:'Emily Hayward',s:'emily-hayward'}] },
+  { id:'uci',           name:'UC Irvine School of Medicine',                   city:'Irvine, CA',        type:'md', lat:33.6406, lng:-117.8443, slug:'uc-irvine-school-of-medicine',                  label:'UC Irvine',   page:'schools/uc-irvine-school-of-medicine/index.html', ivs:[{n:'Arnie Shah',s:'arnie-shah'},{n:'Alexa Lucas',s:'alexa-lucas'},{n:'Steven Tohmasi',s:'steven-tohmasi'}] },
+  { id:'umass',         name:'UMass Chan Medical School',                      city:'Worcester, MA',     type:'md', lat:42.2773, lng:-71.7573,  slug:'university-of-massachusetts-medical-school',     label:'UMass',       ivs:[{n:'Prithwijit Roychowdhury',s:'prithwijit-roychowdhury'}] },
+  { id:'ucsd',          name:'UC San Diego School of Medicine',                city:'La Jolla, CA',      type:'md', lat:32.8794, lng:-117.2369, slug:'uc-san-diego-school-of-medicine',                label:'UC San Diego',ivs:[{n:'Neela',s:'neela'}] },
+  { id:'mayo',          name:'Mayo Clinic Alix School of Medicine',            city:'Rochester, MN',     type:'md', lat:44.0121, lng:-92.4802,  slug:'mayo-clinic-school-of-medicine',                label:'Mayo Clinic', ivs:[{n:'Arya Shah',s:'arya-shah'}] },
+  { id:'tulane',        name:'Tulane University School of Medicine',           city:'New Orleans, LA',   type:'md', lat:29.9380, lng:-90.1186,  slug:'tulane-university-school-of-medicine',           label:'Tulane',      ivs:[{n:'David',s:'david'}] },
+  { id:'drexel',        name:'Drexel University College of Medicine',          city:'Philadelphia, PA',  type:'md', lat:39.9558, lng:-75.1914,  slug:'drexel-university-college-of-medicine',         label:'Drexel',      ivs:[{n:'Jonathan Acosta',s:'jonathan-acosta'}] },
+  { id:'creighton',     name:'Creighton University School of Medicine',        city:'Omaha, NE',         type:'md', lat:41.2565, lng:-95.9345,  slug:'creighton-university-school-of-medicine',       label:'Creighton',   ivs:[{n:'Eric Nguyen',s:'eric-nguyen'}] },
+  { id:'morsani',       name:'USF Morsani College of Medicine',                city:'Tampa, FL',         type:'md', lat:27.9658, lng:-82.4572,  slug:'morsani-college-of-medicine',                   label:'USF Morsani', ivs:[{n:'Brian James',s:'brian-james'},{n:'Chetna Thawani',s:'chetna-thawani'}] },
+  { id:'rfu',           name:'Chicago Medical School at Rosalind Franklin U',  city:'North Chicago, IL', type:'md', lat:42.3218, lng:-87.8640,  slug:'rosalind-franklin-university',                  label:'Rosalind Franklin',ivs:[{n:'Allison Martin',s:'allison-martin'},{n:'Drew Weinstein',s:'drew-weinstein'}] },
+  { id:'keck',          name:'USC Keck School of Medicine',                    city:'Los Angeles, CA',   type:'md', lat:34.0648, lng:-118.2021, slug:'usc-keck-school-of-medicine',                   label:'USC Keck',    ivs:[{n:'Dominic Carusillo',s:'dominic-carusillo'},{n:'Sam Teles',s:'sam-teles'}] },
+  { id:'western',       name:'Western U College of Osteopathic Medicine',      city:'Pomona, CA',        type:'do', lat:34.0552, lng:-117.7517, slug:'western-university-osteopathic',                label:'Western U',   ivs:[{n:'Chuck Chan',s:'chuck-chan'}] },
+  { id:'vcu',           name:'VCU School of Medicine',                         city:'Richmond, VA',      type:'md', lat:37.5477, lng:-77.4536,  slug:'virginia-commonwealth-university',               label:'VCU',         ivs:[{n:'Chris',s:'chris'}] },
+  { id:'kycom',         name:'Kentucky College of Osteopathic Medicine',       city:'Pikeville, KY',     type:'do', lat:37.4795, lng:-82.5182,  slug:'kentucky-college-of-osteopathic-medicine',      label:'KYCOM',       ivs:[{n:'Jeremy Storck',s:'jeremy-storck'}] },
+  { id:'mcw',           name:'Medical College of Wisconsin',                   city:'Milwaukee, WI',     type:'md', lat:43.0448, lng:-88.0440,  slug:'medical-college-of-wisconsin',                  label:'MCW',         ivs:[{n:'Austin Dopp',s:'austin-dopp'}] },
+  { id:'wayne',         name:'Wayne State School of Medicine',                 city:'Detroit, MI',       type:'md', lat:42.3725, lng:-83.0628,  slug:'wayne-state-school-of-medicine',                label:'Wayne State', ivs:[{n:'Nik',s:'nik'}] },
+  { id:'baylor',        name:'Baylor College of Medicine',                     city:'Houston, TX',       type:'md', lat:29.7094, lng:-95.3979,  slug:'baylor-college-of-medicine',                    label:'Baylor',      ivs:[{n:'Justin',s:'justin'},{n:'Michele Cabeza',s:'michele-cabeza'}] },
+  { id:'uthsc',         name:'UT Health Science Center College of Medicine',   city:'Memphis, TN',       type:'md', lat:35.1495, lng:-90.0490,  slug:'ut-health-science-center',                      label:'UTHSC',       ivs:[{n:'Jay Patel',s:'jay-patel'}] },
+  { id:'ucla',          name:'David Geffen School of Medicine at UCLA',        city:'Los Angeles, CA',   type:'md', lat:34.0659, lng:-118.4455, slug:'ucla-geffen-school-of-medicine',                 label:'UCLA',        ivs:[{n:'Tim Ellis-Caleo',s:'tim-ellis-caleo'}] },
+  { id:'uf',            name:'University of Florida College of Medicine',      city:'Gainesville, FL',   type:'md', lat:29.6416, lng:-82.3490,  slug:'university-of-florida-college-of-medicine',     label:'U Florida',   ivs:[{n:'Anonymous',s:'anonymous-ms2'}] },
+  { id:'fsu',           name:'Florida State University College of Medicine',   city:'Tallahassee, FL',   type:'md', lat:30.4418, lng:-84.2982,  slug:'florida-state-university-college-of-medicine',  label:'FSU',         ivs:[{n:'Anonymous',s:'anonymous-ms3'}] },
+  { id:'mcg',           name:'Medical College of Georgia at Augusta U',        city:'Augusta, GA',       type:'md', lat:33.4685, lng:-82.0270,  slug:'medical-college-of-georgia',                    label:'MCG',         ivs:[{n:'Catherine Boatman',s:'catherine-boatman'}] },
+  { id:'cusm',          name:'California University of Science and Medicine',  city:'Colton, CA',        type:'md', lat:34.0748, lng:-117.3173, slug:'california-university-of-science-and-medicine', label:'CUSM',        ivs:[{n:'Bao Vu',s:'bao-vu'}] },
+  { id:'iusm',          name:'Indiana University School of Medicine',          city:'Indianapolis, IN',  type:'md', lat:39.7764, lng:-86.1752,  slug:'indiana-university-school-of-medicine',         label:'IU Med',      ivs:[{n:'Austin Wininger',s:'austin-wininger'}] },
+  { id:'siu',           name:'Southern Illinois University School of Medicine',city:'Springfield, IL',   type:'md', lat:39.8018, lng:-89.6437,  slug:'southern-illinois-university-school-of-medicine',label:'SIU Med',    ivs:[{n:'Alexander Worix',s:'alexander-worix'}] },
+  { id:'touro',         name:'Touro College of Osteopathic Medicine',          city:'Middletown, NY',    type:'do', lat:41.4457, lng:-74.4229,  slug:'touro-college-of-osteopathic-medicine',         label:'Touro',       ivs:[{n:'Brittany Stelmar',s:'brittany-stelmar'}] },
+  { id:'uc',            name:'University of Cincinnati College of Medicine',   city:'Cincinnati, OH',    type:'md', lat:39.1329, lng:-84.5150,  slug:'university-of-cincinnati-college-of-medicine',  label:'UC',          ivs:[{n:'Priya Sorab',s:'priya-sorab'}] },
+  { id:'nymc',          name:'New York Medical College',                       city:'Valhalla, NY',      type:'md', lat:41.0756, lng:-73.7854,  slug:'new-york-medical-college',                      label:'NYMC',        ivs:[{n:'Nick Bacher',s:'nick-bacher'}] },
+  { id:'miami',         name:'University of Miami Miller School of Medicine',  city:'Miami, FL',         type:'md', lat:25.7893, lng:-80.2101,  slug:'university-of-miami-miller-school-of-medicine', label:'U Miami',     ivs:[{n:'Todd Jackson',s:'todd-jackson'},{n:'Zach Donato',s:'zach-donato'}] },
+  { id:'iowa',          name:'University of Iowa Carver College of Medicine',  city:'Iowa City, IA',     type:'md', lat:41.6617, lng:-91.5356,  slug:'university-of-iowa-carver-college-of-medicine', label:'Iowa',        ivs:[{n:'Gabriel Conley',s:'gabriel-conley'}] },
+  { id:'evms',          name:'Eastern Virginia Medical School',                city:'Norfolk, VA',       type:'md', lat:36.8468, lng:-76.3048,  slug:'eastern-virginia-medical-school',               label:'EVMS',        ivs:[{n:'Rossen Kirkov',s:'rossen-kirkov'}] },
+  { id:'rush',          name:'Rush Medical College',                           city:'Chicago, IL',       type:'md', lat:41.8745, lng:-87.6556,  slug:'rush-medical-college',                          label:'Rush',        ivs:[{n:'Emily He',s:'emily-he'}] },
+  { id:'tcu',           name:'TCU Burnett School of Medicine',                 city:'Fort Worth, TX',    type:'md', lat:32.7155, lng:-97.3620,  slug:'tcu-burnett-school-of-medicine',                label:'TCU',         ivs:[{n:'Kyung Park',s:'kyung-park'}] },
+];
+
+window.addEventListener('load', function () {
+  const header  = document.querySelector('header');
+  const wrapper = document.getElementById('map-wrapper');
+  const mapEl   = document.getElementById('map');
+
+  const navH  = header ? header.offsetHeight : 70;
+  const pad   = 16;
+  const wrapH = window.innerHeight - navH - pad * 2;
+  const wrapW = window.innerWidth  - pad * 2;
+  wrapper.style.width  = wrapW + 'px';
+  wrapper.style.height = wrapH + 'px';
+  mapEl.style.width    = '100%';
+  mapEl.style.height   = '100%';
+
+  // ── Leaflet ──────────────────────────────────────────────────
+  const map = L.map('map', { zoomControl: false, attributionControl: true });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 19,
+  }).addTo(map);
+  map.invalidateSize();
+
+  const panelOffset = window.innerWidth >= 768 ? 444 : 0;
+  const bottomPad   = window.innerWidth >= 768 ? 80 : 235;
+  map.fitBounds([[25.0, -124.0], [48.0, -67.0]], {
+    paddingTopLeft: [24, 24],
+    paddingBottomRight: [panelOffset + 24, bottomPad],
+  });
+
+  document.getElementById('zoom-in').addEventListener('click',  () => map.zoomIn());
+  document.getElementById('zoom-out').addEventListener('click', () => map.zoomOut());
+  window.addEventListener('resize', function () {
+    const h = window.innerHeight - (header ? header.offsetHeight : 70) - pad * 2;
+    const w = window.innerWidth - pad * 2;
+    wrapper.style.width  = w + 'px';
+    wrapper.style.height = h + 'px';
+    map.invalidateSize();
+  });
+
+  // ── Cards ─────────────────────────────────────────────────────
+  let activeFilter = 'all';
+
+  function cardHTML(s, prefix) {
+    prefix = prefix || '';
+    const typeLabel = s.type === 'do' ? 'DO' : 'MD';
+    const count     = s.ivs.length;
+    const link      = `../schools/${s.slug}/index.html`;
+    const linkLabel = 'View →';
+    return `<article id="${prefix}card-${s.id}" data-school-id="${s.id}" data-name="${s.name.toLowerCase()} ${s.city.toLowerCase()}" data-type="${s.type}"
+        class="bg-white border border-primary/5 rounded-xl p-4 shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all cursor-pointer group">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-vibrant-iris/10 group-hover:text-vibrant-iris transition-colors">
+          <span class="material-symbols-outlined">school</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-headline-md text-sm font-semibold text-primary group-hover:text-vibrant-iris transition-colors leading-tight">${s.name}</h3>
+          <p class="font-body-md text-xs text-slate-gray mt-0.5">${s.city} · ${typeLabel}</p>
+        </div>
+      </div>
+      <div class="mt-2 pt-2 border-t border-primary/5 flex items-center justify-between">
+        <span class="font-body-md text-[11px] text-slate-gray">${count} interview${count !== 1 ? 's' : ''}</span>
+        <a href="${link}" class="font-label-md text-[10px] font-semibold text-vibrant-iris hover:underline" onclick="event.stopPropagation()">${linkLabel}</a>
+      </div>
+    </article>`;
+  }
+
+  function renderCards(filter, query) {
+    const q = (query || '').toLowerCase();
+    const visible = SCHOOLS.filter(s => {
+      if (filter !== 'all' && s.type !== filter) return false;
+      if (q && !s.name.toLowerCase().includes(q) && !s.city.toLowerCase().includes(q)) return false;
+      return true;
+    });
+    const countText = `Showing ${visible.length} result${visible.length !== 1 ? 's' : ''}.`;
+    document.getElementById('results-count').textContent = countText;
+    const mobileCount = document.getElementById('mobile-results-count');
+    if (mobileCount) mobileCount.textContent = countText;
+
+    document.getElementById('school-list').innerHTML = visible.map(s => cardHTML(s)).join('');
+    const mobileList = document.getElementById('mobile-school-list');
+    if (mobileList) mobileList.innerHTML = visible.map(s => cardHTML(s, 'mobile-')).join('');
+
+    visible.forEach(s => {
+      const card = document.getElementById('card-' + s.id);
+      if (card) card.addEventListener('click', () => {
+        map.flyTo([s.lat, s.lng], 10, { duration: 1.2 });
+        highlightCard(s.id);
+      });
+      const mCard = document.getElementById('mobile-card-' + s.id);
+      if (mCard) mCard.addEventListener('click', () => {
+        map.flyTo([s.lat, s.lng], 10, { duration: 1.2 });
+        highlightCard(s.id);
+        collapseSheet();
+      });
+    });
+  }
+
+  function highlightCard(schoolId) {
+    document.querySelectorAll('#school-list article, #mobile-school-list article').forEach(el =>
+      el.classList.remove('border-vibrant-iris', 'border-2', 'shadow-md'));
+    const card = document.getElementById('card-' + schoolId);
+    if (card) {
+      card.classList.add('border-vibrant-iris', 'border-2', 'shadow-md');
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    const mCard = document.getElementById('mobile-card-' + schoolId);
+    if (mCard) {
+      mCard.classList.add('border-vibrant-iris', 'border-2', 'shadow-md');
+      mCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function setFilter(f) {
+    activeFilter = f;
+    const activeCls   = 'bg-vibrant-iris text-white px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer whitespace-nowrap shadow-sm transition-all';
+    const inactiveCls = 'bg-surface-container-high text-slate-gray px-4 py-1.5 rounded-full font-label-md text-xs cursor-pointer hover:bg-surface-dim whitespace-nowrap transition-all';
+    ['all','md','do'].forEach(v => {
+      const cls  = f === v ? activeCls : inactiveCls;
+      const desk = document.getElementById('filter-' + v);
+      const mob  = document.getElementById('mobile-filter-' + v);
+      if (desk) desk.className = cls;
+      if (mob)  mob.className  = cls;
+    });
+    renderCards(f, document.getElementById('school-search').value);
+  }
+
+  document.getElementById('filter-all').addEventListener('click', () => setFilter('all'));
+  document.getElementById('filter-md').addEventListener('click',  () => setFilter('md'));
+  document.getElementById('filter-do').addEventListener('click',  () => setFilter('do'));
+  document.getElementById('school-search').addEventListener('input', function () {
+    renderCards(activeFilter, this.value);
+  });
+
+  // ── Mobile sheet ─────────────────────────────────────────────
+  const mobileSheet = document.getElementById('mobile-sheet');
+  let sheetExpanded = false;
+
+  function expandSheet() {
+    if (!mobileSheet) return;
+    sheetExpanded = true;
+    mobileSheet.classList.add('expanded');
+    const chev = document.getElementById('mobile-sheet-chevron');
+    if (chev) chev.style.transform = 'rotate(180deg)';
+  }
+  function collapseSheet() {
+    if (!mobileSheet) return;
+    sheetExpanded = false;
+    mobileSheet.classList.remove('expanded');
+    const chev = document.getElementById('mobile-sheet-chevron');
+    if (chev) chev.style.transform = '';
+  }
+
+  document.getElementById('mobile-sheet-handle').addEventListener('click', () => {
+    if (sheetExpanded) collapseSheet(); else expandSheet();
+  });
+  document.getElementById('mobile-school-search').addEventListener('input', function () {
+    document.getElementById('school-search').value = this.value;
+    renderCards(activeFilter, this.value);
+  });
+  document.getElementById('mobile-filter-all').addEventListener('click', () => setFilter('all'));
+  document.getElementById('mobile-filter-md').addEventListener('click',  () => setFilter('md'));
+  document.getElementById('mobile-filter-do').addEventListener('click',  () => setFilter('do'));
+
+  renderCards('all', '');
+
+  // ── Markers ───────────────────────────────────────────────────
+  SCHOOLS.forEach(s => {
+    const color = s.type === 'do' ? '#a23d34' : '#9580FF';
+    const html = `<div class="school-marker">
+      <div class="pulse-ring" style="color:${color}"></div>
+      <div style="position:relative;width:40px;height:40px;border-radius:50%;background:#fff;
+        box-shadow:0 4px 16px rgba(0,0,0,0.16);display:flex;align-items:center;
+        justify-content:center;border:2px solid ${color};">
+        <span class="material-symbols-outlined" style="color:${color};font-size:18px;font-variation-settings:'FILL' 1">school</span>
+      </div>
+      <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:700;
+        color:#1b1b26;background:#fff;padding:2px 6px;border-radius:9999px;
+        box-shadow:0 2px 6px rgba(0,0,0,0.1);white-space:nowrap;
+        border:1px solid rgba(0,0,0,0.07);">${s.label}</span>
+    </div>`;
+    const icon   = L.divIcon({ className: '', iconSize: [40, 70], iconAnchor: [20, 70], html });
+    const marker = L.marker([s.lat, s.lng], { icon }).addTo(map);
+    marker.on('click', () => {
+      if (window.innerWidth < 768) expandSheet();
+      highlightCard(s.id);
+      const card = document.getElementById('card-' + s.id);
+      if (!card) {
+        setFilter('all');
+        document.getElementById('school-search').value = '';
+        renderCards('all', '');
+        setTimeout(() => highlightCard(s.id), 50);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

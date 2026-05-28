@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Austin Dopp, MS2 — Medical College of Wisconsin | DocStory</title>
+  <meta name="description" content="Read Austin Dopp's first-hand experience at Medical College of Wisconsin, covering curriculum, culture, and life as a medical student.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-container':'#efecfc','surface-container-low':'#f5f2ff',
+          'surface-container-high':'#e9e6f6','surface-container-highest':'#e3e0f1',
+          'surface-container-lowest':'#ffffff','soft-surface':'#F8FAFB',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff',
+          'on-background':'#1b1b26','primary-fixed':'#d8e3f7','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','tertiary-fixed':'#e6deff',
+          'tertiary-fixed-dim':'#c9beff','outline':'#75777c','outline-variant':'#c5c6cc',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .interview-body h1 { font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h2 { font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
+    .interview-body h3 {
+      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
+    }
+    .interview-body p  { color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }
+    .interview-body strong { color: #333e4d; }
+    .interview-body ul, .interview-body ol { color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .interview-body li { margin-bottom: 0.25rem; line-height: 1.7; }
+    .interview-body blockquote {
+      border-left: 4px solid #9580FF; padding: 0.5rem 1.5rem;
+      margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic; color: #333e4d;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      
+      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
+
+  <nav aria-label="breadcrumb" class="mb-lg">
+    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      Back to Directory
+    </a>
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-xl">
+
+    <!-- Main Article -->
+    <article class="flex-1 min-w-0">
+      <header class="mb-lg">
+        <div class="flex flex-wrap items-center gap-xs mb-md">
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Student Interview</span>
+          <span class="px-sm py-xs rounded-full font-label-md text-label-md bg-surface-container-low text-vibrant-iris">Allopathic (MD)</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">Austin Dopp, MS2 — Medical College of Wisconsin</h1>
+        <div class="flex items-center gap-sm pb-md border-b border-primary/5">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">AD</div>
+          <div>
+            <div class="font-label-md text-label-md text-primary">Austin Dopp</div>
+            <div class="font-body-md text-xs text-slate-gray">MS2 at Medical College of Wisconsin · October 2018</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="interview-body">
+        <h3>What does your typical day of medical school look like?</h3>
+<p>My typical day is probably a little different than most medical students because I am married and have 3 children. I wake up around 7-ish and walk to school. Most days I spend the first 4 hours in lecture and then have lunch. After that I spend the next 4 hours either studying from lectures or working on the different research projects that I am trying to complete. At 5PM I usually head home to have dinner with my family. I try to spend from 5-7PM with them at which time I help put my kids to bed. I may or may not spend another hour with my wife depending on if I have tests coming up. Then I try to study from 8PM till about 10:30PM when I go to bed. That of course is the ideal schedule. The degree to which it is followed varies somewhat day to day depending on what's going on at that time.</p>
+<h3>How do your classes and lectures compare to those at your undergraduate institution?</h3>
+<p>My lectures are all recorded which is awesome. That way if I need to do something other than sitting in class I can watch it later at twice the speed if I need to. Classes in medical school are pretty much only based on exams. There are very few graded assignments and the ones that may be there are a tiny portion of your grade normally.</p>
+<h3>How has your approach to learning/studying changed since undergrad?</h3>
+<p>My approach to learning has become more based on trying to understand why things happen rather than rote memorization of facts. The more I understand why things happen and the implications of them not happening the better I do.</p>
+<h3>How would you describe the student culture at your school?</h3>
+<p>The culture at my school is very supportive. I am in a class of around 200 and so while you think you may get forgotten or left out, I have never felt that way. Other students are always posting tips and study aids to help others. We try to remind each other of upcoming deadlines and what not as well.</p>
+<h3>Can you describe the area surrounding your school?</h3>
+<p>The area surrounding my school is what you would expect the outskirts of a city to be. The things I do for fun are usually spending time with my wife and children. Some things I like about the part of town I am located in is that it feels safe. I have never had to worry about my family when I am at school till midnight. Some things I don't like is just the fact it is a city. I don't necessarily like cities. I'd much prefer a rural landscape.</p>
+<h3>What would you consider strengths of your medical school?</h3>
+<p>I think one of the strengths that my medical school has is that it is always trying to find ways to improve. No school is perfect but I have gotten a sense that my school has a desire to find the imperfections and fix them. Another thing that I think is a big strength for my school is its relationship with the Kern Institute, an organization among 6 or 7 well known medical schools that is trying to change medical education across the country. Being associated with Kern has given me lots of opportunities.</p>
+<h3>What resources have been most useful to you?</h3>
+<p>Some resources that have been useful to me are mainly Pathoma and First Aid my M2 year. My M1 year, I didn't use much more than the slides given by the lecturers.</p>
+<h3>How have you been able to develop clinical skills?</h3>
+<p>All medical schools try to draw students in by saying things like "We get you to have patient contact on day one." My personal belief is that's just a bunch of baloney. Yes we need to learn those skills but until you are done with the first 2 years of school you don't have the knowledge base to make those interactions meaningful. My school does try to let you "dip your toes in the water" however by giving us a class called Clinical Apprenticeship. In this class we are assigned to a doctor and we go into their clinic once a week and try to be helpful. It's good for students because that's what we want to do and it gives us some experience for when we are actually ready to learn.</p>
+<h3>How has self-doubt affected you?</h3>
+<p>Usually when I have doubts or things like that I try to remember my wife and kids and how I need to keep going so that I can provide for them. Also my own sense of achievement won't let me not persevere so that helps too.</p>
+<h3>How do you maintain your mental health?</h3>
+<p>It's difficult but you just have to make time for the things that are the most important to you and tell yourself that the other things need to matter a little bit less. If you are having a mental breakdown or a family crisis then it's ok to get a pass in your class rather than a high pass. Choose your big rocks, then your pebbles, then fill the rest up with sand. You can fit a lot more in that way.</p>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-72 flex-shrink-0 flex flex-col gap-md">
+      <div class="bg-soft-surface border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris">info</span>Quick Facts
+        </h2>
+        <ul class="space-y-md">
+          <li class="flex justify-between items-start pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">School</span><span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">Medical College of Wisconsin</span></li>
+<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Year</span><span class="font-body-md text-body-md text-primary font-medium">MS2</span></li>
+<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">October 2018</span></li>
+
+        </ul>
+      </div>
+
+      <div class="bg-white border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md">More Interviews</h2>
+        <ul class="space-y-sm">
+          
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Justin · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Michele Cabeza · MS1</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../interviews/california-university-of-science-and-medicine/bao-vu/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">BV</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">California University of Science and Medicine</div>
+                <div class="font-body-md text-xs text-slate-gray">Bao Vu · MS1</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

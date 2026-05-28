@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USC Keck School of Medicine — School Profile | DocStory</title>
+  <meta name="description" content="Explore USC Keck School of Medicine — program stats, curriculum highlights, research, and real student interview experiences.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-dim':'#dbd8e8','surface-variant':'#e3e0f1','surface-container':'#efecfc',
+          'surface-container-low':'#f5f2ff','surface-container-high':'#e9e6f6',
+          'surface-container-highest':'#e3e0f1','surface-container-lowest':'#ffffff',
+          'soft-surface':'#F8FAFB','on-surface':'#1b1b26','on-surface-variant':'#44474c',
+          'background':'#fcf8ff','on-background':'#1b1b26','primary-fixed':'#d8e3f7',
+          'on-primary-fixed':'#111c2a','on-primary-container':'#becadd','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','on-tertiary':'#ffffff','outline':'#75777c',
+          'outline-variant':'#c5c6cc','deep-onyx':'#14141F',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'headline-lg-mobile':['Inter'],'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'headline-lg-mobile':['24px',{lineHeight:'32px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ── Editorial Stats Dashboard ── */
+    .dc-card {
+      background: #fff;
+      border: 1px solid #ececf4;
+      border-radius: 20px;
+      box-shadow: 0 1px 2px rgba(31,34,53,.04), 0 12px 32px -16px rgba(91,75,209,.10);
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-feature-settings: "cv11","ss01","tnum";
+      color: #1f2235;
+    }
+    .dc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 22px 28px 18px;
+      border-bottom: 1px solid #ececf4;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dc-header h2 { font-size: 1.375rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; margin: 0; }
+    .dc-meta { font-size: 0.8125rem; color: #8a8fa6; margin: 3px 0 0; }
+    .dc-sdn-link {
+      font-size: 0.8125rem; color: #6c5ce7; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; flex-shrink: 0;
+    }
+    .dc-sdn-link:hover { text-decoration: underline; }
+    .dc-stage {
+      display: flex;
+      background:
+        radial-gradient(900px 480px at 85% -10%, rgba(139,127,255,.12), transparent 60%),
+        radial-gradient(700px 360px at -10% 110%, rgba(108,92,231,.08), transparent 60%),
+        #faf9ff;
+    }
+    .dc-col { display: flex; flex-direction: column; flex: 1; }
+    .dc-col-l { flex: 1.35; }
+    .dc-col-r { flex: 1; }
+    .dc-divider-v { width: 1px; background: #ececf4; flex-shrink: 0; }
+    .dc-cell { padding: 22px 28px; flex: 1; }
+    .dc-cell + .dc-cell { border-top: 1px solid #ececf4; }
+    .dc-cell-label {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #8a8fa6; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .dc-cell-label::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #8b7fff; flex-shrink: 0;
+    }
+    /* Selectivity */
+    .dc-mcat-big { font-size: 3.25rem; font-weight: 800; color: #1f2235; line-height: 1; letter-spacing: -0.04em; }
+    .dc-mcat-unit { font-size: 0.875rem; color: #4b4f6b; margin-left: 8px; font-weight: 400; }
+    .dc-good { font-size: 0.8125rem; color: #1f9d6b; font-weight: 600; margin-top: 3px; }
+    .dc-selectivity-body { display: flex; gap: 16px; align-items: center; margin-top: 10px; }
+    .dc-curve-wrap { flex: 1; min-width: 0; }
+    .dc-gpa-wrap { flex-shrink: 0; width: 150px; }
+    .dc-gpa-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .dc-gpa-num { font-size: 0.9375rem; font-weight: 700; color: #1f2235; width: 34px; letter-spacing: -0.01em; }
+    .dc-gpa-bar-bg { flex: 1; height: 4px; background: #e3dfff; border-radius: 2px; overflow: hidden; }
+    .dc-gpa-bar-fill { height: 100%; border-radius: 2px; background: #6c5ce7; }
+    .dc-gpa-tag { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.03em; width: 46px; text-align: right; }
+    .dc-gpa-meta { font-size: 0.6875rem; color: #8a8fa6; margin-top: 2px; }
+    /* Cost */
+    .dc-cost-row { margin-bottom: 12px; }
+    .dc-cost-row-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .dc-cost-label { font-size: 0.8125rem; color: #4b4f6b; }
+    .dc-cost-amt { font-size: 1.25rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; }
+    .dc-cost-per { font-size: 0.75rem; color: #8a8fa6; font-weight: 400; margin-left: 1px; }
+    .dc-cost-bar-bg { height: 5px; background: #eeecfb; border-radius: 3px; overflow: hidden; }
+    .dc-cost-bar-fill { height: 100%; border-radius: 3px; }
+    .dc-cost-note { font-size: 0.6875rem; color: #8a8fa6; margin-top: 6px; }
+    /* Class Profile */
+    .dc-donuts { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+    .dc-donut-item { display: flex; align-items: center; gap: 10px; }
+    .dc-donut-labels h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+    .dc-donut-labels p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.05em; text-transform: uppercase; margin: 2px 0 0; }
+    .dc-profile-stats { display: flex; gap: 20px; padding-top: 10px; border-top: 1px solid #f2f1f8; }
+    .dc-profile-stat h4 { font-size: 1.75rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.04em; margin: 0; }
+    .dc-profile-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.05em; text-transform: uppercase; margin: 3px 0 0; }
+    /* Scale & Reach */
+    .dc-reach-body { display: flex; gap: 16px; }
+    .dc-funnel { flex: 1; min-width: 0; }
+    .dc-funnel-row { margin-bottom: 9px; }
+    .dc-funnel-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .dc-funnel-name { font-size: 0.8125rem; color: #4b4f6b; font-weight: 500; }
+    .dc-funnel-num { font-size: 0.8125rem; font-weight: 700; color: #1f2235; }
+    .dc-funnel-bar-bg { height: 8px; background: #f1efff; border-radius: 4px; overflow: hidden; }
+    .dc-funnel-bar-fill { height: 100%; border-radius: 4px; background: #8b7fff; }
+    .dc-funnel-note { font-size: 0.6875rem; color: #8a8fa6; margin-top: 4px; }
+    .dc-reach-aside { flex-shrink: 0; }
+    .dc-reach-stat { margin-bottom: 12px; }
+    .dc-reach-stat h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+    .dc-reach-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
+    /* Mobile */
+    @media (max-width: 767px) {
+      .dc-stage { flex-direction: column; }
+      .dc-col-l, .dc-col-r { flex: none; }
+      .dc-divider-v { width: 100%; height: 1px; }
+      .dc-cell { padding: 18px; }
+      .dc-header { padding: 18px; }
+      .dc-mcat-big { font-size: 2.5rem; }
+      .dc-selectivity-body { flex-direction: column; gap: 10px; }
+      .dc-gpa-wrap { width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      <a href="../../index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Schools</a>
+      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+    </div>
+  </div>
+</nav>
+
+<main class="flex-grow">
+
+  <!-- HERO -->
+  <div class="bg-surface-container-low border-b border-primary/5">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-xl">
+      <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors mb-lg">
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        Back to Directory
+      </a>
+      <div class="flex flex-wrap gap-xs mb-md">
+        <span class="px-sm py-1 bg-vibrant-iris/10 text-vibrant-iris rounded-full font-label-md text-[11px] font-semibold">Allopathic (MD)</span>
+        <span class="px-sm py-1 bg-surface-container-high text-slate-gray rounded-full font-label-md text-[11px]">Private</span>
+        <span class="px-sm py-1 bg-surface-container-high text-slate-gray rounded-full font-label-md text-[11px]">Founded 1885</span>
+        <span class="px-sm py-1 bg-surface-container-high text-slate-gray rounded-full font-label-md text-[11px]">Los Angeles, CA</span>
+      </div>
+      <h1 class="font-display-lg text-[36px] md:text-display-lg text-primary leading-tight tracking-tight">USC Keck School of Medicine</h1>
+      <p class="font-body-lg text-body-lg text-slate-gray mt-sm">Los Angeles, CA · <span class="text-primary font-medium">Keck Hospital of USC</span> · 180 students per class</p>
+    </div>
+  </div>
+
+  <!-- STATS DASHBOARD -->
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+    <div class="dc-card">
+      <!-- Header -->
+      <div class="dc-header">
+        <div>
+          <h2>Program Statistics</h2>
+          <p class="dc-meta">2024 admissions cycle · Source: <strong>Student Doctor Network</strong> &amp; AAMC MSAR</p>
+        </div>
+        <a href="https://www.studentdoctor.net/schools-database/medical-school/detail/USC-Keck/university-of-southern-california-keck-school-of-medicine"
+           target="_blank" rel="noopener noreferrer" class="dc-sdn-link">
+          View full profile on SDN
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 2H7m3 0v3M10 2L5.5 6.5M3 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V9" stroke="#6c5ce7" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+      <!-- Stage -->
+      <div class="dc-stage">
+        <!-- Left column -->
+        <div class="dc-col dc-col-l">
+          <!-- Selectivity -->
+          <div class="dc-cell">
+            <div class="dc-cell-label">Selectivity · Class of 2028</div>
+            <div>
+              <span class="dc-mcat-big">517</span><span class="dc-mcat-unit">median MCAT</span>
+              <div class="dc-good">+15 above national average — 91st percentile</div>
+            </div>
+            <div class="dc-selectivity-body">
+              <div class="dc-curve-wrap">
+                <svg viewBox="0 0 200 78" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+                  <path d="M0,70 C38,70 70,4 91,4 C112,4 148,70 200,70" fill="rgba(139,127,255,0.13)"/>
+                  <path d="M0,70 C38,70 70,4 91,4 C112,4 148,70 200,70" fill="none" stroke="#8b7fff" stroke-width="1.5"/>
+                  <line x1="91" y1="4" x2="91" y2="70" stroke="#b4b8cd" stroke-dasharray="3,2" stroke-width="1"/>
+                  <line x1="131" y1="36" x2="131" y2="70" stroke="#5b4bd1" stroke-width="1.5"/>
+                  <circle cx="131" cy="34" r="3.5" fill="#5b4bd1"/>
+                  <text x="84" y="78" text-anchor="middle" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg 502</text>
+                  <text x="131" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">517</text>
+                </svg>
+              </div>
+              <div class="dc-gpa-wrap">
+                <div class="dc-gpa-row">
+                  <span class="dc-gpa-num">3.81</span>
+                  <div class="dc-gpa-bar-bg"><div class="dc-gpa-bar-fill" style="width:79%"></div></div>
+                  <span class="dc-gpa-tag">Science</span>
+                </div>
+                <div class="dc-gpa-row">
+                  <span class="dc-gpa-num">3.85</span>
+                  <div class="dc-gpa-bar-bg"><div class="dc-gpa-bar-fill" style="width:83%"></div></div>
+                  <span class="dc-gpa-tag">Overall</span>
+                </div>
+                <div class="dc-gpa-meta">Median undergraduate GPA</div>
+              </div>
+            </div>
+          </div>
+          <!-- Cost of Attendance -->
+          <div class="dc-cell">
+            <div class="dc-cell-label">Cost of Attendance</div>
+            <div class="dc-cost-row">
+              <div class="dc-cost-row-head">
+                <span class="dc-cost-label">Annual tuition</span>
+                <span class="dc-cost-amt">$74.5K<span class="dc-cost-per">/yr</span></span>
+              </div>
+              <div class="dc-cost-bar-bg"><div class="dc-cost-bar-fill" style="background: linear-gradient(90deg, #8b7fff, #6c5ce7); width: 100%;"></div></div>
+            </div>
+            <div class="dc-cost-note">Private institution — single tuition rate for all students · ~$509K est. total cost of attendance</div>
+          </div>
+        </div>
+        <!-- Vertical divider -->
+        <div class="dc-divider-v"></div>
+        <!-- Right column -->
+        <div class="dc-col dc-col-r">
+          <!-- Class Profile -->
+          <div class="dc-cell">
+            <div class="dc-cell-label">Class Profile</div>
+            <div class="dc-donuts">
+              <div class="dc-donut-item">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <circle cx="28" cy="28" r="21" stroke="#e3dfff" stroke-width="5"/>
+                  <circle cx="28" cy="28" r="21" stroke="#6c5ce7" stroke-width="5"
+                    stroke-dasharray="72.6 59.4" stroke-linecap="round"
+                    transform="rotate(-90 28 28)"/>
+                  <text x="28" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2235" font-family="Inter,sans-serif">55%</text>
+                </svg>
+                <div class="dc-donut-labels"><h4>55%</h4><p>Women</p></div>
+              </div>
+              <div class="dc-donut-item">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                  <circle cx="28" cy="28" r="21" stroke="#e3dfff" stroke-width="5"/>
+                  <circle cx="28" cy="28" r="21" stroke="#b4b8cd" stroke-width="5"
+                    stroke-dasharray="52.8 79.2" stroke-linecap="round"
+                    transform="rotate(-90 28 28)"/>
+                  <text x="28" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2235" font-family="Inter,sans-serif">40%</text>
+                </svg>
+                <div class="dc-donut-labels"><h4>40%</h4><p>Underrep. Min.</p></div>
+              </div>
+            </div>
+            <div class="dc-profile-stats">
+              <div class="dc-profile-stat"><h4>180</h4><p>Class Size</p></div>
+              <div class="dc-profile-stat"><h4>720</h4><p>Total MD Students</p></div>
+            </div>
+          </div>
+          <!-- Scale & Reach -->
+          <div class="dc-cell">
+            <div class="dc-cell-label">Scale &amp; Reach</div>
+            <div class="dc-reach-body">
+              <div class="dc-funnel">
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Applied</span><span class="dc-funnel-num">12,000+</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:100%;opacity:.45"></div></div>
+                </div>
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Interviewed</span><span class="dc-funnel-num">~600</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:52%;opacity:.7"></div></div>
+                </div>
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Enrolled</span><span class="dc-funnel-num">180</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:24%"></div></div>
+                </div>
+                <div class="dc-funnel-note">~1.5% acceptance · est.</div>
+              </div>
+              <div class="dc-reach-aside">
+                <div class="dc-reach-stat"><h4>1,300+</h4><p>Faculty Members</p></div>
+                <div class="dc-reach-stat"><h4>401</h4><p>Beds · Keck Hospital</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRAM HIGHLIGHTS -->
+  <div class="bg-surface-container-low border-y border-primary/5">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-lg">Program Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+
+        <!-- Curriculum -->
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:'FILL' 1">menu_book</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Curriculum</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Keck's MD program is structured around three phases: <strong class="text-primary font-semibold">Scientific and Clinical Foundations</strong>, Clinical Immersion, and Individuation and Transformation. The first phase covers biomedical sciences through active, case-based learning — with patient contact built in from day one, not held back until year three.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Lectures are fully webcasted and capped at four hours per day, giving students flexibility to study through spaced-repetition tools like Anki at their own pace. The curriculum also integrates health systems science and social determinants of health — preparing students to navigate both clinical complexity and structural inequity from the start of training.
+            </p>
+          </div>
+        </div>
+
+        <!-- Research & Innovation -->
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:'FILL' 1">science</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Research &amp; Innovation</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              The <strong class="text-primary font-semibold">HTE Program</strong> (Health, Technology, and Engineering) is one of USC Keck's most distinctive offerings — pairing medical students with PhD engineering candidates to collaborate on healthcare innovation. Weekly sessions bring in physician entrepreneurs and engineers to discuss design thinking, patents, hospital operations, and bringing medical devices to market.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              USC Keck ranks <strong class="text-primary font-semibold">#28 in Research</strong> (U.S. News &amp; World Report) and draws on over 1,300 full-time faculty. Students gain direct shadowing access to attending physicians across virtually every specialty — an experience both Keck students and faculty consistently highlight as one of the program's most formative advantages.
+            </p>
+          </div>
+        </div>
+
+        <!-- Clinical Training -->
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:'FILL' 1">local_hospital</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Clinical Training</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Three distinct hospitals sit on or adjacent to the Health Sciences Campus: <strong class="text-primary font-semibold">Keck Hospital of USC</strong> (401-bed private teaching hospital), Norris Cancer Center, and LA General Medical Center — a Level I trauma center and safety-net hospital. Each offers a fundamentally different clinical environment.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Students describe the county hospital experience as uniquely humanizing: patients at LA General are often uninsured and express deep gratitude for care and attention. Additional affiliated sites include <strong class="text-primary font-semibold">Children's Hospital Los Angeles</strong> — one of the nation's leading pediatric centers — rounding out an unusual breadth of training environments within a single campus system.
+            </p>
+          </div>
+        </div>
+
+        <!-- Location & Community -->
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:'FILL' 1">location_city</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Location &amp; Community</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              USC Keck's Health Sciences Campus sits in <strong class="text-primary font-semibold">East Los Angeles</strong>, adjacent to Boyle Heights and Lincoln Heights — historically underserved communities where the school's equity-driven mission becomes tangible in daily clinical work. LA General's patient population reflects this setting directly, giving students exposure to medicine that most programs can only describe on paper.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Beyond campus, students are 15–20 minutes from vibrant neighborhoods like Silverlake, Los Feliz, and Echo Park, and the culturally rich cities of Alhambra and Monterey Park. LA's sprawl is real — traffic is a fact of life — but the city's access to beaches, hiking, food, and entertainment makes it a compelling place to spend four formative years.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDENT VOICES -->
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+    <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-primary">Student Voices</h2>
+        <p class="font-body-md text-xs text-slate-gray mt-1">2 interviews from current and former USC Keck students</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+
+      <a href="../../interviews/usc-keck-school-of-medicine/dominic-carusillo/index.html"
+         class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all group block">
+        <div class="flex items-center gap-sm mb-md">
+          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary text-sm flex-shrink-0 group-hover:bg-vibrant-iris/10 group-hover:text-vibrant-iris transition-colors">DC</div>
+          <div>
+            <div class="font-semibold text-primary text-sm group-hover:text-vibrant-iris transition-colors leading-tight">Dominic Carusillo</div>
+            <div class="font-body-md text-[11px] text-slate-gray mt-0.5">MS1 · UCSB undergrad · San Diego, CA</div>
+          </div>
+        </div>
+        <p class="font-body-md text-xs text-slate-gray leading-relaxed line-clamp-4">
+          "You can't blow off class as much as you could in undergrad." Medical school covers significantly more material weekly. Shadowing opportunities stand out as most valuable, allowing exposure to specialties and direct mentorship from attending physicians.
+        </p>
+        <div class="mt-sm font-label-md text-[11px] text-vibrant-iris font-semibold group-hover:underline transition-all">Read Interview →</div>
+      </a>
+
+      <a href="../../interviews/usc-keck-school-of-medicine/sam-teles/index.html"
+         class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all group block">
+        <div class="flex items-center gap-sm mb-md">
+          <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary text-sm flex-shrink-0 group-hover:bg-vibrant-iris/10 group-hover:text-vibrant-iris transition-colors">ST</div>
+          <div>
+            <div class="font-semibold text-primary text-sm group-hover:text-vibrant-iris transition-colors leading-tight">Sam Teles</div>
+            <div class="font-body-md text-[11px] text-slate-gray mt-0.5">MS1 · UCSB undergrad · Rancho Palos Verdes, CA</div>
+          </div>
+        </div>
+        <p class="font-body-md text-xs text-slate-gray leading-relaxed line-clamp-4">
+          "Being able to see patients at County is special because these are people who are grateful for your help and for someone that will listen to them. You don't get that as much at private hospitals. Being able to make a difference with people at County simply by paying attention to them is special."
+        </p>
+        <div class="mt-sm font-label-md text-[11px] text-vibrant-iris font-semibold group-hover:underline transition-all">Read Interview →</div>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-mobile md:px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

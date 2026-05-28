@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <filter id="sk" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="1.8"/>
+    </filter>
+  </defs>
+  <polygon filter="url(#sk)"
+    points="32,4 38.5,23.1 58.6,23.3 42.5,35.4 48.5,54.7 32,43 15.5,54.7 21.5,35.4 5.4,23.3 25.5,23.1"
+    stroke="#333e4d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

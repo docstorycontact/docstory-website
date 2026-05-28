@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <filter id="sk" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="5" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="1.8"/>
+    </filter>
+  </defs>
+  <g filter="url(#sk)" stroke="#333e4d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Mortarboard top -->
+    <polygon points="32,8 60,20 32,32 4,20" fill="none"/>
+    <!-- Hat crown -->
+    <path d="M20 25 L20 40 Q20 48 32 48 Q44 48 44 40 L44 25"/>
+    <!-- Tassel string + ball -->
+    <line x1="57" y1="22" x2="57" y2="38"/>
+    <circle cx="57" cy="41" r="3.5" fill="#333e4d" stroke="none"/>
+  </g>
+</svg>

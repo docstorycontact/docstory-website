@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview: Sarah Jenkins — University of Michigan | DocStory</title>
+  <meta name="description" content="Read Sarah Jenkins's first-hand interview experience at the University of Michigan Medical School, covering culture, curriculum, and what to expect on interview day.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode:'class',
+      theme:{extend:{
+        colors:{
+          'vibrant-iris':'#9580FF','primary':'#333e4d','slate-gray':'#4A5565',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff',
+          'surface-container':'#efecfc','surface-container-low':'#f5f2ff',
+          'surface-container-high':'#e9e6f6','surface-container-highest':'#e3e0f1',
+          'surface-container-lowest':'#ffffff','soft-surface':'#F8FAFB',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff',
+          'on-background':'#1b1b26','primary-fixed':'#d8e3f7','secondary':'#a23d34',
+          'secondary-fixed-dim':'#ffb4aa','tertiary-fixed':'#e6deff',
+          'tertiary-fixed-dim':'#c9beff','outline':'#75777c','outline-variant':'#c5c6cc',
+        },
+        borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'},
+        spacing:{xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px'},
+        fontFamily:{
+          'display-lg':['Inter'],'headline-lg':['Inter'],'headline-md':['Inter'],
+          'body-lg':['Inter'],'body-md':['Inter'],'label-md':['Plus Jakarta Sans'],
+        },
+        fontSize:{
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      <a href="../../index.html"        class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Home</a>
+      <a href="../../directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Schools</a>
+      <a href="../../directory/index.html" class="text-vibrant-iris border-b-2 border-vibrant-iris font-body-md text-body-md h-full flex items-center px-xs font-medium">Interviews</a>
+      <a href="../../about/index.html"  class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">About</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-primary/20 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl p-md flex flex-col gap-md">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-sm">
+      <span class="font-bold text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </span>
+      <button id="mobile-menu-close" class="text-primary hover:text-vibrant-iris"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="flex flex-col gap-sm">
+      <a href="../../index.html"           class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../../directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Schools</a>
+      <a href="../../directory/index.html" class="text-vibrant-iris font-semibold py-xs">Interviews</a>
+      <a href="../../about/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">About</a>
+    </nav>
+    <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto">Join Now</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
+
+  <!-- Back breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-lg">
+    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+      Back to Directory
+    </a>
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-xl">
+
+    <!-- Main Article -->
+    <article class="flex-1 min-w-0">
+      <!-- Article Header -->
+      <header class="mb-lg">
+        <div class="flex flex-wrap items-center gap-xs mb-md">
+          <span class="bg-surface-container-low text-vibrant-iris px-sm py-xs rounded-full font-label-md text-label-md">Student Interview</span>
+          <span class="bg-surface-container-low text-slate-gray px-sm py-xs rounded-full font-label-md text-label-md">Allopathic (MD)</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">My Interview Experience at the University of Michigan Medical School</h1>
+        <div class="flex items-center gap-sm pb-md border-b border-primary/5">
+          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">SJ</div>
+          <div>
+            <div class="font-label-md text-label-md text-primary">Sarah Jenkins</div>
+            <div class="font-body-md text-xs text-slate-gray">MS3 at University of Michigan · May 2026 · 12 min read</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="prose-content space-y-lg">
+
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          I had been dreaming about the University of Michigan Medical School for years. When I got the interview invite, I was equal parts thrilled and terrified. Here's everything I wish I had known before walking through those doors.
+        </p>
+
+        <h2 class="font-headline-md text-headline-md text-primary">The Pre-Interview Dinner</h2>
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          The night before interview day, the school hosted an optional pre-dinner for candidates and current students. I cannot emphasize enough how much I recommend attending this if you're given the opportunity. I got real, candid answers to my questions from MS1s and MS2s who were genuinely excited to share their experiences. The vibe was welcoming, not competitive.
+        </p>
+
+        <blockquote class="border-l-4 border-vibrant-iris pl-lg py-xs my-lg bg-surface-container-low rounded-r-lg">
+          <p class="font-body-lg text-body-lg text-primary italic leading-relaxed">"U of M challenged me from day one, but the collaborative environment and focus on early clinical exposure made all the difference."</p>
+        </blockquote>
+
+        <h2 class="font-headline-md text-headline-md text-primary">Interview Day Structure</h2>
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          Interview day started early. We began with a welcome breakfast and a brief orientation from the admissions team. Michigan uses a modified personal interview format, with two separate 30-minute interviews—one with a faculty member and one with a current medical student. Both were conversational and low-pressure.
+        </p>
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          My faculty interviewer had actually read my application thoroughly, which I was not expecting. They asked deeply specific follow-up questions about my research. My student interviewer, on the other hand, spent most of the time helping me understand the school's culture and asking what I genuinely wanted to know about the experience.
+        </p>
+
+        <h2 class="font-headline-md text-headline-md text-primary">The Campus &amp; Facilities</h2>
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          The tour was fantastic. The clinical skills center is state-of-the-art, featuring high-fidelity simulation mannequins and standardized patient exam rooms that are used from the very first semester. The library and student lounge areas were comfortable and modern. Ann Arbor itself is a wonderful college town—very walkable, great food, and a vibrant community life.
+        </p>
+
+        <h2 class="font-headline-md text-headline-md text-primary">My Final Thoughts</h2>
+        <p class="font-body-lg text-body-lg text-slate-gray leading-relaxed">
+          U of M has an almost palpable sense of tradition and academic excellence, balanced with a surprising amount of warmth. If you're a collaborative learner who wants early clinical exposure without sacrificing research opportunities, Michigan belongs at the top of your list. I left Ann Arbor knowing, without a doubt, that this was a place where I could thrive.
+        </p>
+
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-72 flex-shrink-0 flex flex-col gap-md">
+
+      <!-- Quick Facts -->
+      <div class="bg-soft-surface border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris">info</span>Quick Facts
+        </h2>
+        <ul class="space-y-md">
+          <li class="flex justify-between items-center pb-sm border-b border-primary/5">
+            <span class="font-body-md text-body-md text-slate-gray">School</span>
+            <span class="font-body-md text-body-md text-primary font-medium text-right max-w-[60%]">University of Michigan Medical School</span>
+          </li>
+          <li class="flex justify-between items-center pb-sm border-b border-primary/5">
+            <span class="font-body-md text-body-md text-slate-gray">Location</span>
+            <span class="font-body-md text-body-md text-primary font-medium">Ann Arbor, MI</span>
+          </li>
+          <li class="flex justify-between items-center pb-sm border-b border-primary/5">
+            <span class="font-body-md text-body-md text-slate-gray">Avg MCAT</span>
+            <span class="font-body-md text-body-md text-primary font-medium">517</span>
+          </li>
+          <li class="flex justify-between items-center pb-sm border-b border-primary/5">
+            <span class="font-body-md text-body-md text-slate-gray">Avg GPA</span>
+            <span class="font-body-md text-body-md text-primary font-medium">3.89</span>
+          </li>
+          <li class="flex justify-between items-center pb-sm border-b border-primary/5">
+            <span class="font-body-md text-body-md text-slate-gray">Format</span>
+            <span class="font-body-md text-body-md text-primary font-medium">Modified Personal</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span class="font-body-md text-body-md text-slate-gray">Author</span>
+            <span class="font-body-md text-body-md text-primary font-medium">Sarah Jenkins, MS3</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Related Interviews -->
+      <div class="bg-white border border-primary/10 rounded-xl p-lg shadow-sm">
+        <h2 class="font-headline-md text-headline-md text-primary mb-md">Related Interviews</h2>
+        <ul class="space-y-sm">
+          <li>
+            <a href="../../directory/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">DT</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Stanford SOM Interview</div>
+                <div class="font-body-md text-xs text-slate-gray">David T. · MD/PhD · 22 min</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../directory/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-secondary-fixed-dim/40 flex-shrink-0 flex items-center justify-center text-secondary font-bold text-xs">AL</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">UCSF SOM Interview</div>
+                <div class="font-body-md text-xs text-slate-gray">Anita L. · MS2 · 10 min</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="../../directory/index.html" class="flex items-start gap-sm group">
+              <div class="w-8 h-8 rounded-full bg-primary-fixed flex-shrink-0 flex items-center justify-center text-primary font-bold text-xs">MC</div>
+              <div>
+                <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Mayo Clinic Interview</div>
+                <div class="font-body-md text-xs text-slate-gray">Michael C. · MS2 · 15 min</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="#"                      class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="#"                      class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="#"                      class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>
