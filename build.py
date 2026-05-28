@@ -233,6 +233,7 @@ def render_interview_page(iv, all_interviews):
       font-style: italic; color: #333e4d;
     }}
   </style>
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
 
