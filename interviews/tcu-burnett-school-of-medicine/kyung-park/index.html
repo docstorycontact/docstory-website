@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <link href="../../css/style.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode:'class',
@@ -57,6 +57,16 @@
       margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic; color: #333e4d;
     }
+    /* Paywall gate */
+    #article-body-wrapper { position: relative; }
+    #article-body-wrapper.paywall-gated .interview-body {
+      max-height: 260px; overflow: hidden;
+    }
+    #article-body-wrapper.paywall-gated::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+      background: linear-gradient(to bottom, transparent, #fcf8ff);
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -64,15 +74,14 @@
 <!-- NAV -->
 <nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
   <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
-    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+    <a href="/index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
       <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
     </a>
     <div class="hidden md:flex items-center gap-lg h-full">
       
-      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
-      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="/index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="/directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
 
     </div>
     <div class="flex items-center gap-2">
@@ -88,7 +97,7 @@
 <main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
 
   <nav aria-label="breadcrumb" class="mb-lg">
-    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+    <a href="/directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
       <span class="material-symbols-outlined text-[16px]">arrow_back</span>
       Back to Directory
     </a>
@@ -113,8 +122,9 @@
         </div>
       </header>
 
-      <div class="interview-body">
-        <h3>What does your typical day of medical school look like?</h3>
+      <div id="article-body-wrapper">
+        <div class="interview-body">
+          <h3>What does your typical day of medical school look like?</h3>
 <p>Right now, I am currently in a course where we are transitioning to clinical experiences so typically we are in classes 8-5 PM for the next 2 weeks. For pre-clinicals, my weekly schedule varied depending on which classes I had but my typical schedule looked like this below: Monday: Mechanism of Health and Disease Content Application Sessions 9 AM -12 PM (MHD CAS is our main basic sciences course during our didactics) and rest of the day was white space which means we can use that time as we need such as studying, working on research, ECs, and so on. Tuesday: 8 AM-12 PM Longitudinal Integrated Clerkship 1 (LIC 1) where we were are assigned to a preceptor in either family medicine or internal medicine and see patients in clinic approximately 1-2 times a month. If I did not have LIC 1, I would have my Scholarly Pursuit and Thesis course (SPT) from 1 PM – 3 PM which is a class to help people go over the fundamentals of research, help find a mentor, or work on our projects as we need to complete a thesis to graduate. Wednesday: Mechanism of Health and Disease Content Application Sessions 9 AM -12 PM. 12 PM- 1PM was lunch. Then I had Clinical Skills (CS) 1 PM – 5 PM where we learned the basics of gathering a history, writing a HPI, and how to do a physical exam. Sometimes, it would alternate the Compassionate Practice course (TCP) from 1 PM – 3 PM where we learned skills related to communication and empathy through humanities pedagogies and Preparation for Practice (P4P) where we discussed topics of ethics, healthcare policy, patient safety, population health, and team-based care. Thursday: MHD CAS 9 AM-12 PM. Rest of the day was white space Friday: MDH CAS 9 AM-12 PM: Rest of the day was white space. For most people the schedule can vary when you have your other classes (SPT, TCP, P4P, CS, and LIC1) but we all had the same MHD schedule. We also had a course called Future Accelerators of Medicine and Beyond (FAB) where we talked about the future of medicine and topics such as design thinking, genomics, AI, and screening assays throughout the year.</p>
 <h3>How do your classes and lectures compare to those at your undergraduate institution?</h3>
 <p>Honestly, I think undergraduate material was harder than medical school in terms of material difficulty; however, the sheer amount of material that you are expected to learn is a lot more than I had to learn during my undergraduate career. I think being pass/fail during our didactics helps minimize stress and allows us to focus more on learning the material. Also being in a class of 60 students, the faculty are incredibly invested in your success and often know us by name, which was a big departure from undergraduate when I could be in a course with over 900 students.</p>
@@ -140,6 +150,7 @@
 <p>TCU is mandatory in person “content application sessions”. So you will have in-person classes and they are usually not recorded. I have had friends record it via voice memos or share notes. The school provide bricks and the faculty share their slideshow presentations afterwards, which is often more than sufficient. We use ScholarRx, which has an associated podcasts with topics we cover, and some of the episodes I listened to were helpful. The school also provides Osmosis which can be a great review and explanation of topics that you need a little bit more clarification on.</p>
 <h3>How are your pre-clinical and clinical course work graded? (Pass/Fail, Honors, etc.)</h3>
 <p>Preclinical is P/F which has been such a blessing. Clinical are graded; however, only the outpatient experiences are graded (H/P/F). After you finish phase 1 (the didactics), you have immersions which is 10 weeks of nonstop inpatient rotations (IM, OB/GYN, Surgery, and Pediatrics). During this time, you do not get any grades, but you do get feedback from your preceptors, which helps you figure out areas of improvement. This is different compared to my friends at other schools who get thrown into clinicals and are graded right away. TCU gives its students 10 weeks to just really go and learn as much as we can without having to worry about grades.</p>
+        </div>
       </div>
     </article>
 
@@ -164,7 +175,7 @@
         <ul class="space-y-sm">
           
           <li>
-            <a href="../../interviews/albany-medical-college/ana-khatia/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/albany-medical-college/ana-khatia/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">AK</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Albany Medical College</div>
@@ -173,7 +184,7 @@
             </a>
           </li>
           <li>
-            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
@@ -182,7 +193,7 @@
             </a>
           </li>
           <li>
-            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
@@ -208,7 +219,7 @@
     </div>
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
-        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="/about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -217,6 +228,108 @@
   </div>
 </footer>
 
-<script src="../../js/main.js"></script>
+<!-- PAYWALL MODAL -->
+<div id="paywall-backdrop" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center" aria-modal="true" role="dialog" aria-labelledby="paywall-title">
+  <div class="absolute inset-0 bg-on-background/50 backdrop-blur-sm"></div>
+  <div class="relative bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md sm:mx-4 px-lg pt-lg pb-xl">
+    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-tertiary-fixed mx-auto mb-md">
+      <span class="material-symbols-outlined text-tertiary text-[28px]" style="font-variation-settings:'FILL' 1">lock</span>
+    </div>
+    <h2 id="paywall-title" class="font-headline-lg text-headline-lg text-primary text-center mb-xs">You've read 3 free interviews</h2>
+    <p class="font-body-md text-body-md text-slate-gray text-center mb-lg leading-relaxed">Sign up for free to keep reading — unlimited access to every DocStory interview.</p>
+    <form id="paywall-form" novalidate>
+      <label for="paywall-email" class="sr-only">Email address</label>
+      <input type="email" id="paywall-email" name="email" placeholder="your@email.com" autocomplete="email"
+        class="w-full border border-primary/20 rounded-lg px-md py-sm font-body-md text-body-md text-primary placeholder:text-slate-gray/40 focus:outline-none focus:ring-2 focus:ring-vibrant-iris focus:border-transparent transition-all bg-white mb-xs">
+      <p id="paywall-email-error" class="font-body-md text-xs text-secondary mb-sm hidden">Please enter a valid email address.</p>
+      <button type="submit" class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+        Get free access →
+      </button>
+    </form>
+    <p class="font-body-md text-xs text-slate-gray text-center mt-md opacity-60">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ID = 'tcu-burnett-school-of-medicine/kyung-park';
+  var LIMIT = 3;
+  var LS_READ   = 'readInterviews';
+  var LS_SIGNED = 'emailSignedUp';
+  var LS_EMAIL  = 'signupEmail';
+
+  // Handle ?verified=true magic link
+  (function () {
+    var p = new URLSearchParams(window.location.search);
+    if (p.get('verified') === 'true') {
+      localStorage.setItem(LS_SIGNED, 'true');
+      var u = new URL(window.location.href);
+      u.searchParams.delete('verified');
+      window.history.replaceState({}, '', u.toString());
+    }
+  })();
+
+  // Already signed up — nothing to gate
+  if (localStorage.getItem(LS_SIGNED) === 'true') return;
+
+  // Load read list
+  var readList;
+  try { readList = JSON.parse(localStorage.getItem(LS_READ) || '[]'); }
+  catch (e) { readList = []; }
+  if (!Array.isArray(readList)) readList = [];
+
+  // Free pass if this interview is already in the read list
+  if (readList.indexOf(ID) !== -1) return;
+
+  // Under the limit — record read and allow access
+  if (readList.length < LIMIT) {
+    readList.push(ID);
+    localStorage.setItem(LS_READ, JSON.stringify(readList));
+    return;
+  }
+
+  // Over the limit — gate on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function () {
+    var backdrop = document.getElementById('paywall-backdrop');
+    var wrapper  = document.getElementById('article-body-wrapper');
+    var form     = document.getElementById('paywall-form');
+    var emailIn  = document.getElementById('paywall-email');
+    var emailErr = document.getElementById('paywall-email-error');
+
+    if (backdrop) backdrop.classList.remove('hidden');
+    if (wrapper)  wrapper.classList.add('paywall-gated');
+    if (emailIn)  setTimeout(function () { emailIn.focus(); }, 300);
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = emailIn ? emailIn.value.trim() : '';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          if (emailErr) emailErr.classList.remove('hidden');
+          if (emailIn)  emailIn.focus();
+          return;
+        }
+        if (emailErr) emailErr.classList.add('hidden');
+
+        localStorage.setItem(LS_EMAIL, email);
+        localStorage.setItem(LS_SIGNED, 'true');
+        readList.push(ID);
+        localStorage.setItem(LS_READ, JSON.stringify(readList));
+
+        if (backdrop) backdrop.classList.add('hidden');
+        if (wrapper)  wrapper.classList.remove('paywall-gated');
+      });
+
+      if (emailIn) {
+        emailIn.addEventListener('input', function () {
+          if (emailErr) emailErr.classList.add('hidden');
+        });
+      }
+    }
+  });
+})();
+</script>
+
+<script src="/js/main.js"></script>
 </body>
 </html>

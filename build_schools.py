@@ -352,7 +352,7 @@ def render_voice_card(school_slug, fm, body, student_slug):
 
     quote  = extract_quote(body)
     inits  = initials(iv_name)
-    iv_url = f'../../interviews/{school_slug}/{student_slug}/index.html'
+    iv_url = f'/interviews/{school_slug}/{student_slug}/index.html'
 
     return f'''      <a href="{iv_url}"
          class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all group block">
@@ -406,7 +406,7 @@ def render_page(school_slug, data, interviews):
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <link href="../../css/style.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
   {TAILWIND_CONFIG}
   <style>
     .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}
@@ -417,14 +417,13 @@ def render_page(school_slug, data, interviews):
 <!-- NAV -->
 <nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
   <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full h-[70px]">
-    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+    <a href="/index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
       <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:&apos;FILL&apos; 1">medical_services</span>DocStory
     </a>
     <div class="hidden md:flex items-center gap-lg h-full">
-      <a href="../../index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Schools</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Interviews</a>
-      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="/directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
     </div>
     <div class="flex items-center gap-2">
       <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
@@ -437,7 +436,7 @@ def render_page(school_slug, data, interviews):
   <!-- HERO -->
   <div class="bg-surface-container-low border-b border-primary/5">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-xl">
-      <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors mb-lg">
+      <a href="/directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors mb-lg">
         <span class="material-symbols-outlined text-[16px]">arrow_back</span>
         Back to Directory
       </a>
@@ -515,7 +514,7 @@ def render_page(school_slug, data, interviews):
     </div>
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
-        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="/about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -524,7 +523,7 @@ def render_page(school_slug, data, interviews):
   </div>
 </footer>
 
-<script src="../../js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>'''
 

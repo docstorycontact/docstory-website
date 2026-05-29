@@ -115,7 +115,6 @@ def related_interviews(current, all_interviews, n=3):
 
 NAV_ITEMS = """
       <a href="{root}index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="{root}directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
       <a href="{root}directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
       <a href="{root}about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
 """
@@ -144,7 +143,7 @@ def render_interview_page(iv, all_interviews):
     school_slug  = iv["school_slug"]
     student_slug = iv["student_slug"]
 
-    root      = "../../" if school_slug != "misc" else "../"
+    root      = "/"
     name      = meta.get("name", "Anonymous")
     school    = meta.get("school", school_slug.replace("-", " ").title())
     year      = meta.get("year", "")
@@ -232,6 +231,16 @@ def render_interview_page(iv, all_interviews):
       margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic; color: #333e4d;
     }}
+    /* Paywall gate */
+    #article-body-wrapper {{ position: relative; }}
+    #article-body-wrapper.paywall-gated .interview-body {{
+      max-height: 260px; overflow: hidden;
+    }}
+    #article-body-wrapper.paywall-gated::after {{
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+      background: linear-gradient(to bottom, transparent, #fcf8ff);
+      pointer-events: none;
+    }}
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -283,8 +292,10 @@ def render_interview_page(iv, all_interviews):
         </div>
       </header>
 
-      <div class="interview-body">
-        {body_html}
+      <div id="article-body-wrapper">
+        <div class="interview-body">
+          {body_html}
+        </div>
       </div>
     </article>
 
@@ -329,6 +340,108 @@ def render_interview_page(iv, all_interviews):
     </div>
   </div>
 </footer>
+
+<!-- PAYWALL MODAL -->
+<div id="paywall-backdrop" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center" aria-modal="true" role="dialog" aria-labelledby="paywall-title">
+  <div class="absolute inset-0 bg-on-background/50 backdrop-blur-sm"></div>
+  <div class="relative bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md sm:mx-4 px-lg pt-lg pb-xl">
+    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-tertiary-fixed mx-auto mb-md">
+      <span class="material-symbols-outlined text-tertiary text-[28px]" style="font-variation-settings:'FILL' 1">lock</span>
+    </div>
+    <h2 id="paywall-title" class="font-headline-lg text-headline-lg text-primary text-center mb-xs">You've read 3 free interviews</h2>
+    <p class="font-body-md text-body-md text-slate-gray text-center mb-lg leading-relaxed">Sign up for free to keep reading — unlimited access to every DocStory interview.</p>
+    <form id="paywall-form" novalidate>
+      <label for="paywall-email" class="sr-only">Email address</label>
+      <input type="email" id="paywall-email" name="email" placeholder="your@email.com" autocomplete="email"
+        class="w-full border border-primary/20 rounded-lg px-md py-sm font-body-md text-body-md text-primary placeholder:text-slate-gray/40 focus:outline-none focus:ring-2 focus:ring-vibrant-iris focus:border-transparent transition-all bg-white mb-xs">
+      <p id="paywall-email-error" class="font-body-md text-xs text-secondary mb-sm hidden">Please enter a valid email address.</p>
+      <button type="submit" class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+        Get free access →
+      </button>
+    </form>
+    <p class="font-body-md text-xs text-slate-gray text-center mt-md opacity-60">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+(function () {{
+  var ID = '{school_slug}/{student_slug}';
+  var LIMIT = 3;
+  var LS_READ   = 'readInterviews';
+  var LS_SIGNED = 'emailSignedUp';
+  var LS_EMAIL  = 'signupEmail';
+
+  // Handle ?verified=true magic link
+  (function () {{
+    var p = new URLSearchParams(window.location.search);
+    if (p.get('verified') === 'true') {{
+      localStorage.setItem(LS_SIGNED, 'true');
+      var u = new URL(window.location.href);
+      u.searchParams.delete('verified');
+      window.history.replaceState({{}}, '', u.toString());
+    }}
+  }})();
+
+  // Already signed up — nothing to gate
+  if (localStorage.getItem(LS_SIGNED) === 'true') return;
+
+  // Load read list
+  var readList;
+  try {{ readList = JSON.parse(localStorage.getItem(LS_READ) || '[]'); }}
+  catch (e) {{ readList = []; }}
+  if (!Array.isArray(readList)) readList = [];
+
+  // Free pass if this interview is already in the read list
+  if (readList.indexOf(ID) !== -1) return;
+
+  // Under the limit — record read and allow access
+  if (readList.length < LIMIT) {{
+    readList.push(ID);
+    localStorage.setItem(LS_READ, JSON.stringify(readList));
+    return;
+  }}
+
+  // Over the limit — gate on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function () {{
+    var backdrop = document.getElementById('paywall-backdrop');
+    var wrapper  = document.getElementById('article-body-wrapper');
+    var form     = document.getElementById('paywall-form');
+    var emailIn  = document.getElementById('paywall-email');
+    var emailErr = document.getElementById('paywall-email-error');
+
+    if (backdrop) backdrop.classList.remove('hidden');
+    if (wrapper)  wrapper.classList.add('paywall-gated');
+    if (emailIn)  setTimeout(function () {{ emailIn.focus(); }}, 300);
+
+    if (form) {{
+      form.addEventListener('submit', function (e) {{
+        e.preventDefault();
+        var email = emailIn ? emailIn.value.trim() : '';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {{
+          if (emailErr) emailErr.classList.remove('hidden');
+          if (emailIn)  emailIn.focus();
+          return;
+        }}
+        if (emailErr) emailErr.classList.add('hidden');
+
+        localStorage.setItem(LS_EMAIL, email);
+        localStorage.setItem(LS_SIGNED, 'true');
+        readList.push(ID);
+        localStorage.setItem(LS_READ, JSON.stringify(readList));
+
+        if (backdrop) backdrop.classList.add('hidden');
+        if (wrapper)  wrapper.classList.remove('paywall-gated');
+      }});
+
+      if (emailIn) {{
+        emailIn.addEventListener('input', function () {{
+          if (emailErr) emailErr.classList.add('hidden');
+        }});
+      }}
+    }}
+  }});
+}})();
+</script>
 
 <script src="{root}js/main.js"></script>
 </body>

@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <link href="../../css/style.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode:'class',
@@ -57,6 +57,16 @@
       margin: 1.5rem 0; background: #f5f2ff; border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic; color: #333e4d;
     }
+    /* Paywall gate */
+    #article-body-wrapper { position: relative; }
+    #article-body-wrapper.paywall-gated .interview-body {
+      max-height: 260px; overflow: hidden;
+    }
+    #article-body-wrapper.paywall-gated::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+      background: linear-gradient(to bottom, transparent, #fcf8ff);
+      pointer-events: none;
+    }
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -64,15 +74,14 @@
 <!-- NAV -->
 <nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
   <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
-    <a href="../../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+    <a href="/index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
       <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
     </a>
     <div class="hidden md:flex items-center gap-lg h-full">
       
-      <a href="../../index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Schools</a>
-      <a href="../../directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
-      <a href="../../about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="/index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="/directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
 
     </div>
     <div class="flex items-center gap-2">
@@ -88,7 +97,7 @@
 <main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
 
   <nav aria-label="breadcrumb" class="mb-lg">
-    <a href="../../directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+    <a href="/directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
       <span class="material-symbols-outlined text-[16px]">arrow_back</span>
       Back to Directory
     </a>
@@ -113,8 +122,9 @@
         </div>
       </header>
 
-      <div class="interview-body">
-        <h3>What experiences throughout your life contributed the most to you wanting to go to medical school and pursue a career in medicine?</h3>
+      <div id="article-body-wrapper">
+        <div class="interview-body">
+          <h3>What experiences throughout your life contributed the most to you wanting to go to medical school and pursue a career in medicine?</h3>
 <p>Los Angeles as a city was probably responsible for my decision to pursue a career in medicine, as it’s a city fraught with inequities. Most glaring was what I saw working on Skid Row at a needle exchange clinic. We had patients who were homeless but we also had patients from affluent neighborhoods of Orange County. Folks would bring in hundreds of used needles in the hopes of minimizing the negative effects of their addictions on themselves and on other people. Some may have called them non-compliant patients but to the people who ran the clinic, they were individuals doing their best. I would hear stories from clients about doctors who refused to treat them, or health care providers who yelled at them. I had one homeless man tell me that his doctor jumped backwards when he found out he was an injection drug user with an abscess. This shocked me, as I know drug use is a universal issue that so many people deal with on a daily basis; I couldn’t fathom a physician being so terrified, disgusted, and unprofessional in the face of something that I see as a sign of human suffering. I wouldn’t say that my decision to pursue medicine was based on my time at the clinic. I’ve wanted to do medicine for as long as I can remember, but my time in the clinic really showed me why: health issues, addictions and all, are some of the most graphic examples of human suffering. Even if I can’t cure you, or even if I can’t make you stop using heroin, at least I can work with someone to show them that I value their efforts to shoot up once a day instead of twice.</p>
 <h3>What does your typical day of medical school look like?</h3>
 <p>A typical day in medical school depends on the year: Year 1: 8-12 class on most days, with some 8am-5pm days when we have standardized patients, extra class for anatomy, etc. Mostly a lecture based year with some standardized clinical encounters. Year 2: 8-5 lectures with one or two weeks a morning dedicated to hospital-based doctoring small groups. This was when we had systems-based lectures, as well as when we started learning how to take a basic H&amp;P. Year 3: Clerkships, in which days vary based on the service and the schedule that you are following. Certain days may be longer when you have to study for shelf exams or for Step 2. Year 4: Totally variable, as schedules work around residency interview season. Elective and core rotation requirements vary by school.</p>
@@ -146,6 +156,7 @@
 <p>Take more time to pursue my interests in the humanities. I think that undergraduate education forces us to pursue all the things that we think that we are “supposed” to do to get into medical school. However, what I’ve learned is that medical schools are looking for genuine human beings, with lives, interests, and passions outside of research and hard sciences.</p>
 <h3>What is one thing you would do differently if you could go back to your undergraduate years or the time between undergrad and medical school?</h3>
 <p>Like I said above, dedicate time to writing, painting and literature. It’s important to nurture your passions outside of medicine, both for your sanity now and to sustain a lifelong career that can otherwise be extremely draining.</p>
+        </div>
       </div>
     </article>
 
@@ -171,7 +182,7 @@
         <ul class="space-y-sm">
           
           <li>
-            <a href="../../interviews/albany-medical-college/ana-khatia/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/albany-medical-college/ana-khatia/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">AK</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Albany Medical College</div>
@@ -180,7 +191,7 @@
             </a>
           </li>
           <li>
-            <a href="../../interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/baylor-college-of-medicine/justin/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">JU</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
@@ -189,7 +200,7 @@
             </a>
           </li>
           <li>
-            <a href="../../interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
+            <a href="/interviews/baylor-college-of-medicine/michele-cabeza/index.html" class="flex items-start gap-sm group">
               <div class="w-8 h-8 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center text-tertiary font-bold text-xs">MC</div>
               <div>
                 <div class="font-label-md text-label-md text-primary group-hover:text-vibrant-iris transition-colors">Baylor College of Medicine</div>
@@ -215,7 +226,7 @@
     </div>
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
-        <a href="../../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="/about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -224,6 +235,108 @@
   </div>
 </footer>
 
-<script src="../../js/main.js"></script>
+<!-- PAYWALL MODAL -->
+<div id="paywall-backdrop" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center" aria-modal="true" role="dialog" aria-labelledby="paywall-title">
+  <div class="absolute inset-0 bg-on-background/50 backdrop-blur-sm"></div>
+  <div class="relative bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md sm:mx-4 px-lg pt-lg pb-xl">
+    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-tertiary-fixed mx-auto mb-md">
+      <span class="material-symbols-outlined text-tertiary text-[28px]" style="font-variation-settings:'FILL' 1">lock</span>
+    </div>
+    <h2 id="paywall-title" class="font-headline-lg text-headline-lg text-primary text-center mb-xs">You've read 3 free interviews</h2>
+    <p class="font-body-md text-body-md text-slate-gray text-center mb-lg leading-relaxed">Sign up for free to keep reading — unlimited access to every DocStory interview.</p>
+    <form id="paywall-form" novalidate>
+      <label for="paywall-email" class="sr-only">Email address</label>
+      <input type="email" id="paywall-email" name="email" placeholder="your@email.com" autocomplete="email"
+        class="w-full border border-primary/20 rounded-lg px-md py-sm font-body-md text-body-md text-primary placeholder:text-slate-gray/40 focus:outline-none focus:ring-2 focus:ring-vibrant-iris focus:border-transparent transition-all bg-white mb-xs">
+      <p id="paywall-email-error" class="font-body-md text-xs text-secondary mb-sm hidden">Please enter a valid email address.</p>
+      <button type="submit" class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+        Get free access →
+      </button>
+    </form>
+    <p class="font-body-md text-xs text-slate-gray text-center mt-md opacity-60">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ID = 'mayo-clinic-school-of-medicine/arya-shah';
+  var LIMIT = 3;
+  var LS_READ   = 'readInterviews';
+  var LS_SIGNED = 'emailSignedUp';
+  var LS_EMAIL  = 'signupEmail';
+
+  // Handle ?verified=true magic link
+  (function () {
+    var p = new URLSearchParams(window.location.search);
+    if (p.get('verified') === 'true') {
+      localStorage.setItem(LS_SIGNED, 'true');
+      var u = new URL(window.location.href);
+      u.searchParams.delete('verified');
+      window.history.replaceState({}, '', u.toString());
+    }
+  })();
+
+  // Already signed up — nothing to gate
+  if (localStorage.getItem(LS_SIGNED) === 'true') return;
+
+  // Load read list
+  var readList;
+  try { readList = JSON.parse(localStorage.getItem(LS_READ) || '[]'); }
+  catch (e) { readList = []; }
+  if (!Array.isArray(readList)) readList = [];
+
+  // Free pass if this interview is already in the read list
+  if (readList.indexOf(ID) !== -1) return;
+
+  // Under the limit — record read and allow access
+  if (readList.length < LIMIT) {
+    readList.push(ID);
+    localStorage.setItem(LS_READ, JSON.stringify(readList));
+    return;
+  }
+
+  // Over the limit — gate on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function () {
+    var backdrop = document.getElementById('paywall-backdrop');
+    var wrapper  = document.getElementById('article-body-wrapper');
+    var form     = document.getElementById('paywall-form');
+    var emailIn  = document.getElementById('paywall-email');
+    var emailErr = document.getElementById('paywall-email-error');
+
+    if (backdrop) backdrop.classList.remove('hidden');
+    if (wrapper)  wrapper.classList.add('paywall-gated');
+    if (emailIn)  setTimeout(function () { emailIn.focus(); }, 300);
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = emailIn ? emailIn.value.trim() : '';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          if (emailErr) emailErr.classList.remove('hidden');
+          if (emailIn)  emailIn.focus();
+          return;
+        }
+        if (emailErr) emailErr.classList.add('hidden');
+
+        localStorage.setItem(LS_EMAIL, email);
+        localStorage.setItem(LS_SIGNED, 'true');
+        readList.push(ID);
+        localStorage.setItem(LS_READ, JSON.stringify(readList));
+
+        if (backdrop) backdrop.classList.add('hidden');
+        if (wrapper)  wrapper.classList.remove('paywall-gated');
+      });
+
+      if (emailIn) {
+        emailIn.addEventListener('input', function () {
+          if (emailErr) emailErr.classList.add('hidden');
+        });
+      }
+    }
+  });
+})();
+</script>
+
+<script src="/js/main.js"></script>
 </body>
 </html>
