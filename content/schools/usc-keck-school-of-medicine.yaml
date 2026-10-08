@@ -1,96 +1,102 @@
 # School page data for USC Keck School of Medicine.
 # Rendered by build_schools.py into schools/usc-keck-school-of-medicine/index.html.
 # Field reference: content/schools/_TEMPLATE.yaml
+#
+# Every number comes from an official USC / Keck page (listed under `sources`) except NIH
+# funding, which fetch_nih_funding.py pulls from NIH RePORTER. Checked 2026-10-08.
+# Keck does not publish an entering-class profile (MCAT, GPA, applicants), so those tiles are
+# hidden rather than filled from unofficial sources.
 
 short_name: USC Keck
+nih_org: UNIVERSITY OF SOUTHERN CALIFORNIA
 
 stats:
-  cycle: 2024
-  class_of: 2028
-  sources: [Student Doctor Network, AAMC MSAR]
-  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/USC-Keck/university-of-southern-california-keck-school-of-medicine
-  mcat: 517
-  mcat_percentile: 91
-  gpa_science: 3.81
-  gpa_overall: 3.85
-  tuition: 74500
-  total_cost: 509000
-  women_pct: 55
-  urm_pct: 40
-  class_size: 180
-  total_students: 720
-  applied: 12,000+
-  interviewed: ~600
-  enrolled: 180
-  faculty: 1,300+
-  beds: 401
-  beds_label: Beds · Keck Hospital
+  tuition: 76640                 # 2026–27, USC Financial Aid (same for residents and non-residents)
+  cost_year: 2026–27
+  total_cost: 469617             # sum of Year 1–4 cost-of-attendance budgets, 2026–27
+  class_size: 186                # Keck news, Aug 2017 — newest official class count found
+  beds: 343                      # Keck Medicine of USC: "a 343-bed acute care hospital"
+  beds_label: Beds · Keck Hospital of USC
+
+sources:
+  - label: USC Financial Aid (MD cost of attendance)
+    url: https://financialaid.usc.edu/graduate-professional-financial-aid/health-sciences-campus/the-cost-of-your-medical-school-education/
+  - label: Keck Medicine of USC
+    url: https://www.keckmedicine.org/about/keck-hospital-of-usc/
+  - label: Keck School news (class size, 2017)
+    url: https://keck.usc.edu/news/incoming-medical-students-don-white-coats-for-the-first-time/
 
 highlights:
   - title: Curriculum
     icon: menu_book
     paragraphs:
       - >-
-        Keck's MD program is structured around three phases: **Scientific and Clinical Foundations**,
-        Clinical Immersion, and Individuation and Transformation. The first phase covers biomedical
-        sciences through active, case-based learning — with patient contact built in from day one,
-        not held back until year three.
+        Keck's MD program moves through three phases: **Scientific and Clinical Foundations**,
+        Clinical Immersion, and Individuation and Transformation. Students begin working with patients
+        in their first weeks, and a health justice and systems-of-care thread runs through all three
+        phases, from first-year coursework to a closing seminar after clerkships.
       - >-
-        Lectures are fully webcasted and capped at four hours per day, giving students flexibility to
-        study through spaced-repetition tools like Anki at their own pace. The curriculum also
-        integrates health systems science and social determinants of health — preparing students to
-        navigate both clinical complexity and structural inequity from the start of training.
+        Sam Teles describes no more than about four hours of lecture a day, all webcast, so most of
+        his classmates watched from home at their own pace. Faculty-written notes for each lecture
+        were the core study material, paired with spaced-repetition flashcards.
 
   - title: Research & Innovation
     icon: science
     paragraphs:
       - >-
-        The **HTE Program** (Health, Technology, and Engineering) is one of USC Keck's most distinctive
-        offerings — pairing medical students with PhD engineering candidates to collaborate on
-        healthcare innovation. Weekly sessions bring in physician entrepreneurs and engineers to discuss
-        design thinking, patents, hospital operations, and bringing medical devices to market.
+        **HTE@USC** (Health, Technology and Engineering) is a joint program with USC's Viterbi School
+        of Engineering. Medical students team up with engineering PhD students, two from each school
+        per group, to design medical devices and processes, with the goal of filing patents or
+        publishing by the end of training.
       - >-
-        USC Keck ranks **#28 in Research** (U.S. News & World Report) and draws on over 1,300 full-time
-        faculty. Students gain direct shadowing access to attending physicians across virtually every
-        specialty — an experience both Keck students and faculty consistently highlight as one of the
-        program's most formative advantages.
+        Sam, an HTE student, valued the weekly sessions with engineers and physician-entrepreneurs on
+        needs-finding, patents, hospital billing, and bringing products to market: a look at medicine
+        beyond the clinic. Fourth-year seminars extend that range with options in biomedical research,
+        digital medicine, global medicine, and policy.
 
   - title: Clinical Training
     icon: local_hospital
     paragraphs:
       - >-
-        Three distinct hospitals sit on or adjacent to the Health Sciences Campus: **Keck Hospital of
-        USC** (401-bed private teaching hospital), Norris Cancer Center, and LA General Medical Center —
-        a Level I trauma center and safety-net hospital. Each offers a fundamentally different clinical
-        environment.
+        Students train at **Los Angeles General Medical Center**, the county safety-net hospital;
+        **Keck Hospital of USC**, a 343-bed private acute care hospital; and **Children's Hospital Los
+        Angeles**. Sam counts the USC Norris Cancer Center as a third hospital on the same campus, so
+        students see very different patient populations side by side.
       - >-
-        Students describe the county hospital experience as uniquely humanizing: patients at LA General
-        are often uninsured and express deep gratitude for care and attention. Additional affiliated
-        sites include **Children's Hospital Los Angeles** — one of the nation's leading pediatric
-        centers — rounding out an unusual breadth of training environments within a single campus
-        system.
+        Both students single out the clinical access. Sam found county patients uniquely grateful for
+        a student who simply listens, and Dominic Carusillo calls shadowing his most valuable
+        experience, with attendings across specialties eager to teach.
 
   - title: Location & Community
     icon: location_city
     paragraphs:
       - >-
-        USC Keck's Health Sciences Campus sits in **East Los Angeles**, adjacent to Boyle Heights and
-        Lincoln Heights — historically underserved communities where the school's equity-driven mission
-        becomes tangible in daily clinical work. LA General's patient population reflects this setting
-        directly, giving students exposure to medicine that most programs can only describe on paper.
+        The Health Sciences Campus sits on Los Angeles's Eastside, serving a largely low-income,
+        predominantly Latino community, which students describe as central to their training. Keck
+        reports 32 active community partnerships, and its USC Street Medicine program logs more than
+        2,000 patient visits a year.
       - >-
-        Beyond campus, students are 15–20 minutes from vibrant neighborhoods like Silverlake, Los Feliz,
-        and Echo Park, and the culturally rich cities of Alhambra and Monterey Park. LA's sprawl is
-        real — traffic is a fact of life — but the city's access to beaches, hiking, food, and
-        entertainment makes it a compelling place to spend four formative years.
+        Off campus, the students describe the trade-offs of a big city: shows, hiking, beaches, and
+        nightlife on one side; traffic, crowds, and air quality on the other. Dominic sums it up as
+        "pretty happy with where I landed."
 
-# Featured quote per interview (keyed by interview file name). Order here sets card order;
-# interviews not listed fall back to an automatically extracted excerpt.
+highlight_sources:
+  - label: DocStory interviews with Sam Teles and Dominic Carusillo
+    url: /interviews/usc-keck-school-of-medicine/sam-teles/index.html
+  - label: Keck MD Curriculum
+    url: https://keck.usc.edu/md-program/curriculum/
+  - label: HTE@USC
+    url: https://hte.usc.edu/
+  - label: Keck Medicine of USC
+    url: https://www.keckmedicine.org/about/keck-hospital-of-usc/
+  - label: Keck School of Medicine
+    url: https://keck.usc.edu/about/
+
 quotes:
   dominic-carusillo: >-
-    "You can't blow off class as much as you could in undergrad." Medical school covers significantly
-    more material weekly. Shadowing opportunities stand out as most valuable, allowing exposure to
-    specialties and direct mentorship from attending physicians.
+    "I think shadowing has been the most valuable extracurricular thing I've done so far. There are
+    so many resources and opportunities to see really cool specialties, and as a med student,
+    attendings are very excited to show you all the cool things they do."
   sam-teles: >-
     "Being able to see patients at County is special because these are people who are grateful for
     your help and for someone that will listen to them. You don't get that as much at private

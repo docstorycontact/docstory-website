@@ -1,0 +1,111 @@
+# School page data for Harvard Medical School.
+# Rendered by build_schools.py into schools/harvard-medical-school/index.html.
+# Field reference: content/schools/_TEMPLATE.yaml
+#
+# Every number comes from an official HMS page (listed under `sources`) except NIH funding,
+# which fetch_nih_funding.py pulls from NIH RePORTER. Checked 2026-10-08.
+
+short_name: HMS
+nih_org: HARVARD MEDICAL SCHOOL
+
+stats:
+  entering_class: 2026
+  stats_kind: average            # HMS publishes averages, not medians
+  profile_url: https://hms.harvard.edu/education-admissions/md-program/admissions/admissions-glance
+  mcat: 521.07                   # Admissions at a Glance
+  gpa_overall: 3.96              # Admissions at a Glance
+  applied: 7,734                 # Admissions at a Glance
+  interviewed: 757               # Admissions at a Glance
+  admitted: 215                  # "Offers of Admission", Admissions at a Glance
+  enrolled: 165                  # Admissions at a Glance
+  class_size: 165
+  tuition: 76828                 # 2026–27, HMS Cost of Attendance (Pathways)
+  cost_year: 2026–27
+  total_cost: 496650             # sum of Pathways Year 1–4 budgets, 2026–27 (off-campus)
+  total_cost_note: Pathways, off-campus housing
+  faculty: 12,589                # Facts & Figures, Nov 2025 (includes affiliated hospitals)
+  faculty_label: Faculty · HMS + affiliates
+  nih_label: NIH awards to HMS itself · FY{year}
+
+sources:
+  - label: HMS Admissions at a Glance
+    url: https://hms.harvard.edu/education-admissions/md-program/admissions/admissions-glance
+  - label: HMS Cost of Attendance
+    url: https://hms.harvard.edu/education-admissions/md-program/cost-aid/cost-attendance
+  - label: HMS Facts & Figures
+    url: https://hms.harvard.edu/about-hms/facts-figures
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        HMS runs two MD tracks. **Pathways**, the main track, is built around active learning,
+        earlier clinical experience, and a scholarly project that lets every student shape their own
+        route to the degree. **HST**, offered jointly with MIT, is aimed at students planning careers
+        in biomedical research and leans on quantitative science.
+      - >-
+        Abraham Cheloff describes a pre-clerkship phase of about 14 months taught as a flipped
+        classroom: students prepare the night before with videos and annotated handouts, then work
+        through cases in groups of four before discussing them as a full society of about 40 with
+        faculty guiding. Class runs 8am–12:30pm four days a week, with Wednesdays spent at a clinical
+        site.
+
+  - title: Research & Resources
+    icon: science
+    paragraphs:
+      - >-
+        The scale is hard to match: HMS reports **12,589 faculty** across the school and its
+        affiliates, and **$4.57 billion** in grants and contracts spent by HMS and its affiliated
+        hospitals in fiscal 2025, more than half of it federal. Students choose from 200+ electives.
+      - >-
+        Abraham's strongest impression was the people: faculty who seek out students for mentorship,
+        research, and extracurricular projects. In his words, the possibilities "truly feel endless,"
+        and faculty support makes them reachable.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Unlike most medical schools, HMS owns no hospitals. Students train across **15 affiliated
+        hospitals and research institutes**, including Massachusetts General Hospital, Brigham and
+        Women's Hospital, Boston Children's Hospital, Beth Israel Deaconess, and Dana-Farber Cancer
+        Institute.
+      - >-
+        Clinical work starts early. Abraham spent first-year Wednesdays in a longitudinal primary care
+        clinic, practicing histories and exams on inpatients, and examining volunteer patients in
+        "round-robins," and could add shifts at the student-faculty clinic. The core clerkship year
+        (the Principal Clinical Experience) followed after just over a year; he felt "extremely
+        prepared" walking in.
+
+  - title: Culture & Support
+    icon: groups
+    paragraphs:
+      - >-
+        Every student joins one of five **Academic Societies**, small learning communities that pair
+        academic advising with a home base. Abraham credits pass/fail grading through the pre-clerkship
+        and core clerkship phases, with no class ranking, for a collaborative class where friendships
+        form easily, from the first-year class music video to FABRIC, the multicultural show staged
+        for admitted students.
+      - >-
+        Aid is substantial: for 2025–26 the average HMS scholarship was **$65,442**, and the Class of
+        2025 graduated with average debt of **$119,656**, against national averages above $190,000.
+        Even during clerkships, scheduled "flex" afternoons leave room for appointments and errands.
+
+highlight_sources:
+  - label: DocStory interview with Abraham Cheloff
+    url: /interviews/harvard-medical-school/abraham-cheloff/index.html
+  - label: HMS MD Program
+    url: https://hms.harvard.edu/education-admissions/md-program
+  - label: HMS Curriculum
+    url: https://hms.harvard.edu/education-admissions/md-program/curriculum
+  - label: HMS Affiliated Hospitals
+    url: https://hms.harvard.edu/about-hms/affiliated-hospitals-research-institutes
+  - label: HMS Facts & Figures
+    url: https://hms.harvard.edu/about-hms/facts-figures
+
+quotes:
+  abraham-cheloff: >-
+    "The passion of the educators here, both preclinical and clinical, has really struck me. The
+    number of possibilities at HMS truly feels endless, and the faculty support only makes those
+    possibilities even more attainable."

@@ -6,7 +6,7 @@ Schools with a data file in content/schools/<slug>.yaml get the full page
 Run from the project root: python3 build_schools.py
 """
 
-import re, math, html as html_mod
+import re, math, json, html as html_mod
 from pathlib import Path
 
 import yaml
@@ -263,21 +263,15 @@ SCHOOLS = {
 # A school gets the full page when content/schools/<slug>.yaml exists.
 # content/schools/_TEMPLATE.yaml documents every field; all are optional.
 #
-# PROCESS — to give a school the full page:
+# PROCESS — to give a school the full page (official sources only; see _TEMPLATE.yaml):
 #
-#   1. FETCH STATS from SDN:
-#      studentdoctor.net/schools-database/medical-school/ → search → detail page
-#      (URL pattern .../detail/<CODE>/<slug>; save it as sdn_url).
-#      Record: MCAT, GPA, tuition IS/OOS, enrollment, gender %, faculty, beds.
-#
-#   2. SUPPLEMENT from AAMC MSAR (aamc.org/data-reports/interactive-data):
-#      Science/BCPM GPA, class size, applicants, interviews granted, enrolled.
-#
-#   3. READ INTERVIEWS from content/interviews/<slug>/*.md for Program
-#      Highlights material and a featured quote per student.
-#
-#   4. COPY content/schools/_TEMPLATE.yaml to content/schools/<slug>.yaml,
-#      fill it in, and run this script.
+#   1. STATS from the school's own site: class profile / admissions statistics page,
+#      cost-of-attendance page, facts or "by the numbers" page. Note each page's URL.
+#   2. NIH funding is automatic: set `nih_org` and run fetch_nih_funding.py.
+#   3. HIGHLIGHTS from content/interviews/<slug>/*.md plus facts confirmed on the
+#      school's curriculum, program and hospital pages — written in our own words.
+#   4. COPY content/schools/_TEMPLATE.yaml to content/schools/<slug>.yaml, fill it in
+#      with a source comment per number, and run this script.
 #
 # Charts are drawn from the numbers automatically (see render_dashboard).
 #
@@ -331,11 +325,44 @@ def initials(name):
 
 
 KNOWN_STATS = {
-    'cycle', 'class_of', 'sources', 'sdn_url', 'mcat', 'mcat_percentile', 'gpa_science',
-    'gpa_overall', 'tuition', 'tuition_in_state', 'tuition_out_of_state', 'total_cost',
-    'women_pct', 'urm_pct', 'class_size', 'total_students', 'applied', 'interviewed',
-    'enrolled', 'faculty', 'beds', 'beds_label',
+    'entering_class', 'stats_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
+    'tuition', 'tuition_in_state', 'tuition_out_of_state', 'cost_year', 'total_cost',
+    'total_cost_note', 'women_pct', 'out_of_state_pct', 'class_size', 'founded', 'total_students',
+    'applied', 'interviewed', 'admitted', 'acceptance_rate', 'enrolled', 'faculty',
+    'faculty_label', 'beds', 'beds_label', 'nih_label',
 }
+
+
+FETCHED_DIR = DATA_DIR / 'fetched'
+NIH_REPORTER_URL = 'https://reporter.nih.gov/'
+
+
+def load_fetched(slug):
+    """Auto-updated numbers written by fetch_nih_funding.py (NIH RePORTER — US government
+    data, public domain). Returns (stats, sources) with sources as [{'label', 'url'}]."""
+    path = FETCHED_DIR / f'{slug}.json'
+    if not path.exists():
+        return {}, []
+    nih = json.loads(path.read_text(encoding='utf-8')).get('nih') or {}
+    if not nih.get('amount'):
+        return {}, []
+    return ({'nih_funding': nih['amount'], 'nih_year': nih['fiscal_year']},
+            [{'label': 'NIH RePORTER', 'url': NIH_REPORTER_URL}])
+
+
+def merged_stats(slug, page, school):
+    """Hand-sourced numbers from the YAML (each with a cited source) plus fetched NIH funding.
+    Founding year and class size fall back to SCHOOLS when the YAML doesn't give them."""
+    page = page or {}
+    fetched, fetched_sources = load_fetched(slug)
+    stats = {'class_size': school.get('class_size'), 'founded': school.get('founded'),
+             **fetched, **(page.get('stats') or {})}
+    stats['sources'] = list(page.get('sources') or []) + fetched_sources
+    # One tuition rate for everyone (typical of private schools) shows as a single bar
+    if stats.get('tuition_in_state') and stats.get('tuition_in_state') == stats.get('tuition_out_of_state'):
+        stats.setdefault('tuition', stats.pop('tuition_in_state'))
+        stats.pop('tuition_out_of_state')
+    return stats
 
 
 def load_school_data(slug):
@@ -379,6 +406,8 @@ DASHBOARD_CSS = '''
       display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; flex-shrink: 0;
     }
     .dc-sdn-link:hover { text-decoration: underline; }
+    .dc-src { color: #4b4f6b; font-weight: 600; text-decoration: underline; text-decoration-color: #d6d3ef; text-underline-offset: 2px; }
+    .dc-src:hover { color: #6c5ce7; }
     .dc-stage {
       display: flex;
       background:
@@ -463,7 +492,7 @@ NATIONAL_AVG_MCAT = 502
 _CURVE_LEFT  = [(0, 70), (38, 70), (70, 4), (91, 4)]
 _CURVE_RIGHT = [(91, 4), (112, 4), (148, 70), (200, 70)]
 DONUT_CIRCUMFERENCE = 2 * math.pi * 21   # r=21 → 131.95
-FUNNEL_WIDTHS = [(100, '.45'), (55, '.7'), (26, None)]   # decorative stepped bars, widest → narrowest
+FUNNEL_WIDTHS = {'applied': (100, '.45'), 'interviewed': (55, '.6'), 'admitted': (38, '.8'), 'enrolled': (26, None)}   # decorative steps
 
 
 def _esc(text):
@@ -516,10 +545,10 @@ def _cell(label, body):
 
 def _selectivity_cell(s):
     mcat  = s['mcat']
-    delta = mcat - NATIONAL_AVG_MCAT
+    kind  = s.get('stats_kind', 'median')          # schools publish either medians or averages
+    shown = round(mcat)
+    delta = shown - NATIONAL_AVG_MCAT
     good  = f'+{delta} above national average' if delta >= 0 else f'{delta} below national average'
-    if s.get('mcat_percentile'):
-        good += f' — {_ordinal(s["mcat_percentile"])} percentile'
 
     x  = round(min(196, max(4, 91 + delta * 2.64)))
     cy = round(_curve_y(x))
@@ -531,7 +560,7 @@ def _selectivity_cell(s):
                   <line x1="{x}" y1="{cy + 2}" x2="{x}" y2="70" stroke="#5b4bd1" stroke-width="1.5"/>
                   <circle cx="{x}" cy="{cy}" r="3.5" fill="#5b4bd1"/>
                   <text x="84" y="78" text-anchor="middle" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg {NATIONAL_AVG_MCAT}</text>
-                  <text x="{x}" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">{mcat}</text>
+                  <text x="{x}" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">{shown}</text>
                 </svg>
               </div>'''
 
@@ -547,12 +576,12 @@ def _selectivity_cell(s):
                 </div>'''
     gpa = (f'''
               <div class="dc-gpa-wrap">{gpa_rows}
-                <div class="dc-gpa-meta">Median undergraduate GPA</div>
+                <div class="dc-gpa-meta">{kind.capitalize()} undergraduate GPA</div>
               </div>''') if gpa_rows else ''
 
-    label = 'Selectivity' + (f' · Class of {s["class_of"]}' if s.get('class_of') else '')
+    label = 'Selectivity' + (f' · Entering class of {s["entering_class"]}' if s.get('entering_class') else '')
     return _cell(label, f'''            <div>
-              <span class="dc-mcat-big">{mcat}</span><span class="dc-mcat-unit">median MCAT</span>
+              <span class="dc-mcat-big">{shown}</span><span class="dc-mcat-unit">{kind} MCAT</span>
               <div class="dc-good">{good}</div>
             </div>
             <div class="dc-selectivity-body">
@@ -576,17 +605,21 @@ def _cost_cell(s, is_public):
     if s.get('tuition_in_state') and s.get('tuition_out_of_state'):
         ins, outs = s['tuition_in_state'], s['tuition_out_of_state']
         rows = '\n'.join([
-            _cost_row('In-state tuition', ins, int(ins / outs * 100)),
-            _cost_row('Out-of-state tuition', outs, 100, strong=True),
+            _cost_row('In-state tuition &amp; fees', ins, int(ins / outs * 100)),
+            _cost_row('Out-of-state tuition &amp; fees', outs, 100, strong=True),
         ])
         diff = outs - ins
-        notes.append(f'{_money_k(diff)} differential · ~{round(diff / ins * 100)}% premium for non-residents')
+        notes.append(f'{_money_k(diff)} more per year for non-residents')
     else:
         rows = _cost_row('Annual tuition', s['tuition'], 100)
-        notes.append(('Public' if is_public else 'Private') + ' institution — single tuition rate for all students')
+        notes.append('Same tuition for all students')
     if s.get('total_cost'):
-        notes.append(f'~${round(s["total_cost"] / 1000)}K est. total cost of attendance')
-    return _cell('Cost of Attendance', rows + f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>')
+        note = f'~${round(s["total_cost"] / 1000)}K est. 4-year cost of attendance'
+        if s.get('total_cost_note'):
+            note += f' ({_esc(s["total_cost_note"])})'
+        notes.append(note)
+    label = 'Cost of Attendance' + (f' · {_esc(s["cost_year"])}' if s.get('cost_year') else '')
+    return _cell(label, rows + f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>')
 
 
 def _donut(pct, label, color):
@@ -606,7 +639,7 @@ def _donut(pct, label, color):
 
 def _profile_cell(s, degree):
     donuts = [_donut(s[k], label, color) for k, label, color in
-              (('women_pct', 'Women', '#6c5ce7'), ('urm_pct', 'Underrep. Min.', '#b4b8cd')) if s.get(k)]
+              (('women_pct', 'Women', '#6c5ce7'), ('out_of_state_pct', 'Out-of-State', '#b4b8cd')) if s.get(k)]
     stats = [f'<div class="dc-profile-stat"><h4>{_count(s[k])}</h4><p>{label}</p></div>' for k, label in
              (('class_size', 'Class Size'), ('total_students', f'Total {degree} Students')) if s.get(k)]
     body = ''
@@ -618,21 +651,37 @@ def _profile_cell(s, degree):
     return _cell('Class Profile', body)
 
 
+def _money_big(dollars):
+    return f'${dollars / 1e9:.1f}B' if dollars >= 1e9 else f'${round(dollars / 1e6)}M'
+
+
 def _reach_cell(s):
     funnel_rows = []
-    present = [(k, label) for k, label in (('applied', 'Applied'), ('interviewed', 'Interviewed'), ('enrolled', 'Enrolled')) if s.get(k)]
-    for (key, label), (width, opacity) in zip(present, FUNNEL_WIDTHS):
-        op = f';opacity:{opacity}' if opacity else ''
-        funnel_rows.append(f'''                <div class="dc-funnel-row">
+    stages = (('applied', 'Applied'), ('interviewed', 'Interviewed'), ('admitted', 'Admitted'), ('enrolled', 'Enrolled'))
+    for key, label in stages:
+        if s.get(key):
+            width, opacity = FUNNEL_WIDTHS[key]
+            op = f';opacity:{opacity}' if opacity else ''
+            funnel_rows.append(f'''                <div class="dc-funnel-row">
                   <div class="dc-funnel-label-row"><span class="dc-funnel-name">{label}</span><span class="dc-funnel-num">{_count(s[key])}</span></div>
                   <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:{width}%{op}"></div></div>
                 </div>''')
-    applied, enrolled = _to_number(s.get('applied', '')), _to_number(s.get('enrolled', ''))
-    if applied and enrolled:
-        funnel_rows.append(f'                <div class="dc-funnel-note">~{enrolled / applied * 100:.1f}% acceptance · est.</div>')
+    applied = _to_number(s.get('applied', ''))
+    if s.get('acceptance_rate'):
+        funnel_rows.append(f'                <div class="dc-funnel-note">{_esc(s["acceptance_rate"])} acceptance rate</div>')
+    elif applied and s.get('admitted'):
+        funnel_rows.append(f'                <div class="dc-funnel-note">{_to_number(s["admitted"]) / applied * 100:.1f}% of applicants admitted</div>')
+    elif applied and s.get('enrolled'):
+        funnel_rows.append(f'                <div class="dc-funnel-note">{_to_number(s["enrolled"]) / applied * 100:.1f}% of applicants enrolled</div>')
 
-    aside = [f'<div class="dc-reach-stat"><h4>{_count(s[k])}</h4><p>{_esc(label)}</p></div>' for k, label in
-             (('faculty', 'Faculty Members'), ('beds', s.get('beds_label', 'Hospital Beds'))) if s.get(k)]
+    aside = []
+    if s.get('nih_funding'):
+        label = (s.get('nih_label') or 'NIH funding · FY{year}').replace('{year}', str(s['nih_year']))
+        aside.append(f'<div class="dc-reach-stat"><h4>{_money_big(s["nih_funding"])}</h4><p>{_esc(label)}</p></div>')
+    if s.get('faculty'):
+        aside.append(f'<div class="dc-reach-stat"><h4>{_count(s["faculty"])}</h4><p>{_esc(s.get("faculty_label", "Faculty Members"))}</p></div>')
+    if s.get('beds'):
+        aside.append(f'<div class="dc-reach-stat"><h4>{_count(s["beds"])}</h4><p>{_esc(s.get("beds_label", "Hospital Beds"))}</p></div>')
 
     body = '            <div class="dc-reach-body">'
     if funnel_rows:
@@ -640,6 +689,12 @@ def _reach_cell(s):
     if aside:
         body += '\n              <div class="dc-reach-aside">\n' + '\n'.join('                ' + a for a in aside) + '\n              </div>'
     return _cell('Scale &amp; Reach', body + '\n            </div>')
+
+
+def _source_links(sources):
+    return ' · '.join(
+        f'<a href="{html_mod.escape(src["url"])}" target="_blank" rel="noopener noreferrer" class="dc-src">{_esc(src["label"])}</a>'
+        if src.get('url') else _esc(src['label']) for src in sources)
 
 
 def render_dashboard(stats, school):
@@ -650,9 +705,10 @@ def render_dashboard(stats, school):
         left.append(_selectivity_cell(s))
     if s.get('tuition') or (s.get('tuition_in_state') and s.get('tuition_out_of_state')):
         left.append(_cost_cell(s, school['public']))
-    if any(s.get(k) for k in ('women_pct', 'urm_pct', 'class_size', 'total_students')):
+    # Class size alone already shows in the hero line, so the tile needs at least one more figure
+    if any(s.get(k) for k in ('women_pct', 'out_of_state_pct', 'total_students')):
         right.append(_profile_cell(s, 'MD' if school['type'] == 'md' else 'DO'))
-    if any(s.get(k) for k in ('applied', 'interviewed', 'enrolled', 'faculty', 'beds')):
+    if any(s.get(k) for k in ('applied', 'interviewed', 'admitted', 'enrolled', 'nih_funding', 'faculty', 'beds')):
         right.append(_reach_cell(s))
 
     cols = []
@@ -663,13 +719,15 @@ def render_dashboard(stats, school):
     stage = '\n        <div class="dc-divider-v"></div>\n'.join(cols)
 
     sources = s.get('sources') or []
-    meta_parts = []
-    if s.get('cycle'):
-        meta_parts.append(f'{s["cycle"]} admissions cycle')
-    if sources:
-        meta_parts.append('Source: <strong>' + _esc(sources[0]) + '</strong>' +
-                          ''.join(' &amp; ' + _esc(x) for x in sources[1:]))
-    sdn_url = s.get('sdn_url', 'https://www.studentdoctor.net/schools-database/medical-school/')
+    meta = ('Sources: ' if len(sources) > 1 else 'Source: ') + _source_links(sources) if sources else ''
+    link = ''
+    if s.get('profile_url'):
+        link = f'''
+        <a href="{html_mod.escape(s['profile_url'])}"
+           target="_blank" rel="noopener noreferrer" class="dc-sdn-link">
+          Official class profile
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 2H7m3 0v3M10 2L5.5 6.5M3 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V9" stroke="#6c5ce7" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </a>'''
 
     return f'''  <!-- STATS DASHBOARD -->
   <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
@@ -677,13 +735,8 @@ def render_dashboard(stats, school):
       <div class="dc-header">
         <div>
           <h2>Program Statistics</h2>
-          <p class="dc-meta">{" · ".join(meta_parts)}</p>
-        </div>
-        <a href="{html_mod.escape(sdn_url)}"
-           target="_blank" rel="noopener noreferrer" class="dc-sdn-link">
-          View full profile on SDN
-          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 2H7m3 0v3M10 2L5.5 6.5M3 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V9" stroke="#6c5ce7" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </a>
+          <p class="dc-meta">{meta}</p>
+        </div>{link}
       </div>
       <div class="dc-stage">
 {stage}
@@ -692,7 +745,7 @@ def render_dashboard(stats, school):
   </div>'''
 
 
-def render_highlights(highlights):
+def render_highlights(highlights, sources=None):
     cards = []
     for h in highlights:
         paras = '\n'.join(
@@ -710,13 +763,17 @@ def render_highlights(highlights):
 {paras}
           </div>
         </div>''')
+    source_line = ''
+    if sources:
+        source_line = (f'\n      <p class="font-body-md text-xs text-slate-gray mt-lg leading-relaxed">'
+                       f'Sources: {_source_links(sources)}</p>')
     return f'''  <!-- PROGRAM HIGHLIGHTS -->
   <div class="bg-surface-container-low border-y border-primary/5">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
       <h2 class="font-headline-lg text-headline-lg text-primary mb-lg">Program Highlights</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
 {chr(10).join(cards)}
-      </div>
+      </div>{source_line}
     </div>
   </div>'''
 
@@ -757,9 +814,10 @@ def render_page(school_slug, data, interviews, page=None):
     city     = data['city']
     state    = data['state']
     pub      = 'Public' if data['public'] else 'Private'
-    founded  = data.get('founded', '')
+    stats    = merged_stats(school_slug, page, data)
+    founded  = stats.get('founded') or ''
     hospital = data.get('hospital', '')
-    class_sz = data.get('class_size', '')
+    class_sz = stats.get('class_size') or ''
     type_lbl = 'Allopathic (MD)' if data['type'] == 'md' else 'Osteopathic (DO)'
     degree   = 'MD' if data['type'] == 'md' else 'DO'
 
@@ -786,13 +844,14 @@ def render_page(school_slug, data, interviews, page=None):
 
     sdn_url = 'https://www.studentdoctor.net/schools-database/medical-school/'
 
-    if page.get('stats') or page.get('highlights'):
+    has_dashboard = page and any(stats.get(k) for k in ('mcat', 'tuition', 'tuition_in_state', 'class_size'))
+    if page and (has_dashboard or page.get('highlights')):
         # Full page: dashboard, highlights band, then voices on the plain background
-        extra_css = DASHBOARD_CSS if page.get('stats') else ''
+        extra_css = DASHBOARD_CSS if has_dashboard else ''
         short = f' {_esc(page["short_name"])}' if page.get('short_name') else ''
-        sections = [render_dashboard(page['stats'], data)] if page.get('stats') else []
+        sections = [render_dashboard(stats, data)] if has_dashboard else []
         if page.get('highlights'):
-            sections.append(render_highlights(page['highlights']))
+            sections.append(render_highlights(page['highlights'], page.get('highlight_sources')))
         sections.append(f'''  <!-- STUDENT VOICES -->
   <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
     <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
@@ -986,7 +1045,7 @@ def main():
         out_file.write_text(html, encoding='utf-8')
 
         n = len(interviews)
-        kind = 'full ' if page and (page.get('stats') or page.get('highlights')) else 'basic'
+        kind = 'full ' if page else 'basic'
         print(f'  {kind} {str(out_file.relative_to(ROOT)):<65}  ({n} iv{"s" if n > 1 else ""})')
         generated += 1
 

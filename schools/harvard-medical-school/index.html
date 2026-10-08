@@ -45,6 +45,113 @@
   </script>
   <style>
     .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    /* ── Editorial Stats Dashboard ── */
+    .dc-card {
+      background: #fff;
+      border: 1px solid #ececf4;
+      border-radius: 20px;
+      box-shadow: 0 1px 2px rgba(31,34,53,.04), 0 12px 32px -16px rgba(91,75,209,.10);
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-feature-settings: "cv11","ss01","tnum";
+      color: #1f2235;
+    }
+    .dc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 22px 28px 18px;
+      border-bottom: 1px solid #ececf4;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dc-header h2 { font-size: 1.375rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; margin: 0; }
+    .dc-meta { font-size: 0.8125rem; color: #8a8fa6; margin: 3px 0 0; }
+    .dc-sdn-link {
+      font-size: 0.8125rem; color: #6c5ce7; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; flex-shrink: 0;
+    }
+    .dc-sdn-link:hover { text-decoration: underline; }
+    .dc-src { color: #4b4f6b; font-weight: 600; text-decoration: underline; text-decoration-color: #d6d3ef; text-underline-offset: 2px; }
+    .dc-src:hover { color: #6c5ce7; }
+    .dc-stage {
+      display: flex;
+      background:
+        radial-gradient(900px 480px at 85% -10%, rgba(139,127,255,.12), transparent 60%),
+        radial-gradient(700px 360px at -10% 110%, rgba(108,92,231,.08), transparent 60%),
+        #faf9ff;
+    }
+    .dc-col { display: flex; flex-direction: column; flex: 1; }
+    .dc-col-l { flex: 1.35; }
+    .dc-col-r { flex: 1; }
+    .dc-divider-v { width: 1px; background: #ececf4; flex-shrink: 0; }
+    .dc-cell { padding: 22px 28px; flex: 1; }
+    .dc-cell + .dc-cell { border-top: 1px solid #ececf4; }
+    .dc-cell-label {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #8a8fa6; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .dc-cell-label::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #8b7fff; flex-shrink: 0;
+    }
+    /* Selectivity */
+    .dc-mcat-big { font-size: 3.25rem; font-weight: 800; color: #1f2235; line-height: 1; letter-spacing: -0.04em; }
+    .dc-mcat-unit { font-size: 0.875rem; color: #4b4f6b; margin-left: 8px; font-weight: 400; }
+    .dc-good { font-size: 0.8125rem; color: #1f9d6b; font-weight: 600; margin-top: 3px; }
+    .dc-selectivity-body { display: flex; gap: 16px; align-items: center; margin-top: 10px; }
+    .dc-curve-wrap { flex: 1; min-width: 0; }
+    .dc-gpa-wrap { flex-shrink: 0; width: 150px; }
+    .dc-gpa-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .dc-gpa-num { font-size: 0.9375rem; font-weight: 700; color: #1f2235; width: 34px; letter-spacing: -0.01em; }
+    .dc-gpa-bar-bg { flex: 1; height: 4px; background: #e3dfff; border-radius: 2px; overflow: hidden; }
+    .dc-gpa-bar-fill { height: 100%; border-radius: 2px; background: #6c5ce7; }
+    .dc-gpa-tag { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.03em; width: 46px; text-align: right; }
+    .dc-gpa-meta { font-size: 0.6875rem; color: #8a8fa6; margin-top: 2px; }
+    /* Cost */
+    .dc-cost-row { margin-bottom: 12px; }
+    .dc-cost-row-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .dc-cost-label { font-size: 0.8125rem; color: #4b4f6b; }
+    .dc-cost-amt { font-size: 1.25rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; }
+    .dc-cost-per { font-size: 0.75rem; color: #8a8fa6; font-weight: 400; margin-left: 1px; }
+    .dc-cost-bar-bg { height: 5px; background: #eeecfb; border-radius: 3px; overflow: hidden; }
+    .dc-cost-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #8b7fff, #6c5ce7); }
+    .dc-cost-bar-fill.dc-cost-strong { background: linear-gradient(90deg, #5b4bd1, #4a3dbf); }
+    .dc-cost-note { font-size: 0.6875rem; color: #8a8fa6; margin-top: 6px; }
+    /* Class Profile */
+    .dc-donuts { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+    .dc-donut-item { display: flex; align-items: center; gap: 10px; }
+    .dc-donut-labels h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+    .dc-donut-labels p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.05em; text-transform: uppercase; margin: 2px 0 0; }
+    .dc-profile-stats { display: flex; gap: 20px; padding-top: 10px; border-top: 1px solid #f2f1f8; }
+    .dc-profile-stat h4 { font-size: 1.75rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.04em; margin: 0; }
+    .dc-profile-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.05em; text-transform: uppercase; margin: 3px 0 0; }
+    /* Scale & Reach */
+    .dc-reach-body { display: flex; gap: 16px; }
+    .dc-funnel { flex: 1; min-width: 0; }
+    .dc-funnel-row { margin-bottom: 9px; }
+    .dc-funnel-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .dc-funnel-name { font-size: 0.8125rem; color: #4b4f6b; font-weight: 500; }
+    .dc-funnel-num { font-size: 0.8125rem; font-weight: 700; color: #1f2235; }
+    .dc-funnel-bar-bg { height: 8px; background: #f1efff; border-radius: 4px; overflow: hidden; }
+    .dc-funnel-bar-fill { height: 100%; border-radius: 4px; background: #8b7fff; }
+    .dc-funnel-note { font-size: 0.6875rem; color: #8a8fa6; margin-top: 4px; }
+    .dc-reach-aside { flex-shrink: 0; }
+    .dc-reach-stat { margin-bottom: 12px; }
+    .dc-reach-stat h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+    .dc-reach-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
+    /* Mobile */
+    @media (max-width: 767px) {
+      .dc-stage { flex-direction: column; }
+      .dc-col-l, .dc-col-r { flex: none; }
+      .dc-divider-v { width: 100%; height: 1px; }
+      .dc-cell { padding: 18px; }
+      .dc-header { padding: 18px; }
+      .dc-mcat-big { font-size: 2.5rem; }
+      .dc-selectivity-body { flex-direction: column; gap: 10px; }
+      .dc-gpa-wrap { width: 100%; }
+    }
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -86,51 +193,180 @@
     </div>
   </div>
 
-  <!-- STATS PANEL -->
+  <!-- STATS DASHBOARD -->
   <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
-    <div class="bg-white border border-primary/5 rounded-2xl shadow-sm overflow-hidden">
-      <div class="flex items-center justify-between gap-lg p-lg border-b border-surface-container-high flex-wrap">
+    <div class="dc-card">
+      <div class="dc-header">
         <div>
-          <h2 class="font-headline-md text-headline-md text-primary">Program Statistics</h2>
-          <p class="font-body-md text-body-md text-slate-gray mt-1">MCAT/GPA medians, acceptance rates, class profile, and cost of attendance.</p>
+          <h2>Program Statistics</h2>
+          <p class="dc-meta">Sources: <a href="https://hms.harvard.edu/education-admissions/md-program/admissions/admissions-glance" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Admissions at a Glance</a> · <a href="https://hms.harvard.edu/education-admissions/md-program/cost-aid/cost-attendance" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Cost of Attendance</a> · <a href="https://hms.harvard.edu/about-hms/facts-figures" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Facts &amp; Figures</a> · <a href="https://reporter.nih.gov/" target="_blank" rel="noopener noreferrer" class="dc-src">NIH RePORTER</a></p>
         </div>
-        <a href="https://www.studentdoctor.net/schools-database/medical-school/" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 bg-vibrant-iris/10 text-vibrant-iris hover:bg-vibrant-iris/20 transition-colors px-md py-xs rounded-full font-label-md text-label-md whitespace-nowrap flex-shrink-0">
-          View on Student Doctor Network
-          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 2H7m3 0v3M10 2L5.5 6.5M3 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V9" stroke="#9580FF" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <a href="https://hms.harvard.edu/education-admissions/md-program/admissions/admissions-glance"
+           target="_blank" rel="noopener noreferrer" class="dc-sdn-link">
+          Official class profile
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 2H7m3 0v3M10 2L5.5 6.5M3 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V9" stroke="#6c5ce7" stroke-width="1.4" stroke-linecap="round"/></svg>
         </a>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y divide-surface-dim/40">
-        <div class="p-lg">
-          <div class="font-label-md text-[11px] text-slate-gray uppercase tracking-wider mb-2">Degree</div>
-          <div class="text-2xl font-bold text-primary tracking-tight">MD</div>
+      <div class="dc-stage">
+        <div class="dc-col dc-col-l">
+          <div class="dc-cell">
+            <div class="dc-cell-label">Selectivity · Entering class of 2026</div>
+            <div>
+              <span class="dc-mcat-big">521</span><span class="dc-mcat-unit">average MCAT</span>
+              <div class="dc-good">+19 above national average</div>
+            </div>
+            <div class="dc-selectivity-body">
+              <div class="dc-curve-wrap">
+                <svg viewBox="0 0 200 78" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+                  <path d="M0,70 C38,70 70,4 91,4 C112,4 148,70 200,70" fill="rgba(139,127,255,0.13)"/>
+                  <path d="M0,70 C38,70 70,4 91,4 C112,4 148,70 200,70" fill="none" stroke="#8b7fff" stroke-width="1.5"/>
+                  <line x1="91" y1="4" x2="91" y2="70" stroke="#b4b8cd" stroke-dasharray="3,2" stroke-width="1"/>
+                  <line x1="141" y1="45" x2="141" y2="70" stroke="#5b4bd1" stroke-width="1.5"/>
+                  <circle cx="141" cy="43" r="3.5" fill="#5b4bd1"/>
+                  <text x="84" y="78" text-anchor="middle" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg 502</text>
+                  <text x="141" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">521</text>
+                </svg>
+              </div>
+              <div class="dc-gpa-wrap">
+                <div class="dc-gpa-row">
+                  <span class="dc-gpa-num">3.96</span>
+                  <div class="dc-gpa-bar-bg"><div class="dc-gpa-bar-fill" style="width:94%"></div></div>
+                  <span class="dc-gpa-tag">Overall</span>
+                </div>
+                <div class="dc-gpa-meta">Average undergraduate GPA</div>
+              </div>
+            </div>
+          </div>
+          <div class="dc-cell">
+            <div class="dc-cell-label">Cost of Attendance · 2026–27</div>
+            <div class="dc-cost-row">
+              <div class="dc-cost-row-head">
+                <span class="dc-cost-label">Annual tuition</span>
+                <span class="dc-cost-amt">$76.8K<span class="dc-cost-per">/yr</span></span>
+              </div>
+              <div class="dc-cost-bar-bg"><div class="dc-cost-bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="dc-cost-note">Same tuition for all students · ~$497K est. 4-year cost of attendance (Pathways, off-campus housing)</div>
+          </div>
         </div>
-        <div class="p-lg">
-          <div class="font-label-md text-[11px] text-slate-gray uppercase tracking-wider mb-2">Status</div>
-          <div class="text-2xl font-bold text-primary tracking-tight">Private</div>
-        </div>
-        <div class="p-lg">
-          <div class="font-label-md text-[11px] text-slate-gray uppercase tracking-wider mb-2">Founded</div>
-          <div class="text-2xl font-bold text-primary tracking-tight">1782</div>
-        </div>
-        <div class="p-lg">
-          <div class="font-label-md text-[11px] text-slate-gray uppercase tracking-wider mb-2">Class Size</div>
-          <div class="text-2xl font-bold text-primary tracking-tight">165<span class="text-sm font-normal text-slate-gray ml-1">students</span></div>
+        <div class="dc-divider-v"></div>
+        <div class="dc-col dc-col-r">
+          <div class="dc-cell">
+            <div class="dc-cell-label">Scale &amp; Reach</div>
+            <div class="dc-reach-body">
+              <div class="dc-funnel">
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Applied</span><span class="dc-funnel-num">7,734</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:100%;opacity:.45"></div></div>
+                </div>
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Interviewed</span><span class="dc-funnel-num">757</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:55%;opacity:.6"></div></div>
+                </div>
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Admitted</span><span class="dc-funnel-num">215</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:38%;opacity:.8"></div></div>
+                </div>
+                <div class="dc-funnel-row">
+                  <div class="dc-funnel-label-row"><span class="dc-funnel-name">Enrolled</span><span class="dc-funnel-num">165</span></div>
+                  <div class="dc-funnel-bar-bg"><div class="dc-funnel-bar-fill" style="width:26%"></div></div>
+                </div>
+                <div class="dc-funnel-note">2.8% of applicants admitted</div>
+              </div>
+              <div class="dc-reach-aside">
+                <div class="dc-reach-stat"><h4>$138M</h4><p>NIH awards to HMS itself · FY2025</p></div>
+                <div class="dc-reach-stat"><h4>12,589</h4><p>Faculty · HMS + affiliates</p></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STUDENT VOICES -->
+  <!-- PROGRAM HIGHLIGHTS -->
   <div class="bg-surface-container-low border-y border-primary/5">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
-      <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
-        <div>
-          <h2 class="font-headline-lg text-headline-lg text-primary">Student Voices</h2>
-          <p class="font-body-md text-xs text-slate-gray mt-1">1 interview from current and former students</p>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-lg">Program Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:&apos;FILL&apos; 1">menu_book</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Curriculum</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              HMS runs two MD tracks. <strong class="text-primary font-semibold">Pathways</strong>, the main track, is built around active learning, earlier clinical experience, and a scholarly project that lets every student shape their own route to the degree. <strong class="text-primary font-semibold">HST</strong>, offered jointly with MIT, is aimed at students planning careers in biomedical research and leans on quantitative science.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Abraham Cheloff describes a pre-clerkship phase of about 14 months taught as a flipped classroom: students prepare the night before with videos and annotated handouts, then work through cases in groups of four before discussing them as a full society of about 40 with faculty guiding. Class runs 8am–12:30pm four days a week, with Wednesdays spent at a clinical site.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:&apos;FILL&apos; 1">science</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Research &amp; Resources</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              The scale is hard to match: HMS reports <strong class="text-primary font-semibold">12,589 faculty</strong> across the school and its affiliates, and <strong class="text-primary font-semibold">$4.57 billion</strong> in grants and contracts spent by HMS and its affiliated hospitals in fiscal 2025, more than half of it federal. Students choose from 200+ electives.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Abraham's strongest impression was the people: faculty who seek out students for mentorship, research, and extracurricular projects. In his words, the possibilities "truly feel endless," and faculty support makes them reachable.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:&apos;FILL&apos; 1">local_hospital</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Clinical Training</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Unlike most medical schools, HMS owns no hospitals. Students train across <strong class="text-primary font-semibold">15 affiliated hospitals and research institutes</strong>, including Massachusetts General Hospital, Brigham and Women's Hospital, Boston Children's Hospital, Beth Israel Deaconess, and Dana-Farber Cancer Institute.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Clinical work starts early. Abraham spent first-year Wednesdays in a longitudinal primary care clinic, practicing histories and exams on inpatients, and examining volunteer patients in "round-robins," and could add shifts at the student-faculty clinic. The core clerkship year (the Principal Clinical Experience) followed after just over a year; he felt "extremely prepared" walking in.
+            </p>
+          </div>
+        </div>
+        <div class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm flex flex-col gap-md">
+          <div class="flex items-center gap-sm">
+            <div class="w-10 h-10 rounded-xl bg-vibrant-iris/10 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-vibrant-iris text-[20px]" style="font-variation-settings:&apos;FILL&apos; 1">groups</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Culture &amp; Support</h3>
+          </div>
+          <div class="space-y-sm">
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Every student joins one of five <strong class="text-primary font-semibold">Academic Societies</strong>, small learning communities that pair academic advising with a home base. Abraham credits pass/fail grading through the pre-clerkship and core clerkship phases, with no class ranking, for a collaborative class where friendships form easily, from the first-year class music video to FABRIC, the multicultural show staged for admitted students.
+            </p>
+            <p class="font-body-md text-body-md text-slate-gray leading-relaxed">
+              Aid is substantial: for 2025–26 the average HMS scholarship was <strong class="text-primary font-semibold">$65,442</strong>, and the Class of 2025 graduated with average debt of <strong class="text-primary font-semibold">$119,656</strong>, against national averages above $190,000. Even during clerkships, scheduled "flex" afternoons leave room for appointments and errands.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-1 gap-lg">
+      <p class="font-body-md text-xs text-slate-gray mt-lg leading-relaxed">Sources: <a href="/interviews/harvard-medical-school/abraham-cheloff/index.html" target="_blank" rel="noopener noreferrer" class="dc-src">DocStory interview with Abraham Cheloff</a> · <a href="https://hms.harvard.edu/education-admissions/md-program" target="_blank" rel="noopener noreferrer" class="dc-src">HMS MD Program</a> · <a href="https://hms.harvard.edu/education-admissions/md-program/curriculum" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Curriculum</a> · <a href="https://hms.harvard.edu/about-hms/affiliated-hospitals-research-institutes" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Affiliated Hospitals</a> · <a href="https://hms.harvard.edu/about-hms/facts-figures" target="_blank" rel="noopener noreferrer" class="dc-src">HMS Facts &amp; Figures</a></p>
+    </div>
+  </div>
+
+  <!-- STUDENT VOICES -->
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+    <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
+      <div>
+        <h2 class="font-headline-lg text-headline-lg text-primary">Student Voices</h2>
+        <p class="font-body-md text-xs text-slate-gray mt-1">1 interview from current and former HMS students</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-lg">
       <a href="/interviews/harvard-medical-school/abraham-cheloff/index.html"
          class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all group block">
         <div class="flex items-center gap-sm mb-md">
@@ -140,10 +376,9 @@
             <div class="font-body-md text-[11px] text-slate-gray mt-0.5">MS2 · Brandeis University undergrad · Greater Boston Area, Massachusetts</div>
           </div>
         </div>
-        <p class="font-body-md text-xs text-slate-gray leading-relaxed line-clamp-4">As our preclinical curriculum lasts only 14 months, I am currently in my core clerkship year, also called the Principal Clinical Experience, or PCE. Each day can vary by clerkship and what service I am on at the time. For inpatient weeks I tend to get to the hospital around 6am to pre round on my pa…</p>
+        <p class="font-body-md text-xs text-slate-gray leading-relaxed line-clamp-4">"The passion of the educators here, both preclinical and clinical, has really struck me. The number of possibilities at HMS truly feels endless, and the faculty support only makes those possibilities even more attainable."</p>
         <div class="mt-sm font-label-md text-[11px] text-vibrant-iris font-semibold group-hover:underline transition-all">Read Interview →</div>
       </a>
-      </div>
     </div>
   </div>
 
