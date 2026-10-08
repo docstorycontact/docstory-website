@@ -545,6 +545,62 @@ DASHBOARD_CSS = '''
       .dc-gpa-wrap { width: 100%; }
     }'''
 
+VOICES_JUMP_CSS = '''
+    /* Floating "jump to student interviews" link */
+    .voices-jump {
+      position: fixed; left: 24px; bottom: 32px; z-index: 40;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 16px 10px 12px; border-radius: 9999px;
+      background: #fff; color: #333e4d; text-decoration: none;
+      border: 1px solid rgba(149,128,255,.35);
+      box-shadow: 0 8px 24px -8px rgba(61,32,163,.25), 0 2px 6px rgba(31,34,53,.06);
+      font: 600 13px/1.2 Inter, sans-serif;
+      transition: opacity .2s ease-out, transform .2s ease-out, box-shadow .15s ease-out;
+    }
+    .voices-jump:hover { box-shadow: 0 10px 28px -8px rgba(61,32,163,.35), 0 2px 6px rgba(31,34,53,.08); color: #3d20a3; }
+    .voices-jump:focus-visible { outline: 3px solid #9580FF; outline-offset: 3px; }
+    .voices-jump-icon {
+      width: 28px; height: 28px; border-radius: 50%; background: #9580FF; color: #fff;
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .voices-jump-icon svg { animation: voices-nudge 2.2s ease-in-out infinite; }
+    .voices-jump-sub { display: block; font-weight: 500; font-size: 11px; color: #4A5565; margin-top: 2px; }
+    .voices-jump.is-hidden { opacity: 0; transform: translateY(8px); pointer-events: none; visibility: hidden;
+      transition: opacity .2s ease-in, transform .2s ease-in, visibility 0s linear .2s; }
+    @keyframes voices-nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(3px); } }
+    @media (max-width: 767px) {
+      .voices-jump { left: 16px; bottom: 16px; padding: 8px 14px 8px 8px; font-size: 12px; }
+      .voices-jump-sub { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .voices-jump, .voices-jump.is-hidden { transition: none; }
+      .voices-jump-icon svg { animation: none; }
+    }'''
+
+# Hides the link while the interviews are on screen (or the page is too short to need it)
+# and scrolls smoothly unless the visitor prefers reduced motion.
+VOICES_JUMP_JS = '''<script>
+(function () {
+  var link = document.querySelector('.voices-jump');
+  var target = document.getElementById('student-voices');
+  if (!link || !target) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function update() {
+    var top = target.getBoundingClientRect().top;
+    link.classList.toggle('is-hidden', top < window.innerHeight * 0.85);
+  }
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    var heading = target.querySelector('h2');
+    if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+  });
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>'''
+
 NATIONAL_AVG_MCAT = 502
 US_MEDIAN_RENT = 1413          # U.S. median gross rent, Census ACS 2020–2024 (QuickFacts HSG860224)
 # Right half of the MCAT bell curve drawn in the dashboard SVG (cubic Bézier, viewBox 200×78)
@@ -1081,7 +1137,7 @@ def render_page(school_slug, data, interviews, page=None):
         if page.get('highlights'):
             sections.append(render_highlights(page['highlights'], page.get('highlight_sources')))
         sections.append(f'''  <!-- STUDENT VOICES -->
-  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+  <div id="student-voices" class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl scroll-mt-[90px]">
     <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
       <div>
         <h2 class="font-headline-lg text-headline-lg text-primary">Student Voices</h2>
@@ -1131,7 +1187,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 
   <!-- STUDENT VOICES -->
-  <div class="bg-surface-container-low border-y border-primary/5">
+  <div id="student-voices" class="bg-surface-container-low border-y border-primary/5 scroll-mt-[90px]">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
       <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
         <div>
@@ -1158,7 +1214,7 @@ def render_page(school_slug, data, interviews, page=None):
   <link href="/css/style.css" rel="stylesheet">
   {TAILWIND_CONFIG}
   <style>
-    .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}{extra_css}
+    .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}{VOICES_JUMP_CSS}{extra_css}
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -1181,6 +1237,11 @@ def render_page(school_slug, data, interviews, page=None):
 </nav>
 
 <main class="flex-grow">
+
+  <a href="#student-voices" class="voices-jump" aria-label="Jump to {iv_label} from students">
+    <span class="voices-jump-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 7.5L7 11.5l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>Student interviews<span class="voices-jump-sub">{iv_label} below</span></span>
+  </a>
 
   <!-- HERO -->
   <div class="bg-surface-container-low border-b border-primary/5">
@@ -1224,6 +1285,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 </footer>
 
+{VOICES_JUMP_JS}
 <script src="/js/main.js"></script>
 </body>
 </html>'''
