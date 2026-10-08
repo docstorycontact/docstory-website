@@ -1,88 +1,113 @@
 # School page data for UC Irvine School of Medicine.
 # Rendered by build_schools.py into schools/uc-irvine-school-of-medicine/index.html.
 # Field reference: content/schools/_TEMPLATE.yaml
+#
+# Every number comes from an official UCI page (listed under `sources`) except NIH funding,
+# which fetch_nih_funding.py pulls from NIH RePORTER. Checked 2026-10-08.
 
 short_name: UCI
 location_line: Orange County, CA
+nih_org: UNIVERSITY OF CALIFORNIA-IRVINE
 
 stats:
-  cycle: 2024
-  class_of: 2028
-  sources: [Student Doctor Network]
-  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/UCI/university-of-california-irvine-school-of-medicine
-  mcat: 516
-  mcat_percentile: 90
-  gpa_science: 3.89
-  gpa_overall: 3.94
-  tuition_in_state: 50800
-  tuition_out_of_state: 63000
-  women_pct: 68
-  urm_pct: 33
-  class_size: 114
-  total_students: 512
-  applied: 6,500+
-  interviewed: ~520
-  enrolled: 114
-  faculty: 1,900+
-  beds: 411
-  beds_label: Hospital Beds · UCI Med Ctr
+  entering_class: 2026
+  stats_kind: median
+  profile_url: https://medschool.uci.edu/education/medical-education/medical-degree-program/admissions
+  mcat: 516                      # MD Admissions, 2026 class profile
+  gpa_science: 3.85              # MD Admissions, 2026 class profile
+  gpa_overall: 3.87              # MD Admissions, 2026 class profile
+  applied: 7,874                 # MD Admissions, 2026 class profile
+  enrolled: 125                  # MD Admissions, 2026 class profile
+  acceptance_rate: 3.34%         # By the Numbers
+  out_of_state_pct: 9            # 11 of 125 matriculants, MD Admissions
+  class_size: 125
+  tuition_in_state: 52168        # 2026–27 tuition & fees, UCI Registrar
+  tuition_out_of_state: 64413    # 2026–27 tuition & fees, UCI Registrar
+  cost_year: 2026–27
+  total_cost: 415433             # sum of Year 1–4 budgets, UCI Financial Aid (resident, off campus)
+  total_cost_note: California resident, off campus
+  faculty: 2,128                 # By the Numbers (incl. part-time, volunteer, affiliate)
+  beds: 456                      # UCI GME training sites page
+  beds_label: Beds · UCI Medical Center
+
+sources:
+  - label: UCI MD Admissions (class profile)
+    url: https://medschool.uci.edu/education/medical-education/medical-degree-program/admissions
+  - label: UCI School of Medicine by the Numbers
+    url: https://medschool.uci.edu/about/numbers
+  - label: UCI Registrar 2026–27 fees
+    url: https://www.reg.uci.edu/fees/2026-2027/medical.html
+  - label: UCI Financial Aid (cost of attendance)
+    url: https://www.ofas.uci.edu/professional-students/school-of-medicine/index.php
+  - label: UCI training sites
+    url: https://medschool.uci.edu/education/medical-education/graduate-medical-education/training-programs/training-sites
 
 highlights:
   - title: Curriculum
     icon: menu_book
     paragraphs:
       - >-
-        UCI's curriculum takes an integrated, systems-based approach. MS1 covers normal physiology
-        across every organ system; MS2 maps those same systems to pathology — ensuring double exposure
-        to all content before Step 1. Both years are graded pass/fail, and lectures are recorded for
-        flexible, self-paced review.
+        UCI teaches through **iTEACH**, a systems-organized curriculum that weaves coordinated
+        simulation, ultrasound, and clinical-skills modules into the basic sciences. Alexa Lucas and
+        Steven Tohmasi describe meeting each organ system twice before boards, first in normal
+        function and then in disease, with every lecture recorded for review at home.
       - >-
-        A defining feature is the **PACE Program** (Patient-centered Ambulatory Care Education): from
-        the start of MS1, students spend one half-day per week in clinic alongside a preceptor,
-        building real longitudinal patient relationships from day one. Weekly small-group sessions
-        rotate through clinical foundations, simulation lab, and point-of-care ultrasound — with formal
-        ultrasound training embedded in the curriculum starting Year 1.
+        Clinical skills start early through **PACE**, a longitudinal rotation for all first- and
+        second-year students in which they work weekly alongside primary care preceptors. Steven
+        called it one of the things that drew him to UCI: steady, real patient contact well before
+        third-year rotations.
 
-  - title: Research
-    icon: science
+  - title: Ultrasound & Global Health
+    icon: public
     paragraphs:
       - >-
-        UCI's signature **Ultrasound Education Program** sends 30–40 students abroad each summer — at
-        the MS1–MS2 transition — to teach point-of-care ultrasound to clinicians in resource-limited
-        settings. Past trips have reached Switzerland and Tanzania, combining research leadership with
-        direct global health impact.
+        Every UCI medical student completes a **four-year ultrasound curriculum**, from basic scanning
+        to advanced point-of-care skills. UCI reports that since 2011 more than 250 of its students
+        have traveled to over 10 countries to teach ultrasound to students, residents, midwives, and
+        physicians.
       - >-
-        On campus, 24 departments span basic science, clinical, and translational research with over
-        1,900 faculty. Students have engaged in spinal cord injury research, global health initiatives,
-        and specialty-focused projects, with opportunities to pursue independent work from as early as
-        MS1.
+        Steven spent the summer after first year teaching an ultrasound course at the University of
+        Basel; in his year, teams also went to Panama, Tanzania, and Indonesia. Alexa led a Tanzania
+        trip and calls the global health side of UCI "super unique and incredible."
 
-  - title: Community Outreach
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        **UCI Medical Center** in Orange is the school's principal teaching hospital: 456 beds,
+        Orange County's only Level I trauma center, a verified regional burn center, and an
+        NCI-designated comprehensive cancer center.
+      - >-
+        UCI also trains 863 residents and fellows, so students learn inside a large academic medical
+        community. Arnie Shah found the administration unusually responsive, acting on student
+        feedback "promptly."
+
+  - title: Student Life & Community
     icon: groups
     paragraphs:
       - >-
-        **PLEXUS**, UCI's student-run medical humanities journal, invites faculty, students, and
-        patients to share essays, poetry, and personal stories. It's a rare publication that bridges
-        the clinical and the human — amplifying patient voices as a core part of the school's culture.
+        **PLEXUS**, UCI's student-run medical humanities and arts journal, publishes essays, poetry,
+        and art each year from students, faculty, and patients. Students also describe active interest
+        groups such as the Emergency Medicine Interest Group and mentoring programs like Elephant
+        Mentors, which pairs medical students with high school girls from underserved communities.
       - >-
-        The Emergency Medicine Interest Group is one of the most active organizations on campus,
-        hosting clinical workshops, speaker panels, and community health events across Orange County.
-        UCI's broad interest group network spans virtually every specialty, with many groups running
-        local outreach programs.
+        The students describe a close class (Arnie says it "feels a lot more like family") and a
+        location that makes balance easy: the beaches at Laguna and Newport are minutes away, with Los
+        Angeles and San Diego about 90 minutes in either direction.
 
-  - title: Volunteer Opportunities
-    icon: volunteer_activism
-    paragraphs:
-      - >-
-        **Elephant Mentors** is a student-led mentorship program pairing medical students with
-        underserved high school girls in the local community. Students serve as team leaders or
-        individual mentors, offering academic support and exposure to healthcare careers — consistently
-        described as one of the most meaningful non-clinical experiences at UCI.
-      - >-
-        The **Global Health Program** organizes annual international service trips combining ultrasound
-        education and direct patient care in underserved communities abroad. Students describe these
-        experiences as uniquely merging education, research, and service in a way that's hard to find
-        at most medical schools.
+highlight_sources:
+  - label: DocStory interviews with Alexa Lucas, Arnie Shah and Steven Tohmasi
+    url: /interviews/uc-irvine-school-of-medicine/alexa-lucas/index.html
+  - label: UCI MD Curriculum
+    url: https://medschool.uci.edu/education/medical-education/medical-degree-program/curriculum
+  - label: UCI PACE (HEAL-IM page)
+    url: https://medschool.uci.edu/education/programs/medical-education/mission-based-programs/heal-im/additional-integrative
+  - label: UCI Ultrasound Program
+    url: https://www.ultrasound.uci.edu/
+  - label: UCI training sites
+    url: https://medschool.uci.edu/education/medical-education/graduate-medical-education/training-programs/training-sites
+  - label: PLEXUS
+    url: https://medschool.uci.edu/research/clinical-departments/family-medicine/education-training/medical-humanities-and-arts/research-creative-projects/plexus
 
 quotes:
   arnie-shah: >-

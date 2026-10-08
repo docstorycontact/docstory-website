@@ -3,54 +3,71 @@
 # (the slug must match the folder name in content/interviews/ and the key in
 # SCHOOLS inside build_schools.py), fill in what you have, then run:
 #
+#     python3 fetch_nih_funding.py     # optional: refresh the automatic NIH figure
 #     python3 build_schools.py
 #
-# Every field is optional. Leave out anything you can't source and that piece
-# of the page is hidden; with no file at all the school gets the basic page.
-# Name, city, type, founding year, hospital and class size for the hero still
-# come from SCHOOLS in build_schools.py.
+# Having this file turns on the full page (stats dashboard + Program Highlights).
+# Every field is optional — leave out anything without an official source and that
+# tile is hidden.
+#
+# SOURCING RULES
+#   • Numbers: only from the school's own website (class profile, cost of attendance,
+#     facts pages) or U.S. government data. Put a comment after each number naming
+#     the page, and list every page under `sources`.
+#   • Highlights: write in your own words from DocStory interviews plus facts confirmed
+#     on official pages. Don't copy text from other sites. List the pages under
+#     `highlight_sources`.
+#   • Avoid SDN, AAMC/MSAR tables, U.S. News and similar databases unless you have
+#     permission — their terms restrict reuse.
 # ─────────────────────────────────────────────────────────────────────────────
 
 short_name: Keck                 # used in "N interviews from current and former <short_name> students"
 location_line: Orange County, CA # optional — replaces "City, ST" in the line under the school name
+nih_org: UNIVERSITY OF SOUTHERN CALIFORNIA   # name exactly as NIH RePORTER spells it (automatic NIH funding)
 
 stats:
-  # Header
-  cycle: 2024                    # admissions cycle the numbers describe
-  class_of: 2028
-  sources: [Student Doctor Network, AAMC MSAR]   # first one is shown in bold
-  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/...
+  # Selectivity — from the school's class profile
+  entering_class: 2026
+  stats_kind: median             # "median" or "average", whichever the school publishes
+  profile_url: https://...       # adds an "Official class profile" link to the dashboard
+  mcat: 516
+  gpa_science: 3.85
+  gpa_overall: 3.87
 
-  # Selectivity — the MCAT curve and GPA bars are drawn from these
-  mcat: 517                      # median MCAT (national average is fixed at 502)
-  mcat_percentile: 91
-  gpa_science: 3.81
-  gpa_overall: 3.85
+  # Admissions funnel — any subset; bars appear for the ones given
+  applied: 7,874
+  interviewed: 757
+  admitted: 215                  # offers of admission → shows "% of applicants admitted"
+  enrolled: 125
+  acceptance_rate: 3.34%         # if the school states it directly (wins over computed %)
 
-  # Cost of attendance — use EITHER `tuition` (one rate, typical for private schools)
-  # OR `tuition_in_state` + `tuition_out_of_state` (public schools). Whole dollars.
-  tuition: 74500
-  # tuition_in_state: 50800
-  # tuition_out_of_state: 63000
-  total_cost: 509000             # optional estimated 4-year cost of attendance
+  # Class profile
+  class_size: 125                # also replaces the class size in the hero line
+  women_pct: 52
+  out_of_state_pct: 9
+  total_students: 523
 
-  # Class profile — donut charts are drawn from the percentages
-  women_pct: 55
-  urm_pct: 40                    # underrepresented in medicine
-  class_size: 180
-  total_students: 720
+  # Cost — EITHER `tuition` (one rate) OR in-state + out-of-state. Whole dollars.
+  tuition: 76640
+  # tuition_in_state: 52168
+  # tuition_out_of_state: 64413
+  cost_year: 2026–27
+  total_cost: 469617             # sum of the four yearly cost-of-attendance budgets
+  total_cost_note: California resident, off campus
 
-  # Scale & reach — counts are shown exactly as written (text like "12,000+" or "~600" is fine)
-  applied: 12,000+
-  interviewed: ~600
-  enrolled: 180
-  faculty: 1,300+
-  beds: 401
-  beds_label: Beds · Keck Hospital   # caption under the bed count
+  # Scale & reach (NIH funding is added automatically when nih_org is set)
+  faculty: 2,128
+  faculty_label: Faculty Members
+  beds: 456
+  beds_label: Beds · UCI Medical Center
+  nih_label: NIH funding · FY{year}   # optional custom caption; {year} = fiscal year
+
+sources:
+  - label: UCI MD Admissions (class profile)
+    url: https://...
 
 # Program Highlights — four cards read best (2×2 grid). **double asterisks** make bold text.
 # Icons are Material Symbols names: https://fonts.google.com/icons
-# (e.g. menu_book, science, local_hospital, location_city, groups, volunteer_activism)
 highlights:
   - title: Curriculum
     icon: menu_book
@@ -59,6 +76,12 @@ highlights:
         First paragraph. Lines can wrap freely inside a ">-" block.
       - >-
         Second paragraph.
+
+highlight_sources:
+  - label: DocStory interview with <student>
+    url: /interviews/<school-slug>/<student-file-name>/index.html
+  - label: <School> MD Curriculum
+    url: https://...
 
 # Featured quote per interview, keyed by the interview's file name (without .md).
 # Order here sets card order. Interviews not listed get an automatic excerpt.
