@@ -1,0 +1,103 @@
+# School page data for the Medical College of Wisconsin.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official MCW pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# MCW does not publish an entering-class MCAT/GPA profile, so selectivity tiles are hidden.
+
+short_name: MCW
+nih_org: MEDICAL COLLEGE OF WISCONSIN
+trials_sponsor: Medical College of Wisconsin
+
+stats:
+  class_size: null               # not published
+  tuition: 70800                 # 2026–27 MCW tuition schedule (Wisconsin residents receive ~$3,450 assistance)
+  cost_year: 2026–27
+
+sources:
+  - label: MCW Tuition & Fees 2026–27
+    url: https://www.mcw.edu/-/media/MCW/Education/Academic-Affairs/Financial-Aid-and-Tuition/Tuition-and-Fees-MCW-Medical-School-2026-2027.pdf
+  - label: MCW Medical School Admissions
+    url: https://www.mcw.edu/education/medical-school/prospective-students/admissions
+  - label: MCW Psychiatry Medical Student Education
+    url: https://www.mcw.edu/departments/psychiatry-and-behavioral-medicine/education/medical-student-education-program
+  - label: Kern Institute
+    url: https://www.mcw.edu/departments/kern-institute
+  - label: Census QuickFacts (Milwaukee County, WI)
+    url: https://www.census.gov/quickfacts/fact/table/milwaukeecountywisconsin/HSG860224
+
+highlights:
+  - title: Three Campuses
+    icon: map
+    paragraphs:
+      - >-
+        **MCW-Milwaukee** offers a four-year curriculum with scholarly pathways in areas such as community
+        health and bioethics. **MCW-Green Bay** and **MCW-Central Wisconsin** offer a calendar-efficient
+        three-year curriculum emphasizing primary care, general surgery, or psychiatry.
+      - >-
+        Wisconsin residents receive an estimated $3,450 in state tuition assistance each year.
+
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Austin Dopp spends mornings in recorded lectures and afternoons studying or on research projects.
+        With few graded assignments, grades rest mostly on exams, and Austin found that understanding why
+        things happen beats rote memorization.
+      - >-
+        Austin values MCW's drive to keep improving, and its **Kern Institute**, an education unit focused on
+        character, competence, and caring, which also runs a Health Equity Scholars track.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        **Froedtert Hospital**, MCW's primary adult teaching affiliate, shares a campus with **Children's
+        Wisconsin**, the state's oldest and largest children's hospital, connected by walkways. The
+        Clement J. Zablocki VA Medical Center gives students the chance to care for veterans.
+      - >-
+        Psychiatry rotations, for example, also reach Rogers Hospital and Milwaukee County Behavioral
+        Health.
+
+  - title: Culture & Life
+    icon: groups
+    paragraphs:
+      - >-
+        In a class of around 200, Austin has never felt overlooked: classmates share study tips and remind
+        each other of deadlines.
+      - >-
+        As a parent of three, Austin appreciates a campus area that feels safe even late at night, and
+        recorded lectures that make room for family.
+
+highlight_sources:
+  - label: DocStory interview with Austin Dopp
+    url: /interviews/medical-college-of-wisconsin/austin-dopp/index.html
+  - label: MCW Medical School Admissions
+    url: https://www.mcw.edu/education/medical-school/prospective-students/admissions
+  - label: Kern Institute
+    url: https://www.mcw.edu/departments/kern-institute
+
+quotes:
+  austin-dopp: >-
+    "The culture at my school is very supportive. I am in a class of around 200 and so while you think you
+    may get forgotten or left out, I have never felt that way."
+
+clinical_sites:
+  - {name: Froedtert Hospital, role: Primary adult teaching affiliate, cms_id: "520177"}
+  - {name: Children's Wisconsin, role: State's largest children's hospital, cms_id: "523300"}
+  - {name: Clement J. Zablocki VA Medical Center, cms_id: "52003F"}
+  - {name: Rogers Hospital}
+  - {name: Milwaukee County Behavioral Health}
+
+programs:
+  tracks:
+    - {name: Three-year MD, note: Green Bay and Central Wisconsin campuses}
+    - {name: Health Equity Scholars, note: Kern Institute}
+
+applying:
+  - {label: MCAT, value: "Superscore of 500+ strongly encouraged (two most recent exams)"}
+  - {label: Required, value: CASPer}
+
+cost_of_living:
+  county: Milwaukee County, WI
+  fips: "55079"
+  median_rent: 1101             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

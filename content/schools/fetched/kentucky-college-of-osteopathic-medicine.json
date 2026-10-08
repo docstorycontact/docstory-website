@@ -1,0 +1,29 @@
+{
+  "hospitals": {
+    "180005": {
+      "city": "PRESTONSBURG",
+      "emergency": true,
+      "name": "HIGHLANDS ARH REGIONAL MEDICAL CENTER",
+      "ownership": "Proprietary",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "180029": {
+      "city": "HAZARD",
+      "emergency": true,
+      "name": "HAZARD ARH REGIONAL MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "180044": {
+      "city": "PIKEVILLE",
+      "emergency": true,
+      "name": "PIKEVILLE MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  }
+}

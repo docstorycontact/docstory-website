@@ -660,13 +660,15 @@ def _cell(label, body):
 
 def _selectivity_cell(s):
     mcat  = s['mcat']
-    kind  = s.get('stats_kind', 'median')          # schools publish either medians or averages
+    kind  = s.get('stats_kind', 'median')          # "median", "average", or "reported" when the school doesn't say
     shown = round(mcat)
     delta = shown - NATIONAL_AVG_MCAT
     good  = f'+{delta} above national average' if delta >= 0 else f'{delta} below national average'
 
     x  = round(min(196, max(4, 91 + delta * 2.64)))
     cy = round(_curve_y(x))
+    # Keep the national-average label clear of the school's score label when they're close
+    avg_x, avg_anchor = (84, 'middle') if abs(x - 84) > 36 else (x - 12, 'end')
     curve = f'''              <div class="dc-curve-wrap">
                 <svg viewBox="0 0 200 78" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
                   <path d="M0,70 C38,70 70,4 91,4 C112,4 148,70 200,70" fill="rgba(139,127,255,0.13)"/>
@@ -674,7 +676,7 @@ def _selectivity_cell(s):
                   <line x1="91" y1="4" x2="91" y2="70" stroke="#b4b8cd" stroke-dasharray="3,2" stroke-width="1"/>
                   <line x1="{x}" y1="{cy + 2}" x2="{x}" y2="70" stroke="#5b4bd1" stroke-width="1.5"/>
                   <circle cx="{x}" cy="{cy}" r="3.5" fill="#5b4bd1"/>
-                  <text x="84" y="78" text-anchor="middle" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg {NATIONAL_AVG_MCAT}</text>
+                  <text x="{avg_x}" y="78" text-anchor="{avg_anchor}" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg {NATIONAL_AVG_MCAT}</text>
                   <text x="{x}" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">{shown}</text>
                 </svg>
               </div>'''
@@ -691,12 +693,12 @@ def _selectivity_cell(s):
                 </div>'''
     gpa = (f'''
               <div class="dc-gpa-wrap">{gpa_rows}
-                <div class="dc-gpa-meta">{s.get('gpa_kind', kind).capitalize()} undergraduate GPA</div>
+                <div class="dc-gpa-meta">{'Undergraduate GPA' if s.get('gpa_kind', kind) == 'reported' else s.get('gpa_kind', kind).capitalize() + ' undergraduate GPA'}</div>
               </div>''') if gpa_rows else ''
 
     label = 'Selectivity' + (f' · Entering class of {s["entering_class"]}' if s.get('entering_class') else '')
     return _cell(label, f'''            <div>
-              <span class="dc-mcat-big">{shown}</span><span class="dc-mcat-unit">{kind} MCAT</span>
+              <span class="dc-mcat-big">{shown}</span><span class="dc-mcat-unit">{'' if kind == 'reported' else kind + ' '}MCAT</span>
               <div class="dc-good">{good}</div>
             </div>
             <div class="dc-selectivity-body">

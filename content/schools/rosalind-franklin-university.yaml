@@ -1,0 +1,113 @@
+# School page data for Chicago Medical School at Rosalind Franklin University.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official RFU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Chicago Medical School
+nih_org: ROSALIND FRANKLIN UNIV OF MEDICINE & SCI
+trials_sponsor: Rosalind Franklin University of Medicine and Science
+
+stats:
+  entering_class: 2025
+  stats_kind: reported           # RFU doesn't say whether these are averages or medians
+  profile_url: https://www.rosalindfranklin.edu/academics/chicago-medical-school/degree-programs/allopathic-medicine-md/class-profile/
+  mcat: 508                      # RFU class profile, 2025 entering class
+  gpa_science: 3.59
+  gpa_overall: 3.69
+  applied: 11,985                # AMCAS applicants
+  enrolled: 203
+  class_size: 203
+  out_of_state_pct: 56           # 44% in-state residents
+  tuition: 74290                 # 2026–27 base tuition, RFU
+  cost_year: 2026–27
+
+sources:
+  - label: CMS Class Profile (RFU)
+    url: https://www.rosalindfranklin.edu/academics/chicago-medical-school/degree-programs/allopathic-medicine-md/class-profile/
+  - label: Chicago Medical School Cost & Fees
+    url: https://www.rosalindfranklin.edu/admission-aid/financial-services/tuition-fees/chicago-medical-school/
+  - label: CMS Clinical Sites
+    url: https://www.rosalindfranklin.edu/academics/chicago-medical-school/degree-programs/allopathic-medicine-md/rotations/
+  - label: CMS Application Requirements
+    url: https://www.rosalindfranklin.edu/academics/chicago-medical-school/degree-programs/allopathic-medicine-md/application-requirements/
+  - label: Census QuickFacts (Lake County, IL)
+    url: https://www.census.gov/quickfacts/fact/table/lakecountyillinois/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Allison Martin describes covering a college semester's worth of material every six weeks; at that
+        pace, students quickly find their own method. Allison stopped attending lecture and learns by
+        listening and reading, while classmates lean on notes, textbooks, or spaced repetition.
+      - >-
+        Drew Weinstein keeps a tighter schedule: previewing in the library before 8am, lectures until noon,
+        afternoons of anatomy or required sessions, then evenings of daily review, because "you cannot
+        cram."
+
+  - title: Clinical Training Across Chicagoland
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Chicago Medical School doesn't own a hospital; students rotate across a wide network instead,
+        including Level 1 trauma rotations, suburban and rural community clinics, and the **Captain James
+        A. Lovell Federal Health Care Center**, a combined VA and military hospital next to campus.
+      - >-
+        Allison sees that as a plus: rotating through most of Chicagoland's hospitals and many small
+        clinics exposes students to a wide range of settings. Sites include Advocate Christ, Advocate
+        Lutheran General, Mount Sinai, and Cook County's Stroger Hospital.
+
+  - title: Student Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Allison describes classmates who all have something going on, from student council to research,
+        and who show up for each other's fundraisers and talks. The faculty care, the administration
+        listens, and students have a real voice.
+      - >-
+        Drew points to interest groups for every major specialty, plenty of intramural sports, and
+        volunteer organizations serving the surrounding community.
+
+  - title: Location
+    icon: train
+    paragraphs:
+      - >-
+        The first two years are in quiet **North Chicago**: restaurants, gyms, and shopping for the
+        essentials, and few distractions from studying. The city is about 45 minutes away by train for
+        weekends.
+      - >-
+        For the clinical years, everybody moves down to Chicago itself, which Drew calls "awesome."
+
+highlight_sources:
+  - label: DocStory interviews with Allison Martin and Drew Weinstein
+    url: /interviews/rosalind-franklin-university/allison-martin/index.html
+  - label: CMS Clinical Sites
+    url: https://www.rosalindfranklin.edu/academics/chicago-medical-school/degree-programs/allopathic-medicine-md/rotations/
+
+quotes:
+  allison-martin: >-
+    "We get to rotate through most of the hospitals in Chicago-land plus many small clinics."
+  drew-weinstein: >-
+    "On the weekends we can take a train 45 minutes into the city to enjoy the night life or just to
+    explore. During rotations third and fourth year we move downtown which is awesome."
+
+clinical_sites:                            # CMS Clinical Sites page (selection)
+  - {name: Captain James A. Lovell Federal Health Care Center, role: VA and military hospital · North Chicago, cms_id: "14034F"}
+  - {name: Advocate Christ Medical Center}
+  - {name: Advocate Lutheran General Hospital}
+  - {name: John H. Stroger Jr. Hospital of Cook County, role: Cook County safety-net hospital, cms_id: "140124"}
+  - {name: Mount Sinai Hospital}
+  - {name: Ascension Saint Joseph – Chicago}
+  - {name: Advocate Illinois Masonic Medical Center}
+  - {name: Holy Cross Hospital}
+
+applying:
+  - {label: Benchmark, value: "Most successful applicants: GPAs around 3.5 and MCAT 510+"}
+  - {label: MCAT, value: Highest score is used}
+  - {label: Early Decision, value: Applications due August 1}
+
+cost_of_living:
+  county: Lake County, IL
+  fips: "17097"
+  median_rent: 1477             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

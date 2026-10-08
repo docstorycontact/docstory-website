@@ -1,0 +1,124 @@
+# School page data for USF Health Morsani College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official USF pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: USF Morsani
+nih_org: UNIVERSITY OF SOUTH FLORIDA
+trials_sponsor: University of South Florida
+
+stats:
+  entering_class: 2026           # Class of 2030
+  stats_kind: median
+  profile_url: https://www.usf.edu/health/news/2026/morsani-college-of-medicine-celebrates-record-breaking-incoming-class-of-2030.aspx
+  mcat: 521                      # Class of 2030 — highest median in USF history
+  gpa_science: 3.99
+  gpa_overall: 3.98
+  enrolled: 140
+  class_size: 140
+  tuition_in_state: 33694        # 2026–27 estimate, USF Health financial aid (MD)
+  tuition_out_of_state: 60500
+  cost_year: 2026–27
+
+sources:
+  - label: USF Health — Class of 2030
+    url: https://www.usf.edu/health/news/2026/morsani-college-of-medicine-celebrates-record-breaking-incoming-class-of-2030.aspx
+  - label: USF Health MD Cost of Attendance
+    url: https://health.usf.edu/financial-aid/md-program/cost-of-attendance
+  - label: USF MD Clinical Teaching Sites
+    url: https://health.usf.edu/medicine/mdprogram/teachingsites
+  - label: USF MD Educational Programs (SELECT)
+    url: https://health.usf.edu/medicine/mdprogram/eduprograms/
+  - label: USF MD Admissions FAQ
+    url: https://health.usf.edu/medicine/mdprogram/mdadmissions/faq
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Hillsborough County, FL)
+    url: https://www.census.gov/quickfacts/fact/table/hillsboroughcountyflorida/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        USF's curriculum is organ-based, with lectures posted ahead of time and recorded; Brian James says
+        only about a quarter of the class attends live. A **Doctoring** course gives steady practice with
+        standardized patients, and Chetna Thawani describes scenarios from sexual-history taking to an
+        interprofessional emergency simulation.
+      - >-
+        Every core student joins one of eleven **Scholarly Concentrations**, such as law and medicine,
+        business and medicine, or nutrition and medicine, to explore an interest alongside the core
+        curriculum.
+
+  - title: Learning Communities
+    icon: groups
+    paragraphs:
+      - >-
+        Students are sorted into **Collegia**, learning communities Chetna compares to Hogwarts houses, for
+        anatomy lab, doctoring groups, and friendly inter-Collegia competitions. Each has a career
+        adviser, which makes it easy to get guidance from advisers and upperclassmen.
+      - >-
+        Both students praise how fast the school responds: a student board relays feedback on lecturers
+        and exams, and faculty act on it quickly.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        **Tampa General Hospital**, a 985-bed facility with the area's only Level 1 trauma and burn unit,
+        is the primary clinical training site. Students also train at the James A. Haley VA across from
+        campus, Moffitt Cancer Center, and Johns Hopkins All Children's Hospital.
+      - >-
+        The SELECT program, which sent students to Pennsylvania's Lehigh Valley for clinical years, is being
+        phased out after its graduating class of 2027.
+
+  - title: Downtown Tampa
+    icon: location_city
+    paragraphs:
+      - >-
+        The medical school has moved downtown, near the Riverwalk, restaurants, and CAMLS, the patient
+        simulation center. Brian highlights a fast-growing city with every major sport nearby: the
+        Lightning a few blocks away, the Buccaneers 10 minutes, and the Rays in St. Petersburg.
+      - >-
+        USF has no minimum GPA or MCAT; Early Decision applicants need at least a 518 MCAT and a 3.8 GPA.
+
+highlight_sources:
+  - label: DocStory interviews with Brian James and Chetna Thawani
+    url: /interviews/morsani-college-of-medicine/brian-james/index.html
+  - label: USF MD Clinical Teaching Sites
+    url: https://health.usf.edu/medicine/mdprogram/teachingsites
+  - label: USF MD Educational Programs (SELECT)
+    url: https://health.usf.edu/medicine/mdprogram/eduprograms/
+  - label: USF MD Admissions FAQ
+    url: https://health.usf.edu/medicine/mdprogram/mdadmissions/faq
+
+quotes:
+  chetna-thawani: >-
+    "We have these things kind of like Hogwarts houses, called Collegias, which are 'learning communities'
+    that we're split into for things like anatomy lab, doctoring groups, etc."
+  brian-james: >-
+    "The faculty here are very receptive to feedback and will accommodate almost immediately. Also we have
+    a lot of standardized patients … to help hone in our skills."
+
+clinical_sites:
+  - {name: Tampa General Hospital, role: 985 beds · Level 1 trauma and burn, cms_id: "100128"}
+  - {name: James A. Haley Veterans' Hospital, role: Across from campus, cms_id: "10063F"}
+  - {name: Moffitt Cancer Center, role: NCI Comprehensive Cancer Center}
+  - {name: Johns Hopkins All Children's Hospital, cms_id: "103300"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center (affiliate) · Moffitt Cancer Center
+
+programs:
+  tracks:
+    - {name: Scholarly Concentrations, note: eleven focus areas}
+    - {name: SELECT, note: ending with the Class of 2027}
+
+applying:
+  - {label: Minimums, value: No minimum GPA or MCAT}
+  - {label: Early Decision, value: "MCAT 518+ (126+ per section) and GPA 3.8+"}
+
+cost_of_living:
+  county: Hillsborough County, FL
+  fips: "12057"
+  median_rent: 1667             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

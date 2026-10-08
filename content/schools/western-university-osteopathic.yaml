@@ -1,0 +1,95 @@
+# School page data for WesternU College of Osteopathic Medicine of the Pacific (COMP).
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official WesternU pages (see `sources`). Checked 2026-10-08.
+
+short_name: COMP
+
+stats:
+  entering_class: 2024           # DO 2028 interview guidebook "fast facts"
+  stats_kind: average
+  profile_url: https://www.westernu.edu/media/osteopathic/pdfs/programs/comp_interview_day_guidebook.pdf
+  mcat: 509
+  gpa_science: 3.66
+  gpa_overall: 3.70
+  class_size: null               # not published
+  tuition: 72040                 # 2026–27, WesternU DO student budget (Pomona)
+  cost_year: 2026–27
+
+sources:
+  - label: COMP Interview Day Guidebook (DO 2028)
+    url: https://www.westernu.edu/media/osteopathic/pdfs/programs/comp_interview_day_guidebook.pdf
+  - label: WesternU DO Student Budget (Pomona)
+    url: https://www.westernu.edu/financial/student-budgets/do/
+  - label: WesternU DO Student Budget (Oregon)
+    url: https://www.westernu.edu/financial/student-budgets/do-oregon/
+  - label: COMP 2024–25 Catalog
+    url: https://www.westernu.edu/media/registrar/2024-2025-catalog-comp.pdf
+  - label: Census QuickFacts (Los Angeles County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/losangelescountycalifornia/HSG860224
+
+highlights:
+  - title: Osteopathic Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Chuck Chan describes four to eight hours of class a day, with four hours a week preparing for
+        patient encounters and another four on the principles of **osteopathic manipulative medicine
+        (OMM)**. Each course is integrated, with different specialists teaching anatomy, pharmacology,
+        pathology, and microbiology within the same system.
+      - >-
+        The material isn't harder than undergrad, Chuck says, but the pace is much faster, so studying
+        shifts toward high-yield content backed by board-review resources.
+
+  - title: Clinical Skills
+    icon: stethoscope
+    paragraphs:
+      - >-
+        Students complete about eight standardized patient encounters each semester, practice Chuck found
+        invaluable, including a psychiatry-focused OSCE that asked students to work through bipolar
+        disorder, depression, panic disorder, and PTSD presentations with empathy.
+      - >-
+        COMP trains osteopathic physicians on two campuses: Pomona, California, and Lebanon, Oregon.
+
+  - title: Tracks
+    icon: alt_route
+    paragraphs:
+      - >-
+        Chuck joined a **Lifestyle Medicine** track covering diet, physical health, and mental health, both
+        to counsel future patients and to look after personal health.
+      - >-
+        WesternU also offers an OMM track, listed separately on its student budget with its own tuition
+        schedule.
+
+  - title: Life in Pomona
+    icon: location_city
+    paragraphs:
+      - >-
+        Pomona itself has limited food options and visible homelessness and poverty, Chuck says, though
+        Chuck has never felt unsafe on campus.
+      - >-
+        Orange County and Los Angeles are close enough for a night out after exams.
+
+highlight_sources:
+  - label: DocStory interview with Chuck Chan
+    url: /interviews/western-university-osteopathic/chuck-chan/index.html
+  - label: WesternU DO Student Budget (Pomona)
+    url: https://www.westernu.edu/financial/student-budgets/do/
+
+quotes:
+  chuck-chan: >-
+    "We have about 8 patient encounters per semester which initially sounds annoying, but is such good
+    practice to deal with patients later."
+
+programs:
+  tracks:
+    - {name: Lifestyle Medicine}
+    - {name: OMM track}
+
+applying:
+  - {label: Recommended, value: "Science GPA 3.40+ (25+ semester credits) · MCAT 500+ within three years"}
+
+cost_of_living:
+  county: Los Angeles County, CA
+  fips: "06037"
+  median_rent: 1954             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

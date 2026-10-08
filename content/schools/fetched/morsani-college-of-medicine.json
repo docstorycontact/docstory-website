@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "100128": {
+      "city": "TAMPA",
+      "emergency": true,
+      "name": "TAMPA GENERAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "10063F": {
+      "city": "TAMPA",
+      "emergency": true,
+      "name": "TAMPA VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "103300": {
+      "city": "SAINT PETERSBURG",
+      "emergency": true,
+      "name": "JOHNS HOPKINS ALL CHILDREN'S HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 99297487,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "UNIVERSITY OF SOUTH FLORIDA",
+    "top_departments": [
+      {
+        "amount": 56820290,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 14379629,
+        "dept": "Physiology"
+      },
+      {
+        "amount": 9510790,
+        "dept": "Biochemistry"
+      }
+    ],
+    "trend": {
+      "2021": 75461887,
+      "2022": 89966925,
+      "2023": 98340320,
+      "2024": 69882804,
+      "2025": 99297487
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 59,
+    "sponsor": "University of South Florida"
+  }
+}

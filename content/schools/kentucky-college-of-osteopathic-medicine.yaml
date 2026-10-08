@@ -1,0 +1,102 @@
+# School page data for University of Pikeville – Kentucky College of Osteopathic Medicine (KYCOM).
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UPIKE pages (see `sources`); CMS via fetch_public_data.py. Checked 2026-10-08.
+# KYCOM does not publish an entering-class MCAT/GPA profile, so selectivity tiles are hidden.
+
+short_name: KYCOM
+
+stats:
+  class_size: null               # not published (COCA approved up to 135 from the Class of 2016)
+  tuition: 59750                 # 2026–27, UPIKE cost of attendance
+  cost_year: 2026–27
+
+sources:
+  - label: UPIKE Cost of Attendance 2026–27
+    url: https://www.upike.edu/undergraduate/financial-aid/cost-of-attendance/
+  - label: KYCOM Application & Selection
+    url: https://www.upike.edu/osteopathic-medicine/kycom-admissions/application-selection/
+  - label: KYCOM Program Goals and Objectives
+    url: https://www.upike.edu/osteopathic-medicine/kycom-program/program-goals-and-objectives/
+  - label: KYCOM Clinical Rotations Manual (Class of 2026)
+    url: https://www.upike.edu/wp-content/uploads/2025/02/Class-of-2026-Rotation-Manual.pdf
+  - label: KYCOM Pre-Med Programs
+    url: https://www.upike.edu/osteopathic-medicine/kycom-admissions/premed-programs/
+  - label: Census QuickFacts (Pike County, KY)
+    url: https://www.census.gov/quickfacts/fact/table/pikecountykentucky/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Classes run back to back in a single classroom, apart from Osteopathic Principles and Practices,
+        with exams every four weeks. Jeremy Storck builds notes from each day's recorded lectures, turns
+        them into flashcards, and then reviews.
+      - >-
+        Jeremy's favorite feature: dedicated internal medicine, pediatrics, OB/GYN, and surgery courses
+        taught by practicing community physicians, plus mandatory clinic days for skills like suturing,
+        intubation, joint injections, and chest tubes.
+
+  - title: Rural & Appalachian Mission
+    icon: landscape
+    paragraphs:
+      - >-
+        KYCOM's stated goal is to train physicians for rural primary care in Kentucky and Appalachia, and
+        its clinical sites reflect that: **Pikeville Medical Center** is the Pikeville core site, alongside
+        hubs such as Hazard ARH and Highlands ARH regional medical centers.
+      - >-
+        Core rotations cover family medicine, internal medicine, pediatrics, surgery, women's health,
+        emergency medicine, and psychiatry, with rural medicine among the selectives.
+
+  - title: Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        Students practice exams and osteopathic manipulative treatment at an on-campus **OMT clinic** open
+        to community members, and second-years complete clinic days each semester.
+      - >-
+        Each year, first-year students join a professor and the college chaplain on a two-week **mission
+        trip** to deliver care in the Dominican Republic with local providers.
+
+  - title: Life in Pikeville
+    icon: hiking
+    paragraphs:
+      - >-
+        Pikeville is a mountain town of about 6,000 in Eastern Kentucky, two hours from Lexington, with
+        hiking, camping, fishing, and golf close by and few distractions from studying.
+      - >-
+        The highlight of the year is **Hillbilly Days**, a four-day spring festival that takes over the
+        whole town, with classes off so students can join in.
+
+highlight_sources:
+  - label: DocStory interview with Jeremy Storck
+    url: /interviews/kentucky-college-of-osteopathic-medicine/jeremy-storck/index.html
+  - label: KYCOM Program Goals and Objectives
+    url: https://www.upike.edu/osteopathic-medicine/kycom-program/program-goals-and-objectives/
+  - label: KYCOM Clinical Rotations Manual (Class of 2026)
+    url: https://www.upike.edu/wp-content/uploads/2025/02/Class-of-2026-Rotation-Manual.pdf
+
+quotes:
+  jeremy-storck: >-
+    "There wasn't anything specific about it that got me to accept the offer, but rather just a feeling of
+    'You belong here, this is where you're going to medical school' while I was there."
+
+clinical_sites:                            # Class of 2026 rotation manual (core sites)
+  - {name: Pikeville Medical Center, role: Pikeville core site, cms_id: "180044"}
+  - {name: Hazard ARH Regional Medical Center, cms_id: "180029"}
+  - {name: Highlands ARH Regional Medical Center, cms_id: "180005"}
+  - {name: Northeast Kentucky AHEC core sites, role: "Clark Regional, King's Daughters, St. Claire and others"}
+
+programs:
+  tracks:
+    - {name: Osteopathic Medical Scholars, note: guaranteed admission for qualifying undergraduates}
+
+applying:
+  - {label: Supplemental fee, value: "$75"}
+  - {label: MCAT, value: Valid for three years}
+
+cost_of_living:
+  county: Pike County, KY
+  fips: "21195"
+  median_rent: 858              # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

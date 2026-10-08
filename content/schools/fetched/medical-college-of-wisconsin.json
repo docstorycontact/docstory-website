@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "52003F": {
+      "city": "MILWAUKEE",
+      "emergency": true,
+      "name": "MILWAUKEE VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 3,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "520177": {
+      "city": "MILWAUKEE",
+      "emergency": true,
+      "name": "FROEDTERT MEMORIAL LUTHERAN HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "523300": {
+      "city": "MILWAUKEE",
+      "emergency": true,
+      "name": "CHILDRENS HOSPITAL OF WISCONSIN",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 110794594,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "MEDICAL COLLEGE OF WISCONSIN",
+    "top_departments": [
+      {
+        "amount": 32994057,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 10213777,
+        "dept": "Physiology"
+      },
+      {
+        "amount": 9805801,
+        "dept": "Pediatrics"
+      }
+    ],
+    "trend": {
+      "2021": 115168926,
+      "2022": 113775350,
+      "2023": 131921874,
+      "2024": 106729681,
+      "2025": 110794594
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 113,
+    "sponsor": "Medical College of Wisconsin"
+  }
+}
