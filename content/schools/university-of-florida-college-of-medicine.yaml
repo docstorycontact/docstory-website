@@ -1,0 +1,108 @@
+# School page data for University of Florida College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UF pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UF
+nih_org: UNIVERSITY OF FLORIDA
+trials_sponsor: University of Florida
+
+stats:
+  cohort_label: Current entering students   # UF admissions FAQ ("currently")
+  stats_kind: average
+  profile_url: https://admissions.med.ufl.edu/faq/
+  mcat: 516
+  gpa_science: 3.85
+  class_size: null               # not published on the cited pages
+  tuition_in_state: 19522        # 2026–27 resident MD tuition, UF Regulation 3.0375
+  cost_year: 2026–27
+
+sources:
+  - label: UF COM Admissions FAQ
+    url: https://admissions.med.ufl.edu/faq/
+  - label: UF COM Regular Admission Requirements
+    url: https://admissions.med.ufl.edu/admission-requirements/regular-admission-requirements/
+  - label: UF Regulation 3.0375 (tuition)
+    url: https://policy.ufl.edu/regulation/3-0375/
+  - label: UF Jacksonville Regional Medical Campus
+    url: https://admissions.med.ufl.edu/admission-requirements/new-jacksonville-regional-medical-campus/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Alachua County, FL)
+    url: https://www.census.gov/quickfacts/fact/table/alachuacountyflorida/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Lectures are split between mornings and afternoons, many recorded, alongside required labs where
+        classmates work through case questions with faculty on hand. Weekly **Collaborative Learning
+        Groups** spend three hours on wellness and ethics, interviewing practice, write-up feedback, and
+        clinical cases.
+      - >-
+        Anatomy runs through both preclinical years, moving from prosected specimens to student
+        dissection and then aligning with each organ-system block. Weekend quizzes keep everyone on pace.
+
+  - title: Early Clinical Exposure
+    icon: stethoscope
+    paragraphs:
+      - >-
+        According to the UF student interviewed, students work with standardized patients from the start,
+        and from the second semester of first year they see real patients under their small-group
+        leader's supervision, giving oral presentations and write-ups.
+      - >-
+        The student lists UF's strengths as pass/fail grading, a new medical school building, shared
+        resources, a responsive administration, and research opportunities.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Clinical facilities sit close together in Gainesville: **UF Health Shands Hospital** plus a
+        children's hospital, VA, cancer hospital, and neuromedicine and cardiovascular hospitals. UF has
+        also opened a **Jacksonville Regional Medical Campus** with UF Health Jacksonville.
+      - >-
+        UF requires an MCAT of at least 500 from a single sitting and has no minimum GPA; recent successful
+        applicants have scored above 509.
+
+  - title: Life in Gainesville
+    icon: sports_football
+    paragraphs:
+      - >-
+        Gainesville is a college town of about 130,000 with trails, nature parks, and museums nearby, and
+        Jacksonville, Tampa, and Orlando within two hours.
+      - >-
+        Football game days transform campus, and class traditions like the **White Coat Company** play,
+        the Grad Cup intramural competition, and MedProm build camaraderie.
+
+highlight_sources:
+  - label: DocStory interview with a UF MS2
+    url: /interviews/university-of-florida-college-of-medicine/anonymous-ms2/index.html
+  - label: UF Jacksonville Regional Medical Campus
+    url: https://admissions.med.ufl.edu/admission-requirements/new-jacksonville-regional-medical-campus/
+  - label: UF COM Regular Admission Requirements
+    url: https://admissions.med.ufl.edu/admission-requirements/regular-admission-requirements/
+
+quotes:
+  anonymous-ms2: >-
+    "There is a decent balance of academics and life outside of school. Football games/tailgating and
+    sports are a big part of the culture here and there is a good amount of school spirit."
+
+clinical_sites:
+  - {name: UF Health Shands Hospital, role: Gainesville flagship, cms_id: "100113"}
+  - {name: UF Health Shands Children's Hospital}
+  - {name: Malcom Randall VA Medical Center}
+  - {name: UF Health Jacksonville, role: Jacksonville Regional Medical Campus, cms_id: "100001"}
+
+research_badges:
+  - NCI Clinical Cancer Center · University of Florida Health Cancer Institute
+
+applying:
+  - {label: MCAT, value: "Minimum 500 in a single sitting · recent successful applicants above 509"}
+  - {label: GPA, value: No minimum}
+
+cost_of_living:
+  county: Alachua County, FL
+  fips: "12001"
+  median_rent: 1339             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

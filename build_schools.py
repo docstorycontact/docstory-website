@@ -325,7 +325,7 @@ def initials(name):
 
 
 KNOWN_STATS = {
-    'entering_class', 'stats_kind', 'gpa_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
+    'entering_class', 'cohort_label', 'stats_kind', 'gpa_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
     'tuition', 'tuition_in_state', 'tuition_out_of_state', 'cost_year', 'total_cost',
     'total_cost_note', 'women_pct', 'out_of_state_pct', 'class_size', 'founded', 'total_students',
     'applied', 'interviewed', 'admitted', 'acceptance_rate', 'enrolled', 'faculty',
@@ -485,6 +485,7 @@ DASHBOARD_CSS = '''
     .dc-reach-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
     /* Cost of living */
     .dc-rent { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e6e4f2; }
+    .dc-cell-label + .dc-rent { margin-top: 0; padding-top: 0; border-top: 0; }
     .dc-rent-label { font-size: 0.8125rem; color: #4b4f6b; }
     .dc-rent-amt { font-size: 1.125rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; }
     /* Extra band */
@@ -696,7 +697,10 @@ def _selectivity_cell(s):
                 <div class="dc-gpa-meta">{'Undergraduate GPA' if s.get('gpa_kind', kind) == 'reported' else s.get('gpa_kind', kind).capitalize() + ' undergraduate GPA'}</div>
               </div>''') if gpa_rows else ''
 
-    label = 'Selectivity' + (f' · Entering class of {s["entering_class"]}' if s.get('entering_class') else '')
+    if s.get('cohort_label'):
+        label = f'Selectivity · {_esc(s["cohort_label"])}'
+    else:
+        label = 'Selectivity' + (f' · Entering class of {s["entering_class"]}' if s.get('entering_class') else '')
     return _cell(label, f'''            <div>
               <span class="dc-mcat-big">{shown}</span><span class="dc-mcat-unit">{'' if kind == 'reported' else kind + ' '}MCAT</span>
               <div class="dc-good">{good}</div>
@@ -727,15 +731,20 @@ def _cost_cell(s, is_public):
         ])
         diff = outs - ins
         notes.append(f'{_money_k(diff)} more per year for non-residents')
-    else:
+    elif s.get('tuition_in_state'):
+        rows = _cost_row('In-state tuition &amp; fees', s['tuition_in_state'], 100)
+        notes.append('Out-of-state rate not published on the cited page')
+    elif s.get('tuition'):
         rows = _cost_row('Annual tuition', s['tuition'], 100)
         notes.append('Same tuition for all students')
+    else:
+        rows = ''   # rent only: tuition not published on an official page
     if s.get('total_cost'):
         note = f'~${round(s["total_cost"] / 1000)}K est. 4-year cost of attendance'
         if s.get('total_cost_note'):
             note += f' ({_esc(s["total_cost_note"])})'
         notes.append(note)
-    label = 'Cost of Attendance' + (f' · {_esc(s["cost_year"])}' if s.get('cost_year') else '')
+    label = ('Cost of Attendance' if rows else 'Cost of Living') + (f' · {_esc(s["cost_year"])}' if s.get('cost_year') else '')
     rent = ''
     if s.get('col'):
         col = s['col']
@@ -743,7 +752,8 @@ def _cost_cell(s, is_public):
         rent = (f'\n            <div class="dc-rent"><span class="dc-rent-label">Median rent · {_esc(col["county"])}</span>'
                 f'<span class="dc-rent-amt">${col["median_rent"]:,}<span class="dc-cost-per">/mo</span></span></div>'
                 f'\n            <div class="dc-cost-note">{ratio:.1f}× the U.S. median (${US_MEDIAN_RENT:,}) · Census ACS {_esc(col.get("acs_year", ""))}</div>')
-    return _cell(label, rows + f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>' + rent)
+    note_html = f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>' if notes else ''
+    return _cell(label, rows + note_html + rent)
 
 
 def _donut(pct, label, color):
@@ -986,7 +996,7 @@ def render_dashboard(stats, school, extras=''):
     left, right = [], []
     if s.get('mcat'):
         left.append(_selectivity_cell(s))
-    if s.get('tuition') or (s.get('tuition_in_state') and s.get('tuition_out_of_state')):
+    if s.get('tuition') or s.get('tuition_in_state') or s.get('col'):
         left.append(_cost_cell(s, school['public']))
     # Class size alone already shows in the hero line, so the tile needs at least one more figure
     if any(s.get(k) for k in ('women_pct', 'out_of_state_pct', 'total_students')):
@@ -1128,7 +1138,9 @@ def render_page(school_slug, data, interviews, page=None):
 
     sdn_url = 'https://www.studentdoctor.net/schools-database/medical-school/'
 
-    has_dashboard = page and any(stats.get(k) for k in ('mcat', 'tuition', 'tuition_in_state', 'class_size'))
+    has_dashboard = page and (
+        any(stats.get(k) for k in ('mcat', 'tuition', 'tuition_in_state', 'nih_funding', 'faculty', 'beds', 'applied', 'women_pct', 'out_of_state_pct'))
+        or any(page.get(k) for k in ('clinical_sites', 'programs', 'applying', 'outcomes')))
     if page and (has_dashboard or page.get('highlights')):
         # Full page: dashboard, highlights band, then voices on the plain background
         extra_css = DASHBOARD_CSS if has_dashboard else ''

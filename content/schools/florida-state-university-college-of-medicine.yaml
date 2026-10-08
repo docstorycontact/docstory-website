@@ -1,0 +1,107 @@
+# School page data for Florida State University College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Facts from official FSU pages (see `sources`); NIH/trials via fetch_public_data.py. Checked 2026-10-08.
+# FSU publishes no current class profile or dated MD tuition schedule, so those tiles are hidden.
+
+short_name: FSU
+nih_org: FLORIDA STATE UNIVERSITY
+trials_sponsor: Florida State University
+
+stats:
+  class_size: null               # not published for a current class
+
+sources:
+  - label: FSU COM Admission Requirements
+    url: https://med.fsu.edu/mdAdmissions/admissionRequirements
+  - label: FSU COM Educational Program
+    url: https://med.fsu.edu/comaboutus/educational-program
+  - label: FSU COM Community-Based model
+    url: https://med.fsu.edu/home/communityBased
+  - label: FSU Rural Program (Marianna)
+    url: https://med.fsu.edu/marianna/about-campus
+  - label: Census QuickFacts (Leon County, FL)
+    url: https://www.census.gov/quickfacts/fact/table/leoncountyflorida/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        FSU starts early, in the first week of June, with a summer devoted to anatomy: afternoon lectures
+        followed by dissection, and mornings of small groups and physical exam practice with standardized
+        patients. The rest of the first two years moves through organ-system blocks.
+      - >-
+        Students rotate with a community physician in the spring of first year and fall of second year,
+        plus a three-week rotation somewhere in the state; the FSU student interviewed calls clinical
+        skills "a major strength of FSU students."
+
+  - title: Community-Based Training
+    icon: map
+    paragraphs:
+      - >-
+        After two years in Tallahassee, students complete their clinical years at one of FSU's **regional
+        campuses**, including Daytona Beach, Fort Pierce, Orlando, Pensacola, Sarasota, and Tallahassee,
+        learning in more than 90 medical facilities across Florida.
+      - >-
+        Because training is community-based, students almost always work one-on-one with a physician. A
+        **Rural Program** in Marianna offers a longitudinal integrated third year, and students can rotate
+        in Immokalee, a farmworker community on the edge of the Everglades.
+
+  - title: Learning Communities
+    icon: groups
+    paragraphs:
+      - >-
+        Each class is split into groups of 30 assigned to one of four **learning communities**, large
+        shared spaces with a living area, kitchen, and private study rooms, which bond classmates from the
+        first day.
+      - >-
+        The student describes a fantastic support system and a tight-knit class.
+
+  - title: Life in Tallahassee
+    icon: location_city
+    paragraphs:
+      - >-
+        Tallahassee offers nightlife around Collegetown, parks, and the state capitol, where some students
+        have met with legislators about issues they care about.
+      - >-
+        FSU strongly prefers Florida residents and admits very few out-of-state applicants, usually fewer
+        than 10 per class.
+
+highlight_sources:
+  - label: DocStory interview with an FSU MS3
+    url: /interviews/florida-state-university-college-of-medicine/anonymous-ms3/index.html
+  - label: FSU COM Educational Program
+    url: https://med.fsu.edu/comaboutus/educational-program
+  - label: FSU Rural Program (Marianna)
+    url: https://med.fsu.edu/marianna/about-campus
+
+quotes:
+  anonymous-ms3: >-
+    "Fantastic student support system. Tight knit class. Regional campus rotation set-up (because of this,
+    we are almost always rotating with physician one on one and get wayyyy more exposure to things other
+    med students do not)."
+
+clinical_sites:                            # FSU regional campuses (community-based model)
+  - {name: Tallahassee Regional Campus}
+  - {name: Pensacola Regional Campus}
+  - {name: Orlando Regional Campus}
+  - {name: Sarasota Regional Campus}
+  - {name: Daytona Beach Regional Campus}
+  - {name: Fort Pierce Regional Campus}
+  - {name: Rural Program – Marianna, role: Longitudinal integrated clerkship}
+  - {name: Immokalee, role: Rural rotations · health professional shortage area}
+
+programs:
+  tracks:
+    - {name: Rural Program, note: Marianna}
+    - {name: Honors Medical Scholars}
+
+applying:
+  - {label: Minimums, value: "MCAT 500 and GPA 3.5, except in special circumstances"}
+  - {label: Residency, value: Strong preference for Florida residents}
+
+cost_of_living:
+  county: Leon County, FL
+  fips: "12073"
+  median_rent: 1291             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

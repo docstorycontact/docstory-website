@@ -116,9 +116,9 @@ highlight_sources:
 
 quotes:
   abraham-cheloff: >-
-    "The passion of the educators here, both preclinical and clinical, has really struck me. The
-    number of possibilities at HMS truly feels endless, and the faculty support only makes those
-    possibilities even more attainable."
+    "The passion of the educators here, both preclinical and clinical, has really struck me. … The number
+    of possibilities at HMS truly feels endless, and the faculty support only makes those possibilities
+    even more attainable."
 
 # ── Extra dashboard sections (official sources + automatic government data) ──
 trials_sponsor: Harvard Medical School     # ClinicalTrials.gov sponsor name (automatic count)

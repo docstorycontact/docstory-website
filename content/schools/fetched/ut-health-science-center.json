@@ -1,0 +1,79 @@
+{
+  "hospitals": {
+    "440048": {
+      "city": "MEMPHIS",
+      "emergency": true,
+      "name": "BAPTIST MEMORIAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "440049": {
+      "city": "MEMPHIS",
+      "emergency": true,
+      "name": "METHODIST HOSPITALS OF MEMPHIS",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "44013F": {
+      "city": "MEMPHIS",
+      "emergency": true,
+      "name": "MEMPHIS VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 3,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "440152": {
+      "city": "MEMPHIS",
+      "emergency": true,
+      "name": "REGIONAL ONE HEALTH",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "443302": {
+      "city": "MEMPHIS",
+      "emergency": false,
+      "name": "ST JUDE CHILDRENS RESEARCH HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 41968361,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "UNIVERSITY OF TENNESSEE HEALTH SCI CTR",
+    "top_departments": [
+      {
+        "amount": 7886106,
+        "dept": "Genetics"
+      },
+      {
+        "amount": 7229614,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 5448349,
+        "dept": "Physiology"
+      }
+    ],
+    "trend": {
+      "2021": 47773871,
+      "2022": 53299319,
+      "2023": 45774769,
+      "2024": 36336964,
+      "2025": 41968361
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 0,
+    "sponsor": "University of Tennessee Health Science Center"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "hospitals": {
+    "450054": {
+      "city": "TEMPLE",
+      "emergency": true,
+      "name": "BAYLOR SCOTT & WHITE MEDICAL CENTER - TEMPLE",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "450193": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "Baylor St Lukes Medical Center",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "450289": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "HARRIS HEALTH",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "45074F": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "HOUSTON VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 5,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "453304": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "TEXAS CHILDRENS HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 309050319,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "BAYLOR COLLEGE OF MEDICINE",
+    "top_departments": [
+      {
+        "amount": 74580194,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 59640922,
+        "dept": "Pediatrics"
+      },
+      {
+        "amount": 52867218,
+        "dept": "Genetics"
+      }
+    ],
+    "trend": {
+      "2021": 352978412,
+      "2022": 352816296,
+      "2023": 324306391,
+      "2024": 326771269,
+      "2025": 309050319
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 154,
+    "sponsor": "Baylor College of Medicine"
+  }
+}

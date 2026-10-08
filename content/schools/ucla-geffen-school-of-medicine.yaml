@@ -1,0 +1,116 @@
+# School page data for David Geffen School of Medicine at UCLA.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UCLA pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# UCLA points applicants to the AAMC MSAR for class statistics and publishes no class profile, so
+# selectivity tiles are hidden.
+
+short_name: UCLA
+nih_org: UNIVERSITY OF CALIFORNIA LOS ANGELES
+trials_sponsor: University of California, Los Angeles
+
+stats:
+  class_size: null               # not published
+  tuition_in_state: 54715        # 2026–27 estimated MS1 tuition & fees, UCLA DGSOM
+  tuition_out_of_state: 66960    # + $12,245 nonresident supplemental tuition
+  cost_year: 2026–27
+
+sources:
+  - label: How Much Does Medical School Cost? (UCLA DGSOM)
+    url: https://medschool.ucla.edu/education/md-education/financial-aid-scholarships/how-much-is-medical-school
+  - label: UCLA DGSOM Preparing to Apply
+    url: https://medschool.ucla.edu/education/md-education/admissions/preparing-to-apply
+  - label: UCLA DGSOM Review Process (interviews)
+    url: https://medschool.ucla.edu/education/md-education/admissions/review-process
+  - label: UCLA Internal Medicine clinical sites
+    url: https://www.uclahealth.org/departments/medicine/internal-medicine/im-residency/programs-sites/clinical-sites-our-patients
+  - label: UCLA Psychiatry medical student education
+    url: https://education.semel.ucla.edu/medical-undergraduate-education/medical-students/
+  - label: PRIME-LA program FAQ
+    url: https://medschool.ucla.edu/education/md-education/degrees-programs/prime-la/program-faq
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Los Angeles County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/losangelescountycalifornia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Tim Ellis-Caleo describes a preclinical curriculum organized in organ-system blocks: about two hours
+        of lecture a day plus afternoon sessions three days a week. Third year brings traditional core
+        clerkships in medicine, family medicine, pediatrics, psychiatry, neurology, OB/GYN, and surgery.
+      - >-
+        UCLA doesn't require specific prerequisite courses; applicants show mastery of competency areas
+        across their academic history instead.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Tim calls clinical training UCLA's real strength: excellent residents and faculty across varied
+        sites who hand students real responsibility. Students rotate through **Ronald Reagan UCLA Medical
+        Center**, Santa Monica–UCLA, **Harbor-UCLA**, **Olive View–UCLA**, and the West Los Angeles VA.
+      - >-
+        The county hospitals at Harbor and Olive View add safety-net experience to UCLA's academic
+        flagship.
+
+  - title: Culture
+    icon: groups
+    paragraphs:
+      - >-
+        The class is large, with diverse interests. Tim describes a supportive, friendly culture that also
+        lets students keep some distance from day-to-day school life if they prefer.
+      - >-
+        Students see classmates most in the first two years; during clinical years, mostly in passing at
+        the hospital.
+
+  - title: Admissions
+    icon: how_to_reg
+    paragraphs:
+      - >-
+        UCLA weighs the undergraduate record, MCAT, letters, life experiences, and interviews, and requires
+        AAMC PREview scores for traditional MD track applicants. Interviews are virtual for the 2026–2027
+        cycle.
+      - >-
+        Tim's advice: pursue non-medical interests before medical school, because it can be all-consuming.
+
+highlight_sources:
+  - label: DocStory interview with Tim Ellis-Caleo
+    url: /interviews/ucla-geffen-school-of-medicine/tim-ellis-caleo/index.html
+  - label: UCLA DGSOM Preparing to Apply
+    url: https://medschool.ucla.edu/education/md-education/admissions/preparing-to-apply
+  - label: UCLA Psychiatry medical student education
+    url: https://education.semel.ucla.edu/medical-undergraduate-education/medical-students/
+
+quotes:
+  tim-ellis-caleo: >-
+    "The real strength of UCLA lies in the excellent clinical training across a variety of sites. Being
+    exposed to strong residents and faculty who will delegate significant responsibility to you as a
+    medical student is the best way to maximize your learning during third year."
+
+clinical_sites:
+  - {name: Ronald Reagan UCLA Medical Center, cms_id: "050262"}
+  - {name: Santa Monica–UCLA Medical Center, cms_id: "050112"}
+  - {name: Harbor-UCLA Medical Center, role: LA County teaching hospital, cms_id: "050376"}
+  - {name: Olive View–UCLA Medical Center, role: LA County teaching hospital, cms_id: "050040"}
+  - {name: West Los Angeles VA Medical Center, role: VA Greater Los Angeles, cms_id: "05128F"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Jonsson Comprehensive Cancer Center
+
+programs:
+  tracks:
+    - {name: PRIME-LA}
+    - {name: UCLA-Caltech MSTP, note: MD-PhD}
+
+applying:
+  - {label: Interviews, value: Virtual for the 2026–2027 cycle}
+  - {label: Required, value: AAMC PREview (traditional MD track)}
+  - {label: Prerequisites, value: Competency-based · no specific courses required}
+
+cost_of_living:
+  county: Los Angeles County, CA
+  fips: "06037"
+  median_rent: 1954             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

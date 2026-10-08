@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "100001": {
+      "city": "JACKSONVILLE",
+      "emergency": true,
+      "name": "SHANDS JACKSONVILLE",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "100113": {
+      "city": "GAINESVILLE",
+      "emergency": true,
+      "name": "UF HEALTH SHANDS HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 171148301,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "UNIVERSITY OF FLORIDA",
+    "top_departments": [
+      {
+        "amount": 34886376,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 24756825,
+        "dept": "Neurosciences"
+      },
+      {
+        "amount": 22619410,
+        "dept": "Neurosurgery"
+      }
+    ],
+    "trend": {
+      "2021": 131623447,
+      "2022": 156867459,
+      "2023": 168352292,
+      "2024": 160578602,
+      "2025": 171148301
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 196,
+    "sponsor": "University of Florida"
+  }
+}
