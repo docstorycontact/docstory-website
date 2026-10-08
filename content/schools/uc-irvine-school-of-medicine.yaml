@@ -41,6 +41,14 @@ sources:
     url: https://www.ofas.uci.edu/professional-students/school-of-medicine/index.php
   - label: UCI training sites
     url: https://medschool.uci.edu/education/medical-education/graduate-medical-education/training-programs/training-sites
+  - label: UCI Application Criteria & Process
+    url: https://medschool.uci.edu/education/medical-education/medical-degree-program/admissions/application-criteria
+  - label: UCI Dual Degree Programs
+    url: https://medschool.uci.edu/education/medical-education/dual-degree-programs/dual-degree-mdmba
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Orange County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/orangecountycalifornia/HSG860224
 
 highlights:
   - title: Curriculum
@@ -122,3 +130,38 @@ quotes:
     "Each year, around 30–40 med students spend the summer between 1st and 2nd year teaching
     ultrasound internationally." Steven taught at the University of Basel in Switzerland the summer
     of 2018.
+
+# ── Extra dashboard sections (official sources + automatic government data) ──
+trials_sponsor: University of California, Irvine
+
+clinical_sites:                            # UCI training sites page; cms_id → Medicare data
+  - {name: UCI Medical Center, role: Principal teaching hospital · Level I trauma, cms_id: "050348"}
+  - {name: UCI Health – Irvine, role: Academic hospital · 144 beds}
+  - {name: Children's Hospital of Orange County, cms_id: "053304"}
+  - {name: MemorialCare Long Beach Medical Center, role: Community hospital · trauma center, cms_id: "050485"}
+  - {name: Miller Children's & Women's Hospital Long Beach, cms_id: "053309"}
+  - {name: VA Long Beach Healthcare System, cms_id: "05027F"}
+  - {name: Children's Hospital Los Angeles, cms_id: "053302"}
+  - {name: UCI Family Health Center – Santa Ana, role: Federally qualified health center}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Chao Family Comprehensive Cancer Center
+
+programs:
+  tracks:
+    - {name: PRIME-LC, note: Latino community health}
+    - {name: PRIME LEAD-ABC, note: "Black, African & Caribbean community health"}
+    - {name: HEAL-IM, note: integrative medicine}
+  dual_degrees: [MD/PhD (MSTP), MD/MBA, MD/MPH, MD/MS via mission-based programs]
+
+applying:
+  - {label: Interviews, value: Faculty and student interviewers · Sept–April}
+  - {label: Pre-interview, value: Kira Talent video assessment}
+  - {label: Secondary fee, value: "$120"}
+  - {label: DACA, value: Eligible with an Employment Authorization Document}
+
+cost_of_living:
+  county: Orange County, CA
+  fips: "06059"
+  median_rent: 2434             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -1,9 +1,111 @@
 {
+  "hospitals": {
+    "220002": {
+      "city": "CAMBRIDGE",
+      "emergency": true,
+      "name": "MOUNT AUBURN HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "220011": {
+      "city": "CAMBRIDGE",
+      "emergency": true,
+      "name": "CAMBRIDGE HEALTH ALLIANCE",
+      "ownership": "Government - Local",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "220071": {
+      "city": "BOSTON",
+      "emergency": true,
+      "name": "MASSACHUSETTS GENERAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "220075": {
+      "city": "BOSTON",
+      "emergency": true,
+      "name": "MASSACHUSETTS EYE AND EAR INFIRMARY -",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Acute Care Hospitals"
+    },
+    "220086": {
+      "city": "BOSTON",
+      "emergency": true,
+      "name": "BETH ISRAEL DEACONESS MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "22010F": {
+      "city": "JAMAICA PLAIN",
+      "emergency": true,
+      "name": "VA BOSTON HEALTHCARE SYSTEM - JAMAICA PLAIN",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "220110": {
+      "city": "BOSTON",
+      "emergency": true,
+      "name": "BRIGHAM AND WOMEN'S HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "223302": {
+      "city": "BOSTON",
+      "emergency": true,
+      "name": "BOSTON CHILDREN'S HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "224007": {
+      "city": "BELMONT",
+      "emergency": false,
+      "name": "MCLEAN HOSPITAL CORPORATION",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Psychiatric"
+    },
+    "fetched": "2026-10-08"
+  },
   "nih": {
     "amount": 137978736,
+    "ctsa": true,
     "fetched": "2026-10-08",
     "fiscal_year": 2025,
+    "mstp": true,
     "org_name": "HARVARD MEDICAL SCHOOL",
-    "projects": 274
+    "top_departments": [
+      {
+        "amount": 29044655,
+        "dept": "Biology"
+      },
+      {
+        "amount": 17984549,
+        "dept": "Microbiology / Immun / Virology"
+      },
+      {
+        "amount": 17645841,
+        "dept": "Internal Medicine / Medicine"
+      }
+    ],
+    "trend": {
+      "2021": 174171331,
+      "2022": 171072585,
+      "2023": 167908888,
+      "2024": 164191045,
+      "2025": 137978736
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 18,
+    "sponsor": "Harvard Medical School"
   }
 }

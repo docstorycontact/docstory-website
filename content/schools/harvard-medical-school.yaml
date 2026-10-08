@@ -34,6 +34,16 @@ sources:
     url: https://hms.harvard.edu/education-admissions/md-program/cost-aid/cost-attendance
   - label: HMS Facts & Figures
     url: https://hms.harvard.edu/about-hms/facts-figures
+  - label: HMS Review & Selection (interviews)
+    url: https://hms.harvard.edu/education-admissions/md-program/admissions/review-selection
+  - label: HMS Dual Degrees
+    url: https://hms.harvard.edu/education-admissions/md-program/dual-degrees
+  - label: HMS Affiliated Hospitals
+    url: https://hms.harvard.edu/about-hms/affiliated-hospitals-research-institutes
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Suffolk County, MA)
+    url: https://www.census.gov/quickfacts/fact/table/suffolkcountymassachusetts/HSG860224
 
 highlights:
   - title: Curriculum
@@ -109,3 +119,49 @@ quotes:
     "The passion of the educators here, both preclinical and clinical, has really struck me. The
     number of possibilities at HMS truly feels endless, and the faculty support only makes those
     possibilities even more attainable."
+
+# ── Extra dashboard sections (official sources + automatic government data) ──
+trials_sponsor: Harvard Medical School     # ClinicalTrials.gov sponsor name (automatic count)
+trials_label: led by HMS itself; affiliated hospitals run many more
+
+clinical_sites:                            # HMS Affiliated Hospitals page; cms_id → Medicare data
+  - {name: Massachusetts General Hospital, cms_id: "220071"}
+  - {name: Brigham and Women's Hospital, cms_id: "220110"}
+  - {name: Boston Children's Hospital, cms_id: "223302"}
+  - {name: Beth Israel Deaconess Medical Center, cms_id: "220086"}
+  - {name: Dana-Farber Cancer Institute, role: Cancer hospital and research institute}
+  - {name: Cambridge Health Alliance, cms_id: "220011"}
+  - {name: Mount Auburn Hospital, cms_id: "220002"}
+  - {name: Massachusetts Eye and Ear, cms_id: "220075"}
+  - {name: McLean Hospital, cms_id: "224007"}
+  - {name: VA Boston Healthcare System, cms_id: "22010F"}
+  - {name: Spaulding Rehabilitation Hospital}
+  - {name: Hebrew SeniorLife}
+  - {name: Joslin Diabetes Center}
+  - {name: Baker Center for Children and Families}
+  - {name: Harvard Pilgrim Health Care Institute}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Dana-Farber/Harvard Cancer Center
+
+programs:
+  tracks:
+    - {name: Pathways, note: main MD track}
+    - {name: HST, note: "with MIT, for future physician-scientists"}
+  dual_degrees: [MD-PhD (Harvard/MIT), MD-MBA, MD-MPH, MD-MPP, MD + HMS master's]
+
+applying:
+  - {label: Interviews, value: "Virtual · two 30–45 min interviews (faculty, or faculty + student)"}
+  - {label: MD-PhD, value: Separate interview day incl. faculty director}
+
+outcomes:
+  avg_scholarship: 65442        # 2025–26, HMS Facts & Figures
+  aid_pct: 71                   # 2025–26, excl. MD-PhD
+  avg_debt: 119656              # Class of 2025 graduates with loans
+  avg_debt_note: "national avg ~$191K public / ~$199K private"
+
+cost_of_living:
+  county: Suffolk County, MA
+  fips: "25025"
+  median_rent: 2129             # Census ACS 2020–2024 via QuickFacts (automatic once CENSUS_API_KEY is set)
+  acs_year: 2020–2024
