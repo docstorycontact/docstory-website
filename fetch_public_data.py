@@ -12,7 +12,8 @@ Every source here is U.S. government data (public domain), so nothing needs a li
   • Census ACS          api.census.gov          — county median gross rent
                                                    (needs a free key in CENSUS_API_KEY)
 
-For each content/schools/<slug>.yaml it reads `nih_org`, `trials_sponsor`, `clinical_sites[].cms_id`
+For each content/schools/<slug>.yaml it reads `nih_org` (+ optional `nih_org_type`, default
+SCHOOLS OF MEDICINE — e.g. Mayo files as "Other Domestic Non-Profits"), `trials_sponsor`, `clinical_sites[].cms_id`
 and `cost_of_living.fips`, then writes content/schools/fetched/<slug>.json for build_schools.py.
 A source that fails keeps its previous values. Run from the project root:
     python3 fetch_public_data.py [slug ...]
@@ -20,6 +21,7 @@ A source that fails keeps its previous values. Run from the project root:
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -72,21 +74,22 @@ def nih_projects(org_name, fiscal_year):
             return results
 
 
-def fetch_nih(org_name):
+def fetch_nih(org_name, org_type=ORG_TYPE):
     latest = latest_complete_fiscal_year()
     trend, depts, flags = {}, Counter(), set()
     for fy in range(latest - TREND_YEARS + 1, latest + 1):
         projects = nih_projects(org_name, fy)
-        med = [p for p in projects if (p.get('organization_type') or {}).get('name') == ORG_TYPE]
+        med = [p for p in projects if (p.get('organization_type') or {}).get('name') == org_type]
         trend[str(fy)] = sum(p.get('award_amount') or 0 for p in med)
         if fy == latest:
             for p in med:
                 depts[(p.get('organization') or {}).get('dept_type') or 'Other'] += p.get('award_amount') or 0
             for p in projects:   # training/hub awards may sit outside the medical-school unit
                 title, code = (p.get('project_title') or '').upper(), p.get('activity_code')
-                if code == 'T32' and 'MEDICAL SCIENTIST' in title:
+                if code == 'T32' and (any(k in title for k in ('MEDICAL SCIENTIST', 'MD-PHD', 'MD/PHD', 'M.D./PH.D', 'MSTP'))
+                                      or re.search(r'\bMST\b', title)):
                     flags.add('mstp')
-                if code in ('UL1', 'UM1') and 'CLINICAL' in title and 'TRANSLATIONAL' in title:
+                if code in ('UL1', 'UM1') and ('CTSA' in title or ('CLINICAL' in title and 'TRANSLATIONAL' in title)):
                     flags.add('ctsa')
     top = [{'dept': d.title().replace('/', ' / '), 'amount': a} for d, a in depts.most_common(3) if d != 'Other']
     return {'org_name': org_name, 'fiscal_year': latest, 'amount': trend[str(latest)],
@@ -148,7 +151,7 @@ def main():
 
         jobs = []
         if page.get('nih_org'):
-            jobs.append(('nih', lambda: fetch_nih(page['nih_org'])))
+            jobs.append(('nih', lambda: fetch_nih(page['nih_org'], page.get('nih_org_type', ORG_TYPE))))
         if page.get('trials_sponsor'):
             jobs.append(('trials', lambda: fetch_trials(page['trials_sponsor'])))
         sites = [s['cms_id'] for s in page.get('clinical_sites') or [] if s.get('cms_id')]

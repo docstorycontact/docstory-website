@@ -1,0 +1,108 @@
+# School page data for UC San Diego School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UC San Diego pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UC San Diego
+nih_org: UNIVERSITY OF CALIFORNIA, SAN DIEGO
+trials_sponsor: University of California, San Diego
+
+stats:
+  entering_class: 2026
+  stats_kind: average
+  profile_url: https://medschool.ucsd.edu/education/md-combined/admissions/by-the-numbers.html
+  mcat: 514.6                    # By the Numbers, incoming class 2026
+  gpa_science: 3.82
+  gpa_overall: 3.86
+  applied: 10,874
+  interviewed: 973
+  enrolled: 140
+  class_size: 140
+  tuition_in_state: 47630        # 2026–27 MS1 tuition & fees, UCSD SOM budgets
+  tuition_out_of_state: 59875    # + $12,245 nonresident supplemental tuition
+  cost_year: 2026–27
+
+sources:
+  - label: UCSD SOM By the Numbers
+    url: https://medschool.ucsd.edu/education/md-combined/admissions/by-the-numbers.html
+  - label: UCSD SOM Budgets 2026–27
+    url: https://medschool.ucsd.edu/education/md-combined/financial-aid/fees/som.html
+  - label: UCSD Clinical Training Sites
+    url: https://medschool.ucsd.edu/education/training-facilities/clinical-sites.html
+  - label: UCSD School of Medicine catalog
+    url: https://catalog.ucsd.edu/graduate/graduate-professional-schools/school-of-medicine/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (San Diego County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/sandiegocountycalifornia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        UC San Diego integrates clinical medicine and medical science through all four years. Neela
+        watches the optional 8am lectures by videocast and spends required time in small groups of 8–10:
+        problem-based learning and **Practice of Medicine**, where a physician facilitator teaches exam
+        skills.
+      - >-
+        Clinical practice starts early: practice exam sessions (GOSCEs) with remarkably convincing
+        standardized patients,
+        and a weekly pairing with a practicing physician somewhere in San Diego.
+
+  - title: Student-Run Free Clinic
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        UCSD's **Student-Run Free Clinic** is part of the school's outpatient training, and Neela says
+        nearly every student gets to take part. Neela helps manage its neurology and psychiatry clinics
+        and calls it the most fulfilling part of medical school so far.
+      - >-
+        Neela's advice to admitted students: tour the clinic at Second Look.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Two primary hospitals anchor training: **UC San Diego Medical Center, Hillcrest**, a 390-bed
+        facility with the region's first Level 1 trauma center, and **Jacobs Medical Center**, a 364-bed
+        advanced medical center in La Jolla.
+      - >-
+        Students also train at Rady Children's Hospital and the VA San Diego Healthcare System beside the
+        La Jolla campus, as well as community clinics and private practices around the county.
+
+  - title: Life in San Diego
+    icon: beach_access
+    paragraphs:
+      - >-
+        Happiness was Neela's deciding factor, and UCSD's first-years struck Neela as "WAY happier than I
+        thought possible at a medical school": surfing, breweries, game nights, and Padres games.
+      - >-
+        Neela can't name a single thing to dislike about San Diego; when stress hits, there's Dog Beach.
+
+highlight_sources:
+  - label: DocStory interview with Neela
+    url: /interviews/uc-san-diego-school-of-medicine/neela/index.html
+  - label: UCSD Clinical Training Sites
+    url: https://medschool.ucsd.edu/education/training-facilities/clinical-sites.html
+  - label: UCSD School of Medicine catalog
+    url: https://catalog.ucsd.edu/graduate/graduate-professional-schools/school-of-medicine/
+
+quotes:
+  neela: >-
+    "What really struck me at UCSD was that the first years seemed really, really happy–WAY happier than I
+    thought possible at a medical school."
+
+clinical_sites:
+  - {name: UC San Diego Medical Center, Hillcrest, role: 390 beds · region's first Level 1 trauma center, cms_id: "050025"}
+  - {name: Jacobs Medical Center, role: 364-bed advanced medical center · La Jolla}
+  - {name: Rady Children's Hospital, cms_id: "053303"}
+  - {name: VA San Diego Healthcare System, role: Adjacent to the La Jolla campus, cms_id: "05114F"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Moores Comprehensive Cancer Center
+
+cost_of_living:
+  county: San Diego County, CA
+  fips: "06073"
+  median_rent: 2246             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

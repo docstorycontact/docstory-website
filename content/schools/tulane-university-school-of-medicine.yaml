@@ -1,0 +1,106 @@
+# School page data for Tulane University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Tulane pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Tulane
+nih_org: TULANE UNIVERSITY OF LOUISIANA
+trials_sponsor: Tulane University
+
+stats:
+  entering_class: 2026           # Class of 2030
+  stats_kind: average
+  profile_url: https://medicine.tulane.edu/news/welcoming-tulane-school-medicine-class-2030
+  mcat: 509.9                    # Welcoming the Class of 2030
+  gpa_overall: 3.71
+  applied: 15,877                # AMCAS applications
+  enrolled: 190
+  class_size: 190
+  tuition: 77132                 # 2026–27, Tulane financial aid MD cost of attendance
+  cost_year: 2026–27
+
+sources:
+  - label: Welcoming the Tulane SOM Class of 2030
+    url: https://medicine.tulane.edu/news/welcoming-tulane-school-medicine-class-2030
+  - label: Tulane MD Cost of Attendance 2026–27
+    url: https://financialaid.tulane.edu/sites/default/files/2026-04/COA2627GradMD%201.pdf
+  - label: Tulane MD Admissions FAQs
+    url: https://medicine.tulane.edu/admissions/md/faqs
+  - label: Tulane Surgery training locations
+    url: https://medicine.tulane.edu/surgery/general-residency/training-locations
+  - label: Census QuickFacts (Orleans Parish, LA)
+    url: https://www.census.gov/quickfacts/fact/table/orleansparishlouisiana/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        David describes three to four lectures a day that most classmates watch from home, with
+        professors who answer email quickly and care about each student's progress, a contrast with a
+        cutthroat undergraduate experience.
+      - >-
+        Clinical skills run alongside: standardized patients each month matched to the organ system being
+        studied, a simulation center for suturing and drug effects on robotic patients, assigned
+        preceptors through the first two years, and student-run clinics for hands-on exams.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Tulane's teaching hospitals cluster downtown: **University Medical Center New Orleans**, which
+        opened in 2015 to replace Charity Hospital and is the region's only Level 1 trauma center;
+        **Tulane Medical Center**, connected to the school by a skybridge; and the **Southeast Louisiana
+        Veterans Health Care System**, opened in 2016.
+      - >-
+        Tulane says it has no minimum GPA or MCAT threshold for a secondary application or interview,
+        and uses each applicant's highest overall MCAT score.
+
+  - title: Community
+    icon: groups
+    paragraphs:
+      - >-
+        Ask Tulane students their favorite part of school, David says, and most will name their
+        classmates: a class selected for very different upbringings, experiences, and interests.
+      - >-
+        That mix fuels programming across the city, from community clinic volunteering to fundraising
+        concerts. David counts community involvement, class diversity, and the match list as Tulane's
+        top strengths.
+
+  - title: Life in New Orleans
+    icon: celebration
+    paragraphs:
+      - >-
+        There's always something happening: food and music festivals, concerts, sports, parks, and an
+        endless restaurant scene David tries to work through every weekend.
+      - >-
+        The downsides are real: limited public transit (a car helps), potholed roads, and visible poverty
+        in a city without the budget to fix its infrastructure.
+
+highlight_sources:
+  - label: DocStory interview with David
+    url: /interviews/tulane-university-school-of-medicine/david/index.html
+  - label: Tulane Surgery training locations
+    url: https://medicine.tulane.edu/surgery/general-residency/training-locations
+  - label: Tulane MD Admissions FAQs
+    url: https://medicine.tulane.edu/admissions/md/faqs
+
+quotes:
+  david: >-
+    "Many students in my class will tell you that their favorite aspect of TUSOM is the people in our
+    class. Tulane has a way of selecting students that have very different and unique upbringings,
+    experiences, and interests."
+
+clinical_sites:
+  - {name: University Medical Center New Orleans, role: Region's only Level 1 trauma center, cms_id: "190005"}
+  - {name: Tulane Medical Center, role: Connected to the school by skybridge}
+  - {name: Southeast Louisiana Veterans Health Care System, cms_id: "19047F"}
+
+applying:
+  - {label: Thresholds, value: No minimum GPA or MCAT for a secondary or interview}
+  - {label: MCAT, value: Highest overall score is used}
+
+cost_of_living:
+  county: Orleans Parish, LA
+  fips: "22071"
+  median_rent: 1251             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "070007": {
+      "city": "NEW LONDON",
+      "emergency": true,
+      "name": "LAWRENCE & MEMORIAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "070010": {
+      "city": "BRIDGEPORT",
+      "emergency": true,
+      "name": "BRIDGEPORT HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "070018": {
+      "city": "GREENWICH",
+      "emergency": true,
+      "name": "GREENWICH HOSPITAL ASSOCIATION -",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "070022": {
+      "city": "NEW HAVEN",
+      "emergency": true,
+      "name": "YALE-NEW HAVEN HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 583794751,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "YALE UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 150551091,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 102087068,
+        "dept": "Psychiatry"
+      },
+      {
+        "amount": 44095905,
+        "dept": "Radiation-Diagnostic / Oncology"
+      }
+    ],
+    "trend": {
+      "2021": 517673549,
+      "2022": 553806250,
+      "2023": 585272704,
+      "2024": 624130890,
+      "2025": 583794751
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 287,
+    "sponsor": "Yale University"
+  }
+}

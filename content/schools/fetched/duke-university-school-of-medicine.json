@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "340030": {
+      "city": "DURHAM",
+      "emergency": true,
+      "name": "DUKE UNIVERSITY HOSPITAL",
+      "ownership": "Proprietary",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "340129": {
+      "city": "MOORESVILLE",
+      "emergency": true,
+      "name": "DUKE HEALTH LAKE NORMAN HOSPITAL",
+      "ownership": "Proprietary",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "340155": {
+      "city": "DURHAM",
+      "emergency": true,
+      "name": "DUKE REGIONAL HOSPITAL",
+      "ownership": "Government - Local",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 524957255,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "DUKE UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 155396966,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 55199723,
+        "dept": "Pediatrics"
+      },
+      {
+        "amount": 47007478,
+        "dept": "Surgery"
+      }
+    ],
+    "trend": {
+      "2021": 607374914,
+      "2022": 552960481,
+      "2023": 562843967,
+      "2024": 480312237,
+      "2025": 524957255
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 281,
+    "sponsor": "Duke University"
+  }
+}

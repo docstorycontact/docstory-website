@@ -325,7 +325,7 @@ def initials(name):
 
 
 KNOWN_STATS = {
-    'entering_class', 'stats_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
+    'entering_class', 'stats_kind', 'gpa_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
     'tuition', 'tuition_in_state', 'tuition_out_of_state', 'cost_year', 'total_cost',
     'total_cost_note', 'women_pct', 'out_of_state_pct', 'class_size', 'founded', 'total_students',
     'applied', 'interviewed', 'admitted', 'acceptance_rate', 'enrolled', 'faculty',
@@ -691,7 +691,7 @@ def _selectivity_cell(s):
                 </div>'''
     gpa = (f'''
               <div class="dc-gpa-wrap">{gpa_rows}
-                <div class="dc-gpa-meta">{kind.capitalize()} undergraduate GPA</div>
+                <div class="dc-gpa-meta">{s.get('gpa_kind', kind).capitalize()} undergraduate GPA</div>
               </div>''') if gpa_rows else ''
 
     label = 'Selectivity' + (f' · Entering class of {s["entering_class"]}' if s.get('entering_class') else '')
@@ -933,10 +933,14 @@ def _outcomes_cell(o):
         stats.append((f'${o["avg_scholarship"]:,}', 'Avg. scholarship'))
     if o.get('aid_pct'):
         stats.append((f'{o["aid_pct"]}%', 'Receive financial aid'))
+    if o.get('scholarship_pct'):
+        stats.append((f'{o["scholarship_pct"]}%', 'Receive a scholarship'))
     body = '            <div class="dc-out">' + ''.join(
         f'<div class="dc-reach-stat"><h4>{v}</h4><p>{label}</p></div>' for v, label in stats) + '</div>'
     if o.get('avg_debt_note'):
         body += f'\n            <p class="dc-foot">Debt comparison: {_esc(o["avg_debt_note"])}</p>'
+    if o.get('note'):
+        body += f'\n            <p class="dc-foot">{_esc(o["note"])}</p>'
     return _cell('Outcomes', body)
 
 

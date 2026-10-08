@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "14003F": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "JESSE BROWN VA MEDICAL CENTER - VA CHICAGO HEALTHCARE SYSTEM",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "140124": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "JOHN H STROGER JR HOSPITAL",
+      "ownership": "Government - Local",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "140281": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "NORTHWESTERN MEMORIAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "143300": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "ANN & ROBERT H LURIE CHILDRENS HOSPITAL OF CHICAGO",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 389092160,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "NORTHWESTERN UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 118230595,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 57525498,
+        "dept": "Public Health & Prev Medicine"
+      },
+      {
+        "amount": 32321428,
+        "dept": "Neurology"
+      }
+    ],
+    "trend": {
+      "2021": 353448589,
+      "2022": 388641850,
+      "2023": 406730309,
+      "2024": 422399595,
+      "2025": 389092160
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 213,
+    "sponsor": "Northwestern University"
+  }
+}

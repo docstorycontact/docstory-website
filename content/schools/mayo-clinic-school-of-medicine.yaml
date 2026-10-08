@@ -1,0 +1,125 @@
+# School page data for Mayo Clinic Alix School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Mayo pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Mayo Clinic
+nih_org: MAYO CLINIC ROCHESTER
+nih_org_type: Other Domestic Non-Profits   # Mayo files NIH awards as a non-profit, not a school of medicine
+trials_sponsor: Mayo Clinic
+
+stats:
+  entering_class: 2026
+  stats_kind: median
+  profile_url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/how-to-apply/class-profile/
+  mcat: 521                      # Mayo class profile, 2026 first-year class
+  gpa_overall: 3.97
+  applied: 6,061
+  admitted: 215                  # offered acceptance to either program
+  acceptance_rate: 3.5%
+  enrolled: 105                  # 50 Arizona + 55 Minnesota
+  class_size: 105
+  tuition: 70280                 # 2026–27, Mayo tuition and aid
+  cost_year: 2026–27
+  nih_label: NIH awards to Mayo Clinic Rochester · FY{year}
+
+sources:
+  - label: Mayo Clinic Alix SOM Class Profile
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/how-to-apply/class-profile/
+  - label: Mayo MD Tuition and Aid
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/tuition-and-aid/
+  - label: Mayo Financial Support
+    url: https://college.mayo.edu/mcasom-financial-aid/financial-support/
+  - label: Mayo MD Curriculum
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/curriculum/
+  - label: Mayo Training Locations
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/choosing-mayo-clinic/training-locations/
+  - label: Mayo MD Prerequisites
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/how-to-apply/prerequisites-and-requirements/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Olmsted County, MN)
+    url: https://www.census.gov/quickfacts/fact/table/olmstedcountyminnesota/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Mayo's MD runs in three phases: an 18-month **pre-clerkship**, an 18-month clerkship phase that
+        begins midway through second year, and a final year of advanced work, with up to 17 weeks of
+        enrichment each year. Every graduate also earns a **certificate in the science of health care
+        delivery**.
+      - >-
+        Arya Shah describes being treated as an adult learner: taped lectures, syllabus documents, and
+        attendance that isn't always mandatory, with the emphasis on synthesizing information rather than
+        memorizing it.
+
+  - title: Three Campuses
+    icon: map
+    paragraphs:
+      - >-
+        Students train on Mayo Clinic campuses in **Rochester, Minnesota**, and **Phoenix/Scottsdale,
+        Arizona**, each with a four-year MD program, and some finish their final years at the
+        **Jacksonville, Florida** campus.
+      - >-
+        The 2026 first-year class split 55 students in Rochester and 50 in Arizona, with 12 headed to
+        Florida for their clinical training.
+
+  - title: Small by Design
+    icon: groups
+    paragraphs:
+      - >-
+        Arya's class had 40–50 students, and Arya knows not only every classmate but every faculty member,
+        administrator, mentor, and preceptor by name, "a tight knit community in a small town that revolves
+        around its large academic medical center."
+      - >-
+        Mentors shaped Arya's path into psychiatry, not by persuasion but by example: physicians who were
+        very different people yet all remarkable at connecting with patients.
+
+  - title: Affordability
+    icon: savings
+    paragraphs:
+      - >-
+        Mayo reviews every accepted student for scholarships and reports that **94% of students** receive
+        one; the average award for the class entering in 2024 was about $40,000, and awards hold steady
+        across four years with satisfactory progress.
+      - >-
+        Arya's best lesson from medical school: food, exercise, sleep, and hobbies matter as much for exams
+        as studying does.
+
+highlight_sources:
+  - label: DocStory interview with Arya Shah
+    url: /interviews/mayo-clinic-school-of-medicine/arya-shah/index.html
+  - label: Mayo MD Curriculum
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/md-program/curriculum/
+  - label: Mayo Training Locations
+    url: https://college.mayo.edu/academics/mayo-clinic-alix-school-of-medicine/choosing-mayo-clinic/training-locations/
+  - label: Mayo Financial Support
+    url: https://college.mayo.edu/mcasom-financial-aid/financial-support/
+
+quotes:
+  arya-shah: >-
+    "The small size has been great. I feel like I'm in a community in which I know, not only all of my
+    classmates, but also all of my faculty, administrators, mentors, and preceptors by name."
+
+clinical_sites:
+  - {name: Mayo Clinic Hospital Rochester, role: Rochester · Minnesota campus, cms_id: "240010"}
+  - {name: Mayo Clinic Hospital, Phoenix, role: Phoenix/Scottsdale · Arizona campus, cms_id: "030103"}
+  - {name: Mayo Clinic, Jacksonville, role: Florida campus · clinical years, cms_id: "100151"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Mayo Clinic Cancer Center
+
+applying:
+  - {label: MCAT, value: "Minimum 510, taken within three years"}
+
+outcomes:
+  scholarship_pct: 94
+  avg_scholarship: 40000
+  note: Average scholarship is for the class entering in 2024.
+
+cost_of_living:
+  county: Olmsted County, MN
+  fips: "27109"
+  median_rent: 1370             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

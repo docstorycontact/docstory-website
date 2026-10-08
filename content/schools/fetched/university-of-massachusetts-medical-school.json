@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "220077": {
+      "city": "SPRINGFIELD",
+      "emergency": true,
+      "name": "BAYSTATE MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "220163": {
+      "city": "WORCESTER",
+      "emergency": true,
+      "name": "UMASS MEMORIAL MEDICAL CENTER/UNIVERSITY CAMPUS",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "220171": {
+      "city": "BURLINGTON",
+      "emergency": true,
+      "name": "LAHEY HOSPITAL & MEDICAL CENTER, BURLINGTON",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 191798600,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "UNIV OF MASSACHUSETTS MED SCH WORCESTER",
+    "top_departments": [
+      {
+        "amount": 34557714,
+        "dept": "Anatomy / Cell Biology"
+      },
+      {
+        "amount": 33335500,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 25586454,
+        "dept": "Genetics"
+      }
+    ],
+    "trend": {
+      "2021": 168960854,
+      "2022": 184063051,
+      "2023": 182309902,
+      "2024": 198438995,
+      "2025": 191798600
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 52,
+    "sponsor": "University of Massachusetts, Worcester"
+  }
+}

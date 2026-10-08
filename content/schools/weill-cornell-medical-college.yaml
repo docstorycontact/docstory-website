@@ -1,0 +1,129 @@
+# School page data for Weill Cornell Medical College.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Weill Cornell pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Newest published class profile: Class of 2028 (entered 2024), from the 2024 WCM fact sheet.
+
+short_name: Weill Cornell
+nih_org: WEILL MEDICAL COLL OF CORNELL UNIV
+trials_sponsor: Weill Medical College of Cornell University
+
+stats:
+  entering_class: 2024           # Class of 2028, WCM fact sheet 2024
+  stats_kind: median
+  profile_url: https://weill.cornell.edu/sites/default/files/wcm_fact_sheet_2024-final.pdf
+  mcat: 518
+  gpa_overall: 3.90
+  applied: 7,345
+  interviewed: 801
+  enrolled: 106
+  class_size: 106
+  women_pct: 57                  # fact sheet: 43% male
+  tuition: 73294                 # 2026–27, WCM cost of attendance
+  cost_year: 2026–27
+  total_cost: 465546             # sum of 2026–27 budgets, Classes of 2027–2030
+
+sources:
+  - label: WCM Fact Sheet 2024
+    url: https://weill.cornell.edu/sites/default/files/wcm_fact_sheet_2024-final.pdf
+  - label: WCM MD Cost of Attendance
+    url: https://teach.weill.cornell.edu/student-services/financial-services/cost-attendance/medical-doctor
+  - label: WCM Clinical Sites
+    url: https://medicaleducation.weill.cornell.edu/about-us/clinical-sites
+  - label: WCM Surgery Clerkship
+    url: https://surgery.weill.cornell.edu/education-and-training/medical-student-information
+  - label: WCM Selection Criteria
+    url: https://teach.weill.cornell.edu/medical-education/admissions/selection-criteria-and-requirements
+  - label: Tri-Institutional MD-PhD Program
+    url: https://mdphd.weill.cornell.edu/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (New York County, NY)
+    url: https://www.census.gov/quickfacts/fact/table/newyorkcountynewyork/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Annie Yau describes mornings from 8am to 1pm in problem-based learning, small groups, and
+        lecture, with afternoons for anatomy lab in the first semester, a clinical preceptorship,
+        electives, or study. First year leaves real downtime, and Annie calls the pass/fail curriculum
+        "a godsend."
+      - >-
+        Clinical training builds on that foundation. The eight-week surgery clerkship, for example,
+        splits four weeks at NewYork-Presbyterian/Weill Cornell with four at NewYork-Presbyterian/
+        Queens, Memorial Sloan Kettering, or Houston Methodist.
+
+  - title: Research & Partnerships
+    icon: science
+    paragraphs:
+      - >-
+        Weill Cornell sits beside two research giants on Manhattan's Upper East Side. With **Memorial
+        Sloan Kettering** and **The Rockefeller University**, it runs the Tri-Institutional MD-PhD
+        Program, and the **Hospital for Special Surgery** is connected by skyway.
+      - >-
+        Annie says interview day stressed exactly this: the school's relationships with MSK,
+        Rockefeller, and HSS translate into abundant research and clinical opportunities.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        The core teaching hospital is **NewYork-Presbyterian/Weill Cornell Medical Center**. Students
+        also rotate at Memorial Sloan Kettering, the Hospital for Special Surgery, NewYork-Presbyterian/
+        Queens, NewYork-Presbyterian/Brooklyn Methodist, and Houston Methodist Hospital in Texas.
+      - >-
+        MSK, directly across the street, is the world's oldest and largest private cancer center, which
+        gives students unusual exposure to oncology.
+
+  - title: Life in New York
+    icon: location_city
+    paragraphs:
+      - >-
+        With just over 100 students, the class is tight-knit, and most first-years live in the same
+        building, Olin Hall. Annie found that close class made moving to a new city easy.
+      - >-
+        Then there's New York: museums (which students can visit through an Art and Medicine
+        elective), discounted theater, Central Park a short run away, and endless food. Annie's only
+        complaint, as a native Californian, is the winters.
+
+highlight_sources:
+  - label: DocStory interview with Annie Yau
+    url: /interviews/weill-cornell-medical-college/annie-yau/index.html
+  - label: WCM Clinical Sites
+    url: https://medicaleducation.weill.cornell.edu/about-us/clinical-sites
+  - label: WCM Surgery Clerkship
+    url: https://surgery.weill.cornell.edu/education-and-training/medical-student-information
+  - label: Tri-Institutional MD-PhD Program
+    url: https://mdphd.weill.cornell.edu/
+  - label: WCM MD Cost of Attendance (housing)
+    url: https://teach.weill.cornell.edu/student-services/financial-services/cost-attendance/medical-doctor
+
+quotes:
+  annie-yau: >-
+    "We have a class of just over 100 students so it helps make our class very tight knit. Most of us
+    live in the same building during the first year, which also helps bring us together."
+
+clinical_sites:                            # WCM Clinical Sites page
+  - {name: NewYork-Presbyterian/Weill Cornell Medical Center, role: Core teaching hospital, cms_id: "330101"}
+  - {name: Memorial Sloan Kettering Cancer Center, role: NCI Comprehensive Cancer Center}
+  - {name: Hospital for Special Surgery, cms_id: "330270"}
+  - {name: NewYork-Presbyterian/Queens, cms_id: "330055"}
+  - {name: NewYork-Presbyterian/Brooklyn Methodist Hospital}
+  - {name: Houston Methodist Hospital, role: Affiliate in Houston · surgery rotations, cms_id: "450358"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center (affiliate) · Memorial Sloan Kettering Cancer Center
+
+programs:
+  tracks:
+    - {name: Tri-Institutional MD-PhD, note: with Rockefeller University and MSK}
+
+applying:
+  - {label: MCAT, value: "No cutoff · scores no more than three years old"}
+
+cost_of_living:
+  county: New York County (Manhattan), NY
+  fips: "36061"
+  median_rent: 2197             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

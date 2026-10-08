@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "210009": {
+      "city": "BALTIMORE",
+      "emergency": true,
+      "name": "JOHNS HOPKINS HOSPITAL, THE",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "210029": {
+      "city": "BALTIMORE",
+      "emergency": true,
+      "name": "JOHNS HOPKINS BAYVIEW MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 575895134,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "JOHNS HOPKINS UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 198637205,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 49891712,
+        "dept": "Pathology"
+      },
+      {
+        "amount": 42468986,
+        "dept": "Pediatrics"
+      }
+    ],
+    "trend": {
+      "2021": 574786765,
+      "2022": 571623636,
+      "2023": 579654846,
+      "2024": 577436892,
+      "2025": 575895134
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 337,
+    "sponsor": "Johns Hopkins University"
+  }
+}

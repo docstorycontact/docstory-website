@@ -1,0 +1,50 @@
+{
+  "hospitals": {
+    "030103": {
+      "city": "PHOENIX",
+      "emergency": true,
+      "name": "MAYO CLINIC HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "100151": {
+      "city": "JACKSONVILLE",
+      "emergency": true,
+      "name": "MAYO CLINIC",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "240010": {
+      "city": "ROCHESTER",
+      "emergency": true,
+      "name": "MAYO CLINIC HOSPITAL ROCHESTER",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 343184334,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "MAYO CLINIC ROCHESTER",
+    "top_departments": [],
+    "trend": {
+      "2021": 293200296,
+      "2022": 291245685,
+      "2023": 317091629,
+      "2024": 335062970,
+      "2025": 343184334
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 581,
+    "sponsor": "Mayo Clinic"
+  }
+}

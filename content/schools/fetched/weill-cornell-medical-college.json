@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "330055": {
+      "city": "FLUSHING",
+      "emergency": true,
+      "name": "NEW YORK-PRESBYTERIAN/QUEENS",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "330101": {
+      "city": "NEW YORK",
+      "emergency": true,
+      "name": "NEW YORK-PRESBYTERIAN HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "330270": {
+      "city": "NEW YORK",
+      "emergency": false,
+      "name": "HOSPITAL FOR SPECIAL SURGERY",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "450358": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "HOUSTON METHODIST HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 317479208,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "WEILL MEDICAL COLL OF CORNELL UNIV",
+    "top_departments": [
+      {
+        "amount": 112561259,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 32432622,
+        "dept": "Pediatrics"
+      },
+      {
+        "amount": 26737744,
+        "dept": "Radiation-Diagnostic / Oncology"
+      }
+    ],
+    "trend": {
+      "2021": 246595187,
+      "2022": 263787046,
+      "2023": 317698263,
+      "2024": 306959201,
+      "2025": 317479208
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 176,
+    "sponsor": "Weill Medical College of Cornell University"
+  }
+}

@@ -1,0 +1,112 @@
+# School page data for Northwestern Feinberg School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Feinberg pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Feinberg
+nih_org: NORTHWESTERN UNIVERSITY
+trials_sponsor: Northwestern University
+
+stats:
+  entering_class: 2026
+  stats_kind: median
+  profile_url: https://www.feinberg.northwestern.edu/admissions/about/entering-class-profile.html
+  mcat: 520                      # Feinberg entering class profile
+  gpa_overall: 3.95
+  applied: 8,936
+  interviewed: 681
+  enrolled: 141
+  class_size: 141
+  women_pct: 55
+  tuition: 76512                 # 2026–27, Northwestern Chicago Financial Aid
+  cost_year: 2026–27
+  total_cost: 480375             # sum of M1–M4 budgets, 2026–27
+
+sources:
+  - label: Feinberg Entering Class Profile
+    url: https://www.feinberg.northwestern.edu/admissions/about/entering-class-profile.html
+  - label: Feinberg MD Cost of Attendance
+    url: https://chicagofinancialaid.northwestern.edu/tuition/feinberg-school-of-medicine.html
+  - label: Feinberg Clinical Training
+    url: https://www.feinberg.northwestern.edu/admissions/student-experience/clinical-training.html
+  - label: Feinberg Admission Requirements
+    url: https://www.feinberg.northwestern.edu/admissions/how-to-apply/requirements.html
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Cook County, IL)
+    url: https://www.census.gov/quickfacts/fact/table/cookcountyillinois/HSG860224
+
+highlights:
+  - title: Early Clinical Experience
+    icon: menu_book
+    paragraphs:
+      - >-
+        Feinberg puts students in clinical settings from the first week. Regine Goh describes
+        preceptorships and **Education-Centered Medical Homes** twice a month from the start: primary
+        care clinics where students follow patients across all four years and learn alongside
+        classmates from other years.
+      - >-
+        Classroom years mix large lectures with problem-based learning and standardized-patient
+        sessions. Coming from a big public university, Regine found medical school "far more
+        interactive and personal."
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Students train across world-class and safety-net hospitals: **Northwestern Memorial Hospital**,
+        Lurie Children's Hospital (where every third-year does inpatient pediatrics), the Shirley Ryan
+        AbilityLab (a required two-week fourth-year clerkship), Jesse Brown VA Medical Center, and
+        Cook County's John H. Stroger Jr. Hospital.
+      - >-
+        Feinberg gives students the same role and responsibility in each discipline no matter which
+        site they're assigned, and runs a free daily shuttle to the VA.
+
+  - title: Community & Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        Regine spent the first two years volunteering at student-run free clinics across Chicago, a
+        way to work with underserved communities in very different neighborhoods.
+      - >-
+        Regine's favorite tradition is **In Vivo**, the students' annual sketch comedy show, a showcase of
+        how talented the class is.
+
+  - title: Life in Chicago
+    icon: location_city
+    paragraphs:
+      - >-
+        Location drew Regine to Feinberg: big-city living in downtown Chicago without being
+        prohibitively expensive. A Californian, Regine was warned about the winters but doesn't mind them.
+      - >-
+        Regine's one complaint is how urban it is, with few open landscapes or hiking trails.
+
+highlight_sources:
+  - label: DocStory interview with Regine Goh
+    url: /interviews/northwestern-feinberg-school-of-medicine/regine-goh/index.html
+  - label: Feinberg Clinical Training
+    url: https://www.feinberg.northwestern.edu/admissions/student-experience/clinical-training.html
+
+quotes:
+  regine-goh: >-
+    "Chicago has so many unique neighborhoods and working at these free clinics is a great opportunity to
+    work with different under-served communities."
+
+clinical_sites:                            # Feinberg Clinical Training page
+  - {name: Northwestern Memorial Hospital, cms_id: "140281"}
+  - {name: Ann & Robert H. Lurie Children's Hospital, role: All third-years · inpatient pediatrics, cms_id: "143300"}
+  - {name: Shirley Ryan AbilityLab, role: All fourth-years · two-week rehab clerkship}
+  - {name: Jesse Brown VA Medical Center, role: 200-bed VA · free daily shuttle, cms_id: "14003F"}
+  - {name: John H. Stroger Jr. Hospital of Cook County, role: Cook County safety-net hospital, cms_id: "140124"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Robert H. Lurie Comprehensive Cancer Center
+
+applying:
+  - {label: MCAT, value: "500+ receives a secondary invitation"}
+  - {label: GPA, value: No minimum}
+
+cost_of_living:
+  county: Cook County, IL
+  fips: "17031"
+  median_rent: 1435             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

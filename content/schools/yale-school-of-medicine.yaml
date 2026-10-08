@@ -1,0 +1,135 @@
+# School page data for Yale School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Yale pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Yale
+nih_org: YALE UNIVERSITY
+trials_sponsor: Yale University
+
+stats:
+  entering_class: 2025           # Class of 2029
+  stats_kind: median
+  profile_url: https://medicine.yale.edu/about/history-facts-and-figures/
+  mcat: 523                      # YSM Facts & Figures, Class of 2029
+  gpa_overall: 3.94              # YSM Facts & Figures
+  applied: 6,206                 # YSM Facts & Figures
+  enrolled: 104
+  class_size: 104
+  acceptance_rate: 4.4%          # YSM Facts & Figures
+  women_pct: 49                  # 51 of 104 students
+  tuition: 76700                 # 2026–27, YSM MD budget
+  cost_year: 2026–27
+  total_cost: 497418             # sum of M1–M4 budgets, 2026–27
+  faculty: 5,485                 # YSM Facts & Figures (all categories)
+  beds: 1,541                    # Yale New Haven Hospital licensed beds, 9/30/2025
+  beds_label: Licensed beds · Yale New Haven Hospital
+
+sources:
+  - label: YSM Facts & Figures
+    url: https://medicine.yale.edu/about/history-facts-and-figures/
+  - label: YSM MD Cost of Attendance 2026–27
+    url: https://medicine.yale.edu/md-program/financialaid/mdprogram/budget/2026-2027-cost-of-attendance/
+  - label: The Yale System
+    url: https://medicine.yale.edu/md-program/admissions/yale-system/
+  - label: YSM Joint MD Programs
+    url: https://medicine.yale.edu/md-program/joint-md-programs/
+  - label: YSM MD-PhD Interviews
+    url: https://medicine.yale.edu/mdphd/prospective/interviews/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (South Central CT Planning Region)
+    url: https://www.census.gov/quickfacts/fact/table/southcentralconnecticutplanningregionconnecticut/HSG860224
+
+highlights:
+  - title: The Yale System
+    icon: menu_book
+    paragraphs:
+      - >-
+        Yale has taught medicine its own way for a century. Under the **Yale System**, the first
+        eighteen months carry no grades and no class rank; students sit anonymous qualifying exams and
+        are treated as adults directing their own learning. Every student also writes an original
+        research **thesis**, a requirement that dates to 1839.
+      - >-
+        Hadrian Mendoza skips lecture and studies on a self-set schedule, moving between campus libraries
+        and coffee shops and leaning on board-review videos and spaced-repetition cards. Afternoons
+        bring the required pieces: workshops, clinical skills training, and clinic.
+
+  - title: Research
+    icon: science
+    paragraphs:
+      - >-
+        Research is woven into the degree, not bolted on. Yale reports **$580.8 million** in NIH awards
+        and $834.4 million in total research funding for 2025, and roughly one in five MD students
+        earns a combined MD-PhD.
+      - >-
+        Hadrian counts "world class research opportunities for all of the medical students" among the
+        school's core strengths, alongside the curricular freedom the Yale System allows.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        The flagship teaching hospital is **Yale New Haven Hospital**, with 1,541 licensed beds, part of
+        a Yale New Haven Health system that includes Bridgeport, Greenwich, and Lawrence + Memorial
+        hospitals, plus affiliates such as VA Connecticut and the Connecticut Mental Health Center.
+      - >-
+        Clinical work starts in year one. Hadrian describes a clinical skills course taught by
+        attendings and residents, ending in a comprehensive OSCE, alongside a weekly half-day in clinic
+        on a small interprofessional team with physician associate and nursing students.
+
+  - title: Culture & New Haven
+    icon: groups
+    paragraphs:
+      - >-
+        Hadrian calls Yale "a gunner-free zone." Pass/fail grading with no ranking or AOA lets
+        classmates collaborate and keep serious lives outside medicine: the class includes a competition
+        pilot and a rideshare founder, and Hadrian directs a weekly jazz band. Yale reports that 73% of
+        the Class of 2029 receives financial assistance.
+      - >-
+        New Haven is a walkable college town where students can live without a car. It's quieter than
+        a big city, but New York and Boston are an easy train ride away for weekends.
+
+highlight_sources:
+  - label: DocStory interview with Hadrian Mendoza
+    url: /interviews/yale-school-of-medicine/hadrian-mendoza/index.html
+  - label: The Yale System
+    url: https://medicine.yale.edu/md-program/admissions/yale-system/
+  - label: YSM Facts & Figures
+    url: https://medicine.yale.edu/about/history-facts-and-figures/
+  - label: YSM Joint MD Programs
+    url: https://medicine.yale.edu/md-program/joint-md-programs/
+
+quotes:
+  hadrian-mendoza: >-
+    "With Pass/Fail grading and no ranking system or AOA, we are able to collaborate with each other and
+    stay engaged in our lives outside of medicine. … I think of it as a gunner-free zone."
+
+clinical_sites:                            # YSM Facts & Figures (YNHHS entities + affiliates)
+  - {name: Yale New Haven Hospital, role: Flagship teaching hospital, cms_id: "070022"}
+  - {name: Yale New Haven Children's Hospital, role: Part of Yale New Haven Hospital}
+  - {name: Smilow Cancer Hospital, role: Part of Yale New Haven Hospital}
+  - {name: Bridgeport Hospital, cms_id: "070010"}
+  - {name: Greenwich Hospital, cms_id: "070018"}
+  - {name: Lawrence + Memorial Hospital, cms_id: "070007"}
+  - {name: Yale New Haven Psychiatric Hospital}
+  - {name: Westerly Hospital}
+  - {name: VA Connecticut Healthcare System}
+  - {name: Connecticut Mental Health Center}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Yale Cancer Center
+
+programs:
+  dual_degrees: [MD-PhD, MD/MPH, MD/MHS, MD/MBA, MD/JD, MD/MDiv, MD/MS Personalized Medicine & Applied Eng.]
+
+applying:
+  - {label: Interviews, value: Virtual}
+
+outcomes:
+  aid_pct: 73                   # Class of 2029 receiving financial assistance
+
+cost_of_living:
+  county: South Central CT Planning Region
+  fips: "09170"
+  median_rent: 1525             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

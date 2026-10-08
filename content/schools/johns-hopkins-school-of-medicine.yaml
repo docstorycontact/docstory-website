@@ -1,0 +1,125 @@
+# School page data for Johns Hopkins School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Hopkins pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Hopkins' newest published class profile is the entering class of 2022 (Class of 2026).
+
+short_name: Johns Hopkins
+nih_org: JOHNS HOPKINS UNIVERSITY
+trials_sponsor: Johns Hopkins University
+
+stats:
+  entering_class: 2022           # Class of 2026 — newest profile Hopkins has published
+  stats_kind: average
+  profile_url: https://www.hopkinsmedicine.org/news/articles/2022/09/meet-the-class-of-2026
+  mcat: 521                      # Meet the Class of 2026
+  gpa_overall: 3.94
+  applied: 6,352
+  interviewed: 576
+  admitted: 287
+  enrolled: 118                  # 105 MD + 13 MD-PhD
+  class_size: 118
+  tuition: 69100                 # 2026–27, Hopkins SOM financial aid
+  cost_year: 2026–27
+  total_cost: 448972             # sum of M1–M4 cost of attendance, 2026–27
+
+sources:
+  - label: Meet the Class of 2026 (Hopkins Medicine)
+    url: https://www.hopkinsmedicine.org/news/articles/2022/09/meet-the-class-of-2026
+  - label: Hopkins SOM Cost of Attendance
+    url: https://www.hopkinsmedicine.org/som/offices/finaid/cost
+  - label: Hopkins Financial Aid FAQ
+    url: https://www.hopkinsmedicine.org/som/offices/finaid/applying-for-aid/med-students/faq
+  - label: Genes to Society curriculum
+    url: https://www.hopkinsmedicine.org/som/curriculum/genes-to-society
+  - label: Hopkins Combined Degree Programs
+    url: https://www.hopkinsmedicine.org/som/education-programs/md-program/curriculum-and-degrees/combined-degree-programs
+  - label: Hopkins MD Application Process
+    url: https://www.hopkinsmedicine.org/som/education-programs/md-program/application-process/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Baltimore City, MD)
+    url: https://www.census.gov/quickfacts/fact/table/baltimorecitymaryland/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Hopkins teaches through **Genes to Society**, a systems-based model that frames disease through
+        genetics, behavior, environment, and society rather than a simple normal-versus-abnormal split.
+        Its core organ-system course runs about fifteen months, and all pre-clerkship courses are
+        pass/fail.
+      - >-
+        Will Tobolowsky describes days of three to six lectures plus small groups and virtual
+        microscopy, with each course taught in a focused block of a few weeks. One afternoon a week
+        goes to an outpatient clinic through the **Longitudinal Ambulatory Clerkship**, which pairs
+        students with a faculty preceptor from year one.
+
+  - title: Research & Degrees
+    icon: science
+    paragraphs:
+      - >-
+        Roughly 10% of Hopkins medical students pursue a combined **MD-PhD**, and the school also offers
+        MD-MPH, MD-MBA, and MD-MS in Health Care Management degrees.
+      - >-
+        Will's advice is to pick what to engage with: there are, Will says, "way more opportunities than
+        time," from research to student groups, so it pays to choose a few and stick with them.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Students train at **The Johns Hopkins Hospital** in East Baltimore and at **Johns Hopkins
+        Bayview Medical Center** in Highlandtown, a major teaching, clinical, and research campus. An
+        early course on health disparities introduces East Baltimore through service learning.
+      - >-
+        Will argues the setting is part of the education: hospitals in underserved areas see serious
+        emergencies and complex cases, and that is often where help is needed most.
+
+  - title: Life & Affordability
+    icon: savings
+    paragraphs:
+      - >-
+        Since fall 2024, Hopkins covers the **full cost of attendance** for medical students from
+        families earning under $175,000, and tuition for families under $300,000, with assets also
+        considered.
+      - >-
+        Will is candid about East Baltimore: crime and few walkable food options near campus, but great
+        dining and nightlife within a short drive. Student life runs from an annual Olympics to Friday
+        socials, with more events than time to attend them.
+
+highlight_sources:
+  - label: DocStory interview with Will Tobolowsky
+    url: /interviews/johns-hopkins-school-of-medicine/will-tobolowsky/index.html
+  - label: Genes to Society curriculum
+    url: https://www.hopkinsmedicine.org/som/curriculum/genes-to-society
+  - label: Hopkins Bayview campus life
+    url: https://www.hopkinsmedicine.org/som/life-at-hopkins/bayview-campus-life
+  - label: Hopkins Combined Degree Programs
+    url: https://www.hopkinsmedicine.org/som/education-programs/md-program/curriculum-and-degrees/combined-degree-programs
+  - label: Hopkins Financial Aid FAQ
+    url: https://www.hopkinsmedicine.org/som/offices/finaid/applying-for-aid/med-students/faq
+
+quotes:
+  will-tobolowsky: >-
+    "I wouldn't let an area influence your choice of medical school too much. Remember, you're going to
+    medical school to hopefully 1) help people, 2) learn."
+
+clinical_sites:
+  - {name: The Johns Hopkins Hospital, role: East Baltimore flagship, cms_id: "210009"}
+  - {name: Johns Hopkins Bayview Medical Center, role: Teaching campus in Highlandtown, cms_id: "210029"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Sidney Kimmel Comprehensive Cancer Center
+
+programs:
+  dual_degrees: [MD-PhD, MD-MPH, MD-MBA, MD-MS Health Care Management]
+
+applying:
+  - {label: Interviews, value: "Virtual via Zoom · Thursdays & Fridays, September–February"}
+
+cost_of_living:
+  county: Baltimore City, MD
+  fips: "24510"
+  median_rent: 1331             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
