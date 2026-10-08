@@ -25,6 +25,18 @@ sources:
     url: https://www.keckmedicine.org/about/keck-hospital-of-usc/
   - label: Keck School news (class size, 2017)
     url: https://keck.usc.edu/news/incoming-medical-students-don-white-coats-for-the-first-time/
+  - label: Keck MD Dual Degrees
+    url: https://keck.usc.edu/md-program/dual-degrees/
+  - label: Keck MD Admissions FAQ
+    url: https://keck.usc.edu/md-program/admissions/frequently-asked-questions/
+  - label: Keck School of Medicine (2025 match rate)
+    url: https://keck.usc.edu/
+  - label: Keck MD Curriculum (teaching hospitals)
+    url: https://keck.usc.edu/md-program/curriculum/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Los Angeles County)
+    url: https://www.census.gov/quickfacts/fact/table/losangelescountycalifornia/HSG860224
 
 highlights:
   - title: Curriculum
@@ -102,3 +114,34 @@ quotes:
     your help and for someone that will listen to them. You don't get that as much at private
     hospitals. Being able to make a difference with people at County simply by paying attention to
     them is special."
+
+# ── Extra dashboard sections (official sources + automatic government data) ──
+trials_sponsor: University of Southern California
+
+clinical_sites:                            # Keck MD Curriculum page; cms_id → Medicare data
+  - {name: Los Angeles General Medical Center, role: County safety-net hospital, cms_id: "050373"}
+  - {name: Keck Hospital of USC, role: Private academic hospital, cms_id: "050696"}
+  - {name: Children's Hospital Los Angeles, cms_id: "053302"}
+  - {name: USC Norris Cancer Hospital, role: On-campus cancer hospital}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · USC Norris Comprehensive Cancer Center
+
+programs:
+  tracks:
+    - {name: HTE@USC, note: medicine + engineering innovation}
+  dual_degrees: [MD/PhD (with Caltech), MD/MPH, MD/MBA, MD/MHA, MD/MS Health Systems Mgmt Eng., MD/MS Biomedical Eng.]
+
+applying:
+  - {label: MCAT, value: "506+ to be invited to the secondary"}
+  - {label: DACA, value: Applications accepted}
+
+outcomes:
+  match_rate: 97.4%             # Keck homepage: match rate of 2025 Keck School MD students
+  match_year: 2025
+
+cost_of_living:
+  county: Los Angeles County, CA
+  fips: "06037"
+  median_rent: 1954             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -1,9 +1,87 @@
 {
+  "hospitals": {
+    "05027F": {
+      "city": "LONG BEACH",
+      "emergency": true,
+      "name": "VA LONG BEACH HEALTHCARE SYSTEM",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "050348": {
+      "city": "ORANGE",
+      "emergency": true,
+      "name": "UCI HEALTH-ORANGE",
+      "ownership": "Government - Local",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "050485": {
+      "city": "LONG BEACH",
+      "emergency": false,
+      "name": "MEMORIALCARE LONG BEACH MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "053302": {
+      "city": "LOS ANGELES",
+      "emergency": true,
+      "name": "CHILDREN'S HOSP OF LOS ANGELES",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "053304": {
+      "city": "ORANGE",
+      "emergency": false,
+      "name": "CHILDREN'S HOSPITAL OF ORANGE COUNTY",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "053309": {
+      "city": "LONG BEACH",
+      "emergency": false,
+      "name": "MEMORIAL CARE MILLER CHILDREN'S &  WOMEN'S HOSP LB",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
   "nih": {
     "amount": 154597468,
+    "ctsa": true,
     "fetched": "2026-10-08",
     "fiscal_year": 2025,
+    "mstp": true,
     "org_name": "UNIVERSITY OF CALIFORNIA-IRVINE",
-    "projects": 255
+    "top_departments": [
+      {
+        "amount": 23319391,
+        "dept": "Anatomy / Cell Biology"
+      },
+      {
+        "amount": 22746615,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 21906704,
+        "dept": "Neurology"
+      }
+    ],
+    "trend": {
+      "2021": 84597124,
+      "2022": 109967736,
+      "2023": 133032276,
+      "2024": 178194535,
+      "2025": 154597468
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 99,
+    "sponsor": "University of California, Irvine"
   }
 }

@@ -88,3 +88,44 @@ highlight_sources:
 quotes:
   student-file-name: >-
     "A quote from the interview."
+
+# ── Extra dashboard sections ─────────────────────────────────────────────────
+# Shown by default: selectivity, cost (+ rent) and scale & reach.
+# Toggle 1 "Clinical training & research": clinical sites + research depth.
+# Toggle 2 "Programs, admissions & outcomes": programs, applying, outcomes.
+
+trials_sponsor: University of California, Irvine   # ClinicalTrials.gov sponsor name → automatic count
+trials_label: led by HMS itself                    # optional caveat shown after the count
+
+clinical_sites:                  # from the school's own clinical/affiliates page; first 6 shown in full
+  - {name: UCI Medical Center, role: Principal teaching hospital · Level I trauma, cms_id: "050348"}
+  - {name: Children's Hospital of Orange County, cms_id: "053304"}   # cms_id → Medicare type/ER/stars (automatic)
+  - {name: UCI Family Health Center – Santa Ana, role: Federally qualified health center}
+  # Quote any value that contains a comma:  role: "Children's, women's and maternity care"
+
+research_badges:                 # official designations; text before " · " shows on the chip
+  - NCI Comprehensive Cancer Center · Chao Family Comprehensive Cancer Center
+  # NIH-funded MD-PhD (MSTP) and NIH CTSA hub badges are added automatically from NIH RePORTER
+
+programs:
+  tracks:
+    - {name: PRIME-LC, note: Latino community health}
+  dual_degrees: [MD/PhD (MSTP), MD/MBA, MD/MPH]
+
+applying:                        # short label/value facts from the school's admissions pages
+  - {label: Interviews, value: "Virtual · two 30–45 min interviews"}
+  - {label: MCAT, value: "506+ to be invited to the secondary"}
+
+outcomes:                        # only what the school publishes
+  match_rate: 97.4%
+  match_year: 2025
+  avg_debt: 119656
+  avg_debt_note: "national avg ~$191K public / ~$199K private"
+  avg_scholarship: 65442
+  aid_pct: 71
+
+cost_of_living:                  # shown inside the Cost of Attendance cell
+  county: Orange County, CA
+  fips: "06059"                  # 5-digit county FIPS; automatic with CENSUS_API_KEY
+  median_rent: 2434              # Census QuickFacts "Median gross rent" until the key is set
+  acs_year: 2020–2024

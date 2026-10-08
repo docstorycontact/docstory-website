@@ -338,23 +338,31 @@ NIH_REPORTER_URL = 'https://reporter.nih.gov/'
 
 
 def load_fetched(slug):
-    """Auto-updated numbers written by fetch_nih_funding.py (NIH RePORTER — US government
-    data, public domain). Returns (stats, sources) with sources as [{'label', 'url'}]."""
+    """Automatic figures written by fetch_public_data.py (all U.S. government data, public domain).
+    Returns (stats, sources, raw) — stats merged into the dashboard, raw for the extra sections."""
     path = FETCHED_DIR / f'{slug}.json'
     if not path.exists():
-        return {}, []
-    nih = json.loads(path.read_text(encoding='utf-8')).get('nih') or {}
-    if not nih.get('amount'):
-        return {}, []
-    return ({'nih_funding': nih['amount'], 'nih_year': nih['fiscal_year']},
-            [{'label': 'NIH RePORTER', 'url': NIH_REPORTER_URL}])
+        return {}, [], {}
+    raw = json.loads(path.read_text(encoding='utf-8'))
+    stats, sources = {}, []
+    nih = raw.get('nih') or {}
+    if nih.get('amount'):
+        stats.update(nih_funding=nih['amount'], nih_year=nih['fiscal_year'])
+        sources.append({'label': 'NIH RePORTER', 'url': NIH_REPORTER_URL})
+    if (raw.get('trials') or {}).get('recruiting') is not None:
+        sources.append({'label': 'ClinicalTrials.gov', 'url': 'https://clinicaltrials.gov/'})
+    if raw.get('hospitals'):
+        sources.append({'label': 'CMS Care Compare', 'url': 'https://www.medicare.gov/care-compare/'})
+    if raw.get('rent'):
+        sources.append({'label': 'U.S. Census ACS', 'url': 'https://data.census.gov/'})
+    return stats, sources, raw
 
 
 def merged_stats(slug, page, school):
     """Hand-sourced numbers from the YAML (each with a cited source) plus fetched NIH funding.
     Founding year and class size fall back to SCHOOLS when the YAML doesn't give them."""
     page = page or {}
-    fetched, fetched_sources = load_fetched(slug)
+    fetched, fetched_sources, _ = load_fetched(slug)
     stats = {'class_size': school.get('class_size'), 'founded': school.get('founded'),
              **fetched, **(page.get('stats') or {})}
     stats['sources'] = list(page.get('sources') or []) + fetched_sources
@@ -475,6 +483,55 @@ DASHBOARD_CSS = '''
     .dc-reach-stat { margin-bottom: 12px; }
     .dc-reach-stat h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
     .dc-reach-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
+    /* Cost of living */
+    .dc-rent { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e6e4f2; }
+    .dc-rent-label { font-size: 0.8125rem; color: #4b4f6b; }
+    .dc-rent-amt { font-size: 1.125rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; }
+    /* Extra band */
+    .dc-more { display: flex; flex-wrap: wrap; gap: 1px; background: #ececf4; border-top: 1px solid #ececf4; }
+    .dc-more > .dc-cell { flex: 1 1 300px; background: #fff; border-top: 0; }
+    .dc-more > .dc-cell-wide { flex: 2 1 560px; }
+    .dc-sub { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 12px 0 6px; }
+    .dc-sub:first-child { margin-top: 0; }
+    .dc-foot { font-size: 0.6875rem; color: #8a8fa6; margin-top: 10px; line-height: 1.5; }
+    .dc-sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px 20px; list-style: none; margin: 0; padding: 0; }
+    .dc-site { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f2f1f8; }
+    .dc-site-name { font-size: 0.8125rem; font-weight: 600; color: #1f2235; line-height: 1.3; }
+    .dc-site-meta { font-size: 0.6875rem; color: #8a8fa6; margin-top: 2px; }
+    .dc-site-more { font-size: 0.75rem; color: #4b4f6b; margin-top: 10px; line-height: 1.5; }
+    .dc-stars { color: #6c5ce7; font-size: 0.75rem; letter-spacing: 1px; white-space: nowrap; flex-shrink: 0; }
+    .dc-star-off { color: #e3dfff; }
+    .dc-trend { display: flex; align-items: flex-end; gap: 14px; margin-bottom: 4px; }
+    .dc-trend h4 { font-size: 1.375rem; font-weight: 700; color: #1f2235; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+    .dc-trend p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
+    .dc-trend .dc-trend-chg { color: #4b4f6b; text-transform: none; letter-spacing: 0; font-weight: 500; }
+    .dc-depts { list-style: none; margin: 0; padding: 0; }
+    .dc-depts li { display: flex; justify-content: space-between; font-size: 0.8125rem; color: #4b4f6b; padding: 3px 0; }
+    .dc-depts span { font-weight: 600; color: #1f2235; }
+    .dc-badges, .dc-chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 12px 0 0; padding: 0; }
+    .dc-chips { margin-top: 0; }
+    .dc-badges li, .dc-chips li { font-size: 0.6875rem; font-weight: 600; color: #5b4bd1; background: #f1efff; border-radius: 9999px; padding: 4px 10px; line-height: 1.4; }
+    .dc-chips li { color: #4b4f6b; background: #f4f4f8; }
+    .dc-tracks { list-style: none; margin: 0; padding: 0; }
+    .dc-tracks li { font-size: 0.8125rem; color: #1f2235; padding: 3px 0; }
+    .dc-tracks span { color: #8a8fa6; margin-left: 6px; font-size: 0.75rem; }
+    .dc-kvs { margin: 0; }
+    .dc-kv { padding: 7px 0; border-bottom: 1px solid #f2f1f8; }
+    .dc-kv:last-child { border-bottom: 0; }
+    .dc-kv dt { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; }
+    .dc-kv dd { font-size: 0.8125rem; color: #1f2235; margin: 2px 0 0; line-height: 1.45; }
+    .dc-out { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+    .dc-details { border-top: 1px solid #ececf4; }
+    .dc-details + .dc-details { border-top-color: #f2f1f8; }
+    .dc-details > summary { cursor: pointer; list-style: none; padding: 14px 28px; font-size: 0.8125rem; font-weight: 600; color: #6c5ce7; display: flex; align-items: center; gap: 8px; }
+    .dc-details > summary::-webkit-details-marker { display: none; }
+    .dc-details > summary::before { content: '+'; display: inline-flex; width: 18px; height: 18px; align-items: center; justify-content: center; border-radius: 50%; background: #f1efff; font-size: 0.875rem; line-height: 1; }
+    .dc-details[open] > summary::before { content: '–'; }
+    .dc-details > summary:hover { background: #faf9ff; }
+    .dc-details > summary:focus-visible { outline: 2px solid #6c5ce7; outline-offset: -2px; }
+    .dc-details > .dc-more { border-top: 1px solid #ececf4; }
+    .dc-sources { font-size: 0.6875rem; color: #8a8fa6; line-height: 1.7; padding: 14px 28px 16px; border-top: 1px solid #ececf4; margin: 0; }
+    .dc-sources .dc-src { font-weight: 500; color: #6b6f88; }
     /* Mobile */
     @media (max-width: 767px) {
       .dc-stage { flex-direction: column; }
@@ -482,12 +539,70 @@ DASHBOARD_CSS = '''
       .dc-divider-v { width: 100%; height: 1px; }
       .dc-cell { padding: 18px; }
       .dc-header { padding: 18px; }
+      .dc-details > summary, .dc-sources { padding-left: 18px; padding-right: 18px; }
       .dc-mcat-big { font-size: 2.5rem; }
       .dc-selectivity-body { flex-direction: column; gap: 10px; }
       .dc-gpa-wrap { width: 100%; }
     }'''
 
+VOICES_JUMP_CSS = '''
+    /* Floating "jump to student interviews" link */
+    .voices-jump {
+      position: fixed; left: 24px; bottom: 32px; z-index: 40;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 16px 10px 12px; border-radius: 9999px;
+      background: #fff; color: #333e4d; text-decoration: none;
+      border: 1px solid rgba(149,128,255,.35);
+      box-shadow: 0 8px 24px -8px rgba(61,32,163,.25), 0 2px 6px rgba(31,34,53,.06);
+      font: 600 13px/1.2 Inter, sans-serif;
+      transition: opacity .2s ease-out, transform .2s ease-out, box-shadow .15s ease-out;
+    }
+    .voices-jump:hover { box-shadow: 0 10px 28px -8px rgba(61,32,163,.35), 0 2px 6px rgba(31,34,53,.08); color: #3d20a3; }
+    .voices-jump:focus-visible { outline: 3px solid #9580FF; outline-offset: 3px; }
+    .voices-jump-icon {
+      width: 28px; height: 28px; border-radius: 50%; background: #9580FF; color: #fff;
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .voices-jump-icon svg { animation: voices-nudge 2.2s ease-in-out infinite; }
+    .voices-jump-sub { display: block; font-weight: 500; font-size: 11px; color: #4A5565; margin-top: 2px; }
+    .voices-jump.is-hidden { opacity: 0; transform: translateY(8px); pointer-events: none; visibility: hidden;
+      transition: opacity .2s ease-in, transform .2s ease-in, visibility 0s linear .2s; }
+    @keyframes voices-nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(3px); } }
+    @media (max-width: 767px) {
+      .voices-jump { left: 16px; bottom: 16px; padding: 8px 14px 8px 8px; font-size: 12px; }
+      .voices-jump-sub { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .voices-jump, .voices-jump.is-hidden { transition: none; }
+      .voices-jump-icon svg { animation: none; }
+    }'''
+
+# Hides the link while the interviews are on screen (or the page is too short to need it)
+# and scrolls smoothly unless the visitor prefers reduced motion.
+VOICES_JUMP_JS = '''<script>
+(function () {
+  var link = document.querySelector('.voices-jump');
+  var target = document.getElementById('student-voices');
+  if (!link || !target) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function update() {
+    var top = target.getBoundingClientRect().top;
+    link.classList.toggle('is-hidden', top < window.innerHeight * 0.85);
+  }
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    var heading = target.querySelector('h2');
+    if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+  });
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>'''
+
 NATIONAL_AVG_MCAT = 502
+US_MEDIAN_RENT = 1413          # U.S. median gross rent, Census ACS 2020–2024 (QuickFacts HSG860224)
 # Right half of the MCAT bell curve drawn in the dashboard SVG (cubic Bézier, viewBox 200×78)
 _CURVE_LEFT  = [(0, 70), (38, 70), (70, 4), (91, 4)]
 _CURVE_RIGHT = [(91, 4), (112, 4), (148, 70), (200, 70)]
@@ -619,7 +734,14 @@ def _cost_cell(s, is_public):
             note += f' ({_esc(s["total_cost_note"])})'
         notes.append(note)
     label = 'Cost of Attendance' + (f' · {_esc(s["cost_year"])}' if s.get('cost_year') else '')
-    return _cell(label, rows + f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>')
+    rent = ''
+    if s.get('col'):
+        col = s['col']
+        ratio = col['median_rent'] / US_MEDIAN_RENT
+        rent = (f'\n            <div class="dc-rent"><span class="dc-rent-label">Median rent · {_esc(col["county"])}</span>'
+                f'<span class="dc-rent-amt">${col["median_rent"]:,}<span class="dc-cost-per">/mo</span></span></div>'
+                f'\n            <div class="dc-cost-note">{ratio:.1f}× the U.S. median (${US_MEDIAN_RENT:,}) · Census ACS {_esc(col.get("acs_year", ""))}</div>')
+    return _cell(label, rows + f'\n            <div class="dc-cost-note">{" · ".join(notes)}</div>' + rent)
 
 
 def _donut(pct, label, color):
@@ -697,7 +819,162 @@ def _source_links(sources):
         if src.get('url') else _esc(src['label']) for src in sources)
 
 
-def render_dashboard(stats, school):
+_CMS_TYPE = {'Acute Care Hospitals': 'Acute care', 'Childrens': "Children's", 'Psychiatric': 'Psychiatric',
+             'Acute Care - Veterans Administration': 'VA', 'Critical Access Hospitals': 'Critical access'}
+_CMS_OWNER = [('Government', 'Public'), ('Veterans', ''), ('Voluntary', 'Non-profit'), ('Proprietary', 'For-profit'),
+              ('Physician', 'For-profit'), ('Tribal', 'Tribal')]
+SITES_SHOWN = 6
+
+
+def _stars(n):
+    filled = '★' * n + '<span class="dc-star-off">' + '★' * (5 - n) + '</span>'
+    return f'<span class="dc-stars" title="CMS overall hospital rating: {n} of 5" aria-label="CMS rating {n} of 5">{filled}</span>'
+
+
+def _sites_cell(sites, hospitals):
+    rows, rest = [], []
+    for i, site in enumerate(sites):
+        cms = hospitals.get(str(site.get('cms_id'))) if site.get('cms_id') else None
+        if i >= SITES_SHOWN:
+            rest.append(_esc(site['name']))
+            continue
+        tags = []
+        if cms:
+            if _CMS_TYPE.get(cms.get('type')):
+                tags.append(_CMS_TYPE[cms['type']])
+            owner = next((label for key, label in _CMS_OWNER if key in (cms.get('ownership') or '')), '')
+            if owner:
+                tags.append(owner)
+            if cms.get('emergency'):
+                tags.append('ER')
+        if site.get('role'):
+            meta = ' · '.join([_esc(site['role'])] + (['ER'] if 'ER' in tags else []))
+        else:
+            meta = ' · '.join(tags)
+        stars = _stars(cms['stars']) if cms and cms.get('stars') else ''
+        rows.append(f'''              <li class="dc-site">
+                <div><div class="dc-site-name">{_esc(site['name'])}</div><div class="dc-site-meta">{meta}</div></div>
+                {stars}
+              </li>''')
+    more = (f'\n            <p class="dc-site-more">+{len(rest)} more: {", ".join(rest)}</p>') if rest else ''
+    rated = any(h and h.get('stars') for h in hospitals.values() if isinstance(h, dict))
+    foot = ('\n            <p class="dc-foot">★ CMS overall hospital rating (1–5). Children\'s, cancer and '
+            'psychiatric hospitals aren\'t rated.</p>') if rated else ''
+    label = f'Clinical Training Sites · {len(sites)}'
+    return _cell(label, f'''            <ul class="dc-sites">
+{chr(10).join(rows)}
+            </ul>{more}{foot}''').replace('<div class="dc-cell">', '<div class="dc-cell dc-cell-wide">', 1)
+
+
+def _trend_svg(trend):
+    years = sorted(trend)
+    peak = max(trend.values()) or 1
+    bars = []
+    for i, y in enumerate(years):
+        h = max(3, round(trend[y] / peak * 34))
+        x = i * 30
+        last = i == len(years) - 1
+        bars.append(f'<rect x="{x}" y="{40 - h}" width="20" height="{h}" rx="3" fill="{"#6c5ce7" if last else "#c9c2ff"}"/>'
+                    f'<text x="{x + 10}" y="52" text-anchor="middle" font-size="8" fill="#8a8fa6" font-family="Inter,sans-serif">\'{y[-2:]}</text>')
+    width = len(years) * 30 - 10
+    return (f'<svg viewBox="0 0 {width} 54" width="{width}" height="54" role="img" '
+            f'aria-label="NIH funding by fiscal year, {years[0]} to {years[-1]}">{"".join(bars)}</svg>')
+
+
+def _research_cell(nih, trials, badges, trials_label):
+    parts = []
+    if nih.get('trend') and len(nih['trend']) > 1:
+        years = sorted(nih['trend'])
+        first, last = nih['trend'][years[0]], nih['trend'][years[-1]]
+        change = f'{(last - first) / first * 100:+.0f}% since FY{years[0]}' if first else ''
+        parts.append(f'''            <div class="dc-trend">
+              {_trend_svg(nih['trend'])}
+              <div><h4>{_money_big(last)}</h4><p>NIH · FY{years[-1]}</p><p class="dc-trend-chg">{change}</p></div>
+            </div>''')
+    if nih.get('top_departments'):
+        depts = ''.join(f'<li>{_esc(d["dept"])}<span>{_money_big(d["amount"])}</span></li>' for d in nih['top_departments'])
+        parts.append(f'            <p class="dc-sub">Top NIH-funded departments</p>\n            <ul class="dc-depts">{depts}</ul>')
+    chips = [f'<span title="{_esc(b)}">{_esc(b.split(" · ")[0])}</span>' for b in badges]
+    if nih.get('mstp'):
+        chips.append('NIH-funded MD-PhD (MSTP)')
+    if nih.get('ctsa'):
+        chips.append('NIH clinical &amp; translational science hub')
+    if trials and trials.get('recruiting'):
+        chips.append(f'{trials["recruiting"]:,} recruiting clinical trials' + (f' ({_esc(trials_label)})' if trials_label else ''))
+    if chips:
+        parts.append('            <ul class="dc-badges">' + ''.join(f'<li>{c}</li>' for c in chips) + '</ul>')
+    return _cell('Research Depth', '\n'.join(parts))
+
+
+def _programs_cell(programs):
+    out = []
+    if programs.get('tracks'):
+        out.append('            <p class="dc-sub">Tracks &amp; programs</p>\n            <ul class="dc-tracks">' + ''.join(
+            f'<li><strong>{_esc(t["name"])}</strong>' + (f'<span>{_esc(t["note"])}</span>' if t.get('note') else '') + '</li>'
+            for t in programs['tracks']) + '</ul>')
+    if programs.get('dual_degrees'):
+        out.append('            <p class="dc-sub">Dual degrees</p>\n            <ul class="dc-chips">' +
+                   ''.join(f'<li>{_esc(d)}</li>' for d in programs['dual_degrees']) + '</ul>')
+    return _cell('Programs &amp; Tracks', '\n'.join(out))
+
+
+def _applying_cell(items):
+    rows = ''.join(f'<div class="dc-kv"><dt>{_esc(i["label"])}</dt><dd>{_esc(i["value"])}</dd></div>' for i in items)
+    return _cell('Applying', f'            <dl class="dc-kvs">{rows}</dl>')
+
+
+def _outcomes_cell(o):
+    stats = []
+    if o.get('match_rate'):
+        stats.append((_esc(o['match_rate']), f'Residency match rate · {o.get("match_year", "")}'.rstrip(' ·')))
+    if o.get('avg_debt'):
+        stats.append((f'${o["avg_debt"]:,}', 'Avg. debt at graduation'))
+    if o.get('avg_scholarship'):
+        stats.append((f'${o["avg_scholarship"]:,}', 'Avg. scholarship'))
+    if o.get('aid_pct'):
+        stats.append((f'{o["aid_pct"]}%', 'Receive financial aid'))
+    body = '            <div class="dc-out">' + ''.join(
+        f'<div class="dc-reach-stat"><h4>{v}</h4><p>{label}</p></div>' for v, label in stats) + '</div>'
+    if o.get('avg_debt_note'):
+        body += f'\n            <p class="dc-foot">Debt comparison: {_esc(o["avg_debt_note"])}</p>'
+    return _cell('Outcomes', body)
+
+
+def _toggle(names, cells):
+    """A collapsed <details> band; the summary names whatever sections are inside."""
+    title = (', '.join(names[:-1]) + ' &amp; ' + names[-1]) if len(names) > 1 else names[0]
+    title = title[0].upper() + title[1:]
+    return (f'\n      <details class="dc-details">\n        <summary>{title}</summary>'
+            f'\n        <div class="dc-more">\n' + '\n'.join(cells) + '\n        </div>\n      </details>')
+
+
+def render_extras(page, raw):
+    """Optional bands below the headline stats, each folded into its own toggle so the card
+    opens on the key numbers. A band (and each cell in it) appears only when data exists."""
+    html = ''
+    # Level 2 — clinical training & research
+    level2 = []
+    if page.get('clinical_sites'):
+        level2.append(('clinical training', _sites_cell(page['clinical_sites'], raw.get('hospitals') or {})))
+    nih = raw.get('nih') or {}
+    if nih or page.get('research_badges') or raw.get('trials'):
+        level2.append(('research', _research_cell(nih, raw.get('trials'), page.get('research_badges') or [], page.get('trials_label'))))
+    if level2:
+        html += _toggle([n for n, _ in level2], [c for _, c in level2])
+    # Level 3 — programs, admissions & outcomes
+    level3 = []
+    if page.get('programs'):
+        level3.append(('programs', _programs_cell(page['programs'])))
+    if page.get('applying'):
+        level3.append(('admissions', _applying_cell(page['applying'])))
+    if page.get('outcomes'):
+        level3.append(('outcomes', _outcomes_cell(page['outcomes'])))
+    if level3:
+        html += _toggle([n for n, _ in level3], [c for _, c in level3])
+    return html
+
+
+def render_dashboard(stats, school, extras=''):
     """Editorial stats card. Each cell appears only when its numbers are in the YAML."""
     s = stats
     left, right = [], []
@@ -719,7 +996,8 @@ def render_dashboard(stats, school):
     stage = '\n        <div class="dc-divider-v"></div>\n'.join(cols)
 
     sources = s.get('sources') or []
-    meta = ('Sources: ' if len(sources) > 1 else 'Source: ') + _source_links(sources) if sources else ''
+    meta = 'Official school figures and U.S. government data · sources below' if sources else ''
+    footer = (f'\n      <p class="dc-sources">Sources: {_source_links(sources)}</p>') if sources else ''
     link = ''
     if s.get('profile_url'):
         link = f'''
@@ -740,7 +1018,7 @@ def render_dashboard(stats, school):
       </div>
       <div class="dc-stage">
 {stage}
-      </div>
+      </div>{extras}{footer}
     </div>
   </div>'''
 
@@ -849,11 +1127,17 @@ def render_page(school_slug, data, interviews, page=None):
         # Full page: dashboard, highlights band, then voices on the plain background
         extra_css = DASHBOARD_CSS if has_dashboard else ''
         short = f' {_esc(page["short_name"])}' if page.get('short_name') else ''
-        sections = [render_dashboard(stats, data)] if has_dashboard else []
+        _, _, raw = load_fetched(school_slug)
+        col = dict(page.get('cost_of_living') or {})
+        if raw.get('rent'):
+            col.update(median_rent=raw['rent']['median_rent'], acs_year=raw['rent']['acs_year'])
+        if col.get('median_rent'):
+            stats['col'] = col
+        sections = [render_dashboard(stats, data, render_extras(page, raw))] if has_dashboard else []
         if page.get('highlights'):
             sections.append(render_highlights(page['highlights'], page.get('highlight_sources')))
         sections.append(f'''  <!-- STUDENT VOICES -->
-  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+  <div id="student-voices" class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl scroll-mt-[90px]">
     <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
       <div>
         <h2 class="font-headline-lg text-headline-lg text-primary">Student Voices</h2>
@@ -903,7 +1187,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 
   <!-- STUDENT VOICES -->
-  <div class="bg-surface-container-low border-y border-primary/5">
+  <div id="student-voices" class="bg-surface-container-low border-y border-primary/5 scroll-mt-[90px]">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
       <div class="flex items-baseline justify-between flex-wrap gap-sm mb-lg">
         <div>
@@ -930,7 +1214,7 @@ def render_page(school_slug, data, interviews, page=None):
   <link href="/css/style.css" rel="stylesheet">
   {TAILWIND_CONFIG}
   <style>
-    .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}{extra_css}
+    .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}{VOICES_JUMP_CSS}{extra_css}
   </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
@@ -953,6 +1237,11 @@ def render_page(school_slug, data, interviews, page=None):
 </nav>
 
 <main class="flex-grow">
+
+  <a href="#student-voices" class="voices-jump" aria-label="Jump to {iv_label} from students">
+    <span class="voices-jump-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v9M3 7.5L7 11.5l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>Student interviews<span class="voices-jump-sub">{iv_label} below</span></span>
+  </a>
 
   <!-- HERO -->
   <div class="bg-surface-container-low border-b border-primary/5">
@@ -996,6 +1285,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 </footer>
 
+{VOICES_JUMP_JS}
 <script src="/js/main.js"></script>
 </body>
 </html>'''

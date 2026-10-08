@@ -1,9 +1,63 @@
 {
+  "hospitals": {
+    "050373": {
+      "city": "LOS ANGELES",
+      "emergency": true,
+      "name": "LOS ANGELES GENERAL MEDICAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "050696": {
+      "city": "LOS ANGELES",
+      "emergency": false,
+      "name": "KECK HOSPITAL OF USC",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "053302": {
+      "city": "LOS ANGELES",
+      "emergency": true,
+      "name": "CHILDREN'S HOSP OF LOS ANGELES",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
   "nih": {
     "amount": 222006153,
+    "ctsa": true,
     "fetched": "2026-10-08",
     "fiscal_year": 2025,
+    "mstp": false,
     "org_name": "UNIVERSITY OF SOUTHERN CALIFORNIA",
-    "projects": 292
+    "top_departments": [
+      {
+        "amount": 56717719,
+        "dept": "Public Health & Prev Medicine"
+      },
+      {
+        "amount": 44848888,
+        "dept": "Neurology"
+      },
+      {
+        "amount": 44500909,
+        "dept": "Internal Medicine / Medicine"
+      }
+    ],
+    "trend": {
+      "2021": 206702977,
+      "2022": 220001481,
+      "2023": 231595839,
+      "2024": 222878531,
+      "2025": 222006153
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 117,
+    "sponsor": "University of Southern California"
   }
 }
