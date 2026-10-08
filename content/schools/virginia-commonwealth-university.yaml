@@ -1,0 +1,108 @@
+# School page data for VCU School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official VCU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: VCU
+nih_org: VIRGINIA COMMONWEALTH UNIVERSITY
+trials_sponsor: Virginia Commonwealth University
+
+stats:
+  stats_kind: average            # VCU SOM prospective applicants page (no class year given)
+  profile_url: https://medschool.vcu.edu/admissions/prospective/
+  mcat: 512
+  gpa_overall: 3.79
+  class_size: null               # not published
+  tuition_in_state: 41660        # 2025–26 MD tuition & fees (newest published)
+  tuition_out_of_state: 67318
+  cost_year: 2025–26
+
+sources:
+  - label: VCU SOM Prospective Applicants
+    url: https://medschool.vcu.edu/admissions/prospective/
+  - label: VCU SOM Funding Priorities (2025–26 tuition)
+    url: https://medschool.vcu.edu/giving/funding/
+  - label: VCU SOM Admissions Committee & Selection Policy
+    url: https://assets.som.vcu.edu/pdfs/policies/student-selection.pdf
+  - label: VCU Internal Medicine M3 Clerkship
+    url: https://intmed.vcu.edu/education/m3/
+  - label: VCU MD-PhD Program
+    url: https://medschool.vcu.edu/education/graduate/dual-degree/mdphd/
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Richmond City, VA)
+    url: https://www.census.gov/quickfacts/fact/table/richmondcityvirginia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Chris describes four to six hours of lecture a day, mostly taught by clinicians, which keeps
+        everything in clinical perspective; maybe a third of the class attends live. Required afternoon
+        sessions twice a week bring small groups and mock patient workups.
+      - >-
+        Exams lean on two-step questions that test understanding rather than recall, so Chris focused on
+        learning concepts really well the first time through.
+
+  - title: House Calls
+    icon: home_health
+    paragraphs:
+      - >-
+        Starting early in second year, students can join clinicians on **house calls** across Richmond,
+        visiting patients who can't make it to a hospital or clinic.
+      - >-
+        Seeing patients' homes and neighborhoods taught Chris that good care has to fit each patient's
+        reality: some can't afford medications, some can't read, and some have no way to get to
+        appointments.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        **VCU Medical Center** is a high-acuity academic hospital and a Level 1 trauma, stroke, burn, and
+        comprehensive cancer center. Third-years also rotate at the Richmond VA Medical Center, Riverside
+        Regional Medical Center, and other sites across the region.
+      - >-
+        Applicants with an MCAT above 503 and a GPA above 3.3 are invited to complete a secondary
+        application.
+
+  - title: Life in Richmond
+    icon: account_balance
+    paragraphs:
+      - >-
+        VCU sits in the heart of Richmond, a city rich in history and culture and also marked by poverty
+        and racial inequity, which pushes students to care for people from all walks of life.
+      - >-
+        A self-described history buff, Chris loves Richmond's past, its bars and food, and the scale of a
+        small city.
+
+highlight_sources:
+  - label: DocStory interview with Chris
+    url: /interviews/virginia-commonwealth-university/chris/index.html
+  - label: VCU Internal Medicine M3 Clerkship
+    url: https://intmed.vcu.edu/education/m3/
+  - label: VCU SOM Admissions Committee & Selection Policy
+    url: https://assets.som.vcu.edu/pdfs/policies/student-selection.pdf
+
+quotes:
+  chris: >-
+    "Being inside the homes and neighborhoods of our patients gives a unique perspective and helped me
+    develop a greater appreciation for the challenges many people face when it comes to balancing life
+    challenges and their health."
+
+clinical_sites:
+  - {name: VCU Medical Center, role: Level 1 trauma, stroke, burn and cancer center, cms_id: "490032"}
+  - {name: Richmond VA Medical Center, cms_id: "49010F"}
+  - {name: Riverside Regional Medical Center, cms_id: "490052"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · VCU Massey Comprehensive Cancer Center
+
+applying:
+  - {label: Minimums, value: "MCAT 503 · GPA 3.3 for a secondary invitation"}
+
+cost_of_living:
+  county: Richmond City, VA
+  fips: "51760"
+  median_rent: 1372             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

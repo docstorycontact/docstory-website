@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "360003": {
+      "city": "CINCINNATI",
+      "emergency": true,
+      "name": "UNIVERSITY OF CINCINNATI MEDICAL CENTER, LLC",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "36003F": {
+      "city": "CINCINNATI",
+      "emergency": true,
+      "name": "CINCINNATI VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "360354": {
+      "city": "WEST CHESTER",
+      "emergency": true,
+      "name": "WEST CHESTER HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "363300": {
+      "city": "CINCINNATI",
+      "emergency": true,
+      "name": "CINCINNATI CHILDREN'S HOSPITAL MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 77356830,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "UNIVERSITY OF CINCINNATI",
+    "top_departments": [
+      {
+        "amount": 13745990,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 11967712,
+        "dept": "Neurology"
+      },
+      {
+        "amount": 11665700,
+        "dept": "Psychiatry"
+      }
+    ],
+    "trend": {
+      "2021": 82085856,
+      "2022": 76287930,
+      "2023": 76489755,
+      "2024": 89800667,
+      "2025": 77356830
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 52,
+    "sponsor": "University of Cincinnati"
+  }
+}

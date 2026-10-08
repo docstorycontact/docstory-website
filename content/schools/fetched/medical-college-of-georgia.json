@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "110007": {
+      "city": "ALBANY",
+      "emergency": true,
+      "name": "PHOEBE PUTNEY MEMORIAL HOSPITAL",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "110024": {
+      "city": "SAVANNAH",
+      "emergency": true,
+      "name": "CANDLER HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "110034": {
+      "city": "AUGUSTA",
+      "emergency": true,
+      "name": "WELLSTAR MCG HEALTH, AFFILIATED WITH MED COL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "110035": {
+      "city": "MARIETTA",
+      "emergency": true,
+      "name": "WELLSTAR KENNESTONE REGIONAL MEDICAL CENTER",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 59195599,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "AUGUSTA UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 12010169,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 10517175,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 7511089,
+        "dept": "Neurosciences"
+      }
+    ],
+    "trend": {
+      "2021": 52916714,
+      "2022": 52309786,
+      "2023": 61063464,
+      "2024": 71585111,
+      "2025": 59195599
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 22,
+    "sponsor": "Augusta University"
+  }
+}

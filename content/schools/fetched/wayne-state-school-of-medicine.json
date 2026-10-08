@@ -1,0 +1,95 @@
+{
+  "hospitals": {
+    "230020": {
+      "city": "DEARBORN",
+      "emergency": true,
+      "name": "BEAUMONT HOSPITAL - DEARBORN",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "230053": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "HENRY FORD HEALTH HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "230104": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "HARPER UNIVERSITY HOSPITAL",
+      "ownership": "Proprietary",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "230165": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "HENRY FORD HEALTH ST JOHN HOSPITAL",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "230273": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "DETROIT RECEIVING HOSPITAL",
+      "ownership": "Proprietary",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "23037F": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "DETROIT (JOHN D. DINGELL) VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 5,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "233300": {
+      "city": "DETROIT",
+      "emergency": true,
+      "name": "CHILDREN'S HOSPITAL OF MICHIGAN",
+      "ownership": "Proprietary",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 61587835,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "WAYNE STATE UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 14275267,
+        "dept": "Radiation-Diagnostic / Oncology"
+      },
+      {
+        "amount": 8837382,
+        "dept": "Ophthalmology"
+      },
+      {
+        "amount": 8803556,
+        "dept": "Pathology"
+      }
+    ],
+    "trend": {
+      "2021": 49301650,
+      "2022": 53024129,
+      "2023": 59433451,
+      "2024": 58684915,
+      "2025": 61587835
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 32,
+    "sponsor": "Wayne State University"
+  }
+}

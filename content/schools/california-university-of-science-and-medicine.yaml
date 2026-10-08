@@ -1,0 +1,107 @@
+# School page data for California University of Science and Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official CUSM pages (see `sources`); trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# CUSM has negligible NIH funding, so nih_org is omitted. No current class size is published.
+
+short_name: CUSM
+
+stats:
+  cohort_label: Most recent incoming class
+  stats_kind: average
+  profile_url: https://cusm.edu/academics/md/requirements-for-admission/index.php
+  mcat: 510
+  class_size: null               # not published for the current class
+  tuition: 76800                 # 2026–27: $72,100 tuition + $200 registration + $4,500 MD general fee
+  cost_year: 2026–27
+
+sources:
+  - label: CUSM MD Requirements for Admission
+    url: https://cusm.edu/academics/md/requirements-for-admission/index.php
+  - label: CUSM Tuition & Fees (2026–27)
+    url: https://cusm.edu/student/student-business-services/tuition-and-fees.php
+  - label: CUSM Partnerships
+    url: https://cusm.edu/about/partnerships.php
+  - label: CUSM MD Curriculum
+    url: https://cusm.edu/academics/md/md-curriculum/index.php
+  - label: CUSM MBS Program
+    url: https://cusm.edu/academics/mbs/index.php
+  - label: Census QuickFacts (San Bernardino County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/sanbernardinocountycalifornia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        CUSM uses a **flipped classroom**: students work through pre-lecture material, then class time
+        opens with iRAT and tRAT readiness quizzes and moves on to clinical cases and board-style
+        questions. Bao Vu describes three scheduled days a week, with labs, clinical skills, and a
+        College Colloquium covering ethics.
+      - >-
+        Clinical skills run through both preclinical years, teaching history and physical exam
+        techniques system by system alongside the coursework.
+
+  - title: A New School
+    icon: rocket_launch
+    paragraphs:
+      - >-
+        As a young school, CUSM gives students real say. Bao says students helped move grading from
+        letter grades to **pass/fail** and cut the schedule from five days a week to three.
+      - >-
+        Bao describes faculty as heavily invested in student success, with a real open-door policy, and
+        a class that shares notes and supports each other.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        **Arrowhead Regional Medical Center**, across the street from campus, is the primary teaching
+        hospital for the clerkship and transition-to-residency phases, and ARMC physicians serve as
+        faculty and mentors.
+      - >-
+        Regional affiliates for third- and fourth-year clerkships include Eisenhower Health, Riverside
+        Community Hospital, Riverside University Health System, and Pomona Valley Hospital Medical
+        Center.
+
+  - title: Life in the Inland Empire
+    icon: landscape
+    paragraphs:
+      - >-
+        CUSM sits in Colton, near San Bernardino. Bao notes there are fewer distractions than at other
+        Southern California schools, with Redlands and Riverside nightlife 5–15 minutes away.
+      - >-
+        Big Bear ski resorts, Orange County beaches, and Los Angeles are one to two hours away.
+
+highlight_sources:
+  - label: DocStory interview with Bao Vu
+    url: /interviews/california-university-of-science-and-medicine/bao-vu/index.html
+  - label: CUSM Partnerships
+    url: https://cusm.edu/about/partnerships.php
+  - label: CUSM MD Curriculum
+    url: https://cusm.edu/academics/md/md-curriculum/index.php
+
+quotes:
+  bao-vu: >-
+    "We are a Pass/Fail school so the culture at my school is very very chill and laid back. Everyone is
+    super nice and we are always willing to share notes or support each other in times of need."
+
+clinical_sites:
+  - {name: Arrowhead Regional Medical Center, role: Primary teaching hospital · across the street, cms_id: "050245"}
+  - {name: Eisenhower Health, role: Regional clerkship affiliate, cms_id: "050573"}
+  - {name: Riverside Community Hospital, role: Regional clerkship affiliate, cms_id: "050022"}
+  - {name: Riverside University Health System, role: Regional clerkship affiliate, cms_id: "050292"}
+  - {name: Pomona Valley Hospital Medical Center, role: Regional clerkship affiliate}
+
+programs:
+  tracks:
+    - {name: Master of Biomedical Sciences, note: Conditional MD pathway}
+
+applying:
+  - {label: MCAT, value: "Minimum 502 · taken within three years of matriculation"}
+  - {label: GPA, value: "3.0+ overall and BCPM preferred"}
+
+cost_of_living:
+  county: San Bernardino County, CA
+  fips: "06071"
+  median_rent: 1801             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

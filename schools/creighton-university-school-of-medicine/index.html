@@ -132,6 +132,7 @@
     .dc-good { font-size: 0.8125rem; color: #1f9d6b; font-weight: 600; margin-top: 3px; }
     .dc-selectivity-body { display: flex; gap: 16px; align-items: center; margin-top: 10px; }
     .dc-curve-wrap { flex: 1; min-width: 0; }
+    .dc-curve-wrap:only-child { max-width: 420px; }   /* no GPA published: keep the curve at its usual scale */
     .dc-gpa-wrap { flex-shrink: 0; width: 150px; }
     .dc-gpa-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
     .dc-gpa-num { font-size: 0.9375rem; font-weight: 700; color: #1f2235; width: 34px; letter-spacing: -0.01em; }
@@ -173,6 +174,7 @@
     .dc-reach-stat p { font-size: 0.6875rem; font-weight: 600; color: #8a8fa6; letter-spacing: 0.04em; text-transform: uppercase; margin: 3px 0 0; }
     /* Cost of living */
     .dc-rent { display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #e6e4f2; }
+    .dc-cell-label + .dc-rent { margin-top: 0; padding-top: 0; border-top: 0; }
     .dc-rent-label { font-size: 0.8125rem; color: #4b4f6b; }
     .dc-rent-amt { font-size: 1.125rem; font-weight: 700; color: #1f2235; letter-spacing: -0.02em; }
     /* Extra band */
@@ -308,7 +310,7 @@
                   <line x1="91" y1="4" x2="91" y2="70" stroke="#b4b8cd" stroke-dasharray="3,2" stroke-width="1"/>
                   <line x1="117" y1="23" x2="117" y2="70" stroke="#5b4bd1" stroke-width="1.5"/>
                   <circle cx="117" cy="21" r="3.5" fill="#5b4bd1"/>
-                  <text x="84" y="78" text-anchor="middle" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg 502</text>
+                  <text x="105" y="78" text-anchor="end" font-size="7.5" fill="#8a8fa6" font-family="Inter,sans-serif">nat. avg 502</text>
                   <text x="117" y="78" text-anchor="middle" font-size="7.5" fill="#1f2235" font-weight="700" font-family="Inter,sans-serif">512</text>
                 </svg>
               </div>

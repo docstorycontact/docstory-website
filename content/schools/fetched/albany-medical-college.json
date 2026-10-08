@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "330013": {
+      "city": "ALBANY",
+      "emergency": true,
+      "name": "ALBANY MEDICAL CENTER HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "33009F": {
+      "city": "ALBANY",
+      "emergency": true,
+      "name": "ALBANY VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 2,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 9656853,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "ALBANY MEDICAL COLLEGE",
+    "top_departments": [
+      {
+        "amount": 2542381,
+        "dept": "Other Basic Sciences"
+      },
+      {
+        "amount": 2527875,
+        "dept": "Physiology"
+      },
+      {
+        "amount": 2330753,
+        "dept": "Anatomy / Cell Biology"
+      }
+    ],
+    "trend": {
+      "2021": 8697846,
+      "2022": 11520264,
+      "2023": 11989017,
+      "2024": 13233444,
+      "2025": 9656853
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 9,
+    "sponsor": "Albany Medical College"
+  }
+}

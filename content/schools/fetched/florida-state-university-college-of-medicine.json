@@ -1,0 +1,32 @@
+{
+  "nih": {
+    "amount": 15205718,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "FLORIDA STATE UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 9844102,
+        "dept": "Other Basic Sciences"
+      },
+      {
+        "amount": 5361616,
+        "dept": "Psychology"
+      }
+    ],
+    "trend": {
+      "2021": 13206347,
+      "2022": 12268798,
+      "2023": 19092427,
+      "2024": 12436143,
+      "2025": 15205718
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 46,
+    "sponsor": "Florida State University"
+  }
+}

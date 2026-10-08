@@ -1,0 +1,117 @@
+# School page data for Baylor College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Baylor pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Baylor
+nih_org: BAYLOR COLLEGE OF MEDICINE
+trials_sponsor: Baylor College of Medicine
+
+stats:
+  entering_class: 2025
+  stats_kind: average
+  profile_url: https://blogs.bcm.edu/2025/07/28/welcome-new-students-2025/
+  mcat: 518                      # BCM welcome post, new School of Medicine students 2025
+  gpa_overall: 3.93
+  class_size: 225                # 198 Texans + 27 non-Texans
+  out_of_state_pct: 12
+  tuition_in_state: 19683        # 2026–27 Texas resident tuition ($19,682.50), Houston campus
+  tuition_out_of_state: 32783    # 2026–27 non-resident tuition ($32,782.50)
+  cost_year: 2026–27
+
+sources:
+  - label: BCM welcome to new students (2025)
+    url: https://blogs.bcm.edu/2025/07/28/welcome-new-students-2025/
+  - label: BCM MD Tuition and Fees
+    url: https://www.bcm.edu/education/school-of-medicine/m-d-program/tuition-and-fees
+  - label: BCM MD Training Sites
+    url: https://www.bcm.edu/education/school-of-medicine/m-d-program/curriculum/clinical-curriculum/training-sites
+  - label: BCM MD Admissions FAQs
+    url: https://www.bcm.edu/education/school-of-medicine/m-d-program/admissions-process/faqs
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Harris County, TX)
+    url: https://www.census.gov/quickfacts/fact/table/harriscountytexas/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Baylor's preclinical curriculum lasts just a year and a half and is **true pass/fail**. Michele
+        Cabeza describes recorded morning lectures, anatomy lab, a Critical Thinking and Problem Solving
+        course built on simulated cases in groups of six, and **Patient, Physician, and Society**, where
+        students learn histories and physical exams before practicing in a preceptor's office.
+      - >-
+        Justin says the pace, not the difficulty, is the challenge, so daily review matters; students
+        share class-made flashcard decks passed down and updated each year.
+
+  - title: Texas Medical Center
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Baylor sits in the Texas Medical Center, the world's largest medical center. Students train at
+        **Ben Taub Hospital**, the county's Level I trauma center next to campus; **Baylor St. Luke's
+        Medical Center**, Baylor's primary private adult teaching hospital; Texas Children's Hospital; and
+        the Michael E. DeBakey VA Medical Center.
+      - >-
+        A Temple campus trains students at Baylor Scott & White Medical Center–Temple and McLane
+        Children's Hospital.
+
+  - title: Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Every student joins a **Peer Resource Network**, a small group led by second-years with upperclass
+        mentors, and the year starts with an overnight retreat. Classes gather for Coffeehouse talent
+        shows, term-end parties, and mixers with UT McGovern.
+      - >-
+        Justin calls the class collaborative: people work hard but aren't too hard on themselves, and
+        older students look out for younger ones. Service runs deep, starting with a first-year volunteer
+        day.
+
+  - title: Houston & Affordability
+    icon: savings
+    paragraphs:
+      - >-
+        Tuition is strikingly low for 2026–27: about **$19,700** for Texas residents and $32,800 for
+        non-residents. Justin calls the low tuition "amazing."
+      - >-
+        Apartments are reasonably priced for a major city, and Hermann Park, the Houston Zoo, and Rice
+        University sit right beside the medical center.
+
+highlight_sources:
+  - label: DocStory interviews with Justin and Michele Cabeza
+    url: /interviews/baylor-college-of-medicine/michele-cabeza/index.html
+  - label: BCM MD Training Sites
+    url: https://www.bcm.edu/education/school-of-medicine/m-d-program/curriculum/clinical-curriculum/training-sites
+  - label: BCM MD Tuition and Fees
+    url: https://www.bcm.edu/education/school-of-medicine/m-d-program/tuition-and-fees
+
+quotes:
+  michele-cabeza: >-
+    "Firstly, it is a huge plus that our preclinical curriculum is true Pass/Fail. This helps to make the
+    environment way less competitive than schools that rank their students."
+  justin: >-
+    "While gunners exist, they don't actively undermine other students. We are very collaborative and love
+    to relax on the weekends or at the end of the terms."
+
+clinical_sites:
+  - {name: Ben Taub Hospital, role: Harris Health · Level I trauma · next to campus, cms_id: "450289"}
+  - {name: Baylor St. Luke's Medical Center, role: Primary private adult teaching hospital, cms_id: "450193"}
+  - {name: Texas Children's Hospital, cms_id: "453304"}
+  - {name: Michael E. DeBakey VA Medical Center, cms_id: "45074F"}
+  - {name: Baylor Scott & White Medical Center–Temple, role: Temple campus, cms_id: "450054"}
+  - {name: McLane Children's Hospital, role: Temple campus}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Dan L Duncan Comprehensive Cancer Center
+
+applying:
+  - {label: Minimums, value: No GPA or MCAT minimum}
+  - {label: MCAT, value: Most recent score is considered}
+
+cost_of_living:
+  county: Harris County, TX
+  fips: "48201"
+  median_rent: 1401             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

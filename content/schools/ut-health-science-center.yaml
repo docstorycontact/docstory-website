@@ -1,0 +1,111 @@
+# School page data for University of Tennessee Health Science Center College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UTHSC pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UTHSC
+nih_org: UNIVERSITY OF TENNESSEE HEALTH SCI CTR
+trials_sponsor: University of Tennessee Health Science Center
+
+stats:
+  cohort_label: 2025 admissions cycle
+  stats_kind: average
+  profile_url: https://www.uthsc.edu/medicine/admissions/documents/com-2025-medicine-profile-of-admissions.pdf
+  mcat: 513                      # COM Profile of Admissions 2025
+  class_size: 170                # "a maximum of 170 new students" each year
+  tuition_in_state: 37559        # UTHSC bursar fee information, Medicine
+  tuition_out_of_state: 58109
+
+sources:
+  - label: UTHSC COM Profile of Admissions 2025
+    url: https://www.uthsc.edu/medicine/admissions/documents/com-2025-medicine-profile-of-admissions.pdf
+  - label: UTHSC Bursar Fee Information
+    url: https://uthsc.edu/finance/bursar/fees/
+  - label: UTHSC COM Admission Requirements
+    url: https://www.uthsc.edu/medicine/admissions/requirements.php
+  - label: UTHSC Graduate Medical Education (hospital partners)
+    url: https://uthsc.edu/graduate-medical-education/
+  - label: UTHSC COM Campuses and Departments
+    url: https://uthsc.edu/medicine/campuses-departments.php
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Shelby County, TN)
+    url: https://www.census.gov/quickfacts/fact/table/shelbycountytennessee/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Jay Patel describes classes from 8am to about noon, with mandatory afternoons for hands-on
+        **ultrasound** practice and a Principles of Medicine course that hones interviewing. Lectures are
+        podcasted and attendance isn't mandatory.
+      - >-
+        After an all-nighter-fueled first exam, Jay rebuilt a study routine around board-review videos
+        before lecture, then lectures at double speed for the details tested in-house.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Students spend their first two years in Memphis, then rotate across UTHSC's four campuses. Memphis
+        partners include **Regional One Health**, the largest teaching site; Le Bonheur Children's
+        Hospital; Methodist University Hospital; the Memphis VA Medical Center; Baptist Memorial; and St.
+        Jude Children's Research Hospital.
+      - >-
+        Jay hears that the rotations prepare students well for shelf exams and expose them to cases they
+        wouldn't see in many other cities.
+
+  - title: Class Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Jay is amazed by how friendly the class is: a wide variety of life experiences and motivations,
+        and classmates who support each other before and after every exam.
+      - >-
+        UTHSC gives strong priority to Tennessee residents; non-residents make up no more than 10% of the
+        entering class.
+
+  - title: Life in Memphis
+    icon: location_city
+    paragraphs:
+      - >-
+        Campus sits in the **Memphis Medical District** alongside the dentistry, pharmacy, and physician
+        assistant programs, with a park right next door. Jay describes a big city without big-city
+        traffic.
+      - >-
+        Poverty and crime in lower-income neighborhoods are part of the city, and part of what shapes the
+        clinical experience.
+
+highlight_sources:
+  - label: DocStory interview with Jay Patel
+    url: /interviews/ut-health-science-center/jay-patel/index.html
+  - label: UTHSC COM Campuses and Departments
+    url: https://uthsc.edu/medicine/campuses-departments.php
+  - label: UTHSC COM Admission Requirements
+    url: https://www.uthsc.edu/medicine/admissions/requirements.php
+
+quotes:
+  jay-patel: >-
+    "Everyone is supportive of each other before and after exams from the outset, making medical school
+    feel more manageable and less daunting."
+
+clinical_sites:
+  - {name: Regional One Health, role: Largest medical and surgical teaching site, cms_id: "440152"}
+  - {name: Le Bonheur Children's Hospital}
+  - {name: Methodist University Hospital, cms_id: "440049"}
+  - {name: Memphis VA Medical Center, cms_id: "44013F"}
+  - {name: Baptist Memorial Hospital–Memphis, cms_id: "440048"}
+  - {name: St. Jude Children's Research Hospital, cms_id: "443302"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center (affiliate) · St. Jude Children's Research Hospital
+
+applying:
+  - {label: Residency, value: Tennessee residents prioritized · non-residents capped at 10% of the class}
+  - {label: MCAT, value: Scores up to five years old accepted}
+
+cost_of_living:
+  county: Shelby County, TN
+  fips: "47157"
+  median_rent: 1232             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

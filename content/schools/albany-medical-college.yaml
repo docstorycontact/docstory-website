@@ -1,0 +1,105 @@
+# School page data for Albany Medical College.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official AMC pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: AMC
+nih_org: ALBANY MEDICAL COLLEGE
+trials_sponsor: Albany Medical College
+
+stats:
+  cohort_label: Most recent incoming class
+  stats_kind: average
+  profile_url: https://www.amc.edu/admissions/md-program-admissions/
+  mcat: 512
+  gpa_overall: 3.82
+  gpa_science: 3.77
+  class_size: 145
+  tuition: 61125                 # 2026–27 MD tuition, AMC cost of attendance table
+  cost_year: 2026–27
+  total_cost: 375858             # estimated four-year program cost (2026–27 tuition used for all years)
+  total_cost_note: incoming fall 2026
+
+sources:
+  - label: AMC MD Program Admissions
+    url: https://www.amc.edu/admissions/md-program-admissions/
+  - label: AMC Cost and Financial Aid (MD cost table)
+    url: https://www.amc.edu/apply/cost-aid/
+  - label: AMC Combined Degree Programs
+    url: https://www.amc.edu/education/md-program/about-md/combined-degree-programs-md/
+  - label: Census QuickFacts (Albany County, NY)
+    url: https://www.census.gov/quickfacts/fact/table/albanycountynewyork/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Ana Khatia describes recorded lectures watched on your own schedule, with a **longitudinal
+        clinical skills theme** running alongside, which Ana calls the most helpful part of building
+        clinical skills.
+      - >-
+        Instructors are easy to reach, Ana says, often jumping on a video call right away to work through
+        a confusing topic.
+
+  - title: Support
+    icon: favorite
+    paragraphs:
+      - >-
+        Ana describes a "we are all in this together" class where upperclassmen and classmates share
+        resources and guidance for each theme.
+      - >-
+        When family emergencies hit during first year, Ana says the school was extremely understanding,
+        making time for family without falling behind.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Students train at **Albany Medical Center**, the region's academic medical center, and the Albany
+        VA Medical Center. Ana found physicians hands-on with first- and second-year students, encouraging
+        them to join patient interactions.
+      - >-
+        Albany keeps classes small on purpose, at about 145 students, from 24 states and 68 colleges.
+
+  - title: Upstate New York
+    icon: landscape
+    paragraphs:
+      - >-
+        Albany is a smaller city with a handful of bars where you'll run into classmates, but hiking,
+        lakes, skiing, and apple picking are close, and Boston and New York City are a drive or train
+        ride away.
+      - >-
+        Ana warns winters can be brutal and dark; spring and fall make up for it.
+
+highlight_sources:
+  - label: DocStory interview with Ana Khatia
+    url: /interviews/albany-medical-college/ana-khatia/index.html
+  - label: AMC MD Program Admissions
+    url: https://www.amc.edu/admissions/md-program-admissions/
+  - label: AMC Combined Degree Programs
+    url: https://www.amc.edu/education/md-program/about-md/combined-degree-programs-md/
+
+quotes:
+  ana-khatia: >-
+    "The students at AMC very much have the "we are all in this together" mentality. I feel very lucky to
+    attend a medical school were we support each other and celebrate each others accomplishments."
+
+clinical_sites:
+  - {name: Albany Medical Center Hospital, role: Academic medical center, cms_id: "330013"}
+  - {name: Albany VA Medical Center, cms_id: "33009F"}
+
+programs:
+  tracks:
+    - {name: BS/MD with RPI, note: Physician Scientist Program · 7 years}
+    - {name: BS/MD with Union College, note: Leadership in Medicine · 8 years}
+    - {name: BS/MD with Siena College, note: Science Humanities and Medicine}
+
+applying:
+  - {label: Interviews, value: Virtual Multiple Mini Interview (MMI)}
+  - {label: Combined programs, value: Up to 45 first-year seats reserved for BS/MD students}
+
+cost_of_living:
+  county: Albany County, NY
+  fips: "36001"
+  median_rent: 1313             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

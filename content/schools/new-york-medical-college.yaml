@@ -1,0 +1,107 @@
+# School page data for New York Medical College School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official NYMC pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: NYMC
+nih_org: NEW YORK MEDICAL COLLEGE
+trials_sponsor: New York Medical College
+
+stats:
+  cohort_label: Entering class of 2028
+  stats_kind: average
+  profile_url: https://www.nymc.edu/som/about/
+  mcat: 516
+  gpa_overall: 3.77
+  applied: 9599
+  women_pct: 53
+  class_size: null               # not stated on the class profile
+  tuition: 71714                 # 2026–27: $67,710 tuition + $4,004 first-year fees (incl. meal plan)
+  cost_year: 2026–27
+
+sources:
+  - label: About the NYMC School of Medicine (Class of 2028)
+    url: https://www.nymc.edu/som/about/
+  - label: NYMC SOM Tuition
+    url: https://www.nymc.edu/som/admissions--aid/tuition/
+  - label: NYMC Affiliated Clinical Sites
+    url: https://www.nymc.edu/som/education/md/affiliated-clinical-sites/
+  - label: NYMC M.D. Program Clinical Years
+    url: https://www.nymc.edu/som/education/md/clinical-years/
+  - label: NYMC M.D./M.P.H. Program
+    url: https://www.nymc.edu/som/education/md/mdmph/
+  - label: Census QuickFacts (Westchester County, NY)
+    url: https://www.census.gov/quickfacts/fact/table/westchestercountynewyork/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Nick Bacher describes a first year of daytime labs and lectures, then a more self-directed second
+        year with lab sessions and group exercises two or three days a week. Hands-on clinical training
+        begins in the second half of second year.
+      - >-
+        Nick credits NYMC's **standardized patients**, interviewed throughout the first two years, as the
+        biggest help in building clinical skills, alongside first- and second-year preceptorships.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Clerkships run from **Westchester Medical Center**, which shares the Valhalla campus, to **NYC
+        Health + Hospitals/Metropolitan** in East Harlem, across about 30 clinical affiliates.
+      - >-
+        The mix spans an academic medical center and children's hospital in the suburbs and a city
+        safety-net hospital in Manhattan.
+
+  - title: Community
+    icon: groups
+    paragraphs:
+      - >-
+        Nick chose NYMC for its community feel. Student-launched traditions like **Friendsgiving** bring
+        all four classes together for small-group potluck dinners and a student appreciation ceremony.
+      - >-
+        Nick pushes back on the idea that graded preclinical courses make a school competitive, saying
+        that has never been the case at NYMC.
+
+  - title: Westchester Location
+    icon: train
+    paragraphs:
+      - >-
+        Campus sits in suburban Westchester County. It isn't walkable, but nearby towns are a short drive
+        away and Manhattan is just over half an hour by train.
+      - >-
+        Nick likes being able to head into the city after an exam.
+
+highlight_sources:
+  - label: DocStory interview with Nick Bacher
+    url: /interviews/new-york-medical-college/nick-bacher/index.html
+  - label: NYMC M.D. Program Clinical Years
+    url: https://www.nymc.edu/som/education/md/clinical-years/
+  - label: About the NYMC School of Medicine
+    url: https://www.nymc.edu/som/about/
+
+quotes:
+  nick-bacher: >-
+    "We have a Friendsgiving event launched this year by some particularly enterprising first years and
+    now expanded to include all four class years. … It’s a really tight knit community here, and this
+    type of thing is exactly what NYMC is about."
+
+clinical_sites:
+  - {name: Westchester Medical Center, role: Shares the Valhalla campus, cms_id: "330234"}
+  - {name: Maria Fareri Children's Hospital, role: WMCHealth}
+  - {name: NYC Health + Hospitals/Metropolitan, role: East Harlem, cms_id: "330199"}
+  - {name: About 30 clinical affiliates, role: New York City, Westchester, and Dutchess County}
+
+programs:
+  dual_degrees: [MD-PhD, MD/MPH]
+
+applying:
+  - {label: Applications, value: "9,599 received for the Class of 2028"}
+  - {label: Clinical training, value: Begins in the second half of second year}
+
+cost_of_living:
+  county: Westchester County, NY
+  fips: "36119"
+  median_rent: 1951             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

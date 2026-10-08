@@ -1,0 +1,124 @@
+# School page data for Wayne State University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Wayne State pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Wayne State
+nih_org: WAYNE STATE UNIVERSITY
+trials_sponsor: Wayne State University
+
+stats:
+  cohort_label: 2025 accepted applicants   # MCAT/GPA medians are for accepted applicants
+  stats_kind: median
+  profile_url: https://www.med.wayne.edu/admissions/becoming-an-md/class-profiles
+  mcat: 512
+  gpa_science: 3.84
+  gpa_overall: 3.88
+  applied: 12,843                # Class of 2030 admissions summary
+  interviewed: 1,471
+  admitted: 630
+  enrolled: 299
+  class_size: 299
+  out_of_state_pct: 37           # 36.5% out-of-state, Class of 2030
+  tuition_in_state: 45305        # 2026–27 flat rate, Wayne State Board of Governors
+  tuition_out_of_state: 73895
+  cost_year: 2026–27
+
+sources:
+  - label: Wayne State MD Class Profiles
+    url: https://www.med.wayne.edu/admissions/becoming-an-md/class-profiles
+  - label: Wayne State SOM Tuition Rates
+    url: https://recordsandreg.med.wayne.edu/tuition
+  - label: Wayne State SOM Clinical Partners
+    url: https://www.med.wayne.edu/about/clinical-partners
+  - label: Wayne State School of Medicine Bulletin
+    url: https://bulletins.wayne.edu/undergraduate/school-medicine/
+  - label: Wayne State Early Decision Program
+    url: https://www.med.wayne.edu/admissions/application/earlydecision
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Wayne County, MI)
+    url: https://www.census.gov/quickfacts/fact/table/waynecountymichigan/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Wayne State has moved to a systems-based curriculum with NBME exams. Nik's typical day runs four
+        lectures plus an anatomy review, with schedules that shift from day to day, and evenings spent
+        turning lecture notes into practice questions and spaced-repetition review.
+      - >-
+        The pace is the shock, Nik says: what took two semesters in undergrad took two weeks in medical
+        school. Seeking help early turned Nik's first weeks around.
+
+  - title: Clinical Skills
+    icon: stethoscope
+    paragraphs:
+      - >-
+        In the **Clinical Skills** course, students learn techniques through online tutorials, then
+        practice on standardized patients and get feedback from a paired classmate, the patient, and a
+        fourth-year student acting as the attending.
+      - >-
+        Many students add volunteer clinical work, from **Street Medicine** runs to addiction clinics, and
+        Nik says the class almost unanimously feels well prepared to assess patients.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        The **Detroit Medical Center** and **Henry Ford Health** are the primary teaching hospitals, and
+        students train at more than 70 clinical sites, including Children's Hospital of Michigan, Detroit
+        Receiving, Corewell Health Dearborn, and the John D. Dingell VA Medical Center.
+      - >-
+        Wayne State is also home to the **Barbara Ann Karmanos Cancer Institute**, an NCI-designated
+        Comprehensive Cancer Center.
+
+  - title: Detroit & Culture
+    icon: location_city
+    paragraphs:
+      - >-
+        Nik describes one of the most diverse student bodies anywhere, reflected in its student
+        organizations and an open, relaxed environment. Downtown Detroit offers bars, restaurants, and
+        class parties in Greektown.
+      - >-
+        Nik's unexpected support system: the building's custodians, "my biggest cheerleaders so far."
+
+highlight_sources:
+  - label: DocStory interview with Nik
+    url: /interviews/wayne-state-school-of-medicine/nik/index.html
+  - label: Wayne State SOM Clinical Partners
+    url: https://www.med.wayne.edu/about/clinical-partners
+  - label: Wayne State School of Medicine Bulletin
+    url: https://bulletins.wayne.edu/undergraduate/school-medicine/
+
+quotes:
+  nik: >-
+    "Students at Wayne take pride for being so diverse and multi cultured … I'm no longer pursuing
+    medicine for me, I'm doing it for my future patients."
+
+clinical_sites:
+  - {name: Henry Ford Hospital, role: Primary teaching hospital · Level I trauma, cms_id: "230053"}
+  - {name: Detroit Receiving Hospital, role: Detroit Medical Center, cms_id: "230273"}
+  - {name: Harper University Hospital, role: Detroit Medical Center, cms_id: "230104"}
+  - {name: Children's Hospital of Michigan, cms_id: "233300"}
+  - {name: John D. Dingell VA Medical Center, cms_id: "23037F"}
+  - {name: Corewell Health Dearborn Hospital, cms_id: "230020"}
+  - {name: Henry Ford St. John Hospital, cms_id: "230165"}
+  - {name: Karmanos Cancer Institute}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Barbara Ann Karmanos Cancer Institute
+
+programs:
+  tracks:
+    - {name: Early Decision Program}
+
+applying:
+  - {label: Minimums, value: No minimum GPA or MCAT for regular admission}
+  - {label: Early Decision, value: "MCAT 508+ and BCPM/cumulative GPA 3.60+"}
+
+cost_of_living:
+  county: Wayne County, MI
+  fips: "26163"
+  median_rent: 1132             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

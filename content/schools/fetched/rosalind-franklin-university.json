@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "140124": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "JOHN H STROGER JR HOSPITAL",
+      "ownership": "Government - Local",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "14034F": {
+      "city": "NORTH CHICAGO",
+      "emergency": true,
+      "name": "NORTH CHICAGO VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 5268934,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "ROSALIND FRANKLIN UNIV OF MEDICINE & SCI",
+    "top_departments": [
+      {
+        "amount": 2672128,
+        "dept": "Microbiology / Immun / Virology"
+      },
+      {
+        "amount": 1523456,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 394750,
+        "dept": "Neurosciences"
+      }
+    ],
+    "trend": {
+      "2021": 5006842,
+      "2022": 4603192,
+      "2023": 5660833,
+      "2024": 7272081,
+      "2025": 5268934
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 3,
+    "sponsor": "Rosalind Franklin University of Medicine and Science"
+  }
+}

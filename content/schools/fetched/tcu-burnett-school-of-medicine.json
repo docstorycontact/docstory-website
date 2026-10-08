@@ -1,0 +1,37 @@
+{
+  "hospitals": {
+    "450039": {
+      "city": "FORT WORTH",
+      "emergency": true,
+      "name": "JPS HEALTH NETWORK",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "450135": {
+      "city": "FORT WORTH",
+      "emergency": true,
+      "name": "TEXAS HEALTH HARRIS METHODIST FORT WORTH",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "450137": {
+      "city": "FORT WORTH",
+      "emergency": true,
+      "name": "BAYLOR SCOTT AND WHITE ALL SAINTS MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "453300": {
+      "city": "FORT WORTH",
+      "emergency": true,
+      "name": "COOK CHILDRENS MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  }
+}

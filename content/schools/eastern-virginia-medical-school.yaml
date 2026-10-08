@@ -1,0 +1,102 @@
+# School page data for Eastern Virginia Medical School (Macon & Joan Brock Virginia Health Sciences at ODU).
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official ODU/EVMS pages (see `sources`); trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# NIH RePORTER now files EVMS awards under all of Old Dominion University, so nih_org is omitted to avoid
+# attributing university-wide funding to the medical school.
+
+short_name: EVMS
+trials_sponsor: Eastern Virginia Medical School
+
+stats:
+  cohort_label: Recent matriculants
+  stats_kind: average            # "mean GPA ... mean MCAT"
+  profile_url: https://www.odu.edu/eastern-virginia-medical-school/admissions-criteria
+  mcat: 513
+  gpa_overall: 3.70
+  class_size: null               # not published
+  tuition_in_state: 41409        # Fall 2026–Summer 2027: $38,016 tuition + $3,393 M1 program fee
+  tuition_out_of_state: 64405    # $61,012 + $3,393
+  cost_year: 2026–27
+
+sources:
+  - label: EVMS MD Admissions Criteria
+    url: https://www.odu.edu/eastern-virginia-medical-school/admissions-criteria
+  - label: Virginia Health Sciences Tuition & Fees
+    url: https://www.odu.edu/virginia-health-sciences/tuition-fees
+  - label: EVMS GME Clinical Training Sites
+    url: https://www.evms.edu/education/gme/clinical_training_sites/
+  - label: ODU Pediatrics (CHKD)
+    url: https://www.odu.edu/pediatrics
+  - label: Census QuickFacts (Norfolk city, VA)
+    url: https://www.census.gov/quickfacts/fact/table/norfolkcityvirginia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Rossen Kirkov describes a first semester of morning lectures and weekly anatomy dissections, then a
+        move into organ systems. Many students, including Rossen, study from board-prep resources rather
+        than attending lecture.
+      - >-
+        Clinical skills training runs through the first two years, and students start with standardized
+        patients in the **Sentara Center for Simulation and Immersive Learning**. Rossen calls the
+        **ultrasound** program a real strength.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        EVMS has no hospital of its own, so students train across the region. **Sentara Norfolk General
+        Hospital** is the primary teaching hospital, home to the area's only Level I trauma center and burn
+        unit.
+      - >-
+        **Children's Hospital of The King's Daughters**, Virginia's only freestanding children's hospital,
+        is the main pediatric site, and the Hampton VA Medical Center and military and community hospitals
+        round out the mix.
+
+  - title: Culture & Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        Rossen describes a social, friendly class with no sense of competition, and a school built around
+        community service. The student-run **HOPES** clinic serves uninsured patients.
+      - >-
+        First-years have monthly wellness meetings, which continue less often in second year.
+
+  - title: Norfolk & ODU
+    icon: beach_access
+    paragraphs:
+      - >-
+        EVMS joined Old Dominion University in 2024 as part of **Macon & Joan Brock Virginia Health
+        Sciences**. It shows a preference for Virginia applicants, especially Hampton Roads residents.
+      - >-
+        Norfolk has a downtown with bars and restaurants, and the beach is about 30 minutes away.
+
+highlight_sources:
+  - label: DocStory interview with Rossen Kirkov
+    url: /interviews/eastern-virginia-medical-school/rossen-kirkov/index.html
+  - label: EVMS GME Clinical Training Sites
+    url: https://www.evms.edu/education/gme/clinical_training_sites/
+  - label: EVMS MD Admissions Criteria
+    url: https://www.odu.edu/eastern-virginia-medical-school/admissions-criteria
+
+quotes:
+  rossen-kirkov: >-
+    "We are all very close to each other and help each other. There is no sense of competitiveness between
+    classmates, we all help each other out."
+
+clinical_sites:
+  - {name: Sentara Norfolk General Hospital, role: Primary teaching hospital · Level I trauma, cms_id: "490007"}
+  - {name: Children's Hospital of The King's Daughters, role: Primary pediatric teaching hospital, cms_id: "493301"}
+  - {name: Hampton VA Medical Center, cms_id: "49006F"}
+
+applying:
+  - {label: Residency, value: "Preference for Virginia residents, especially Hampton Roads"}
+  - {label: Eligibility, value: U.S. citizens and permanent residents}
+
+cost_of_living:
+  county: Norfolk city, VA
+  fips: "51710"
+  median_rent: 1321             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "490032": {
+      "city": "RICHMOND",
+      "emergency": true,
+      "name": "MEDICAL COLLEGE OF VIRGINIA HOSPITALS",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "490052": {
+      "city": "NEWPORT NEWS",
+      "emergency": true,
+      "name": "RIVERSIDE REGIONAL MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "49010F": {
+      "city": "RICHMOND",
+      "emergency": true,
+      "name": "RICHMOND VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 5,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 89997990,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "VIRGINIA COMMONWEALTH UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 17293305,
+        "dept": "Psychiatry"
+      },
+      {
+        "amount": 15220899,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 10203109,
+        "dept": "Pharmacology"
+      }
+    ],
+    "trend": {
+      "2021": 67360878,
+      "2022": 75457961,
+      "2023": 77989369,
+      "2024": 85124864,
+      "2025": 89997990
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 84,
+    "sponsor": "Virginia Commonwealth University"
+  }
+}

@@ -1,0 +1,102 @@
+# School page data for Touro College of Osteopathic Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Facts from official TouroCOM pages (see `sources`); trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# TouroCOM publishes no class profile, and its NIH funding is negligible, so those tiles are hidden.
+
+short_name: TouroCOM
+
+stats:
+  class_size: null               # not published
+  tuition: 72280                 # 2026–27 DO tuition $72,080 + $200 fees
+  cost_year: 2026–27
+
+sources:
+  - label: TouroCOM Tuition (2026–27)
+    url: https://tourocom.touro.edu/admissions--aid/tuition/
+  - label: TouroCOM Clinical Rotations
+    url: https://tourocom.touro.edu/do/academics/clinical-education/
+  - label: TouroCOM Early Decision
+    url: https://tourocom.touro.edu/admissions--aid/do-admissions/early-decision/
+  - label: TouroCOM Campus Life, Middletown
+    url: https://tourocom.touro.edu/do/campus-life/middletown/
+  - label: TouroCOM Campus Life, Harlem
+    url: https://tourocom.touro.edu/do/campus-life/harlem/
+  - label: Census QuickFacts (Orange County, NY)
+    url: https://www.census.gov/quickfacts/fact/table/orangecountynewyork/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Touro uses a **flipped classroom**: students watch lecture videos beforehand, then answer clicker
+        questions built on clinical vignettes in class. Brittany Stelmar describes mornings of lecture
+        and afternoons of OMM, pathology, anatomy, histology, and neuro labs.
+      - >-
+        Brittany finds the video load heavy at times; Wei Ming Liang notes preclinical courses are graded
+        on a z-score scale and that recorded lectures are available.
+
+  - title: Osteopathic Training
+    icon: back_hand
+    paragraphs:
+      - >-
+        **Osteopathic manipulative medicine** runs alongside the science courses. Students diagnose and
+        treat each other in lab, and Wei Ming says it sharpened palpation skills and anatomy knowledge.
+      - >-
+        Brittany calls OMM one of the most hands-on classes, and a tool worth carrying into practice.
+
+  - title: Two New York Campuses
+    icon: location_city
+    paragraphs:
+      - >-
+        TouroCOM has campuses in **Harlem** and in **Middletown**, about an hour north of New York City,
+        plus a campus in Great Falls, Montana. Middletown rotations lean on the Hudson Valley, anchored by
+        Garnet Health Medical Center minutes from campus; Harlem rotations are mostly across New York City.
+      - >-
+        Brittany likes Middletown's balance: a small town with few distractions and an easy train or bus
+        into the city. Wei Ming enjoys Harlem's restaurants, gyms, and climbing nearby.
+
+  - title: Support & Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        Every student gets an upperclass mentor and a faculty advisor from the first day. Brittany says
+        professors reach out after a weak exam to set up tutoring.
+      - >-
+        Students run health fairs, including a biannual fair in Harlem, and mentor local high school
+        students through **MedAchieve**.
+
+highlight_sources:
+  - label: DocStory interviews with Brittany Stelmar and Wei Ming Liang
+    url: /interviews/touro-college-of-osteopathic-medicine/wei-ming-liang/index.html
+  - label: TouroCOM Clinical Rotations
+    url: https://tourocom.touro.edu/do/academics/clinical-education/
+  - label: TouroCOM Tuition (2026–27)
+    url: https://tourocom.touro.edu/admissions--aid/tuition/
+
+quotes:
+  brittany-stelmar: >-
+    "I like how involved the professors are with all of us. If anyone gets a subpar test grade, they reach
+    out via email to schedule a meeting and set up tutoring. Touro is extremely proactive about giving
+    people help when they need it."
+  wei-ming-liang: >-
+    "Each student gets an upperclassman as a mentor the minute they begin their first year, as well as a
+    faculty advisor. These mentors have been instrumental in providing guidance, support, and advice
+    throughout my journey in medical school."
+
+clinical_sites:
+  - {name: Garnet Health Medical Center, role: Middletown · minutes from campus, cms_id: "330126"}
+  - {name: NYC Health + Hospitals/Harlem, role: Harlem campus rotations, cms_id: "330240"}
+  - {name: Vassar Brothers Medical Center, role: Hudson Valley, cms_id: "330023"}
+  - {name: Montefiore St. Luke's Cornwall Hospital, role: Newburgh}
+  - {name: Hudson Valley VA, role: Wappingers Falls}
+
+applying:
+  - {label: Early Decision, value: "Cumulative and science GPA 3.5+ · MCAT 504+"}
+  - {label: Cost of attendance, value: "About $115,000 estimated for first year, 2026–27 (Harlem or Middletown off campus)"}
+
+cost_of_living:
+  county: Orange County, NY (Middletown)
+  fips: "36071"
+  median_rent: 1680             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

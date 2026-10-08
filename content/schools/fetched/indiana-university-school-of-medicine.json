@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "150024": {
+      "city": "INDIANAPOLIS",
+      "emergency": true,
+      "name": "ESKENAZI HEALTH",
+      "ownership": "Government - Local",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "15003F": {
+      "city": "INDIANAPOLIS",
+      "emergency": true,
+      "name": "INDIANAPOLIS VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 3,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "150056": {
+      "city": "INDIANAPOLIS",
+      "emergency": true,
+      "name": "INDIANA UNIVERSITY HEALTH",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 232055558,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+    "top_departments": [
+      {
+        "amount": 62440397,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 46244931,
+        "dept": "Genetics"
+      },
+      {
+        "amount": 41812041,
+        "dept": "Pediatrics"
+      }
+    ],
+    "trend": {
+      "2021": 220267221,
+      "2022": 221128581,
+      "2023": 229746898,
+      "2024": 230244799,
+      "2025": 232055558
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 209,
+    "sponsor": "Indiana University"
+  }
+}

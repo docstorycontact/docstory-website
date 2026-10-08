@@ -1,0 +1,51 @@
+{
+  "hospitals": {
+    "140053": {
+      "city": "SPRINGFIELD",
+      "emergency": true,
+      "name": "ST JOHNS HOSPITAL",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "140148": {
+      "city": "SPRINGFIELD",
+      "emergency": true,
+      "name": "MEMORIAL MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 1063806,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "SOUTHERN ILLINOIS UNIVERSITY SCH OF MED",
+    "top_departments": [
+      {
+        "amount": 866872,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 196934,
+        "dept": "None"
+      }
+    ],
+    "trend": {
+      "2021": 2349740,
+      "2022": 2345863,
+      "2023": 1196429,
+      "2024": 2023597,
+      "2025": 1063806
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 4,
+    "sponsor": "Southern Illinois University"
+  }
+}
