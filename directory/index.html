@@ -11,11 +11,17 @@
   <link href="../css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../js/lib/leaflet.css">
   <script src="../js/lib/leaflet.js"></script>
+  <!-- Basemap: OpenFreeMap vector tiles (no API key) rendered through MapLibre GL inside Leaflet -->
+  <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
   <style>
     /* Ensure the map wrapper fills main regardless of Tailwind CDN timing */
     #map-wrapper { position: absolute; inset: 0; }
     /* Leaflet container */
-    #map { position: absolute; inset: 0; z-index: 0; }
+    /* Background matches the Positron land color so the wait for vector tiles reads as a calm, empty map */
+    #map { position: absolute; inset: 0; z-index: 0; background: rgb(242, 243, 240); }
     #map .leaflet-control-attribution { font-size: 9px; opacity: 0.5; background: transparent; }
     /* Branded markers */
     .school-marker { display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -267,18 +273,20 @@ window.addEventListener('load', function () {
   mapEl.style.height   = '100%';
 
   // ── Leaflet ──────────────────────────────────────────────────
-  const map = L.map('map', { zoomControl: false, attributionControl: true });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19,
+  // zoomSnap 0.25 lets fitBounds frame the US tightly instead of rounding down to a whole-hemisphere zoom on phones
+  const map = L.map('map', { zoomControl: false, attributionControl: true, zoomSnap: 0.25 });
+  L.maplibreGL({
+    style: 'https://tiles.openfreemap.org/styles/positron',
+    attribution: '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
   }).addTo(map);
   map.invalidateSize();
 
   const panelOffset = window.innerWidth >= 768 ? 444 : 0;
   const bottomPad   = window.innerWidth >= 768 ? 80 : 235;
-  map.fitBounds([[25.0, -124.0], [48.0, -67.0]], {
-    paddingTopLeft: [24, 24],
-    paddingBottomRight: [panelOffset + 24, bottomPad],
+  // Frame the schools themselves (not a fixed US box) so narrow phone screens zoom in as far as the markers allow
+  map.fitBounds(L.latLngBounds(SCHOOLS.map(s => [s.lat, s.lng])), {
+    paddingTopLeft: [40, 40],
+    paddingBottomRight: [panelOffset + 40, bottomPad],
   });
 
   document.getElementById('zoom-in').addEventListener('click',  () => map.zoomIn());
