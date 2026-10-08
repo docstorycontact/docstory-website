@@ -1,0 +1,112 @@
+# School page data for University of Iowa Carver College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Carver pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Carver's MD tuition sits in a PDF and an interactive rates tool that couldn't be read reliably, so
+# the tuition tile is omitted; rent is still shown.
+
+short_name: Iowa
+nih_org: UNIVERSITY OF IOWA
+trials_sponsor: University of Iowa
+
+stats:
+  entering_class: 2026
+  stats_kind: average            # "Mean MCAT"
+  profile_url: https://md.medicine.uiowa.edu/admissions/application-process/current-class-profile
+  mcat: 514
+  applied: 3902
+  enrolled: 142
+  class_size: 142
+  women_pct: 48                  # 68 of 142
+  out_of_state_pct: 20           # 114 of 142 are Iowa residents
+
+sources:
+  - label: Carver College of Medicine Current Class Profile (2026)
+    url: https://md.medicine.uiowa.edu/admissions/application-process/current-class-profile
+  - label: Carver MD Requirements
+    url: https://md.medicine.uiowa.edu/admissions/application-process/requirements
+  - label: Carver Distinction Tracks
+    url: https://md.medicine.uiowa.edu/curriculum/distinction-tracks
+  - label: Carver Des Moines Campus
+    url: https://md.medicine.uiowa.edu/curriculum/educational-opportunities/des-moines-campus
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find/iowaholden
+  - label: Census QuickFacts (Johnson County, IA)
+    url: https://www.census.gov/quickfacts/fact/table/johnsoncountyiowa/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Gabriel Conley describes a fast-paced curriculum built to get students into the hospital early,
+        with four to five hours of lecture or required lab a day and exams about every other Friday.
+        Lectures are recorded and attendance is optional.
+      - >-
+        Grading is Pass/Fail/Honors, and students share **Carverpedia**, a wiki of student-made study
+        guides and practice questions.
+
+  - title: Clinical Skills
+    icon: stethoscope
+    paragraphs:
+      - >-
+        The **Clinical and Professional Skills** course runs from day one, with an extensive simulated
+        patient program; Gabriel estimates 50 or more sessions before the clinical years. Early Clinical
+        Experiences put students in clinic with physicians several times a semester.
+      - >-
+        Students can complete some or all of their core clerkship year at Carver's **Des Moines** branch
+        campus.
+
+  - title: Distinction Tracks
+    icon: workspace_premium
+    paragraphs:
+      - >-
+        Students can earn up to two **distinction tracks**, in research, global health, service, teaching,
+        humanities, or health care delivery, recognized at graduation and on the transcript.
+      - >-
+        Gabriel mentions a funded summer research fellowship after first year and global health projects
+        in countries including Indonesia, Haiti, Guatemala, and South Africa.
+
+  - title: Iowa City
+    icon: location_city
+    paragraphs:
+      - >-
+        Iowa City is a college town with a strong music and writing culture, summer festivals, one of the
+        state's best farmers' markets, and trails and kayaking nearby.
+      - >-
+        Classes come together each spring for a **variety show** downtown, along with charity events like
+        the Doc Dash 5K.
+
+highlight_sources:
+  - label: DocStory interview with Gabriel Conley
+    url: /interviews/university-of-iowa-carver-college-of-medicine/gabriel-conley/index.html
+  - label: Carver Distinction Tracks
+    url: https://md.medicine.uiowa.edu/curriculum/distinction-tracks
+  - label: Carver Des Moines Campus
+    url: https://md.medicine.uiowa.edu/curriculum/educational-opportunities/des-moines-campus
+
+quotes:
+  gabriel-conley: >-
+    "The culture at Iowa feels incredibly collaborative to me. We have a plethora of tutor availability
+    (from other classmates), and we do a ton of note-sharing as well."
+
+clinical_sites:
+  - {name: University of Iowa Hospitals & Clinics, role: Iowa City academic medical center, cms_id: "160058"}
+  - {name: Iowa City VA Medical Center, cms_id: "16004F"}
+  - {name: Des Moines branch campus, role: Core clerkships · Broadlawns and UnityPoint}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Holden Comprehensive Cancer Center
+
+programs:
+  tracks:
+    - {name: Distinction tracks, note: "Research, global health, service, teaching, humanities, health care delivery"}
+
+applying:
+  - {label: Minimums, value: "GPA 3.0 overall and science · MCAT 500"}
+  - {label: Residency, value: "114 of 142 in the 2026 class are Iowa residents"}
+
+cost_of_living:
+  county: Johnson County, IA
+  fips: "19103"
+  median_rent: 1122             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

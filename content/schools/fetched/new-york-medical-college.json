@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "330199": {
+      "city": "NEW YORK",
+      "emergency": true,
+      "name": "METROPOLITAN HOSPITAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "330234": {
+      "city": "VALHALLA",
+      "emergency": true,
+      "name": "WESTCHESTER MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 4126150,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "NEW YORK MEDICAL COLLEGE",
+    "top_departments": [
+      {
+        "amount": 2281312,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 804244,
+        "dept": "Anatomy / Cell Biology"
+      },
+      {
+        "amount": 715596,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 5594954,
+      "2022": 6895160,
+      "2023": 8450968,
+      "2024": 6352598,
+      "2025": 4126150
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 22,
+    "sponsor": "New York Medical College"
+  }
+}

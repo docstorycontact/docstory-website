@@ -132,6 +132,7 @@
     .dc-good { font-size: 0.8125rem; color: #1f9d6b; font-weight: 600; margin-top: 3px; }
     .dc-selectivity-body { display: flex; gap: 16px; align-items: center; margin-top: 10px; }
     .dc-curve-wrap { flex: 1; min-width: 0; }
+    .dc-curve-wrap:only-child { max-width: 420px; }   /* no GPA published: keep the curve at its usual scale */
     .dc-gpa-wrap { flex-shrink: 0; width: 150px; }
     .dc-gpa-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
     .dc-gpa-num { font-size: 0.9375rem; font-weight: 700; color: #1f2235; width: 34px; letter-spacing: -0.01em; }
@@ -328,6 +329,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="dc-divider-v"></div>
+        <div class="dc-col dc-col-r">
           <div class="dc-cell">
             <div class="dc-cell-label">Cost of Attendance · 2026–27</div>
             <div class="dc-cost-row">

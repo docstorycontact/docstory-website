@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "16004F": {
+      "city": "IOWA CITY",
+      "emergency": true,
+      "name": "IOWA CITY VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 5,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "160058": {
+      "city": "IOWA CITY",
+      "emergency": true,
+      "name": "UNIVERSITY OF IOWA HOSPITAL & CLINICS",
+      "ownership": "Government - State",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 132512234,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "UNIVERSITY OF IOWA",
+    "top_departments": [
+      {
+        "amount": 30747654,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 16831921,
+        "dept": "Pediatrics"
+      },
+      {
+        "amount": 12695783,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 138543565,
+      "2022": 133638483,
+      "2023": 131554927,
+      "2024": 141841396,
+      "2025": 132512234
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 139,
+    "sponsor": "University of Iowa"
+  }
+}

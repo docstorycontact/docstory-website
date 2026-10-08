@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "140119": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "RUSH UNIVERSITY MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "140124": {
+      "city": "CHICAGO",
+      "emergency": true,
+      "name": "JOHN H STROGER JR HOSPITAL",
+      "ownership": "Government - Local",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 49505531,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "RUSH UNIVERSITY MEDICAL CENTER",
+    "top_departments": [
+      {
+        "amount": 17147334,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 17012899,
+        "dept": "Neurosciences"
+      },
+      {
+        "amount": 4513449,
+        "dept": "Public Health & Prev Medicine"
+      }
+    ],
+    "trend": {
+      "2021": 47439049,
+      "2022": 55479770,
+      "2023": 56302624,
+      "2024": 52677250,
+      "2025": 49505531
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 58,
+    "sponsor": "Rush University Medical Center"
+  }
+}

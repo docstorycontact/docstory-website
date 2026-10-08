@@ -1,0 +1,101 @@
+# School page data for TCU Burnett School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Facts from official TCU pages (see `sources`); trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# TCU's recent class-profile pages don't render their MCAT/GPA figures, so the selectivity tile is
+# hidden. NIH funding is negligible, so nih_org is omitted.
+
+short_name: TCU
+
+stats:
+  class_size: 60                 # 240 students at total enrollment across four classes
+  total_students: 240
+  tuition: 75700                 # MS1 tuition and fees, Class of 2030 (2026–27)
+  cost_year: 2026–27
+
+sources:
+  - label: TCU School of Medicine Cost of Attendance
+    url: https://mdschool.tcu.edu/admissions/cost-of-attendance/
+  - label: TCU School of Medicine At-A-Glance
+    url: https://mdschool.tcu.edu/about-us/the-college-at-a-glance/
+  - label: TCU School of Medicine Clinical Partners
+    url: https://mdschool.tcu.edu/community/clinical-partners/
+  - label: TCU School of Medicine Admissions FAQ
+    url: https://mdschool.tcu.edu/admissions/faq/
+  - label: Census QuickFacts (Tarrant County, TX)
+    url: https://www.census.gov/quickfacts/fact/table/tarrantcountytexas/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Kyung Park describes mornings of in-person **Content Application Sessions** for the core basic
+        science course, with afternoons largely open "white space" for studying, research, and life.
+        Preclinical grading is pass/fail, and exams are NBME-style.
+      - >-
+        Every student spends four years on a **scholarly pursuit and thesis**, and courses in compassionate
+        practice and health systems round out the curriculum.
+
+  - title: Early Clinical Exposure
+    icon: stethoscope
+    paragraphs:
+      - >-
+        A **longitudinal integrated clerkship** places students with a family or internal medicine
+        preceptor during the preclinical phase. Clinical skills sessions use standardized patients almost
+        every time.
+      - >-
+        After the preclinical phase, 10 weeks of ungraded inpatient immersions in internal medicine,
+        OB/GYN, surgery, and pediatrics let students learn before grades count.
+
+  - title: Small Classes, Big Support
+    icon: groups
+    paragraphs:
+      - >-
+        With 60 students per class, faculty know students by name. Each student joins one of six
+        **houses**, gets an upperclass "big," and works with coaches; the school has five executive and
+        four academic coaches.
+      - >-
+        Kyung highlights a counselor dedicated to medical students and access to TCU's campus and
+        football tailgates.
+
+  - title: Fort Worth
+    icon: location_city
+    paragraphs:
+      - >-
+        Clinical partners include **JPS Health Network**, the county hospital; **Cook Children's**; Texas
+        Health Resources; and Baylor Scott & White All Saints, all near the school's Medical Innovation
+        District home.
+      - >-
+        Kyung calls Fort Worth a hidden gem: the Stockyards, West 7th, free museums, a top zoo, and Dallas
+        30–40 minutes away.
+
+highlight_sources:
+  - label: DocStory interview with Kyung Park
+    url: /interviews/tcu-burnett-school-of-medicine/kyung-park/index.html
+  - label: TCU School of Medicine Clinical Partners
+    url: https://mdschool.tcu.edu/community/clinical-partners/
+  - label: TCU School of Medicine At-A-Glance
+    url: https://mdschool.tcu.edu/about-us/the-college-at-a-glance/
+
+quotes:
+  kyung-park: >-
+    "Also being in a class of 60 students, the faculty are incredibly invested in your success and often
+    know us by name, which was a big departure from undergraduate when I could be in a course with over
+    900 students."
+
+clinical_sites:
+  - {name: JPS Health Network, role: Tarrant County hospital, cms_id: "450039"}
+  - {name: Cook Children's Medical Center, cms_id: "453300"}
+  - {name: Texas Health Harris Methodist Hospital Fort Worth, cms_id: "450135"}
+  - {name: Baylor Scott & White All Saints Medical Center, cms_id: "450137"}
+
+applying:
+  - {label: Application, value: "AMCAS (TCU does not participate in TMDSAS)"}
+  - {label: MCAT, value: Highest score is used}
+  - {label: Cost of attendance, value: "About $114,500 estimated for MS1, 2026–27"}
+
+cost_of_living:
+  county: Tarrant County, TX
+  fips: "48439"
+  median_rent: 1547             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

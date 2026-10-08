@@ -1,0 +1,98 @@
+# School page data for Rush Medical College.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Rush pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Rush bills MD tuition by term (including summer terms), so no annual figure is shown; the per-semester
+# rate is listed under Applying.
+
+short_name: Rush
+nih_org: RUSH UNIVERSITY MEDICAL CENTER
+trials_sponsor: Rush University Medical Center
+
+stats:
+  entering_class: 2025
+  stats_kind: average
+  profile_url: https://www.rushu.rush.edu/rush-medical-college/admissions/doctor-medicine-md-program
+  mcat: 510
+  gpa_overall: 3.72
+  class_size: null               # not published on the cited pages
+
+sources:
+  - label: Rush MD Program (2025 entering class)
+    url: https://www.rushu.rush.edu/rush-medical-college/admissions/doctor-medicine-md-program
+  - label: Rush 2026–2027 Tuition Rates
+    url: https://www.rushu.rush.edu/student-life/student-affairs/student-business-office/tuition/2026-2027-tuition-rates
+  - label: Rush Clerkship Curriculum
+    url: https://rushu.rush.edu/rush-medical-college/doctor-medicine-md-program/curriculum/clerkship-curriculum
+  - label: Census QuickFacts (Cook County, IL)
+    url: https://www.census.gov/quickfacts/fact/table/cookcountyillinois/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Rush uses a **flipped classroom** with no lectures. Emily He describes self-study packets built
+        around a patient case, from microbiology to anatomy to clinical tests, followed by an 8am quiz
+        and case-based work in classes of 16–17 students.
+      - >-
+        Emily says classmates become the best resource, sharing notes in a class-wide drive and group
+        chat.
+
+  - title: Early Clinical Exposure
+    icon: stethoscope
+    paragraphs:
+      - >-
+        Hands-on patient care started in the third week of school for Emily, with a new clinical setting
+        each semester, from primary care to urogynecology to orthopedic oncology spine surgery.
+      - >-
+        Monthly **Interprofessional Education** pairs medical students with nursing, therapy, audiology,
+        and other health science students to work through cases.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Core clerkships take place mainly at **Rush University Medical Center**, Rush sites across the
+        Chicago area, and **John H. Stroger Jr. Hospital of Cook County**, the county's safety-net
+        flagship with the city's busiest emergency department.
+      - >-
+        Rush is the official health care team for the Chicago Bulls and White Sox; the arena is walking
+        distance from campus.
+
+  - title: Community & Chicago
+    icon: location_city
+    paragraphs:
+      - >-
+        Emily calls Rush's commitment to the community the main draw. Unserved food from the hospital
+        kitchens, for example, goes to the Franciscan homeless shelter.
+      - >-
+        Campus is close to downtown and Millennium Park, and students get unlimited public
+        transportation.
+
+highlight_sources:
+  - label: DocStory interview with Emily He
+    url: /interviews/rush-medical-college/emily-he/index.html
+  - label: Rush Clerkship Curriculum
+    url: https://rushu.rush.edu/rush-medical-college/doctor-medicine-md-program/curriculum/clerkship-curriculum
+  - label: Rush 2026–2027 Tuition Rates
+    url: https://www.rushu.rush.edu/student-life/student-affairs/student-business-office/tuition/2026-2027-tuition-rates
+
+quotes:
+  emily-he: >-
+    "One of the main things that drew me to Rush and what I love most about the school is its overwhelming
+    commitment to the community. Every aspect of volunteer work always goes back to the community."
+
+clinical_sites:
+  - {name: Rush University Medical Center, role: Primary teaching hospital, cms_id: "140119"}
+  - {name: John H. Stroger Jr. Hospital of Cook County, role: County safety-net flagship · Level I trauma, cms_id: "140124"}
+  - {name: Rush sites across Chicagoland, role: Core clerkships and community clinics}
+
+applying:
+  - {label: Tuition, value: "$22,145 per fall and spring semester for M1s (2026–27), plus summer terms"}
+  - {label: MCAT, value: Minimum scales with GPA (500 at GPA 3.80+ up to 510 at 2.99–3.19)}
+
+cost_of_living:
+  county: Cook County, IL
+  fips: "17031"
+  median_rent: 1435             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -1,0 +1,34 @@
+{
+  "hospitals": {
+    "490007": {
+      "city": "NORFOLK",
+      "emergency": true,
+      "name": "SENTARA NORFOLK GENERAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "49006F": {
+      "city": "HAMPTON",
+      "emergency": true,
+      "name": "HAMPTON VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "493301": {
+      "city": "NORFOLK",
+      "emergency": true,
+      "name": "CHILDRENS HOSPITAL OF THE KINGS DAUGHTERS INC",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 6,
+    "sponsor": "Eastern Virginia Medical School"
+  }
+}

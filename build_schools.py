@@ -444,6 +444,7 @@ DASHBOARD_CSS = '''
     .dc-good { font-size: 0.8125rem; color: #1f9d6b; font-weight: 600; margin-top: 3px; }
     .dc-selectivity-body { display: flex; gap: 16px; align-items: center; margin-top: 10px; }
     .dc-curve-wrap { flex: 1; min-width: 0; }
+    .dc-curve-wrap:only-child { max-width: 420px; }   /* no GPA published: keep the curve at its usual scale */
     .dc-gpa-wrap { flex-shrink: 0; width: 150px; }
     .dc-gpa-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
     .dc-gpa-num { font-size: 0.9375rem; font-weight: 700; color: #1f2235; width: 34px; letter-spacing: -0.01em; }
@@ -1005,6 +1006,10 @@ def render_dashboard(stats, school, extras=''):
         right.append(_profile_cell(s, 'MD' if school['type'] == 'md' else 'DO'))
     if any(s.get(k) for k in ('applied', 'interviewed', 'admitted', 'enrolled', 'nih_funding', 'faculty', 'beds')):
         right.append(_reach_cell(s))
+
+    # Nothing for the right column (no class profile or NIH funding): split the left cells across both
+    if not right and len(left) > 1:
+        right = [left.pop()]
 
     cols = []
     if left:

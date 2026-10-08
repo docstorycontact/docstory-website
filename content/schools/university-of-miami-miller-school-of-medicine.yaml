@@ -1,0 +1,117 @@
+# School page data for University of Miami Miller School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Miller School pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Miami
+nih_org: UNIVERSITY OF MIAMI SCHOOL OF MEDICINE
+trials_sponsor: University of Miami
+
+stats:
+  entering_class: 2025           # Class of 2029 profile
+  stats_kind: average
+  profile_url: https://med.miami.edu/medical-education/admissions/class-profile
+  mcat: 516
+  gpa_overall: 3.85
+  gpa_science: 3.80
+  applied: 9912
+  interviewed: 686
+  enrolled: 202
+  class_size: 202
+  women_pct: 55                  # 111 of 202
+  out_of_state_pct: 63           # 128 of 202
+  tuition: 59259                 # 2026–27: $57,600 MD tuition + $1,659 fees
+  cost_year: 2026–27
+
+sources:
+  - label: Miller School Class of 2029 Profile
+    url: https://med.miami.edu/medical-education/admissions/class-profile
+  - label: Miller School Tuition and Cost of Attendance
+    url: https://med.miami.edu/medical-education/student-affairs/student-financial-assistance/tuition-and-cost-of-attendance
+  - label: Miller School Curriculum (NextGenMD)
+    url: https://med.miami.edu/medical-education/curriculum
+  - label: Miller School Department of Medicine Education
+    url: https://med.miami.edu/departments/medicine/education
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Miami-Dade County, FL)
+    url: https://www.census.gov/quickfacts/fact/table/miamidadecountyflorida/HSG860224
+
+highlights:
+  - title: NextGenMD Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Phase 1 is 14 months of foundational science taught through symptom-based cases, followed by four
+        12-week integrated clerkships. Zach Donato describes daily pre-learning, morning lectures, and
+        faculty-led small-group cases, with clerkships starting in the second year.
+      - >-
+        Zach says early clerkships make it easier to connect book knowledge to real patients.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Students train across **Jackson Memorial Hospital**, the University of Miami Health System
+        (including **UHealth Tower**), and the Miami VA Medical Center, plus the **Sylvester Comprehensive
+        Cancer Center**, an NCI-designated Comprehensive Cancer Center.
+      - >-
+        Todd Jackson calls the breadth of diversity the school's biggest strength: students learn to care
+        for some of the most disadvantaged, at-risk populations in the country.
+
+  - title: Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        The student-run **DOCS** clinic hosts monthly health fairs in underserved neighborhoods, and Zach
+        says more than 70% of students take part, many going on to lead stations.
+      - >-
+        Each year medical students take on UM law students in the **Dean's Cup**, from flag football to
+        baking contests.
+
+  - title: Life in Miami
+    icon: beach_access
+    paragraphs:
+      - >-
+        Most students live in Brickell or Downtown. Zach compares Brickell to a mini New York City; Todd
+        points to concerts, Cuban and Haitian food, and the beach.
+      - >-
+        The downsides they mention: summer humidity, hurricane season, Brickell traffic, and a high cost of
+        living.
+
+highlight_sources:
+  - label: DocStory interviews with Todd Jackson and Zach Donato
+    url: /interviews/university-of-miami-miller-school-of-medicine/zach-donato/index.html
+  - label: Miller School Curriculum (NextGenMD)
+    url: https://med.miami.edu/medical-education/curriculum
+  - label: Miller School Department of Medicine Education
+    url: https://med.miami.edu/departments/medicine/education
+
+quotes:
+  todd-jackson: >-
+    "The biggest strength is the breadth of diversity that the institution sees and also learning how to
+    care for some of the most disadvantaged, at-risk populations in the nation."
+  zach-donato: >-
+    "Miami is a very service-oriented school. The DOCS clinic is a popular activity at our school, with
+    over 70% of students participating."
+
+clinical_sites:
+  - {name: Jackson Memorial Hospital, role: Jackson Health System, cms_id: "100022"}
+  - {name: UHealth Tower, role: University of Miami Health System}
+  - {name: Sylvester Comprehensive Cancer Center, role: NCI Comprehensive Cancer Center}
+  - {name: Miami VA Medical Center, cms_id: "10064F"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Sylvester Comprehensive Cancer Center
+
+programs:
+  dual_degrees: [MD/MPH, MD/MBA, MD/PhD]
+
+applying:
+  - {label: Interviews, value: "686 interviewed of 9,912 applicants (Class of 2029)"}
+  - {label: Cost of attendance, value: "About $115,600 estimated for year one, 2026–27"}
+
+cost_of_living:
+  county: Miami-Dade County, FL
+  fips: "12086"
+  median_rent: 1829             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
