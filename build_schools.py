@@ -195,7 +195,7 @@ SCHOOLS = {
     'medical-college-of-georgia': dict(
         name='Medical College of Georgia at Augusta University',
         city='Augusta', state='GA', type='md', public=True, founded=1828,
-        hospital='Augusta University Medical Center', class_size=230,
+        hospital='Wellstar MCG Health', class_size=230,
     ),
     'california-university-of-science-and-medicine': dict(
         name='California University of Science and Medicine',
@@ -327,7 +327,7 @@ def initials(name):
 KNOWN_STATS = {
     'entering_class', 'cohort_label', 'stats_kind', 'gpa_kind', 'profile_url', 'mcat', 'gpa_science', 'gpa_overall',
     'tuition', 'tuition_in_state', 'tuition_out_of_state', 'cost_year', 'total_cost',
-    'total_cost_note', 'women_pct', 'out_of_state_pct', 'class_size', 'founded', 'total_students',
+    'total_cost_note', 'tuition_note', 'women_pct', 'out_of_state_pct', 'class_size', 'founded', 'total_students',
     'applied', 'interviewed', 'admitted', 'acceptance_rate', 'enrolled', 'faculty',
     'faculty_label', 'beds', 'beds_label', 'nih_label',
 }
@@ -739,6 +739,8 @@ def _cost_cell(s, is_public):
         notes.append('Same tuition for all students')
     else:
         rows = ''   # rent only: tuition not published on an official page
+    if s.get('tuition_note'):          # replaces the default residency note when the school's situation differs
+        notes = [_esc(s['tuition_note'])]
     if s.get('total_cost'):
         note = f'~${round(s["total_cost"] / 1000)}K est. 4-year cost of attendance'
         if s.get('total_cost_note'):

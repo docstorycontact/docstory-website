@@ -1,0 +1,37 @@
+{
+  "hospitals": {
+    "050022": {
+      "city": "RIVERSIDE",
+      "emergency": true,
+      "name": "RIVERSIDE COMMUNITY HOSPITAL",
+      "ownership": "Proprietary",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "050245": {
+      "city": "COLTON",
+      "emergency": true,
+      "name": "ARROWHEAD REGIONAL MEDICAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "050292": {
+      "city": "MORENO VALLEY",
+      "emergency": true,
+      "name": "RIVERSIDE UNIVERSITY HEALTH SYSTEM-MEDICAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "050573": {
+      "city": "RANCHO MIRAGE",
+      "emergency": true,
+      "name": "EISENHOWER MEDICAL CENTER",
+      "ownership": "Proprietary",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  }
+}

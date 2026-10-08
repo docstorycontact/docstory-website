@@ -1,0 +1,112 @@
+# School page data for Indiana University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from the official IUSM fact sheet (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: IUSM
+nih_org: INDIANA UNIVERSITY INDIANAPOLIS
+trials_sponsor: Indiana University
+
+stats:
+  entering_class: 2025           # MD Class of 2029, IUSM 2025–2026 fact sheet
+  stats_kind: average
+  profile_url: https://medicine.iu.edu/facts
+  mcat: 512.4
+  gpa_overall: 3.84
+  applied: 7822
+  enrolled: 365
+  class_size: 365
+  women_pct: 48                  # 175 of 365
+  out_of_state_pct: 12           # 44 of 365
+  total_students: 1459
+  tuition_in_state: 40038        # $40,038.16, IUSM fact sheet
+  tuition_out_of_state: 67579    # $67,579.32
+  cost_year: 2025–26
+
+sources:
+  - label: IUSM Fact Sheet (2025–2026)
+    url: https://medicine.iu.edu/facts
+  - label: IUSM Early Decision Program
+    url: https://medicine.iu.edu/md/admissions/early-decision-program
+  - label: IUSM Class Selection
+    url: https://medicine.iu.edu/md/admissions/class-selection
+  - label: IUSM Anesthesia Residency (Indianapolis teaching hospitals)
+    url: https://medicine.iu.edu/anesthesia/education/residency
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find/indianasimon
+  - label: Census QuickFacts (Marion County, IN)
+    url: https://www.census.gov/quickfacts/fact/table/marioncountyindiana/HSG860224
+
+highlights:
+  - title: Clerkships
+    icon: menu_book
+    paragraphs:
+      - >-
+        Third year includes eight core clerkships, according to Austin Wininger: surgery, internal
+        medicine, OB/GYN, psychiatry, family medicine, anesthesia, pediatrics, and neurology. Surgery,
+        pediatrics, and internal medicine each last two months.
+      - >-
+        Most rotations end with an NBME shelf exam, and grades of Pass, High Pass, or Honors rest mostly
+        on clinical evaluations and the shelf.
+
+  - title: Nine Campuses
+    icon: map
+    paragraphs:
+      - >-
+        IUSM is one of the largest medical schools in the country, with **nine campuses** across Indiana
+        and more than 1,400 medical students. Every campus hosts rotations.
+      - >-
+        Austin values training in both a community setting and a major city with Level I trauma.
+
+  - title: Indianapolis Hospitals
+    icon: local_hospital
+    paragraphs:
+      - >-
+        The downtown Indianapolis campus has its own cluster of teaching hospitals: **IU Health
+        Methodist** and **University** Hospitals, **Riley Hospital for Children**, Eskenazi Health (the
+        county hospital), and the Roudebush VA Medical Center.
+      - >-
+        Austin notes the experience depends on the site: psychiatry at the VA, for example, means seeing
+        many patients independently.
+
+  - title: Research
+    icon: biotech
+    paragraphs:
+      - >-
+        IUSM drew about $233 million in NIH funding in 2025 and is home to the **Melvin and Bren Simon
+        Comprehensive Cancer Center**, an NCI-designated Comprehensive Cancer Center.
+      - >-
+        Indiana residents with at least a 3.8 GPA and a 512 MCAT can apply through the Early Decision
+        Program.
+
+highlight_sources:
+  - label: DocStory interview with Austin Wininger
+    url: /interviews/indiana-university-school-of-medicine/austin-wininger/index.html
+  - label: IUSM Fact Sheet
+    url: https://medicine.iu.edu/facts
+  - label: IUSM Anesthesia Residency (Indianapolis teaching hospitals)
+    url: https://medicine.iu.edu/anesthesia/education/residency
+
+quotes:
+  austin-wininger: >-
+    "The ability to work in a community setting and in a major city with level 1 trauma gave me a great
+    foundation of clinical knowledge."
+
+clinical_sites:
+  - {name: IU Health Methodist & University Hospitals, role: Level I trauma · adult academic hospitals, cms_id: "150056"}
+  - {name: Riley Hospital for Children at IU Health, role: Level I pediatric trauma}
+  - {name: Eskenazi Health, role: Marion County hospital · Level I trauma, cms_id: "150024"}
+  - {name: Richard L. Roudebush VA Medical Center, cms_id: "15003F"}
+  - {name: Eight regional campuses, role: Statewide rotations}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Melvin and Bren Simon Comprehensive Cancer Center
+
+applying:
+  - {label: Early Decision, value: "Indiana residents · GPA 3.8+ (science and overall), MCAT 512+, no section below 125"}
+  - {label: Review, value: "Holistic: scholarship, character, references, MCAT, altruism, interview"}
+
+cost_of_living:
+  county: Marion County, IN
+  fips: "18097"
+  median_rent: 1153             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

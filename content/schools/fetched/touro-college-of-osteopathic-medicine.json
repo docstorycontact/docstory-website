@@ -1,0 +1,29 @@
+{
+  "hospitals": {
+    "330023": {
+      "city": "POUGHKEEPSIE",
+      "emergency": true,
+      "name": "VASSAR BROTHERS MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "330126": {
+      "city": "MIDDLETOWN",
+      "emergency": true,
+      "name": "GARNET HEALTH MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "330240": {
+      "city": "NEW YORK",
+      "emergency": true,
+      "name": "HARLEM HOSPITAL CENTER",
+      "ownership": "Government - State",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-08"
+  }
+}

@@ -1,0 +1,115 @@
+# School page data for Medical College of Georgia at Augusta University.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Augusta University pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# MCG publishes MD tuition per semester without saying how many terms are billed each year, so no
+# annual tuition tile; the per-semester rate is listed under Applying instead.
+
+short_name: MCG
+nih_org: AUGUSTA UNIVERSITY
+trials_sponsor: Augusta University
+
+stats:
+  entering_class: 2026           # Class of 2030, Dean's Diary July 24, 2026
+  stats_kind: average
+  profile_url: https://deansdiary.augusta.edu/archives/2979
+  mcat: 513
+  gpa_overall: 3.85
+  applied: 3440
+  interviewed: 660               # "more than 660" interviewed
+  class_size: 300                # 127 men + 173 women (254 Augusta + 50 Savannah capacity)
+  women_pct: 58                  # 173 of 300
+
+sources:
+  - label: MCG Dean's Diary, July 24, 2026 (Class of 2030)
+    url: https://deansdiary.augusta.edu/archives/2979
+  - label: Augusta University MD tuition & fees (Fall 2026–Summer 2027)
+    url: https://www.augusta.edu/tuition/program.php?id=137
+  - label: MCG Statewide Campus Locations
+    url: https://www.augusta.edu/mcg/expansion/
+  - label: MCG Admissions FAQs
+    url: https://www.augusta.edu/mcg/admissions/faqs.php
+  - label: MCG Early Decision Program
+    url: https://www.augusta.edu/mcg/admissions/edp-guidelines.php
+  - label: Census QuickFacts (Richmond County, GA)
+    url: https://www.census.gov/quickfacts/fact/table/richmondcountygeorgia/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Catherine Boatman describes 8am lectures, recorded for anyone who prefers to watch later, with
+        afternoons that rotate through Problem Based Learning and Physical Diagnosis. Catherine attends
+        in person and builds Anki cards during lecture.
+      - >-
+        Physical Diagnosis starts in year one, building comfort with the physical exam well before the
+        clinical years.
+
+  - title: Academic Houses
+    icon: groups
+    paragraphs:
+      - >-
+        Every student is sorted into one of 13 **Academic Houses**: small apartments on the medical
+        school's upper floors with kitchenettes, couches, TVs, and study space. Houses go on outings
+        together, and the year ends with the **House Olympics**, where the winners keep the House Cup.
+      - >-
+        Catherine counts the house system among the leading reasons for choosing MCG, and calls the
+        faculty and staff incredibly supportive.
+
+  - title: Statewide Training
+    icon: map
+    paragraphs:
+      - >-
+        Beyond Augusta, MCG trains students across Georgia, with more than 350 urban and rural clinical
+        sites. Regional campuses include Albany (Phoebe Putney Memorial Hospital), Rome and Dalton,
+        Savannah and Brunswick, and **MCG Atlanta** at Wellstar Kennestone Regional Medical Center.
+      - >-
+        A four-year campus in **Savannah**, run with Georgia Southern University, opened in 2024 and
+        brought the entering class to about 300.
+
+  - title: Service
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        Once they have their white coats, students can volunteer in free student-run clinics, including a
+        Mental Health Clinic, a Women's Clinic, a Pediatric Clinic, and an LGBTQ Equality Clinic.
+        Catherine says most students participate in a clinic.
+      - >-
+        Shadowing opportunities are readily available from first year.
+
+highlight_sources:
+  - label: DocStory interview with Catherine Boatman
+    url: /interviews/medical-college-of-georgia/catherine-boatman/index.html
+  - label: MCG Statewide Campus Locations
+    url: https://www.augusta.edu/mcg/expansion/
+  - label: MCG Dean's Diary, July 24, 2026
+    url: https://deansdiary.augusta.edu/archives/2979
+
+quotes:
+  catherine-boatman: >-
+    "Our faculty and staff is so incredibly supportive, and I didn’t realize how important that would be
+    while I was interviewing at different medical schools. So much of the potential stress at MCG is
+    removed because our instructors really care about helping us in any way they can."
+
+clinical_sites:
+  - {name: Wellstar MCG Health, role: Augusta teaching hospital, cms_id: "110034"}
+  - {name: Wellstar Kennestone Regional Medical Center, role: MCG Atlanta campus · Level I trauma, cms_id: "110035"}
+  - {name: Phoebe Putney Memorial Hospital, role: Southwest Campus (Albany), cms_id: "110007"}
+  - {name: St. Joseph's/Candler Health System, role: Southeast Campus (Savannah), cms_id: "110024"}
+  - {name: Southeast Georgia Health System, role: Southeast Campus (Brunswick)}
+  - {name: Northwest Campus, role: Rome and Dalton}
+
+programs:
+  tracks:
+    - {name: MCG Savannah, note: Four-year campus}
+
+applying:
+  - {label: Competitive, value: "Applicants below a 3.0 GPA or 496 MCAT are not considered competitive for interview"}
+  - {label: Early Decision, value: "Georgia residents · MCAT 509+ and GPA 3.65+"}
+  - {label: Tuition, value: "$15,024 per semester in-state · $31,956 out-of-state (Fall 2026–Summer 2027)"}
+
+cost_of_living:
+  county: Richmond County, GA
+  fips: "13245"
+  median_rent: 1141             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

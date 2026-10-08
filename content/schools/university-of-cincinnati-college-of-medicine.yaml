@@ -1,0 +1,112 @@
+# School page data for University of Cincinnati College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UC pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UC
+nih_org: UNIVERSITY OF CINCINNATI
+trials_sponsor: University of Cincinnati
+
+stats:
+  entering_class: 2026
+  stats_kind: reported           # labeled "MCAT composite" / "Class GPA"; average vs. median not stated
+  profile_url: https://med.uc.edu/admissions/medical-student-admissions/md-admissions/class-profile
+  mcat: 515
+  gpa_overall: 3.89
+  gpa_science: 3.87
+  applied: 6782
+  interviewed: 576
+  admitted: 380
+  enrolled: 174
+  class_size: 174
+  out_of_state_pct: 33
+  tuition_in_state: 37308        # 2026–27 first-year MD tuition & fees
+  tuition_out_of_state: 57674
+  cost_year: 2026–27
+
+sources:
+  - label: UC College of Medicine Class Profile (2026)
+    url: https://med.uc.edu/admissions/medical-student-admissions/md-admissions/class-profile
+  - label: UC College of Medicine Tuition
+    url: https://med.uc.edu/education/medical-student-education/student-affairs/financial-services/tuition
+  - label: About the UC College of Medicine
+    url: https://med.uc.edu/about/medicine
+  - label: UC Early Decision Program
+    url: https://med.uc.edu/admissions/medical-student-admissions/how-to-apply/early-decision-program
+  - label: Census QuickFacts (Hamilton County, OH)
+    url: https://www.census.gov/quickfacts/fact/table/hamiltoncountyohio/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Mornings are class and lab, and most first- and second-year classes are optional. Priya Sorab
+        goes anyway, to get to know classmates and professors.
+      - >-
+        Afternoons vary: weekly **Learning Communities** of 12–13 students and a physician discuss cases
+        and medical ethics, there's a weekly Clinical Skills session, and students shadow in fields like
+        speech therapy.
+
+  - title: Early Patient Care
+    icon: stethoscope
+    paragraphs:
+      - >-
+        Every other week, each student spends time in a physician's office seeing patients, starting in
+        first year. Priya calls it the favorite part of the week.
+      - >-
+        Weekly Clinical Skills sessions run alongside, building history and exam skills before the
+        clinical years.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        UC's academic medical center brings together **UC Medical Center**, which traces its roots to a
+        teaching hospital founded in 1821, **Cincinnati Children's**, and the Cincinnati VA Medical
+        Center. UC Health's West Chester Hospital adds a suburban site.
+      - >-
+        The class of about 170 MD students, plus 12 in the Medical Scientist Training Program, is small
+        enough that Priya says classmates get to know each other really well.
+
+  - title: Life in Cincinnati
+    icon: location_city
+    paragraphs:
+      - >-
+        Campus has a college-town feel, and downtown offers restaurants, coffee shops, and stores. After
+        exams, Priya says, classmates host cookouts or head downtown.
+      - >-
+        Kentucky residents qualify for a metropolitan tuition rate close to Ohio in-state.
+
+highlight_sources:
+  - label: DocStory interview with Priya Sorab
+    url: /interviews/university-of-cincinnati-college-of-medicine/priya-sorab/index.html
+  - label: About the UC College of Medicine
+    url: https://med.uc.edu/about/medicine
+  - label: UC College of Medicine Tuition
+    url: https://med.uc.edu/education/medical-student-education/student-affairs/financial-services/tuition
+
+quotes:
+  priya-sorab: >-
+    "Once every other week, each student goes to a doctor’s office to see patients-yes, we get to do this
+    in our first and second years. This was my favorite part of the week!"
+
+clinical_sites:
+  - {name: University of Cincinnati Medical Center, role: UC Health flagship, cms_id: "360003"}
+  - {name: Cincinnati Children's Hospital Medical Center, cms_id: "363300"}
+  - {name: Cincinnati VA Medical Center, cms_id: "36003F"}
+  - {name: West Chester Hospital, role: UC Health, cms_id: "360354"}
+
+programs:
+  tracks:
+    - {name: Medical Scientist Training Program, note: MD-PhD · 12 in the 2026 class}
+
+applying:
+  - {label: Interviews, value: "576 interviewed of 6,782 applicants (2026 class)"}
+  - {label: Early Decision, value: "GPA 3.60+, BCPM 3.5+, MCAT 512+"}
+  - {label: Kentucky residents, value: "Metropolitan rate: Ohio tuition + $324 per semester"}
+
+cost_of_living:
+  county: Hamilton County, OH
+  fips: "39061"
+  median_rent: 1075             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

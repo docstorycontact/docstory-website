@@ -54,6 +54,7 @@ stats:
   cost_year: 2026–27
   total_cost: 469617             # sum of the four yearly cost-of-attendance budgets
   total_cost_note: California resident, off campus
+  # tuition_note: Only Illinois residents may apply   # optional; replaces the default note under tuition
 
   # Scale & reach (NIH funding is added automatically when nih_org is set)
   faculty: 2,128

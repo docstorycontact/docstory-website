@@ -1,0 +1,102 @@
+# School page data for Southern Illinois University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Facts from official SIU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# SIU publishes no class MCAT/GPA averages, so the selectivity tile is hidden.
+
+short_name: SIU
+nih_org: SOUTHERN ILLINOIS UNIVERSITY SCH OF MED
+trials_sponsor: Southern Illinois University
+
+stats:
+  class_size: 72                 # "enrolls 72 new students in the MD program" each year
+  tuition: 40724                 # 2026–27 first-year tuition and fees, SIU Student Affairs FAQ
+  tuition_note: Only Illinois residents may apply to the MD program
+  cost_year: 2026–27
+
+sources:
+  - label: SIU School of Medicine Student Affairs FAQ
+    url: https://www.siumed.edu/studentaffairs/faq
+  - label: SIU Requirements, Selection Factors and Policies
+    url: https://www.siumed.edu/studentaffairs/requirements-selection-factors-and-policies
+  - label: SIU School of Medicine Facts and Figures
+    url: https://www.siumed.edu/facts-and-figures
+  - label: SIU Quick Facts
+    url: https://www.siumed.edu/studentaffairs/quick-facts
+  - label: Census QuickFacts (Sangamon County, IL)
+    url: https://www.census.gov/quickfacts/fact/table/sangamoncountyillinois/HSG860224
+
+highlights:
+  - title: Problem-Based Learning
+    icon: menu_book
+    paragraphs:
+      - >-
+        SIU is a pioneer of **problem-based learning**. Three mornings a week, tutor groups of five to
+        eight students and a faculty leader work through virtual patients, taking histories, reading exam
+        findings, ordering tests, and building differentials.
+      - >-
+        There's no required resource list. Alexander Worix describes resource sessions focused on
+        clinically relevant material, and the freedom to study in whatever way works best.
+
+  - title: Clinical Skills
+    icon: stethoscope
+    paragraphs:
+      - >-
+        SIU is known as a pioneer of the **standardized patient**, and students start taking histories
+        with them in the first week. Skills are assessed through OSCEs, Clinical Competency Exams, and a
+        full head-to-toe physical exam in under 45 minutes at the end of the year.
+      - >-
+        Every student is matched with a **physician mentor** and shadows at least 12 hours per unit,
+        completing a real history and physical write-up each time.
+
+  - title: Two Campuses
+    icon: map
+    paragraphs:
+      - >-
+        First year takes place in **Carbondale**, on the SIU undergraduate campus, with hiking, wineries,
+        and a college-town feel. The remaining three years are in **Springfield**, the state capital,
+        where students train at Memorial Hospital and HSHS St. John's Hospital.
+      - >-
+        With 72 new MD students a year, Alexander values the one-on-one time with faculty, who also serve
+        as tutor group leaders.
+
+  - title: Cost & Mission
+    icon: savings
+    paragraphs:
+      - >-
+        Tuition and fees for first-year students are about **$40,700** for 2026–27, and only Illinois
+        residents may apply to the MD program. Alexander chose SIU partly on cost.
+      - >-
+        39% of SIU graduates practice in Illinois, across 75 counties, and 34% are in primary care.
+
+highlight_sources:
+  - label: DocStory interview with Alexander Worix
+    url: /interviews/southern-illinois-university-school-of-medicine/alexander-worix/index.html
+  - label: SIU School of Medicine Facts and Figures
+    url: https://www.siumed.edu/facts-and-figures
+  - label: SIU School of Medicine Student Affairs FAQ
+    url: https://www.siumed.edu/studentaffairs/faq
+
+quotes:
+  alexander-worix: >-
+    "SIU SOM has a reputation with multiple residency programs for being a clinical-heavy medical
+    institution and really preparing our students to train after graduation. We are even known to be
+    pioneers of the “standardized patient.”"
+
+clinical_sites:
+  - {name: Memorial Hospital (Springfield), role: Clinical years, cms_id: "140148"}
+  - {name: HSHS St. John's Hospital, role: Clinical years, cms_id: "140053"}
+
+programs:
+  dual_degrees: [MD/JD, MD/MPH]
+  tracks:
+    - {name: MEDPREP, note: Postbaccalaureate preparation}
+
+applying:
+  - {label: Residency, value: "Illinois residents only (out-of-state applicants considered for MD/JD)"}
+  - {label: Minimums, value: "MCAT 498 (no more than two years old) · GPA 2.80 overall and science"}
+
+cost_of_living:
+  county: Sangamon County, IL
+  fips: "17167"
+  median_rent: 983              # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
