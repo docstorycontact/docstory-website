@@ -1,0 +1,125 @@
+# School page data for UAB Heersink School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UAB pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UAB
+nih_org: UNIVERSITY OF ALABAMA AT BIRMINGHAM
+trials_sponsor: University of Alabama at Birmingham
+
+stats:
+  entering_class: 2026
+  stats_kind: average
+  profile_url: https://www.uab.edu/medicine/home/admissions
+  mcat: 509                      # UAB admissions class profile, 2026
+  gpa_overall: 3.88
+  applied: 3,835
+  interviewed: 498
+  admitted: 267                  # "Offered"
+  enrolled: 194
+  class_size: 194
+  out_of_state_pct: 13           # 25 of 194
+  tuition_in_state: 37782        # 2026–27 MS1 tuition & mandatory fees
+  tuition_out_of_state: 69202
+  cost_year: 2026–27
+  total_cost: 303562             # sum of MS1–MS4 in-state cost of attendance, 2026–27
+  total_cost_note: Alabama resident
+
+sources:
+  - label: UAB Heersink Admissions (class profile)
+    url: https://www.uab.edu/medicine/home/admissions
+  - label: UAB Heersink Tuition & Fees
+    url: https://www.uab.edu/medicine/home/current-students/financial-services/tuition-fees
+  - label: UAB Heersink Campuses
+    url: https://www.uab.edu/medicine/home/campuses
+  - label: UAB MD Selection Criteria
+    url: https://www.uab.edu/medicine/home/admissions/selection-criteria
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Jefferson County, AL)
+    url: https://www.census.gov/quickfacts/fact/table/jeffersoncountyalabama/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Students spend their first two years in Birmingham. Emily Hayward, an MD-PhD student, describes
+        **Introduction to Clinical Medicine**, a two-year course that splits the class into groups of six
+        with one physician preceptor and teaches each physical exam alongside its organ module.
+      - >-
+        Learning the heart exam while studying cardiology, she says, made the classroom material click
+        far better than a single crash course before the wards would have.
+
+  - title: Four Campuses
+    icon: map
+    paragraphs:
+      - >-
+        After the preclinical years, students train at one of four campuses: **Birmingham**,
+        **Huntsville**, **Montgomery**, or **Tuscaloosa**, home of the Primary Care Track. Regional
+        hospitals include Huntsville Hospital, Baptist Medical Centers South and East in Montgomery, and
+        DCH Regional Medical Center.
+      - >-
+        The Birmingham campus sits beside UAB Hospital, the Kirklin Clinic, and Children's of Alabama,
+        and the program also offers a Rural Medicine pathway.
+
+  - title: Clinical Training & Service
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Birmingham sites include **UAB Hospital**, Children's of Alabama, the Birmingham VA Medical
+        Center, and Callahan Eye Hospital.
+      - >-
+        Service starts immediately. At **Equal Access Birmingham**, the student-run free clinic, Emily
+        was taking blood pressures and interviewing patients within her first two weeks of medical
+        school.
+
+  - title: Life in Birmingham
+    icon: home
+    paragraphs:
+      - >-
+        Emily calls living in Birmingham one of her favorite parts of UAB: the resources of a major
+        academic center with affordable, quiet neighborhoods minutes from campus. Several classmates in
+        her MD-PhD program bought houses within 15 minutes of school.
+      - >-
+        The trade-off, some peers say, is fewer concerts and events than a bigger city, and limited
+        housing within walking distance of campus.
+
+highlight_sources:
+  - label: DocStory interview with Emily Hayward
+    url: /interviews/university-of-alabama-birmingham/emily-hayward/index.html
+  - label: UAB Heersink Campuses
+    url: https://www.uab.edu/medicine/home/campuses
+
+quotes:
+  emily-hayward: >-
+    "I have realized that I am not here to become a better student or test-taker. I am in medical school
+    to become a better physician, and there is so much more to that than obtaining a perfect score."
+
+clinical_sites:                            # UAB Heersink Campuses page
+  - {name: UAB Hospital, role: Birmingham flagship, cms_id: "010033"}
+  - {name: Children's of Alabama, role: Pediatrics · Birmingham}
+  - {name: Birmingham VA Medical Center, cms_id: "01014F"}
+  - {name: Huntsville Hospital, role: Huntsville regional campus, cms_id: "010039"}
+  - {name: Baptist Medical Center South, role: Montgomery regional campus, cms_id: "010023"}
+  - {name: Baptist Medical Center East, role: Montgomery regional campus, cms_id: "010149"}
+  - {name: DCH Regional Medical Center, role: Tuscaloosa regional campus, cms_id: "010092"}
+  - {name: Callahan Eye Hospital}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · O'Neal Comprehensive Cancer Center
+
+programs:
+  tracks:
+    - {name: Primary Care Track, note: Tuscaloosa campus}
+    - {name: Rural Medicine}
+    - {name: MSTP, note: MD-PhD}
+
+applying:
+  - {label: MCAT, value: "495+ typically receives a secondary invitation"}
+  - {label: Science GPA, value: "3.0 BCPM minimum for Alabama residents"}
+
+cost_of_living:
+  county: Jefferson County, AL
+  fips: "01073"
+  median_rent: 1193             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

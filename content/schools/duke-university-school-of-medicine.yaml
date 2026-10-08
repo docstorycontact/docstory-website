@@ -1,0 +1,120 @@
+# School page data for Duke University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Duke pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Duke does not publish entering-class MCAT/GPA/applicant figures, so selectivity tiles are hidden.
+
+short_name: Duke
+nih_org: DUKE UNIVERSITY
+trials_sponsor: Duke University
+
+stats:
+  class_size: null               # not published — hides the unsourced figure in the hero line
+  tuition: 72297                 # 2026–27, Duke MD financial aid
+  cost_year: 2026–27
+  total_cost: 434080             # sum of Year 1–4 cost of attendance, 2026–27
+  faculty: 2,791                 # Duke SOM Facts & Figures, Aug 2026
+  faculty_label: Regular-rank faculty
+
+sources:
+  - label: Duke SOM Facts & Figures
+    url: https://medschool.duke.edu/about-us/facts-figures
+  - label: Duke MD Financial Aid (cost of attendance)
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/financial-aid-doctor
+  - label: Duke MD Curriculum
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/curriculum
+  - label: Duke MD Dual Degree Programs
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/curriculum/third-year-51
+  - label: Duke MD Academic Expectations
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/admissions/admissions-1
+  - label: NCI-Designated Cancer Centers
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find
+  - label: Census QuickFacts (Durham County, NC)
+    url: https://www.census.gov/quickfacts/fact/table/durhamcountynorthcarolina/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Duke compresses the basic sciences into **one year**. Foundations of Patient Care runs about ten
+        months and opens with a two-week immersion in history-taking, physical exam, and point-of-care
+        ultrasound, so students reach clinical training in their second year.
+      - >-
+        Alex describes lectures that are rarely mandatory and almost always recorded, a lecture-heavy
+        first semester followed by a flipped classroom in the second, and a weekly three-hour Clinical
+        Skills Foundation course. A three-week Clinical Skills Intensive bridges into the wards.
+
+  - title: The Research Year
+    icon: science
+    paragraphs:
+      - >-
+        Duke's signature third year is devoted to a **scholarly project**: bench or clinical research, or
+        a dual degree. The school has kept this structure for more than 60 years, and the year is graded
+        pass/fail.
+      - >-
+        Resources run deep: Duke reports more than **$514 million** in NIH research grants to the School
+        of Medicine in 2025, and students can pair the research year with options such as an MD/MPH,
+        MD/MBA, MD/JD, or MD/MPP.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Duke Health's four hospitals anchor clinical training: **Duke University Hospital**, Duke
+        Regional, Duke Raleigh, and Duke Health Lake Norman. The school counts 2,791 regular-rank faculty
+        and 1,190 residents and fellows across more than 160 training programs.
+      - >-
+        Because students reach the wards a year early, Alex found faculty unusually accessible: in a
+        class of about 115, "anyone at the medical center … is just an email away."
+
+  - title: Life in Durham
+    icon: forest
+    paragraphs:
+      - >-
+        Alex chose Duke for its students, calling them some of the happiest on the interview trail. The
+        class runs its own initiatives, from Duke Med Elementary, which brings local third graders in to
+        learn an organ system each week, to a student-founded social justice group.
+      - >-
+        Durham offers trails and the Duke Forest within minutes, a walkable downtown, Chapel Hill 15
+        minutes away and Raleigh 25, and a cost of living Alex found low enough to borrow less than
+        offered.
+
+highlight_sources:
+  - label: DocStory interview with Alex
+    url: /interviews/duke-university-school-of-medicine/alex/index.html
+  - label: Duke MD Curriculum
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/curriculum
+  - label: Duke SOM Facts & Figures
+    url: https://medschool.duke.edu/about-us/facts-figures
+  - label: Duke MD Dual Degree Programs
+    url: https://medschool.duke.edu/education/health-professions-education-programs/doctor-medicine-md-program/curriculum/third-year-51
+
+quotes:
+  alex: >-
+    "For me, the most important thing was ultimately the happiness of the student body. … I truly felt
+    like the Duke students were some of the happiest students I met on the interview trail."
+
+clinical_sites:                            # Duke SOM Facts & Figures (Duke Health hospitals)
+  - {name: Duke University Hospital, cms_id: "340030"}
+  - {name: Duke Regional Hospital, cms_id: "340155"}
+  - {name: Duke Raleigh Hospital}
+  - {name: Duke Health Lake Norman Hospital, cms_id: "340129"}
+
+research_badges:
+  - NCI Comprehensive Cancer Center · Duke Cancer Institute
+
+programs:
+  tracks:
+    - {name: Third-year research, note: scholarly project or dual degree}
+    - {name: Primary Care Leadership Track}
+    - {name: MSTP, note: MD-PhD}
+  dual_degrees: [MD/JD, MD/MBA, MD/MPH, MD/MPP, MD/MTS, MD/MHSc Clinical Research, MD/MMCi, MD/MEng, "+7 more"]
+
+applying:
+  - {label: Minimums, value: "MCAT 500 · GPA 3.0"}
+
+cost_of_living:
+  county: Durham County, NC
+  fips: "37063"
+  median_rent: 1508             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

@@ -27,7 +27,7 @@
     "fetched": "2026-10-08"
   },
   "nih": {
-    "amount": 222006153,
+    "amount": 221270762,
     "ctsa": true,
     "fetched": "2026-10-08",
     "fiscal_year": 2025,
@@ -35,24 +35,24 @@
     "org_name": "UNIVERSITY OF SOUTHERN CALIFORNIA",
     "top_departments": [
       {
-        "amount": 56717719,
+        "amount": 57884586,
         "dept": "Public Health & Prev Medicine"
       },
       {
-        "amount": 44848888,
-        "dept": "Neurology"
+        "amount": 44381523,
+        "dept": "Internal Medicine / Medicine"
       },
       {
-        "amount": 44500909,
-        "dept": "Internal Medicine / Medicine"
+        "amount": 43566096,
+        "dept": "Neurology"
       }
     ],
     "trend": {
-      "2021": 206702977,
-      "2022": 220001481,
+      "2021": 212290063,
+      "2022": 218500096,
       "2023": 231595839,
-      "2024": 222878531,
-      "2025": 222006153
+      "2024": 230909406,
+      "2025": 221270762
     }
   },
   "trials": {

@@ -1,0 +1,87 @@
+{
+  "hospitals": {
+    "010023": {
+      "city": "MONTGOMERY",
+      "emergency": true,
+      "name": "BAPTIST MEDICAL CENTER SOUTH",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "010033": {
+      "city": "BIRMINGHAM",
+      "emergency": true,
+      "name": "UNIVERSITY OF ALABAMA HOSPITAL",
+      "ownership": "Government - State",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "010039": {
+      "city": "HUNTSVILLE",
+      "emergency": true,
+      "name": "HUNTSVILLE HOSPITAL",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "010092": {
+      "city": "TUSCALOOSA",
+      "emergency": true,
+      "name": "DCH REGIONAL MEDICAL CENTER",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "010149": {
+      "city": "MONTGOMERY",
+      "emergency": true,
+      "name": "BAPTIST MEDICAL CENTER EAST",
+      "ownership": "Government - Hospital District or Authority",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "01014F": {
+      "city": "BIRMINGHAM",
+      "emergency": true,
+      "name": "BIRMINGHAM VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 262438128,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "UNIVERSITY OF ALABAMA AT BIRMINGHAM",
+    "top_departments": [
+      {
+        "amount": 102826549,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 20269096,
+        "dept": "Pathology"
+      },
+      {
+        "amount": 18648285,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 266948402,
+      "2022": 281352430,
+      "2023": 281100987,
+      "2024": 277652751,
+      "2025": 262438128
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 268,
+    "sponsor": "University of Alabama at Birmingham"
+  }
+}
