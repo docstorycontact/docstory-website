@@ -1,0 +1,98 @@
+# School page data for USC Keck School of Medicine.
+# Rendered by build_schools.py into schools/usc-keck-school-of-medicine/index.html.
+# Field reference: content/schools/_TEMPLATE.yaml
+
+short_name: USC Keck
+
+stats:
+  cycle: 2024
+  class_of: 2028
+  sources: [Student Doctor Network, AAMC MSAR]
+  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/USC-Keck/university-of-southern-california-keck-school-of-medicine
+  mcat: 517
+  mcat_percentile: 91
+  gpa_science: 3.81
+  gpa_overall: 3.85
+  tuition: 74500
+  total_cost: 509000
+  women_pct: 55
+  urm_pct: 40
+  class_size: 180
+  total_students: 720
+  applied: 12,000+
+  interviewed: ~600
+  enrolled: 180
+  faculty: 1,300+
+  beds: 401
+  beds_label: Beds · Keck Hospital
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Keck's MD program is structured around three phases: **Scientific and Clinical Foundations**,
+        Clinical Immersion, and Individuation and Transformation. The first phase covers biomedical
+        sciences through active, case-based learning — with patient contact built in from day one,
+        not held back until year three.
+      - >-
+        Lectures are fully webcasted and capped at four hours per day, giving students flexibility to
+        study through spaced-repetition tools like Anki at their own pace. The curriculum also
+        integrates health systems science and social determinants of health — preparing students to
+        navigate both clinical complexity and structural inequity from the start of training.
+
+  - title: Research & Innovation
+    icon: science
+    paragraphs:
+      - >-
+        The **HTE Program** (Health, Technology, and Engineering) is one of USC Keck's most distinctive
+        offerings — pairing medical students with PhD engineering candidates to collaborate on
+        healthcare innovation. Weekly sessions bring in physician entrepreneurs and engineers to discuss
+        design thinking, patents, hospital operations, and bringing medical devices to market.
+      - >-
+        USC Keck ranks **#28 in Research** (U.S. News & World Report) and draws on over 1,300 full-time
+        faculty. Students gain direct shadowing access to attending physicians across virtually every
+        specialty — an experience both Keck students and faculty consistently highlight as one of the
+        program's most formative advantages.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Three distinct hospitals sit on or adjacent to the Health Sciences Campus: **Keck Hospital of
+        USC** (401-bed private teaching hospital), Norris Cancer Center, and LA General Medical Center —
+        a Level I trauma center and safety-net hospital. Each offers a fundamentally different clinical
+        environment.
+      - >-
+        Students describe the county hospital experience as uniquely humanizing: patients at LA General
+        are often uninsured and express deep gratitude for care and attention. Additional affiliated
+        sites include **Children's Hospital Los Angeles** — one of the nation's leading pediatric
+        centers — rounding out an unusual breadth of training environments within a single campus
+        system.
+
+  - title: Location & Community
+    icon: location_city
+    paragraphs:
+      - >-
+        USC Keck's Health Sciences Campus sits in **East Los Angeles**, adjacent to Boyle Heights and
+        Lincoln Heights — historically underserved communities where the school's equity-driven mission
+        becomes tangible in daily clinical work. LA General's patient population reflects this setting
+        directly, giving students exposure to medicine that most programs can only describe on paper.
+      - >-
+        Beyond campus, students are 15–20 minutes from vibrant neighborhoods like Silverlake, Los Feliz,
+        and Echo Park, and the culturally rich cities of Alhambra and Monterey Park. LA's sprawl is
+        real — traffic is a fact of life — but the city's access to beaches, hiking, food, and
+        entertainment makes it a compelling place to spend four formative years.
+
+# Featured quote per interview (keyed by interview file name). Order here sets card order;
+# interviews not listed fall back to an automatically extracted excerpt.
+quotes:
+  dominic-carusillo: >-
+    "You can't blow off class as much as you could in undergrad." Medical school covers significantly
+    more material weekly. Shadowing opportunities stand out as most valuable, allowing exposure to
+    specialties and direct mentorship from attending physicians.
+  sam-teles: >-
+    "Being able to see patients at County is special because these are people who are grateful for
+    your help and for someone that will listen to them. You don't get that as much at private
+    hospitals. Being able to make a difference with people at County simply by paying attention to
+    them is special."

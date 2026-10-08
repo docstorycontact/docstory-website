@@ -1,0 +1,99 @@
+# School page data for UC Irvine School of Medicine.
+# Rendered by build_schools.py into schools/uc-irvine-school-of-medicine/index.html.
+# Field reference: content/schools/_TEMPLATE.yaml
+
+short_name: UCI
+location_line: Orange County, CA
+
+stats:
+  cycle: 2024
+  class_of: 2028
+  sources: [Student Doctor Network]
+  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/UCI/university-of-california-irvine-school-of-medicine
+  mcat: 516
+  mcat_percentile: 90
+  gpa_science: 3.89
+  gpa_overall: 3.94
+  tuition_in_state: 50800
+  tuition_out_of_state: 63000
+  women_pct: 68
+  urm_pct: 33
+  class_size: 114
+  total_students: 512
+  applied: 6,500+
+  interviewed: ~520
+  enrolled: 114
+  faculty: 1,900+
+  beds: 411
+  beds_label: Hospital Beds · UCI Med Ctr
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        UCI's curriculum takes an integrated, systems-based approach. MS1 covers normal physiology
+        across every organ system; MS2 maps those same systems to pathology — ensuring double exposure
+        to all content before Step 1. Both years are graded pass/fail, and lectures are recorded for
+        flexible, self-paced review.
+      - >-
+        A defining feature is the **PACE Program** (Patient-centered Ambulatory Care Education): from
+        the start of MS1, students spend one half-day per week in clinic alongside a preceptor,
+        building real longitudinal patient relationships from day one. Weekly small-group sessions
+        rotate through clinical foundations, simulation lab, and point-of-care ultrasound — with formal
+        ultrasound training embedded in the curriculum starting Year 1.
+
+  - title: Research
+    icon: science
+    paragraphs:
+      - >-
+        UCI's signature **Ultrasound Education Program** sends 30–40 students abroad each summer — at
+        the MS1–MS2 transition — to teach point-of-care ultrasound to clinicians in resource-limited
+        settings. Past trips have reached Switzerland and Tanzania, combining research leadership with
+        direct global health impact.
+      - >-
+        On campus, 24 departments span basic science, clinical, and translational research with over
+        1,900 faculty. Students have engaged in spinal cord injury research, global health initiatives,
+        and specialty-focused projects, with opportunities to pursue independent work from as early as
+        MS1.
+
+  - title: Community Outreach
+    icon: groups
+    paragraphs:
+      - >-
+        **PLEXUS**, UCI's student-run medical humanities journal, invites faculty, students, and
+        patients to share essays, poetry, and personal stories. It's a rare publication that bridges
+        the clinical and the human — amplifying patient voices as a core part of the school's culture.
+      - >-
+        The Emergency Medicine Interest Group is one of the most active organizations on campus,
+        hosting clinical workshops, speaker panels, and community health events across Orange County.
+        UCI's broad interest group network spans virtually every specialty, with many groups running
+        local outreach programs.
+
+  - title: Volunteer Opportunities
+    icon: volunteer_activism
+    paragraphs:
+      - >-
+        **Elephant Mentors** is a student-led mentorship program pairing medical students with
+        underserved high school girls in the local community. Students serve as team leaders or
+        individual mentors, offering academic support and exposure to healthcare careers — consistently
+        described as one of the most meaningful non-clinical experiences at UCI.
+      - >-
+        The **Global Health Program** organizes annual international service trips combining ultrasound
+        education and direct patient care in underserved communities abroad. Students describe these
+        experiences as uniquely merging education, research, and service in a way that's hard to find
+        at most medical schools.
+
+quotes:
+  arnie-shah: >-
+    "UC Irvine has done a really good job creating a very collaborative class with a wide variety of
+    skills and interests. Knowing everyone at your school is really different coming from a big
+    university — but it feels a lot more like family."
+  alexa-lucas: >-
+    "I was VP of Education for the Emergency Medicine Interest Group, team leader for a global
+    health/ultrasound education trip to Tanzania, and group leader for Elephant Mentors. The global
+    health aspect is super unique and incredible."
+  steven-tohmasi: >-
+    "Each year, around 30–40 med students spend the summer between 1st and 2nd year teaching
+    ultrasound internationally." Steven taught at the University of Basel in Switzerland the summer
+    of 2018.

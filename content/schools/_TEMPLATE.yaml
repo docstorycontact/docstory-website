@@ -1,0 +1,67 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# School page data — copy this file to content/schools/<school-slug>.yaml
+# (the slug must match the folder name in content/interviews/ and the key in
+# SCHOOLS inside build_schools.py), fill in what you have, then run:
+#
+#     python3 build_schools.py
+#
+# Every field is optional. Leave out anything you can't source and that piece
+# of the page is hidden; with no file at all the school gets the basic page.
+# Name, city, type, founding year, hospital and class size for the hero still
+# come from SCHOOLS in build_schools.py.
+# ─────────────────────────────────────────────────────────────────────────────
+
+short_name: Keck                 # used in "N interviews from current and former <short_name> students"
+location_line: Orange County, CA # optional — replaces "City, ST" in the line under the school name
+
+stats:
+  # Header
+  cycle: 2024                    # admissions cycle the numbers describe
+  class_of: 2028
+  sources: [Student Doctor Network, AAMC MSAR]   # first one is shown in bold
+  sdn_url: https://www.studentdoctor.net/schools-database/medical-school/detail/...
+
+  # Selectivity — the MCAT curve and GPA bars are drawn from these
+  mcat: 517                      # median MCAT (national average is fixed at 502)
+  mcat_percentile: 91
+  gpa_science: 3.81
+  gpa_overall: 3.85
+
+  # Cost of attendance — use EITHER `tuition` (one rate, typical for private schools)
+  # OR `tuition_in_state` + `tuition_out_of_state` (public schools). Whole dollars.
+  tuition: 74500
+  # tuition_in_state: 50800
+  # tuition_out_of_state: 63000
+  total_cost: 509000             # optional estimated 4-year cost of attendance
+
+  # Class profile — donut charts are drawn from the percentages
+  women_pct: 55
+  urm_pct: 40                    # underrepresented in medicine
+  class_size: 180
+  total_students: 720
+
+  # Scale & reach — counts are shown exactly as written (text like "12,000+" or "~600" is fine)
+  applied: 12,000+
+  interviewed: ~600
+  enrolled: 180
+  faculty: 1,300+
+  beds: 401
+  beds_label: Beds · Keck Hospital   # caption under the bed count
+
+# Program Highlights — four cards read best (2×2 grid). **double asterisks** make bold text.
+# Icons are Material Symbols names: https://fonts.google.com/icons
+# (e.g. menu_book, science, local_hospital, location_city, groups, volunteer_activism)
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        First paragraph. Lines can wrap freely inside a ">-" block.
+      - >-
+        Second paragraph.
+
+# Featured quote per interview, keyed by the interview's file name (without .md).
+# Order here sets card order. Interviews not listed get an automatic excerpt.
+quotes:
+  student-file-name: >-
+    "A quote from the interview."
