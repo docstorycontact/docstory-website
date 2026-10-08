@@ -1,0 +1,55 @@
+{
+  "hospitals": {
+    "190005": {
+      "city": "NEW ORLEANS",
+      "emergency": true,
+      "name": "UNIVERSITY MEDICAL CENTER NEW ORLEANS",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "19047F": {
+      "city": "NEW ORLEANS",
+      "emergency": true,
+      "name": "SOUTHEAST LOUISIANA VETERANS HEALTH CARE SYSTEM",
+      "ownership": "Veterans Health Administration",
+      "stars": 3,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 62186076,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "TULANE UNIVERSITY OF LOUISIANA",
+    "top_departments": [
+      {
+        "amount": 26854107,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 8263619,
+        "dept": "Microbiology / Immun / Virology"
+      },
+      {
+        "amount": 6837809,
+        "dept": "Pathology"
+      }
+    ],
+    "trend": {
+      "2021": 63178072,
+      "2022": 71466806,
+      "2023": 67483528,
+      "2024": 64401065,
+      "2025": 62186076
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 28,
+    "sponsor": "Tulane University"
+  }
+}

@@ -1,0 +1,120 @@
+# School page data for Drexel University College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Drexel pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+# Drexel does not publish an entering-class profile, so selectivity tiles are hidden.
+
+short_name: Drexel
+nih_org: DREXEL UNIVERSITY
+trials_sponsor: Drexel University
+
+stats:
+  class_size: null               # not published
+  tuition: 78238                 # 2026–27, Drexel Central MD cost of attendance
+  cost_year: 2026–27
+
+sources:
+  - label: Drexel MD Cost of Attendance
+    url: https://drexel.edu/drexelcentral/cost/med
+  - label: Drexel College of Medicine Campuses
+    url: https://drexel.edu/medicine/about/campuses/
+  - label: Drexel Academic Campus Affiliates
+    url: https://drexel.edu/medicine/about/affiliated-hospitals/academic-medical-campuses/
+  - label: Drexel Regional Medical Campus Affiliates
+    url: https://drexel.edu/medicine/about/affiliated-hospitals/regional-medical-campuses/
+  - label: Drexel West Reading Campus
+    url: https://drexel.edu/medicine/about/campuses/west-reading/
+  - label: Drexel MD Application Process
+    url: https://drexel.edu/medicine/academics/md-program/md-program-admissions/application-process/
+  - label: Drexel Pathway to Medical School
+    url: https://drexel.edu/medicine/academics/graduate-school/drexel-pathway-to-medical-school/
+  - label: Census QuickFacts (Philadelphia County, PA)
+    url: https://www.census.gov/quickfacts/fact/table/philadelphiacountypennsylvania/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Lectures are podcasted, typically about 50 minutes each with an accompanying set of notes, so
+        Jonathan Acosta studies in campus study rooms on a self-set schedule and works through material
+        with a small group of friends. The big adjustment from undergrad, Jonathan says, is sheer volume.
+      - >-
+        One thing Jonathan especially valued: coursework on the business of health care, covering
+        legislation, insurance, and reimbursement, which demystified how the system is structured.
+
+  - title: Campuses
+    icon: map
+    paragraphs:
+      - >-
+        First- and second-year students study at Drexel's **University City** campus in Philadelphia,
+        which opened its Health Sciences Building to MD students in 2023.
+      - >-
+        Drexel also runs a four-year campus in **West Reading** with Tower Health, where students train at
+        Reading Hospital for all four years, and lists Allegheny Health Network among its regional medical
+        campuses.
+
+  - title: Clinical Network
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Clerkships spread across a wide network of academic affiliates, each with an on-site associate
+        director who keeps the experience consistent with the Drexel clerkship: among them **Lankenau
+        Medical Center**, **St. Christopher's Hospital for Children**, Jefferson Abington, and the
+        Coatesville VA.
+      - >-
+        The network reaches from Philadelphia's suburbs to Pittsburgh, giving students exposure to
+        community, children's, behavioral health, and veterans' care.
+
+  - title: Pathways & Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Drexel offers unusual routes in: the **Drexel Pathway to Medical School**, a one-year master's with
+        conditional entry to the MD program, and a BA/BS+MD early assurance program for undergraduates.
+      - >-
+        Jonathan describes a non-competitive class with a large circle of friends, intramural sports, and
+        plenty of student clubs to lead.
+
+highlight_sources:
+  - label: DocStory interview with Jonathan Acosta
+    url: /interviews/drexel-university-college-of-medicine/jonathan-acosta/index.html
+  - label: Drexel College of Medicine Campuses
+    url: https://drexel.edu/medicine/about/campuses/
+  - label: Drexel Academic Campus Affiliates
+    url: https://drexel.edu/medicine/about/affiliated-hospitals/academic-medical-campuses/
+  - label: Drexel Pathway to Medical School
+    url: https://drexel.edu/medicine/academics/graduate-school/drexel-pathway-to-medical-school/
+
+quotes:
+  jonathan-acosta: >-
+    "I have a large group of friends, and the atmosphere is very non-competitive which makes interacting
+    with other students a good experience."
+
+clinical_sites:
+  - {name: Reading Hospital, role: Tower Health campus · all four years, cms_id: "390044"}
+  - {name: Allegheny General Hospital, role: Allegheny Health Network regional campus, cms_id: "390050"}
+  - {name: Lankenau Medical Center, role: Main Line Health, cms_id: "390195"}
+  - {name: St. Christopher's Hospital for Children, cms_id: "393307"}
+  - {name: Jefferson Abington Hospital, cms_id: "390231"}
+  - {name: Coatesville VA Medical Center, cms_id: "39004F"}
+  - {name: Mercy Fitzgerald Hospital}
+  - {name: Holy Redeemer Hospital}
+  - {name: St. Luke's University Health Network}
+  - {name: Phoenixville Hospital}
+  - {name: Friends Hospital}
+  - {name: UPMC Hamot}
+  - {name: Virtua Health}
+
+programs:
+  tracks:
+    - {name: Drexel Pathway to Medical School, note: one-year master's with conditional MD entry}
+    - {name: BA/BS+MD Early Assurance}
+
+applying:
+  - {label: MCAT, value: "Taken within three years · every exam is considered (no 'best of')"}
+
+cost_of_living:
+  county: Philadelphia County, PA
+  fips: "42101"
+  median_rent: 1397             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

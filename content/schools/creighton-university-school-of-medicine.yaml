@@ -1,0 +1,106 @@
+# School page data for Creighton University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Creighton pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: Creighton
+nih_org: CREIGHTON UNIVERSITY
+trials_sponsor: Creighton University
+
+stats:
+  entering_class: 2026           # Class of 2030 profile
+  stats_kind: average            # Creighton reports an average MCAT …
+  gpa_kind: median               # … and median GPAs
+  profile_url: https://www.creighton.edu/medicine/programs/medicine-md/class-profile
+  mcat: 512
+  gpa_science: 3.85
+  gpa_overall: 3.88
+  women_pct: 49
+  class_size: 250                # MD Class of 2029 welcome (Omaha + Phoenix)
+  tuition: 70094                 # 2026–27, Creighton MD costs (Omaha and Phoenix)
+  cost_year: 2026–27
+  total_cost: 467605             # sum of Year 1–4 estimated cost of attendance
+
+sources:
+  - label: Creighton MD Class Profile
+    url: https://www.creighton.edu/medicine/programs/medicine-md/class-profile
+  - label: Creighton welcomes the MD Class of 2029
+    url: https://www.creighton.edu/news/creighton-school-medicine-welcomes-md-class-2029
+  - label: Creighton MD Costs
+    url: https://www.creighton.edu/cost-aid/find-costs/doctor-medicine-md-costs
+  - label: Creighton Overview of Medical School
+    url: https://www.creighton.edu/medicine/programs/medicine-md/overview-medical-school
+  - label: Creighton Affiliated Training Sites (Omaha)
+    url: https://www.creighton.edu/medicine/residencies-fellowships/residencies-fellowships-omaha/affiliated-training-sites
+  - label: Census QuickFacts (Douglas County, NE)
+    url: https://www.census.gov/quickfacts/fact/table/douglascountynebraska/HSG860224
+
+highlights:
+  - title: Two Campuses
+    icon: map
+    paragraphs:
+      - >-
+        Creighton's MD program runs on two campuses: **Omaha**, anchored by CHI Health Creighton
+        University Medical Center–Bergan Mercy, a Level I trauma center, and a newer health sciences
+        campus in **Phoenix**, where St. Joseph's Hospital and Medical Center and Valleywise Health
+        Medical Center are major training sites.
+      - >-
+        Omaha students also rotate through other CHI Health hospitals and the Omaha VA, with rural
+        rotations available in Nebraska and Iowa.
+
+  - title: How Students Learn
+    icon: menu_book
+    paragraphs:
+      - >-
+        Eric Nguyen streams lectures, studies with active recall and spaced repetition in short
+        timed blocks, and found the faculty remarkably available: office hours are easy to book and
+        emailed questions get answers within hours, sometimes minutes.
+      - >-
+        For a recent neuroscience course, the school partnered with a board-prep platform so students
+        could pair lectures with its flashcards and practice questions.
+
+  - title: Jesuit Mission
+    icon: diversity_3
+    paragraphs:
+      - >-
+        As a Jesuit school, Creighton emphasizes the humanistic side of medicine. Eric learned to ask
+        patients how an illness affects their hobbies and their time with family, not just their organ
+        function.
+      - >-
+        Eric took part in **Wisdom Groups**, small groups of students led by a Jesuit priest that reflect
+        on fear, happiness, and what it means to become a physician.
+
+  - title: Life in Omaha
+    icon: location_city
+    paragraphs:
+      - >-
+        Eric found Omaha welcoming and more diverse than expected, with great food, and co-founded a
+        student club for medical innovation and entrepreneurship alongside volunteering at free clinics
+        and serving people experiencing homelessness.
+      - >-
+        The trade-offs: flat terrain with little hiking, and Denver or Chicago are 7+ hours away, though
+        Lincoln, Kansas City, and Iowa City are within a few hours.
+
+highlight_sources:
+  - label: DocStory interview with Eric Nguyen
+    url: /interviews/creighton-university-school-of-medicine/eric-nguyen/index.html
+  - label: Creighton Overview of Medical School
+    url: https://www.creighton.edu/medicine/programs/medicine-md/overview-medical-school
+  - label: Creighton Affiliated Training Sites (Omaha)
+    url: https://www.creighton.edu/medicine/residencies-fellowships/residencies-fellowships-omaha/affiliated-training-sites
+
+quotes:
+  eric-nguyen: >-
+    "We were taught to not only understand how a patient's ailment affected one's bodily function, but
+    also how it affected one's daily life."
+
+clinical_sites:
+  - {name: CHI Health Creighton University Medical Center–Bergan Mercy, role: Main academic medical center · Level I trauma · Omaha, cms_id: "280060"}
+  - {name: Omaha VA Medical Center, cms_id: "28006F"}
+  - {name: St. Joseph's Hospital and Medical Center, role: Phoenix campus · Level I trauma, cms_id: "030024"}
+  - {name: Valleywise Health Medical Center, role: Phoenix campus · Level I trauma, cms_id: "030022"}
+
+cost_of_living:
+  county: Douglas County, NE
+  fips: "31055"
+  median_rent: 1201             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

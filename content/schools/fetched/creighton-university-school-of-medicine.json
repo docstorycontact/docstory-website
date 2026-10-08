@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "030022": {
+      "city": "PHOENIX",
+      "emergency": false,
+      "name": "VALLEYWISE HEALTH MEDICAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 1,
+      "type": "Acute Care Hospitals"
+    },
+    "030024": {
+      "city": "PHOENIX",
+      "emergency": true,
+      "name": "ST JOSEPHS HOSPITAL AND MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "280060": {
+      "city": "OMAHA",
+      "emergency": true,
+      "name": "CHI HEALTH BERGAN MERCY",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "28006F": {
+      "city": "OMAHA",
+      "emergency": true,
+      "name": "OMAHA VA MEDICAL CENTER (VA NEBRASKA WESTERN IOWA HEALTHCARE SYSTEM)",
+      "ownership": "Veterans Health Administration",
+      "stars": 4,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 6630675,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "CREIGHTON UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 3466716,
+        "dept": "Other Basic Sciences"
+      },
+      {
+        "amount": 1619245,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 1544714,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 7415807,
+      "2022": 7476183,
+      "2023": 7569402,
+      "2024": 7545613,
+      "2025": 6630675
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 4,
+    "sponsor": "Creighton University"
+  }
+}

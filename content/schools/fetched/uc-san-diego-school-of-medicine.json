@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "050025": {
+      "city": "SAN DIEGO",
+      "emergency": true,
+      "name": "UC SAN DIEGO HEALTH HILLCREST - HILLCREST MED CTR",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "05114F": {
+      "city": "SAN DIEGO",
+      "emergency": true,
+      "name": "VA SAN DIEGO HEALTHCARE SYSTEM",
+      "ownership": "Veterans Health Administration",
+      "stars": 5,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "053303": {
+      "city": "SAN DIEGO",
+      "emergency": false,
+      "name": "RADY CHILDREN'S HOSPITAL - SAN DIEGO",
+      "ownership": "Voluntary non-profit - Other",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 429661378,
+    "ctsa": true,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": true,
+    "org_name": "UNIVERSITY OF CALIFORNIA, SAN DIEGO",
+    "top_departments": [
+      {
+        "amount": 133127427,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 59167207,
+        "dept": "Psychiatry"
+      },
+      {
+        "amount": 56271698,
+        "dept": "Pediatrics"
+      }
+    ],
+    "trend": {
+      "2021": 428452815,
+      "2022": 470974793,
+      "2023": 443969486,
+      "2024": 433857422,
+      "2025": 429661378
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 182,
+    "sponsor": "University of California, San Diego"
+  }
+}

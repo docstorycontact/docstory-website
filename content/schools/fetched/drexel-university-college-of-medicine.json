@@ -1,0 +1,87 @@
+{
+  "hospitals": {
+    "390044": {
+      "city": "WEST READING",
+      "emergency": true,
+      "name": "READING HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "39004F": {
+      "city": "COATESVILLE",
+      "emergency": false,
+      "name": "COATESVILLE VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": null,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "390050": {
+      "city": "PITTSBURGH",
+      "emergency": true,
+      "name": "ALLEGHENY GENERAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "390195": {
+      "city": "WYNNEWOOD",
+      "emergency": true,
+      "name": "MAIN LINE HOSPITAL LANKENAU",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "390231": {
+      "city": "ABINGTON",
+      "emergency": true,
+      "name": "JEFFERSON ABINGTON HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "393307": {
+      "city": "PHILADELPHIA",
+      "emergency": true,
+      "name": "ST CHRISTOPHER'S HOSPITAL FOR CHILDREN",
+      "ownership": "Proprietary",
+      "stars": null,
+      "type": "Childrens"
+    },
+    "fetched": "2026-10-08"
+  },
+  "nih": {
+    "amount": 18801329,
+    "ctsa": false,
+    "fetched": "2026-10-08",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "DREXEL UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 5778664,
+        "dept": "Pharmacology"
+      },
+      {
+        "amount": 4413154,
+        "dept": "Anatomy / Cell Biology"
+      },
+      {
+        "amount": 4003358,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 18934066,
+      "2022": 21157233,
+      "2023": 18679460,
+      "2024": 21506333,
+      "2025": 18801329
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-08",
+    "recruiting": 20,
+    "sponsor": "Drexel University"
+  }
+}

@@ -1,0 +1,118 @@
+# School page data for UMass Chan Medical School (T.H. Chan School of Medicine).
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official UMass Chan pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-08.
+
+short_name: UMass Chan
+nih_org: UNIV OF MASSACHUSETTS MED SCH WORCESTER
+trials_sponsor: University of Massachusetts, Worcester
+
+stats:
+  entering_class: 2026           # Class of 2030 profile
+  stats_kind: average
+  profile_url: https://www.umassmed.edu/contentassets/7d1e8f885e80434cb8412e0a963461fb/class-profile-umass-chan-medical-school-class.pdf
+  mcat: 511                      # Class of 2030 profile (82nd percentile)
+  gpa_overall: 3.78
+  enrolled: 225
+  class_size: 225
+  women_pct: 71                  # 160 of 225
+  out_of_state_pct: 50
+  tuition_in_state: 44292        # 2026–27 MD tuition, UMass Chan
+  tuition_out_of_state: 76164
+  cost_year: 2026–27
+
+sources:
+  - label: UMass Chan Class Profile (Class of 2030)
+    url: https://www.umassmed.edu/contentassets/7d1e8f885e80434cb8412e0a963461fb/class-profile-umass-chan-medical-school-class.pdf
+  - label: UMass Chan Tuition & Fees 2026–27
+    url: https://www.umassmed.edu/awp/finances/som/tuition-and-fees-medicine-ay2026-2027/
+  - label: UMass Chan PURCH Track
+    url: https://www.umassmed.edu/som/academics/purch-track/
+  - label: How to Apply to PURCH or LEAD@Lahey
+    url: https://www.umassmed.edu/som/admissions/apply/how-to-apply-to-purch/
+  - label: UMass Chan–Lahey regional campus (LCME approval)
+    url: https://www.umassmed.edu/news/articles/archives/2023/03/umass-chan-lahey-regional-medical-school-campusapproved-by-lcme/
+  - label: UMass Chan Admissions FAQ
+    url: https://www.umassmed.edu/som/admissions/faqs/
+  - label: Census QuickFacts (Worcester County, MA)
+    url: https://www.census.gov/quickfacts/fact/table/worcestercountymassachusetts/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Courses run in focused blocks rather than semesters, so exams come often and material arrives
+        fast. Prithwijit Roychowdhury found the faculty, many of them practicing clinicians, unusually
+        invested in students they see as future colleagues.
+      - >-
+        Prithwijit's routine is built around afternoon classes and labs bracketed by daily spaced-repetition
+        review. The advice Prithwijit would give a younger self: start that habit much earlier.
+
+  - title: Three Ways to Train
+    icon: alt_route
+    paragraphs:
+      - >-
+        Most students train in **Worcester** with UMass Memorial Medical Center and community partners
+        from Cape Cod to the Berkshires. The **PURCH** track focuses on urban and rural population health,
+        with all core clerkships at Baystate Medical Center in Springfield.
+      - >-
+        **LEAD@Lahey**, which welcomed its first students in 2024 at a regional campus with Lahey Hospital
+        & Medical Center in Burlington, emphasizes leadership, health systems science, and
+        interprofessional education. The Class of 2030 includes 32 PURCH and 23 LEAD@Lahey students.
+
+  - title: Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Prithwijit describes a positive, supportive culture that starts on day one: first-year orientation
+        is a camping trip run with second-years, and faculty join students at social events through the
+        year.
+      - >-
+        Older students and faculty mentors are easy to reach for help with coursework, physical exam
+        technique, or career advice.
+
+  - title: Life in Worcester
+    icon: location_city
+    paragraphs:
+      - >-
+        Prithwijit calls Worcester "a gem of a city": distinct neighborhoods with new cafés, the
+        restaurants and events of Shrewsbury Street, parks and small beaches, and plenty of young people
+        from the area's many colleges.
+      - >-
+        The cost of living is low; the downsides, Prithwijit says, are limited public transit and a spread-out
+        city.
+
+highlight_sources:
+  - label: DocStory interview with Prithwijit Roychowdhury
+    url: /interviews/university-of-massachusetts-medical-school/prithwijit-roychowdhury/index.html
+  - label: UMass Chan PURCH Track
+    url: https://www.umassmed.edu/som/academics/purch-track/
+  - label: UMass Chan–Lahey regional campus
+    url: https://www.umassmed.edu/news/articles/archives/2023/03/umass-chan-lahey-regional-medical-school-campusapproved-by-lcme/
+
+quotes:
+  prithwijit-roychowdhury: >-
+    "The culture of our school is always positive and extremely supportive. There is never a time where I
+    feel like I cannot look to older students or my faculty mentors for advice or guidance."
+
+clinical_sites:
+  - {name: UMass Memorial Medical Center, role: Main clinical partner · Worcester, cms_id: "220163"}
+  - {name: Baystate Medical Center, role: PURCH track · Springfield, cms_id: "220077"}
+  - {name: Lahey Hospital & Medical Center, role: LEAD@Lahey track · Burlington, cms_id: "220171"}
+
+programs:
+  tracks:
+    - {name: PURCH, note: urban and rural population health · Baystate}
+    - {name: LEAD@Lahey, note: leadership and health systems science}
+    - {name: MSTP, note: MD-PhD}
+
+applying:
+  - {label: MCAT guidance, value: "Aim for the 65th percentile or higher overall and in each section"}
+  - {label: PURCH interviews, value: Virtual multiple mini interview (MMI)}
+  - {label: LEAD@Lahey interviews, value: "Virtual, open-file, one-on-one"}
+
+cost_of_living:
+  county: Worcester County, MA
+  fips: "25027"
+  median_rent: 1426             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
