@@ -522,6 +522,7 @@ DASHBOARD_CSS = '''
     .dc-kv dd { font-size: 0.8125rem; color: #1f2235; margin: 2px 0 0; line-height: 1.45; }
     .dc-out { display: flex; flex-wrap: wrap; gap: 4px 24px; }
     .dc-details { border-top: 1px solid #ececf4; }
+    .dc-details + .dc-details { border-top-color: #f2f1f8; }
     .dc-details > summary { cursor: pointer; list-style: none; padding: 14px 28px; font-size: 0.8125rem; font-weight: 600; color: #6c5ce7; display: flex; align-items: center; gap: 8px; }
     .dc-details > summary::-webkit-details-marker { display: none; }
     .dc-details > summary::before { content: '+'; display: inline-flex; width: 18px; height: 18px; align-items: center; justify-content: center; border-radius: 50%; background: #f1efff; font-size: 0.875rem; line-height: 1; }
@@ -883,30 +884,37 @@ def _outcomes_cell(o):
     return _cell('Outcomes', body)
 
 
+def _toggle(names, cells):
+    """A collapsed <details> band; the summary names whatever sections are inside."""
+    title = (', '.join(names[:-1]) + ' &amp; ' + names[-1]) if len(names) > 1 else names[0]
+    title = title[0].upper() + title[1:]
+    return (f'\n      <details class="dc-details">\n        <summary>{title}</summary>'
+            f'\n        <div class="dc-more">\n' + '\n'.join(cells) + '\n        </div>\n      </details>')
+
+
 def render_extras(page, raw):
-    """Second band of the stats card. Each cell appears only when its data exists."""
-    cells, more = [], []
+    """Optional bands below the headline stats, each folded into its own toggle so the card
+    opens on the key numbers. A band (and each cell in it) appears only when data exists."""
+    html = ''
+    # Level 2 — clinical training & research
+    level2 = []
     if page.get('clinical_sites'):
-        cells.append(_sites_cell(page['clinical_sites'], raw.get('hospitals') or {}))
+        level2.append(('clinical training', _sites_cell(page['clinical_sites'], raw.get('hospitals') or {})))
     nih = raw.get('nih') or {}
     if nih or page.get('research_badges') or raw.get('trials'):
-        cells.append(_research_cell(nih, raw.get('trials'), page.get('research_badges') or [], page.get('trials_label')))
-    # Tier 2 — useful detail, folded away to keep the card scannable
+        level2.append(('research', _research_cell(nih, raw.get('trials'), page.get('research_badges') or [], page.get('trials_label'))))
+    if level2:
+        html += _toggle([n for n, _ in level2], [c for _, c in level2])
+    # Level 3 — programs, admissions & outcomes
+    level3 = []
     if page.get('programs'):
-        more.append(('Programs', _programs_cell(page['programs'])))
+        level3.append(('programs', _programs_cell(page['programs'])))
     if page.get('applying'):
-        more.append(('admissions', _applying_cell(page['applying'])))
+        level3.append(('admissions', _applying_cell(page['applying'])))
     if page.get('outcomes'):
-        more.append(('outcomes', _outcomes_cell(page['outcomes'])))
-    html = ''
-    if cells:
-        html += '\n      <div class="dc-more">\n' + '\n'.join(cells) + '\n      </div>'
-    if more:
-        names = [n for n, _ in more]
-        title = (', '.join(names[:-1]) + ' &amp; ' + names[-1]) if len(names) > 1 else names[0]
-        title = title[0].upper() + title[1:]
-        html += (f'\n      <details class="dc-details">\n        <summary>{title}</summary>'
-                 f'\n        <div class="dc-more">\n' + '\n'.join(c for _, c in more) + '\n        </div>\n      </details>')
+        level3.append(('outcomes', _outcomes_cell(page['outcomes'])))
+    if level3:
+        html += _toggle([n for n, _ in level3], [c for _, c in level3])
     return html
 
 
@@ -1069,8 +1077,6 @@ def render_page(school_slug, data, interviews, page=None):
             col.update(median_rent=raw['rent']['median_rent'], acs_year=raw['rent']['acs_year'])
         if col.get('median_rent'):
             stats['col'] = col
-        if (raw.get('nih') or {}).get('trend'):
-            stats.pop('nih_funding', None)
         sections = [render_dashboard(stats, data, render_extras(page, raw))] if has_dashboard else []
         if page.get('highlights'):
             sections.append(render_highlights(page['highlights'], page.get('highlight_sources')))

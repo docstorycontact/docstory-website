@@ -90,8 +90,9 @@ quotes:
     "A quote from the interview."
 
 # ── Extra dashboard sections ─────────────────────────────────────────────────
-# Tier 1 (always shown): clinical sites + research depth.
-# Tier 2 (behind the "Programs, admissions & outcomes" toggle): programs, applying, outcomes.
+# Shown by default: selectivity, cost (+ rent) and scale & reach.
+# Toggle 1 "Clinical training & research": clinical sites + research depth.
+# Toggle 2 "Programs, admissions & outcomes": programs, applying, outcomes.
 
 trials_sponsor: University of California, Irvine   # ClinicalTrials.gov sponsor name → automatic count
 trials_label: led by HMS itself                    # optional caveat shown after the count
