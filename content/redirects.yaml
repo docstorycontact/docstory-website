@@ -1,0 +1,85 @@
+# Old docstory.org addresses (the WordPress site, 2018 – May 2026) → pages on the current site.
+# build_schools.py turns this into vercel.json. Each old path also covers its trailing-slash,
+# ?amp, comment-page and attachment variants. Old interview posts (/2018/05/29/emily-he-ms1/)
+# are mapped automatically from the `url:` line in each interview file, so they aren't listed here.
+
+# Old school page slug → current school slug. Each old slug is redirected from /tag/<old>/,
+# /<old>/, /<old>-2/, /medical-student-interviews/<old>/, /medical-student-interviews/<old>-2/
+# and /interviews/<old>/. null = no school page now, so it goes to the directory.
+schools:
+  albany-medical-college: albany-medical-college
+  baylor-college-of-medicine: baylor-college-of-medicine
+  boston-university-school-of-medicine: null
+  burnett-school-of-medicine-at-tcu: tcu-burnett-school-of-medicine
+  california-university-of-science-and-medicine: california-university-of-science-and-medicine
+  creighton-university-school-of-medicine: creighton-university-school-of-medicine
+  drexel-university-college-of-medicine: drexel-university-college-of-medicine
+  duke-university-school-of-medicine: duke-university-school-of-medicine
+  eastern-virginia-medical-school: eastern-virginia-medical-school
+  florida-state-university-college-of-medicine: florida-state-university-college-of-medicine
+  harvard-medical-school: harvard-medical-school
+  indiana-university-school-of-medicine: indiana-university-school-of-medicine
+  john-a-burns-school-of-medicine: null
+  johns-hopkins-university-school-of-medicine: johns-hopkins-school-of-medicine
+  kentucky-college-of-osteopathic-medicine: kentucky-college-of-osteopathic-medicine
+  mayo-clinic-school-of-medicine: mayo-clinic-school-of-medicine
+  medical-college-of-georgia-at-augusta-university: medical-college-of-georgia
+  medical-college-of-wisconsin: medical-college-of-wisconsin
+  morsani-college-of-medicine: morsani-college-of-medicine
+  new-york-medical-college: new-york-medical-college
+  northwestern-university-feinberg-school-of-medicine: northwestern-feinberg-school-of-medicine
+  rosalind-franklin-university-of-medicine-and-science: rosalind-franklin-university
+  rush-medical-college: rush-medical-college
+  southern-illinois-university-school-of-medicine: southern-illinois-university-school-of-medicine
+  touro-college-of-osteopathic-medicine: touro-college-of-osteopathic-medicine
+  tulane-university-school-of-medicine: tulane-university-school-of-medicine
+  uc-irvine-school-of-medicine: uc-irvine-school-of-medicine
+  uc-san-diego-school-of-medicine: uc-san-diego-school-of-medicine
+  ucla-geffen-school-of-medicine: ucla-geffen-school-of-medicine
+  university-of-alabama-at-birmingham: university-of-alabama-birmingham
+  university-of-cincinnati-college-of-medicine: university-of-cincinnati-college-of-medicine
+  university-of-florida-college-of-medicine: university-of-florida-college-of-medicine
+  university-of-hawaii-john-a-burns-school-of-medicine: null
+  university-of-iowa-carver-college-of-medicine: university-of-iowa-carver-college-of-medicine
+  university-of-massachusetts-medical-school: university-of-massachusetts-medical-school
+  university-of-miami-miller-school-of-medicine: university-of-miami-miller-school-of-medicine
+  university-of-southern-california-keck-school-of-medicine: usc-keck-school-of-medicine
+  university-of-tennessee-health-science-center-college-of-medicine: ut-health-science-center
+  virginia-commonwealth-university-school-of-medicine: virginia-commonwealth-university
+  wayne-state-school-of-medicine: wayne-state-school-of-medicine
+  weill-cornell-medical-college: weill-cornell-medical-college
+  western-university-of-health-sciences-college-of-osteopathic-medicine: western-university-osteopathic
+  yale-school-of-medicine: yale-school-of-medicine
+
+# Tags that searchers actually used → the most relevant page. Other tags go to the directory.
+tags:
+  carverpedia: /interviews/university-of-iowa-carver-college-of-medicine/gabriel-conley/
+  epblm: /interviews/southern-illinois-university-school-of-medicine/alexander-worix/
+  miller-school-of-medicine: /schools/university-of-miami-miller-school-of-medicine/
+  burnett-school-of-medicine: /schools/tcu-burnett-school-of-medicine/
+  mcw: /schools/medical-college-of-wisconsin/
+  augusta-medical-school: /schools/medical-college-of-georgia/
+  david-geffen-school-of-medicine: /schools/ucla-geffen-school-of-medicine/
+  baylor: /schools/baylor-college-of-medicine/
+  university-of-medicine-and-science: /schools/rosalind-franklin-university/
+
+# Everything else, checked in this order (first match wins).
+paths:
+  /2023/01/10/jonathan-carnino-ms1-2: /interviews/misc/jonathan-carnino/
+  /2026/05/26/emily-hayward-ms3: /interviews/university-of-alabama-birmingham/emily-hayward/
+  /recent-interviews/abraham-cheloff: /interviews/harvard-medical-school/abraham-cheloff/
+  /recent-interviews/emily-hayward: /interviews/university-of-alabama-birmingham/emily-hayward/
+  /recent-interviews/steven-tohmasi: /interviews/uc-irvine-school-of-medicine/steven-tohmasi/
+  /testimonial/featured-answer: /interviews/virginia-commonwealth-university/chris/
+  /medical-student-interviews: /directory/
+  /recent-interviews: /directory/
+  /tag: /directory/
+  /category: /directory/
+  /author: /directory/
+  /blog: /directory/
+  /5240-2: /directory/
+  /contact: /about/
+  /home: /
+  /elementor-5699: /
+  /download: /
+  /testimonial: /
