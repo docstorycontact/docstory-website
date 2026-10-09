@@ -2,8 +2,1823 @@
   "redirects": [
     {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "docstory-website.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "docstory-website.vercel.app"
+        }
+      ],
       "destination": "https://www.docstory.org/:path",
+      "permanent": true
+    },
+    {
+      "source": "/2022/09/16/ana-khatia-ms2(/.*)?",
+      "destination": "/interviews/albany-medical-college/ana-khatia/",
+      "permanent": true
+    },
+    {
+      "source": "/2019/06/14/justin-ms1(/.*)?",
+      "destination": "/interviews/baylor-college-of-medicine/justin/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/25/michele-cabeza-ms1(/.*)?",
+      "destination": "/interviews/baylor-college-of-medicine/michele-cabeza/",
+      "permanent": true
+    },
+    {
+      "source": "/2020/03/20/bao-vu-ms1(/.*)?",
+      "destination": "/interviews/california-university-of-science-and-medicine/bao-vu/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/18/eric-nguyen-ms2(/.*)?",
+      "destination": "/interviews/creighton-university-school-of-medicine/eric-nguyen/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/03/04/jonathan-acosta-ms2(/.*)?",
+      "destination": "/interviews/drexel-university-college-of-medicine/jonathan-acosta/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/20/alex-ms2(/.*)?",
+      "destination": "/interviews/duke-university-school-of-medicine/alex/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/08/03/rossen-kirkov(/.*)?",
+      "destination": "/interviews/eastern-virginia-medical-school/rossen-kirkov/",
+      "permanent": true
+    },
+    {
+      "source": "/2019/06/15/anonymous-ms3(/.*)?",
+      "destination": "/interviews/florida-state-university-college-of-medicine/anonymous-ms3/",
+      "permanent": true
+    },
+    {
+      "source": "/2020/03/20/abraham-cheloff-ms2(/.*)?",
+      "destination": "/interviews/harvard-medical-school/abraham-cheloff/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/14/austin-wininger-ms3(/.*)?",
+      "destination": "/interviews/indiana-university-school-of-medicine/austin-wininger/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/10/will-tobolowsky-ms3(/.*)?",
+      "destination": "/interviews/johns-hopkins-school-of-medicine/will-tobolowsky/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/10/03/jeremy-storck-osm3(/.*)?",
+      "destination": "/interviews/kentucky-college-of-osteopathic-medicine/jeremy-storck/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/03/05/arya-shah-ms4(/.*)?",
+      "destination": "/interviews/mayo-clinic-school-of-medicine/arya-shah/",
+      "permanent": true
+    },
+    {
+      "source": "/2019/12/20/catherine-boatman-m2(/.*)?",
+      "destination": "/interviews/medical-college-of-georgia/catherine-boatman/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/10/09/austin-dopp-ms2(/.*)?",
+      "destination": "/interviews/medical-college-of-wisconsin/austin-dopp/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/01/06/jonathan-carnino-ms1(/.*)?",
+      "destination": "/interviews/misc/jonathan-carnino/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/19/brian-james-ms2(/.*)?",
+      "destination": "/interviews/morsani-college-of-medicine/brian-james/",
+      "permanent": true
+    },
+    {
+      "source": "/2019/12/20/chetna-thawani-m2(/.*)?",
+      "destination": "/interviews/morsani-college-of-medicine/chetna-thawani/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/21/nick-ms3(/.*)?",
+      "destination": "/interviews/new-york-medical-college/nick-bacher/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/22/regine-goh-ms3(/.*)?",
+      "destination": "/interviews/northwestern-feinberg-school-of-medicine/regine-goh/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/08/allison-martin-ms2(/.*)?",
+      "destination": "/interviews/rosalind-franklin-university/allison-martin/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/19/drew-weinstein-ms2(/.*)?",
+      "destination": "/interviews/rosalind-franklin-university/drew-weinstein/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/29/emily-he-ms1(/.*)?",
+      "destination": "/interviews/rush-medical-college/emily-he/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/15/alexander-worix-ms2(/.*)?",
+      "destination": "/interviews/southern-illinois-university-school-of-medicine/alexander-worix/",
+      "permanent": true
+    },
+    {
+      "source": "/2022/11/01/kyung-park-ms2(/.*)?",
+      "destination": "/interviews/tcu-burnett-school-of-medicine/kyung-park/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/16/brittany-stelmar-ms2(/.*)?",
+      "destination": "/interviews/touro-college-of-osteopathic-medicine/brittany-stelmar/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/08/01/wei-ming-liang-oms-2(/.*)?",
+      "destination": "/interviews/touro-college-of-osteopathic-medicine/wei-ming-liang/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/11/david-ms2(/.*)?",
+      "destination": "/interviews/tulane-university-school-of-medicine/david/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/18/alexa-lucas-ms2(/.*)?",
+      "destination": "/interviews/uc-irvine-school-of-medicine/alexa-lucas/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/03/03/arnie-shah-ms1(/.*)?",
+      "destination": "/interviews/uc-irvine-school-of-medicine/arnie-shah/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/13/steven-tohmasi-ms2(/.*)?",
+      "destination": "/interviews/uc-irvine-school-of-medicine/steven-tohmasi/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/23/neela-ms1(/.*)?",
+      "destination": "/interviews/uc-san-diego-school-of-medicine/neela/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/12/18/tim-ellis-caleo-ms4(/.*)?",
+      "destination": "/interviews/ucla-geffen-school-of-medicine/tim-ellis-caleo/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/08/emily-hayward-ms3(/.*)?",
+      "destination": "/interviews/university-of-alabama-birmingham/emily-hayward/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/18/priya-sorab-ms2(/.*)?",
+      "destination": "/interviews/university-of-cincinnati-college-of-medicine/priya-sorab/",
+      "permanent": true
+    },
+    {
+      "source": "/2019/03/14/anonymous-ms2(/.*)?",
+      "destination": "/interviews/university-of-florida-college-of-medicine/anonymous-ms2/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/08/03/gabriel-conley-ms2(/.*)?",
+      "destination": "/interviews/university-of-iowa-carver-college-of-medicine/gabriel-conley/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/18/prithwijit-roychowdhury-ms2(/.*)?",
+      "destination": "/interviews/university-of-massachusetts-medical-school/prithwijit-roychowdhury/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/07/17/todd-jackson-ms3(/.*)?",
+      "destination": "/interviews/university-of-miami-miller-school-of-medicine/todd-jackson/",
+      "permanent": true
+    },
+    {
+      "source": "/2022/04/11/zach-donato-ms2(/.*)?",
+      "destination": "/interviews/university-of-miami-miller-school-of-medicine/zach-donato/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/22/dominic-carusillo(/.*)?",
+      "destination": "/interviews/usc-keck-school-of-medicine/dominic-carusillo/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/30/sam-teles(/.*)?",
+      "destination": "/interviews/usc-keck-school-of-medicine/sam-teles/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/25/jay-patel-ms1(/.*)?",
+      "destination": "/interviews/ut-health-science-center/jay-patel/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/30/chris-ms2(/.*)?",
+      "destination": "/interviews/virginia-commonwealth-university/chris/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/24/nik-ms1(/.*)?",
+      "destination": "/interviews/wayne-state-school-of-medicine/nik/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/06/14/annie-yau-ms1(/.*)?",
+      "destination": "/interviews/weill-cornell-medical-college/annie-yau/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/05/22/chuck-chan-osm1(/.*)?",
+      "destination": "/interviews/western-university-osteopathic/chuck-chan/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/07/01/hadrian-mendoza-ms2(/.*)?",
+      "destination": "/interviews/yale-school-of-medicine/hadrian-mendoza/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/carverpedia(/.*)?",
+      "destination": "/interviews/university-of-iowa-carver-college-of-medicine/gabriel-conley/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/epblm(/.*)?",
+      "destination": "/interviews/southern-illinois-university-school-of-medicine/alexander-worix/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/miller-school-of-medicine(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/burnett-school-of-medicine(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/mcw(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/augusta-medical-school(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/david-geffen-school-of-medicine(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/baylor(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-medicine-and-science(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/albany-medical-college(/.*)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/albany-medical-college-2(/.*)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/albany-medical-college(/.*)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/albany-medical-college-2(/.*)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/albany-medical-college(/.*)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/albany-medical-college(/)?",
+      "destination": "/schools/albany-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/baylor-college-of-medicine(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/baylor-college-of-medicine-2(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/baylor-college-of-medicine(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/baylor-college-of-medicine-2(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/baylor-college-of-medicine(/.*)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/baylor-college-of-medicine(/)?",
+      "destination": "/schools/baylor-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/boston-university-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/boston-university-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/boston-university-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/boston-university-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/boston-university-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/boston-university-school-of-medicine(/)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/burnett-school-of-medicine-at-tcu(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/burnett-school-of-medicine-at-tcu-2(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/burnett-school-of-medicine-at-tcu(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/burnett-school-of-medicine-at-tcu-2(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/burnett-school-of-medicine-at-tcu(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/burnett-school-of-medicine-at-tcu(/)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/california-university-of-science-and-medicine(/.*)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/california-university-of-science-and-medicine-2(/.*)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/california-university-of-science-and-medicine(/.*)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/california-university-of-science-and-medicine-2(/.*)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/california-university-of-science-and-medicine(/.*)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/california-university-of-science-and-medicine(/)?",
+      "destination": "/schools/california-university-of-science-and-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/creighton-university-school-of-medicine(/.*)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/creighton-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/creighton-university-school-of-medicine(/.*)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/creighton-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/creighton-university-school-of-medicine(/.*)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/creighton-university-school-of-medicine(/)?",
+      "destination": "/schools/creighton-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/drexel-university-college-of-medicine(/.*)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/drexel-university-college-of-medicine-2(/.*)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/drexel-university-college-of-medicine(/.*)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/drexel-university-college-of-medicine-2(/.*)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/drexel-university-college-of-medicine(/.*)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/drexel-university-college-of-medicine(/)?",
+      "destination": "/schools/drexel-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/duke-university-school-of-medicine(/.*)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/duke-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/duke-university-school-of-medicine(/.*)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/duke-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/duke-university-school-of-medicine(/.*)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/duke-university-school-of-medicine(/)?",
+      "destination": "/schools/duke-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/eastern-virginia-medical-school(/.*)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/eastern-virginia-medical-school-2(/.*)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/eastern-virginia-medical-school(/.*)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/eastern-virginia-medical-school-2(/.*)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/eastern-virginia-medical-school(/.*)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/eastern-virginia-medical-school(/)?",
+      "destination": "/schools/eastern-virginia-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/florida-state-university-college-of-medicine(/.*)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/florida-state-university-college-of-medicine-2(/.*)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/florida-state-university-college-of-medicine(/.*)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/florida-state-university-college-of-medicine-2(/.*)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/florida-state-university-college-of-medicine(/.*)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/florida-state-university-college-of-medicine(/)?",
+      "destination": "/schools/florida-state-university-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/harvard-medical-school(/.*)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/harvard-medical-school-2(/.*)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/harvard-medical-school(/.*)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/harvard-medical-school-2(/.*)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/harvard-medical-school(/.*)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/harvard-medical-school(/)?",
+      "destination": "/schools/harvard-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/indiana-university-school-of-medicine(/.*)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/indiana-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/indiana-university-school-of-medicine(/.*)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/indiana-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/indiana-university-school-of-medicine(/.*)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/indiana-university-school-of-medicine(/)?",
+      "destination": "/schools/indiana-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/john-a-burns-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/john-a-burns-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/john-a-burns-school-of-medicine(/)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/johns-hopkins-university-school-of-medicine(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/johns-hopkins-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/johns-hopkins-university-school-of-medicine(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/johns-hopkins-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/johns-hopkins-university-school-of-medicine(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/johns-hopkins-university-school-of-medicine(/)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/kentucky-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/kentucky-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/kentucky-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/kentucky-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/kentucky-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/kentucky-college-of-osteopathic-medicine(/)?",
+      "destination": "/schools/kentucky-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/mayo-clinic-school-of-medicine(/.*)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/mayo-clinic-school-of-medicine-2(/.*)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/mayo-clinic-school-of-medicine(/.*)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/mayo-clinic-school-of-medicine-2(/.*)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/mayo-clinic-school-of-medicine(/.*)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/mayo-clinic-school-of-medicine(/)?",
+      "destination": "/schools/mayo-clinic-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-college-of-georgia-at-augusta-university(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-college-of-georgia-at-augusta-university-2(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/medical-college-of-georgia-at-augusta-university(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/medical-college-of-georgia-at-augusta-university-2(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/medical-college-of-georgia-at-augusta-university(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/medical-college-of-georgia-at-augusta-university(/)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-college-of-wisconsin(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-college-of-wisconsin-2(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/medical-college-of-wisconsin(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/medical-college-of-wisconsin-2(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/medical-college-of-wisconsin(/.*)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/medical-college-of-wisconsin(/)?",
+      "destination": "/schools/medical-college-of-wisconsin/",
+      "permanent": true
+    },
+    {
+      "source": "/morsani-college-of-medicine(/.*)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/morsani-college-of-medicine-2(/.*)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/morsani-college-of-medicine(/.*)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/morsani-college-of-medicine-2(/.*)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/morsani-college-of-medicine(/.*)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/morsani-college-of-medicine(/)?",
+      "destination": "/schools/morsani-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/new-york-medical-college(/.*)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/new-york-medical-college-2(/.*)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/new-york-medical-college(/.*)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/new-york-medical-college-2(/.*)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/new-york-medical-college(/.*)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/new-york-medical-college(/)?",
+      "destination": "/schools/new-york-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/northwestern-university-feinberg-school-of-medicine(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/northwestern-university-feinberg-school-of-medicine-2(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/northwestern-university-feinberg-school-of-medicine(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/northwestern-university-feinberg-school-of-medicine-2(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/northwestern-university-feinberg-school-of-medicine(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/northwestern-university-feinberg-school-of-medicine(/)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/rosalind-franklin-university-of-medicine-and-science(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/rosalind-franklin-university-of-medicine-and-science-2(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/rosalind-franklin-university-of-medicine-and-science(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/rosalind-franklin-university-of-medicine-and-science-2(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/rosalind-franklin-university-of-medicine-and-science(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/rosalind-franklin-university-of-medicine-and-science(/)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/rush-medical-college(/.*)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/rush-medical-college-2(/.*)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/rush-medical-college(/.*)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/rush-medical-college-2(/.*)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/rush-medical-college(/.*)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/rush-medical-college(/)?",
+      "destination": "/schools/rush-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/southern-illinois-university-school-of-medicine(/.*)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/southern-illinois-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/southern-illinois-university-school-of-medicine(/.*)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/southern-illinois-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/southern-illinois-university-school-of-medicine(/.*)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/southern-illinois-university-school-of-medicine(/)?",
+      "destination": "/schools/southern-illinois-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/touro-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/touro-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/touro-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/touro-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/touro-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/touro-college-of-osteopathic-medicine(/)?",
+      "destination": "/schools/touro-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tulane-university-school-of-medicine(/.*)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tulane-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/tulane-university-school-of-medicine(/.*)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/tulane-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/tulane-university-school-of-medicine(/.*)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/tulane-university-school-of-medicine(/)?",
+      "destination": "/schools/tulane-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/uc-irvine-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/uc-irvine-school-of-medicine-2(/.*)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/uc-irvine-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/uc-irvine-school-of-medicine-2(/.*)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/uc-irvine-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/uc-irvine-school-of-medicine(/)?",
+      "destination": "/schools/uc-irvine-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/uc-san-diego-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/uc-san-diego-school-of-medicine-2(/.*)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/uc-san-diego-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/uc-san-diego-school-of-medicine-2(/.*)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/uc-san-diego-school-of-medicine(/.*)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/uc-san-diego-school-of-medicine(/)?",
+      "destination": "/schools/uc-san-diego-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/ucla-geffen-school-of-medicine(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/ucla-geffen-school-of-medicine-2(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/ucla-geffen-school-of-medicine(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/ucla-geffen-school-of-medicine-2(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/ucla-geffen-school-of-medicine(/.*)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/ucla-geffen-school-of-medicine(/)?",
+      "destination": "/schools/ucla-geffen-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-alabama-at-birmingham(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-alabama-at-birmingham-2(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-alabama-at-birmingham(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-alabama-at-birmingham-2(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-alabama-at-birmingham(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-alabama-at-birmingham(/)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-cincinnati-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-cincinnati-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-cincinnati-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-cincinnati-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-cincinnati-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-cincinnati-college-of-medicine(/)?",
+      "destination": "/schools/university-of-cincinnati-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-florida-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-florida-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-florida-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-florida-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-florida-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-florida-college-of-medicine(/)?",
+      "destination": "/schools/university-of-florida-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-hawaii-john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-hawaii-john-a-burns-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-hawaii-john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-hawaii-john-a-burns-school-of-medicine-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-hawaii-john-a-burns-school-of-medicine(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-hawaii-john-a-burns-school-of-medicine(/)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-iowa-carver-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-iowa-carver-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-iowa-carver-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-iowa-carver-college-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-iowa-carver-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-iowa-carver-college-of-medicine(/)?",
+      "destination": "/schools/university-of-iowa-carver-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-massachusetts-medical-school(/.*)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-massachusetts-medical-school-2(/.*)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-massachusetts-medical-school(/.*)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-massachusetts-medical-school-2(/.*)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-massachusetts-medical-school(/.*)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-massachusetts-medical-school(/)?",
+      "destination": "/schools/university-of-massachusetts-medical-school/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-miami-miller-school-of-medicine(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-miami-miller-school-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-miami-miller-school-of-medicine(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-miami-miller-school-of-medicine-2(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-miami-miller-school-of-medicine(/.*)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-miami-miller-school-of-medicine(/)?",
+      "destination": "/schools/university-of-miami-miller-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-southern-california-keck-school-of-medicine(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-southern-california-keck-school-of-medicine-2(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-southern-california-keck-school-of-medicine(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-southern-california-keck-school-of-medicine-2(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-southern-california-keck-school-of-medicine(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-southern-california-keck-school-of-medicine(/)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-tennessee-health-science-center-college-of-medicine(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/university-of-tennessee-health-science-center-college-of-medicine-2(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-tennessee-health-science-center-college-of-medicine(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/university-of-tennessee-health-science-center-college-of-medicine-2(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-tennessee-health-science-center-college-of-medicine(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-tennessee-health-science-center-college-of-medicine(/)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/virginia-commonwealth-university-school-of-medicine(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/virginia-commonwealth-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/virginia-commonwealth-university-school-of-medicine(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/virginia-commonwealth-university-school-of-medicine-2(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/virginia-commonwealth-university-school-of-medicine(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/virginia-commonwealth-university-school-of-medicine(/)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/wayne-state-school-of-medicine(/.*)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/wayne-state-school-of-medicine-2(/.*)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/wayne-state-school-of-medicine(/.*)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/wayne-state-school-of-medicine-2(/.*)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/wayne-state-school-of-medicine(/.*)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/wayne-state-school-of-medicine(/)?",
+      "destination": "/schools/wayne-state-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/weill-cornell-medical-college(/.*)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/weill-cornell-medical-college-2(/.*)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/weill-cornell-medical-college(/.*)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/weill-cornell-medical-college-2(/.*)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/weill-cornell-medical-college(/.*)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/weill-cornell-medical-college(/)?",
+      "destination": "/schools/weill-cornell-medical-college/",
+      "permanent": true
+    },
+    {
+      "source": "/western-university-of-health-sciences-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/western-university-of-health-sciences-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/western-university-of-health-sciences-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/western-university-of-health-sciences-college-of-osteopathic-medicine-2(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/western-university-of-health-sciences-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/western-university-of-health-sciences-college-of-osteopathic-medicine(/)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/yale-school-of-medicine(/.*)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/yale-school-of-medicine-2(/.*)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/yale-school-of-medicine(/.*)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews/yale-school-of-medicine-2(/.*)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/yale-school-of-medicine(/.*)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/yale-school-of-medicine(/)?",
+      "destination": "/schools/yale-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/johns-hopkins-school-of-medicine(/)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/johns-hopkins-school-of-medicine(/.*)?",
+      "destination": "/schools/johns-hopkins-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/northwestern-feinberg-school-of-medicine(/)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/northwestern-feinberg-school-of-medicine(/.*)?",
+      "destination": "/schools/northwestern-feinberg-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-alabama-birmingham(/)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-alabama-birmingham(/.*)?",
+      "destination": "/schools/university-of-alabama-birmingham/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/rosalind-franklin-university(/)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/rosalind-franklin-university(/.*)?",
+      "destination": "/schools/rosalind-franklin-university/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/usc-keck-school-of-medicine(/)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/usc-keck-school-of-medicine(/.*)?",
+      "destination": "/schools/usc-keck-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/western-university-osteopathic(/)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/western-university-osteopathic(/.*)?",
+      "destination": "/schools/western-university-osteopathic/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/virginia-commonwealth-university(/)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/virginia-commonwealth-university(/.*)?",
+      "destination": "/schools/virginia-commonwealth-university/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/ut-health-science-center(/)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/ut-health-science-center(/.*)?",
+      "destination": "/schools/ut-health-science-center/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/medical-college-of-georgia(/)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/medical-college-of-georgia(/.*)?",
+      "destination": "/schools/medical-college-of-georgia/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/tcu-burnett-school-of-medicine(/)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/tcu-burnett-school-of-medicine(/.*)?",
+      "destination": "/schools/tcu-burnett-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/university-of-oklahoma-college-of-medicine(/)?",
+      "destination": "/schools/university-of-oklahoma-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/university-of-oklahoma-college-of-medicine(/.*)?",
+      "destination": "/schools/university-of-oklahoma-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/brody-school-of-medicine(/)?",
+      "destination": "/schools/brody-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/brody-school-of-medicine(/.*)?",
+      "destination": "/schools/brody-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/texas-a-and-m-college-of-medicine(/)?",
+      "destination": "/schools/texas-a-and-m-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/texas-a-and-m-college-of-medicine(/.*)?",
+      "destination": "/schools/texas-a-and-m-college-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/interviews/midwestern-chicago-college-of-osteopathic-medicine(/)?",
+      "destination": "/schools/midwestern-chicago-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/midwestern-chicago-college-of-osteopathic-medicine(/.*)?",
+      "destination": "/schools/midwestern-chicago-college-of-osteopathic-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/01/10/jonathan-carnino-ms1-2(/.*)?",
+      "destination": "/interviews/misc/jonathan-carnino/",
+      "permanent": true
+    },
+    {
+      "source": "/2026/05/26/emily-hayward-ms3(/.*)?",
+      "destination": "/interviews/university-of-alabama-birmingham/emily-hayward/",
+      "permanent": true
+    },
+    {
+      "source": "/recent-interviews/abraham-cheloff(/.*)?",
+      "destination": "/interviews/harvard-medical-school/abraham-cheloff/",
+      "permanent": true
+    },
+    {
+      "source": "/recent-interviews/emily-hayward(/.*)?",
+      "destination": "/interviews/university-of-alabama-birmingham/emily-hayward/",
+      "permanent": true
+    },
+    {
+      "source": "/recent-interviews/steven-tohmasi(/.*)?",
+      "destination": "/interviews/uc-irvine-school-of-medicine/steven-tohmasi/",
+      "permanent": true
+    },
+    {
+      "source": "/testimonial/featured-answer(/.*)?",
+      "destination": "/interviews/virginia-commonwealth-university/chris/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-student-interviews(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/recent-interviews(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/tag(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/category(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/author(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/blog(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/5240-2(/.*)?",
+      "destination": "/directory/",
+      "permanent": true
+    },
+    {
+      "source": "/contact(/.*)?",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/home(/.*)?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-5699(/.*)?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/download(/.*)?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/testimonial(/.*)?",
+      "destination": "/",
       "permanent": true
     }
   ]

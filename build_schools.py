@@ -1426,6 +1426,7 @@ def main():
     write_sitemap_and_llms(content_dir)
     write_static_heads(content_dir)
     write_prerendered(content_dir)
+    warned += write_vercel_config(content_dir)
     print(f'\nDone: {generated} pages generated, {skipped} skipped, {warned} warnings.')
 
 
@@ -1739,6 +1740,61 @@ def write_prerendered(content_dir):
     if new != text:
         path.write_text(new, encoding='utf-8')
     print(f'  seo   prerendered homepage counters + {len(cards)} cards, {len(entries)} directory cards')
+
+
+def write_vercel_config(content_dir):
+    """vercel.json: permanent redirects so old addresses keep working and pass their Google ranking on.
+    - docstory-website.vercel.app (Vercel's default address) → www.docstory.org
+    - every page of the old WordPress site (content/redirects.yaml + each interview's `url:` line)
+    Returns the number of warnings printed."""
+    data = yaml.safe_load((ROOT / 'content' / 'redirects.yaml').read_text(encoding='utf-8'))
+    rules, seen, warnings = [], set(), 0
+
+    def add(old, new, exact=False):
+        old = '/' + old.strip('/')
+        if old in seen:
+            return
+        seen.add(old)
+        # "(/.*)?" also catches the trailing slash, ?amp copies, comment pages and image attachments
+        rules.append({'source': old + ('(/)?' if exact else '(/.*)?'), 'destination': new, 'permanent': True})
+
+    for f in sorted(content_dir.glob('*/*.md')):              # old interview posts
+        fm, _ = parse_md(f)
+        old = re.sub(r'^https?://[^/]+', '', str(fm.get('url') or ''))
+        if re.match(r'^/\d{4}/\d{2}/\d{2}/', old):
+            add(old, f'/interviews/{f.parent.name}/{f.stem}/')
+    for tag, new in (data.get('tags') or {}).items():
+        add(f'/tag/{tag}', new)
+    for old, slug in (data.get('schools') or {}).items():
+        new = f'/schools/{slug}/' if slug else '/directory/'
+        if slug and slug not in SCHOOLS:
+            print(f'  WARN  redirects.yaml: unknown school slug {slug}')
+            warnings += 1
+        for path in (old, f'{old}-2', f'medical-student-interviews/{old}', f'medical-student-interviews/{old}-2', f'tag/{old}'):
+            add(path, new)
+        add(f'interviews/{old}', new, exact=True)            # exact: real interview pages live below /interviews/<slug>/
+    for slug in SCHOOLS:                                       # /interviews/<slug>/ on its own → the school page
+        add(f'interviews/{slug}', f'/schools/{slug}/', exact=True)
+        add(f'tag/{slug}', f'/schools/{slug}/')
+    for old, new in (data.get('paths') or {}).items():
+        add(old, new)
+
+    # Never shadow a real page or file on the current site
+    for r in rules:
+        base = r['source'].rsplit('(', 1)[0].lstrip('/')
+        exact = r['source'].endswith('(/)?')
+        if (ROOT / base).is_file() or (not exact and (ROOT / base).exists()) or (ROOT / base / 'index.html').is_file():
+            print(f'  WARN  redirect {r["source"]} would hide an existing page')
+            warnings += 1
+        if not (ROOT / r['destination'].strip('/') / 'index.html').is_file() and r['destination'] != '/':
+            print(f'  WARN  redirect {r["source"]} points at missing page {r["destination"]}')
+            warnings += 1
+
+    host = {'source': '/:path(.*)', 'has': [{'type': 'host', 'value': 'docstory-website.vercel.app'}],
+            'destination': seo.SITE_URL + '/:path', 'permanent': True}
+    (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + rules}, indent=2) + '\n', encoding='utf-8')
+    print(f'  seo   vercel.json ({len(rules)} old-address redirects)')
+    return warnings
 
 
 def write_contribute_data(content_dir):
