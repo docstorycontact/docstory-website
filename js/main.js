@@ -254,50 +254,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==============================================
      4. Hero School Name Cycling
   =============================================== */
-  const schoolNames = [
-    "Harvard Medical School",
-    "Yale School of Medicine",
-    "Johns Hopkins University School of Medicine",
-    "Duke University School of Medicine",
-    "Mayo Clinic School of Medicine",
-    "Northwestern University Feinberg School of Medicine",
-    "Weill Cornell Medical College",
-    "Baylor College of Medicine",
-    "David Geffen School of Medicine at UCLA",
-    "UC San Diego School of Medicine",
-    "UC Irvine School of Medicine",
-    "USC Keck School of Medicine",
-    "University of Florida College of Medicine",
-    "University of Miami Miller School of Medicine",
-    "USF Morsani College of Medicine",
-    "Florida State University College of Medicine",
-    "Tulane University School of Medicine",
-    "Rush Medical College",
-    "Creighton University School of Medicine",
-    "Medical College of Wisconsin",
-    "Drexel University College of Medicine",
-    "New York Medical College",
-    "Touro College of Osteopathic Medicine",
-    "University of Massachusetts Medical School",
-    "University of Cincinnati College of Medicine",
-    "Indiana University School of Medicine",
-    "University of Iowa Carver College of Medicine",
-    "University of Alabama at Birmingham School of Medicine",
-    "University of Tennessee Health Science Center",
-    "Virginia Commonwealth University School of Medicine",
-    "Eastern Virginia Medical School",
-    "Wayne State School of Medicine",
-    "Southern Illinois University School of Medicine",
-    "TCU Burnett School of Medicine",
-    "Medical College of Georgia at Augusta University",
-    "Kentucky College of Osteopathic Medicine",
-    "Western University of Health Sciences College of Osteopathic Medicine",
-    "California University of Science and Medicine",
-    "Chicago Medical School at Rosalind Franklin University",
-  ];
+  // School names come from js/site-data.js (generated from content/), so the list never drifts.
+  // The page starts on Harvard (see index.html), then cycles through every other school.
+  const siteSchools = (window.DOCSTORY_SITE && window.DOCSTORY_SITE.schools) || [];
+  const schoolNames = ['Harvard Medical School'].concat(
+    siteSchools.map(s => s.name).filter(n => n !== 'Harvard Medical School'));
 
   const schoolEl = document.getElementById('school-name-cycle');
-  if (schoolEl) {
+  if (schoolEl && schoolNames.length > 1) {
     let schoolIdx = 0;
     schoolEl.textContent = schoolNames[0] + '.';
 

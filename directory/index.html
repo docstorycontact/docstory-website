@@ -216,50 +216,61 @@
 </main>
 
 <script src="../js/contribute-config.js?v=2"></script>
-<script src="../js/main.js?v=4"></script>
+<script src="../js/site-data.js"></script>
+<script src="../js/main.js?v=5"></script>
 <script>
 const SCHOOLS = [
-  { id:'harvard',       name:'Harvard Medical School',                        city:'Boston, MA',        type:'md', lat:42.3359, lng:-71.1048,  slug:'harvard-medical-school',                        label:'Harvard',     ivs:[{n:'Abraham Cheloff',s:'abraham-cheloff'}] },
-  { id:'yale',          name:'Yale School of Medicine',                        city:'New Haven, CT',     type:'md', lat:41.3059, lng:-72.9283,  slug:'yale-school-of-medicine',                       label:'Yale',        ivs:[{n:'Hadrian Mendoza',s:'hadrian-mendoza'}] },
-  { id:'hopkins',       name:'Johns Hopkins School of Medicine',               city:'Baltimore, MD',     type:'md', lat:39.2986, lng:-76.5934,  slug:'johns-hopkins-school-of-medicine',              label:'Hopkins',     ivs:[{n:'Will Tobolowsky',s:'will-tobolowsky'}] },
-  { id:'duke',          name:'Duke University School of Medicine',             city:'Durham, NC',        type:'md', lat:35.9963, lng:-78.9063,  slug:'duke-university-school-of-medicine',            label:'Duke',        ivs:[{n:'Alex',s:'alex'}] },
-  { id:'cornell',       name:'Weill Cornell Medical College',                  city:'New York, NY',      type:'md', lat:40.7655, lng:-73.9540,  slug:'weill-cornell-medical-college',                 label:'Cornell',     ivs:[{n:'Annie Yau',s:'annie-yau'}] },
-  { id:'northwestern',  name:'Northwestern Feinberg School of Medicine',       city:'Chicago, IL',       type:'md', lat:41.8988, lng:-87.6231,  slug:'northwestern-feinberg-school-of-medicine',      label:'Northwestern',ivs:[{n:'Regine Goh',s:'regine-goh'}] },
-  { id:'uab',           name:'UAB School of Medicine',                         city:'Birmingham, AL',    type:'md', lat:33.5044, lng:-86.7997,  slug:'university-of-alabama-birmingham',               label:'UAB',         ivs:[{n:'Emily Hayward',s:'emily-hayward'}] },
-  { id:'uci',           name:'UC Irvine School of Medicine',                   city:'Irvine, CA',        type:'md', lat:33.6406, lng:-117.8443, slug:'uc-irvine-school-of-medicine',                  label:'UC Irvine',   page:'schools/uc-irvine-school-of-medicine/index.html', ivs:[{n:'Arnie Shah',s:'arnie-shah'},{n:'Alexa Lucas',s:'alexa-lucas'},{n:'Steven Tohmasi',s:'steven-tohmasi'}] },
-  { id:'umass',         name:'UMass Chan Medical School',                      city:'Worcester, MA',     type:'md', lat:42.2773, lng:-71.7573,  slug:'university-of-massachusetts-medical-school',     label:'UMass',       ivs:[{n:'Prithwijit Roychowdhury',s:'prithwijit-roychowdhury'}] },
-  { id:'ucsd',          name:'UC San Diego School of Medicine',                city:'La Jolla, CA',      type:'md', lat:32.8794, lng:-117.2369, slug:'uc-san-diego-school-of-medicine',                label:'UC San Diego',ivs:[{n:'Neela',s:'neela'}] },
-  { id:'mayo',          name:'Mayo Clinic Alix School of Medicine',            city:'Rochester, MN',     type:'md', lat:44.0121, lng:-92.4802,  slug:'mayo-clinic-school-of-medicine',                label:'Mayo Clinic', ivs:[{n:'Arya Shah',s:'arya-shah'}] },
-  { id:'tulane',        name:'Tulane University School of Medicine',           city:'New Orleans, LA',   type:'md', lat:29.9380, lng:-90.1186,  slug:'tulane-university-school-of-medicine',           label:'Tulane',      ivs:[{n:'David',s:'david'}] },
-  { id:'drexel',        name:'Drexel University College of Medicine',          city:'Philadelphia, PA',  type:'md', lat:39.9558, lng:-75.1914,  slug:'drexel-university-college-of-medicine',         label:'Drexel',      ivs:[{n:'Jonathan Acosta',s:'jonathan-acosta'}] },
-  { id:'creighton',     name:'Creighton University School of Medicine',        city:'Omaha, NE',         type:'md', lat:41.2565, lng:-95.9345,  slug:'creighton-university-school-of-medicine',       label:'Creighton',   ivs:[{n:'Eric Nguyen',s:'eric-nguyen'}] },
-  { id:'morsani',       name:'USF Morsani College of Medicine',                city:'Tampa, FL',         type:'md', lat:27.9658, lng:-82.4572,  slug:'morsani-college-of-medicine',                   label:'USF Morsani', ivs:[{n:'Brian James',s:'brian-james'},{n:'Chetna Thawani',s:'chetna-thawani'}] },
-  { id:'rfu',           name:'Chicago Medical School at Rosalind Franklin U',  city:'North Chicago, IL', type:'md', lat:42.3218, lng:-87.8640,  slug:'rosalind-franklin-university',                  label:'Rosalind Franklin',ivs:[{n:'Allison Martin',s:'allison-martin'},{n:'Drew Weinstein',s:'drew-weinstein'}] },
-  { id:'keck',          name:'USC Keck School of Medicine',                    city:'Los Angeles, CA',   type:'md', lat:34.0648, lng:-118.2021, slug:'usc-keck-school-of-medicine',                   label:'USC Keck',    ivs:[{n:'Dominic Carusillo',s:'dominic-carusillo'},{n:'Sam Teles',s:'sam-teles'}] },
-  { id:'western',       name:'Western U College of Osteopathic Medicine',      city:'Pomona, CA',        type:'do', lat:34.0552, lng:-117.7517, slug:'western-university-osteopathic',                label:'Western U',   ivs:[{n:'Chuck Chan',s:'chuck-chan'}] },
-  { id:'vcu',           name:'VCU School of Medicine',                         city:'Richmond, VA',      type:'md', lat:37.5477, lng:-77.4536,  slug:'virginia-commonwealth-university',               label:'VCU',         ivs:[{n:'Chris',s:'chris'}] },
-  { id:'kycom',         name:'Kentucky College of Osteopathic Medicine',       city:'Pikeville, KY',     type:'do', lat:37.4795, lng:-82.5182,  slug:'kentucky-college-of-osteopathic-medicine',      label:'KYCOM',       ivs:[{n:'Jeremy Storck',s:'jeremy-storck'}] },
-  { id:'mcw',           name:'Medical College of Wisconsin',                   city:'Milwaukee, WI',     type:'md', lat:43.0448, lng:-88.0440,  slug:'medical-college-of-wisconsin',                  label:'MCW',         ivs:[{n:'Austin Dopp',s:'austin-dopp'}] },
-  { id:'wayne',         name:'Wayne State School of Medicine',                 city:'Detroit, MI',       type:'md', lat:42.3725, lng:-83.0628,  slug:'wayne-state-school-of-medicine',                label:'Wayne State', ivs:[{n:'Nik',s:'nik'}] },
-  { id:'baylor',        name:'Baylor College of Medicine',                     city:'Houston, TX',       type:'md', lat:29.7094, lng:-95.3979,  slug:'baylor-college-of-medicine',                    label:'Baylor',      ivs:[{n:'Justin',s:'justin'},{n:'Michele Cabeza',s:'michele-cabeza'}] },
-  { id:'uthsc',         name:'UT Health Science Center College of Medicine',   city:'Memphis, TN',       type:'md', lat:35.1495, lng:-90.0490,  slug:'ut-health-science-center',                      label:'UTHSC',       ivs:[{n:'Jay Patel',s:'jay-patel'}] },
-  { id:'ucla',          name:'David Geffen School of Medicine at UCLA',        city:'Los Angeles, CA',   type:'md', lat:34.0659, lng:-118.4455, slug:'ucla-geffen-school-of-medicine',                 label:'UCLA',        ivs:[{n:'Tim Ellis-Caleo',s:'tim-ellis-caleo'}] },
-  { id:'uf',            name:'University of Florida College of Medicine',      city:'Gainesville, FL',   type:'md', lat:29.6416, lng:-82.3490,  slug:'university-of-florida-college-of-medicine',     label:'U Florida',   ivs:[{n:'Anonymous',s:'anonymous-ms2'}] },
-  { id:'fsu',           name:'Florida State University College of Medicine',   city:'Tallahassee, FL',   type:'md', lat:30.4418, lng:-84.2982,  slug:'florida-state-university-college-of-medicine',  label:'FSU',         ivs:[{n:'Anonymous',s:'anonymous-ms3'}] },
-  { id:'mcg',           name:'Medical College of Georgia at Augusta U',        city:'Augusta, GA',       type:'md', lat:33.4685, lng:-82.0270,  slug:'medical-college-of-georgia',                    label:'MCG',         ivs:[{n:'Catherine Boatman',s:'catherine-boatman'}] },
-  { id:'cusm',          name:'California University of Science and Medicine',  city:'Colton, CA',        type:'md', lat:34.0748, lng:-117.3173, slug:'california-university-of-science-and-medicine', label:'CUSM',        ivs:[{n:'Bao Vu',s:'bao-vu'}] },
-  { id:'iusm',          name:'Indiana University School of Medicine',          city:'Indianapolis, IN',  type:'md', lat:39.7764, lng:-86.1752,  slug:'indiana-university-school-of-medicine',         label:'IU Med',      ivs:[{n:'Austin Wininger',s:'austin-wininger'}] },
-  { id:'siu',           name:'Southern Illinois University School of Medicine',city:'Springfield, IL',   type:'md', lat:39.8018, lng:-89.6437,  slug:'southern-illinois-university-school-of-medicine',label:'SIU Med',    ivs:[{n:'Alexander Worix',s:'alexander-worix'}] },
-  { id:'touro',         name:'Touro College of Osteopathic Medicine',          city:'Middletown, NY',    type:'do', lat:41.4457, lng:-74.4229,  slug:'touro-college-of-osteopathic-medicine',         label:'Touro',       ivs:[{n:'Brittany Stelmar',s:'brittany-stelmar'},{n:'Wei Ming Liang',s:'wei-ming-liang'}] },
-  { id:'uc',            name:'University of Cincinnati College of Medicine',   city:'Cincinnati, OH',    type:'md', lat:39.1329, lng:-84.5150,  slug:'university-of-cincinnati-college-of-medicine',  label:'UC',          ivs:[{n:'Priya Sorab',s:'priya-sorab'}] },
-  { id:'nymc',          name:'New York Medical College',                       city:'Valhalla, NY',      type:'md', lat:41.0756, lng:-73.7854,  slug:'new-york-medical-college',                      label:'NYMC',        ivs:[{n:'Nick Bacher',s:'nick-bacher'}] },
-  { id:'miami',         name:'University of Miami Miller School of Medicine',  city:'Miami, FL',         type:'md', lat:25.7893, lng:-80.2101,  slug:'university-of-miami-miller-school-of-medicine', label:'U Miami',     ivs:[{n:'Todd Jackson',s:'todd-jackson'},{n:'Zach Donato',s:'zach-donato'}] },
-  { id:'iowa',          name:'University of Iowa Carver College of Medicine',  city:'Iowa City, IA',     type:'md', lat:41.6617, lng:-91.5356,  slug:'university-of-iowa-carver-college-of-medicine', label:'Iowa',        ivs:[{n:'Gabriel Conley',s:'gabriel-conley'}] },
-  { id:'evms',          name:'Eastern Virginia Medical School',                city:'Norfolk, VA',       type:'md', lat:36.8468, lng:-76.3048,  slug:'eastern-virginia-medical-school',               label:'EVMS',        ivs:[{n:'Rossen Kirkov',s:'rossen-kirkov'}] },
-  { id:'rush',          name:'Rush Medical College',                           city:'Chicago, IL',       type:'md', lat:41.8745, lng:-87.6556,  slug:'rush-medical-college',                          label:'Rush',        ivs:[{n:'Emily He',s:'emily-he'}] },
-  { id:'tcu',           name:'TCU Burnett School of Medicine',                 city:'Fort Worth, TX',    type:'md', lat:32.7155, lng:-97.3620,  slug:'tcu-burnett-school-of-medicine',                label:'TCU',         ivs:[{n:'Kyung Park',s:'kyung-park'}] },
-  { id:'amc',           name:'Albany Medical College',                         city:'Albany, NY',        type:'md', lat:42.6604, lng:-73.7739,  slug:'albany-medical-college',                        label:'Albany Med',  ivs:[{n:'Ana Khatia',s:'ana-khatia'}] },
+  { id:'harvard',       name:'Harvard Medical School',                        city:'Boston, MA',        type:'md', lat:42.3359, lng:-71.1048,  slug:'harvard-medical-school',                        label:'Harvard' },
+  { id:'yale',          name:'Yale School of Medicine',                        city:'New Haven, CT',     type:'md', lat:41.3059, lng:-72.9283,  slug:'yale-school-of-medicine',                       label:'Yale' },
+  { id:'hopkins',       name:'Johns Hopkins School of Medicine',               city:'Baltimore, MD',     type:'md', lat:39.2986, lng:-76.5934,  slug:'johns-hopkins-school-of-medicine',              label:'Hopkins' },
+  { id:'duke',          name:'Duke University School of Medicine',             city:'Durham, NC',        type:'md', lat:35.9963, lng:-78.9063,  slug:'duke-university-school-of-medicine',            label:'Duke' },
+  { id:'cornell',       name:'Weill Cornell Medical College',                  city:'New York, NY',      type:'md', lat:40.7655, lng:-73.9540,  slug:'weill-cornell-medical-college',                 label:'Cornell' },
+  { id:'northwestern',  name:'Northwestern Feinberg School of Medicine',       city:'Chicago, IL',       type:'md', lat:41.8988, lng:-87.6231,  slug:'northwestern-feinberg-school-of-medicine',      label:'Northwestern' },
+  { id:'uab',           name:'UAB School of Medicine',                         city:'Birmingham, AL',    type:'md', lat:33.5044, lng:-86.7997,  slug:'university-of-alabama-birmingham',               label:'UAB' },
+  { id:'uci',           name:'UC Irvine School of Medicine',                   city:'Irvine, CA',        type:'md', lat:33.6406, lng:-117.8443, slug:'uc-irvine-school-of-medicine',                  label:'UC Irvine' },
+  { id:'umass',         name:'UMass Chan Medical School',                      city:'Worcester, MA',     type:'md', lat:42.2773, lng:-71.7573,  slug:'university-of-massachusetts-medical-school',     label:'UMass' },
+  { id:'ucsd',          name:'UC San Diego School of Medicine',                city:'La Jolla, CA',      type:'md', lat:32.8794, lng:-117.2369, slug:'uc-san-diego-school-of-medicine',                label:'UC San Diego' },
+  { id:'mayo',          name:'Mayo Clinic Alix School of Medicine',            city:'Rochester, MN',     type:'md', lat:44.0121, lng:-92.4802,  slug:'mayo-clinic-school-of-medicine',                label:'Mayo Clinic' },
+  { id:'tulane',        name:'Tulane University School of Medicine',           city:'New Orleans, LA',   type:'md', lat:29.9380, lng:-90.1186,  slug:'tulane-university-school-of-medicine',           label:'Tulane' },
+  { id:'drexel',        name:'Drexel University College of Medicine',          city:'Philadelphia, PA',  type:'md', lat:39.9558, lng:-75.1914,  slug:'drexel-university-college-of-medicine',         label:'Drexel' },
+  { id:'creighton',     name:'Creighton University School of Medicine',        city:'Omaha, NE',         type:'md', lat:41.2565, lng:-95.9345,  slug:'creighton-university-school-of-medicine',       label:'Creighton' },
+  { id:'morsani',       name:'USF Morsani College of Medicine',                city:'Tampa, FL',         type:'md', lat:27.9658, lng:-82.4572,  slug:'morsani-college-of-medicine',                   label:'USF Morsani' },
+  { id:'rfu',           name:'Chicago Medical School at Rosalind Franklin U',  city:'North Chicago, IL', type:'md', lat:42.3218, lng:-87.8640,  slug:'rosalind-franklin-university',                  label:'Rosalind Franklin' },
+  { id:'keck',          name:'USC Keck School of Medicine',                    city:'Los Angeles, CA',   type:'md', lat:34.0648, lng:-118.2021, slug:'usc-keck-school-of-medicine',                   label:'USC Keck' },
+  { id:'western',       name:'Western U College of Osteopathic Medicine',      city:'Pomona, CA',        type:'do', lat:34.0552, lng:-117.7517, slug:'western-university-osteopathic',                label:'Western U' },
+  { id:'vcu',           name:'VCU School of Medicine',                         city:'Richmond, VA',      type:'md', lat:37.5477, lng:-77.4536,  slug:'virginia-commonwealth-university',               label:'VCU' },
+  { id:'kycom',         name:'Kentucky College of Osteopathic Medicine',       city:'Pikeville, KY',     type:'do', lat:37.4795, lng:-82.5182,  slug:'kentucky-college-of-osteopathic-medicine',      label:'KYCOM' },
+  { id:'mcw',           name:'Medical College of Wisconsin',                   city:'Milwaukee, WI',     type:'md', lat:43.0448, lng:-88.0440,  slug:'medical-college-of-wisconsin',                  label:'MCW' },
+  { id:'wayne',         name:'Wayne State School of Medicine',                 city:'Detroit, MI',       type:'md', lat:42.3725, lng:-83.0628,  slug:'wayne-state-school-of-medicine',                label:'Wayne State' },
+  { id:'baylor',        name:'Baylor College of Medicine',                     city:'Houston, TX',       type:'md', lat:29.7094, lng:-95.3979,  slug:'baylor-college-of-medicine',                    label:'Baylor' },
+  { id:'uthsc',         name:'UT Health Science Center College of Medicine',   city:'Memphis, TN',       type:'md', lat:35.1495, lng:-90.0490,  slug:'ut-health-science-center',                      label:'UTHSC' },
+  { id:'ucla',          name:'David Geffen School of Medicine at UCLA',        city:'Los Angeles, CA',   type:'md', lat:34.0659, lng:-118.4455, slug:'ucla-geffen-school-of-medicine',                 label:'UCLA' },
+  { id:'uf',            name:'University of Florida College of Medicine',      city:'Gainesville, FL',   type:'md', lat:29.6416, lng:-82.3490,  slug:'university-of-florida-college-of-medicine',     label:'U Florida' },
+  { id:'fsu',           name:'Florida State University College of Medicine',   city:'Tallahassee, FL',   type:'md', lat:30.4418, lng:-84.2982,  slug:'florida-state-university-college-of-medicine',  label:'FSU' },
+  { id:'mcg',           name:'Medical College of Georgia at Augusta U',        city:'Augusta, GA',       type:'md', lat:33.4685, lng:-82.0270,  slug:'medical-college-of-georgia',                    label:'MCG' },
+  { id:'cusm',          name:'California University of Science and Medicine',  city:'Colton, CA',        type:'md', lat:34.0748, lng:-117.3173, slug:'california-university-of-science-and-medicine', label:'CUSM' },
+  { id:'iusm',          name:'Indiana University School of Medicine',          city:'Indianapolis, IN',  type:'md', lat:39.7764, lng:-86.1752,  slug:'indiana-university-school-of-medicine',         label:'IU Med' },
+  { id:'siu',           name:'Southern Illinois University School of Medicine',city:'Springfield, IL',   type:'md', lat:39.8018, lng:-89.6437,  slug:'southern-illinois-university-school-of-medicine',label:'SIU Med' },
+  { id:'touro',         name:'Touro College of Osteopathic Medicine',          city:'Middletown, NY',    type:'do', lat:41.4457, lng:-74.4229,  slug:'touro-college-of-osteopathic-medicine',         label:'Touro' },
+  { id:'uc',            name:'University of Cincinnati College of Medicine',   city:'Cincinnati, OH',    type:'md', lat:39.1329, lng:-84.5150,  slug:'university-of-cincinnati-college-of-medicine',  label:'UC' },
+  { id:'nymc',          name:'New York Medical College',                       city:'Valhalla, NY',      type:'md', lat:41.0756, lng:-73.7854,  slug:'new-york-medical-college',                      label:'NYMC' },
+  { id:'miami',         name:'University of Miami Miller School of Medicine',  city:'Miami, FL',         type:'md', lat:25.7893, lng:-80.2101,  slug:'university-of-miami-miller-school-of-medicine', label:'U Miami' },
+  { id:'iowa',          name:'University of Iowa Carver College of Medicine',  city:'Iowa City, IA',     type:'md', lat:41.6617, lng:-91.5356,  slug:'university-of-iowa-carver-college-of-medicine', label:'Iowa' },
+  { id:'evms',          name:'Eastern Virginia Medical School',                city:'Norfolk, VA',       type:'md', lat:36.8468, lng:-76.3048,  slug:'eastern-virginia-medical-school',               label:'EVMS' },
+  { id:'rush',          name:'Rush Medical College',                           city:'Chicago, IL',       type:'md', lat:41.8745, lng:-87.6556,  slug:'rush-medical-college',                          label:'Rush' },
+  { id:'tcu',           name:'TCU Burnett School of Medicine',                 city:'Fort Worth, TX',    type:'md', lat:32.7155, lng:-97.3620,  slug:'tcu-burnett-school-of-medicine',                label:'TCU' },
+  { id:'amc',           name:'Albany Medical College',                         city:'Albany, NY',        type:'md', lat:42.6604, lng:-73.7739,  slug:'albany-medical-college',                        label:'Albany Med' },
 ];
+
+// Interview lists come from js/site-data.js (generated from content/ by build_schools.py),
+// so counts update when interviews are added. This list only holds map positions and labels.
+(function () {
+  const bySchool = {};
+  ((window.DOCSTORY_SITE || {}).interviews || []).forEach(iv => {
+    (bySchool[iv.schoolSlug] = bySchool[iv.schoolSlug] || []).push({ n: iv.name, s: iv.studentSlug });
+  });
+  SCHOOLS.forEach(s => { s.ivs = bySchool[s.slug] || []; });
+})();
 
 window.addEventListener('load', function () {
   const header  = document.querySelector('header');

@@ -410,7 +410,7 @@ def render_interview_page(iv, all_interviews):
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 }})();
 </script>
-<script src="{root}js/main.js?v=4"></script>
+<script src="{root}js/main.js?v=5"></script>
 </body>
 </html>"""
 
