@@ -85,7 +85,7 @@
 
     </div>
     <div class="flex items-center gap-2">
-      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm" data-signup>Join Now</button>
       <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris">
         <span class="material-symbols-outlined text-[28px]">menu</span>
       </button>
@@ -234,108 +234,49 @@
   </div>
 </footer>
 
-<!-- PAYWALL MODAL -->
-<div id="paywall-backdrop" class="hidden fixed inset-0 z-[100] flex items-end sm:items-center justify-center" aria-modal="true" role="dialog" aria-labelledby="paywall-title">
-  <div class="absolute inset-0 bg-on-background/50 backdrop-blur-sm"></div>
-  <div class="relative bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md sm:mx-4 px-lg pt-lg pb-xl">
-    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-tertiary-fixed mx-auto mb-md">
-      <span class="material-symbols-outlined text-tertiary text-[28px]" style="font-variation-settings:'FILL' 1">lock</span>
-    </div>
-    <h2 id="paywall-title" class="font-headline-lg text-headline-lg text-primary text-center mb-xs">You've read 3 free interviews</h2>
-    <p class="font-body-md text-body-md text-slate-gray text-center mb-lg leading-relaxed">Sign up for free to keep reading — unlimited access to every DocStory interview.</p>
-    <form id="paywall-form" novalidate>
-      <label for="paywall-email" class="sr-only">Email address</label>
-      <input type="email" id="paywall-email" name="email" placeholder="your@email.com" autocomplete="email"
-        class="w-full border border-primary/20 rounded-lg px-md py-sm font-body-md text-body-md text-primary placeholder:text-slate-gray/40 focus:outline-none focus:ring-2 focus:ring-vibrant-iris focus:border-transparent transition-all bg-white mb-xs">
-      <p id="paywall-email-error" class="font-body-md text-xs text-secondary mb-sm hidden">Please enter a valid email address.</p>
-      <button type="submit" class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
-        Get free access →
-      </button>
-    </form>
-    <p class="font-body-md text-xs text-slate-gray text-center mt-md opacity-60">No spam. Unsubscribe anytime.</p>
-  </div>
-</div>
-
 <script>
+// 3-free-interviews gate: counts interviews read in this browser, then asks for an email.
+// The signup box itself lives in js/main.js (window.DocStorySignup), which sends the address to Kit.
 (function () {
   var ID = 'kentucky-college-of-osteopathic-medicine/jeremy-storck';
   var LIMIT = 3;
-  var LS_READ   = 'readInterviews';
-  var LS_SIGNED = 'emailSignedUp';
-  var LS_EMAIL  = 'signupEmail';
+  var LS_READ = 'readInterviews';
+  var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  var set = function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} };
 
-  // Handle ?verified=true magic link
-  (function () {
-    var p = new URLSearchParams(window.location.search);
-    if (p.get('verified') === 'true') {
-      localStorage.setItem(LS_SIGNED, 'true');
-      var u = new URL(window.location.href);
-      u.searchParams.delete('verified');
-      window.history.replaceState({}, '', u.toString());
-    }
-  })();
+  // Already signed up: nothing to gate
+  if (get('emailSignedUp') === 'true') return;
 
-  // Already signed up — nothing to gate
-  if (localStorage.getItem(LS_SIGNED) === 'true') return;
-
-  // Load read list
   var readList;
-  try { readList = JSON.parse(localStorage.getItem(LS_READ) || '[]'); }
-  catch (e) { readList = []; }
+  try { readList = JSON.parse(get(LS_READ) || '[]'); } catch (e) { readList = []; }
   if (!Array.isArray(readList)) readList = [];
 
-  // Free pass if this interview is already in the read list
+  // Re-reading an interview already counted is free
   if (readList.indexOf(ID) !== -1) return;
 
-  // Under the limit — record read and allow access
+  // Under the limit: count this one and allow access
   if (readList.length < LIMIT) {
     readList.push(ID);
-    localStorage.setItem(LS_READ, JSON.stringify(readList));
+    set(LS_READ, JSON.stringify(readList));
     return;
   }
 
-  // Over the limit — gate on DOMContentLoaded
+  // Over the limit: blur the article and show the signup box
   document.addEventListener('DOMContentLoaded', function () {
-    var backdrop = document.getElementById('paywall-backdrop');
-    var wrapper  = document.getElementById('article-body-wrapper');
-    var form     = document.getElementById('paywall-form');
-    var emailIn  = document.getElementById('paywall-email');
-    var emailErr = document.getElementById('paywall-email-error');
-
-    if (backdrop) backdrop.classList.remove('hidden');
-    if (wrapper)  wrapper.classList.add('paywall-gated');
-    if (emailIn)  setTimeout(function () { emailIn.focus(); }, 300);
-
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = emailIn ? emailIn.value.trim() : '';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          if (emailErr) emailErr.classList.remove('hidden');
-          if (emailIn)  emailIn.focus();
-          return;
-        }
-        if (emailErr) emailErr.classList.add('hidden');
-
-        localStorage.setItem(LS_EMAIL, email);
-        localStorage.setItem(LS_SIGNED, 'true');
+    var wrapper = document.getElementById('article-body-wrapper');
+    if (wrapper) wrapper.classList.add('paywall-gated');
+    window.DocStorySignup.open({
+      gate: true,
+      onSuccess: function () {
         readList.push(ID);
-        localStorage.setItem(LS_READ, JSON.stringify(readList));
-
-        if (backdrop) backdrop.classList.add('hidden');
-        if (wrapper)  wrapper.classList.remove('paywall-gated');
-      });
-
-      if (emailIn) {
-        emailIn.addEventListener('input', function () {
-          if (emailErr) emailErr.classList.add('hidden');
-        });
+        set(LS_READ, JSON.stringify(readList));
+        if (wrapper) wrapper.classList.remove('paywall-gated');
       }
-    }
+    });
   });
 })();
 </script>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=3"></script>
 </body>
 </html>

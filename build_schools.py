@@ -1256,7 +1256,7 @@ def render_page(school_slug, data, interviews, page=None):
       <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
     </div>
     <div class="flex items-center gap-2">
-      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm">Join Now</button>
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm" data-signup>Join Now</button>
     </div>
   </div>
 </nav>
@@ -1311,7 +1311,7 @@ def render_page(school_slug, data, interviews, page=None):
 </footer>
 
 {VOICES_JUMP_JS}
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=3"></script>
 </body>
 </html>'''
 
