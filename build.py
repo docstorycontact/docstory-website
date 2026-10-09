@@ -117,7 +117,7 @@ NAV_ITEMS = """
       <a href="{root}index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
       <a href="{root}directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
       <a href="{root}about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
-      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute</a>
+      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span></a>
 """
 
 def related_card(iv, root):
@@ -410,7 +410,7 @@ def render_interview_page(iv, all_interviews):
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 }})();
 </script>
-<script src="{root}js/main.js?v=3"></script>
+<script src="{root}js/main.js?v=4"></script>
 </body>
 </html>"""
 
