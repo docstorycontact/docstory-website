@@ -145,3 +145,13 @@ cost_of_living:
   fips: "06037"
   median_rent: 1954             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: sam-teles, text: "Being able to see **patients at County** is special because these are people who are grateful for your help and for someone that will listen to them."}
+    - {student: dominic-carusillo, text: "There are **so many resources and opportunities** to see really cool specialties, and as a med student, attendings are very excited to show you all the cool things they do"}
+    - {student: sam-teles, text: "The faculty really pay attention to the students here and **make real changes based on student feedback**."}
+  change:
+    - {student: dominic-carusillo, text: "Directly surrounding my school is a **fairly economically impoverished area**."}
+    - {student: dominic-carusillo, text: "I like that LA has a bunch of things you can do … but **the traffic and number of people** here is absolutely exhausting."}
+    - {student: sam-teles, text: "Sometimes, they only want to talk to the doctor or surgeon and as a medical student who can’t offer much to them, **you’re kind of left out**."}

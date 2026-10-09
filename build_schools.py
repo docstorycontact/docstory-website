@@ -1372,6 +1372,37 @@ def main():
     print(f'\nDone: {generated} pages generated, {skipped} skipped, {warned} warnings.')
 
 
+def _norm_text(t):
+    """Lowercase letters and digits only, so quote checks ignore punctuation, curly quotes and bold markers."""
+    import unicodedata
+    t = unicodedata.normalize('NFKD', str(t)).replace('\u2019', "'").replace('\u2018', "'").lower()
+    return re.sub(r'[^a-z0-9]+', ' ', t).strip()
+
+
+def _verified_pros_cons(slug, page, content_dir):
+    """Excerpts for the homepage love/change card. Each must appear word for word in the student's
+    interview (an ellipsis marks skipped text); anything that doesn't is dropped with a warning."""
+    pc = page.get('pros_cons') or {}
+    if not pc:
+        return None, 0
+    out, warnings = {}, 0
+    for side in ('love', 'change'):
+        items = []
+        for item in pc.get(side) or []:
+            f = content_dir / slug / f"{item.get('student', '')}.md"
+            if not f.exists():
+                print(f'  WARN  {slug}.yaml pros_cons: no interview "{item.get("student")}"'); warnings += 1; continue
+            fm, body = parse_md(f)
+            text = str(item.get('text', '')).strip()
+            haystack = _norm_text(body)
+            if not text or any(_norm_text(seg) not in haystack for seg in text.replace('**', '').split('…') if _norm_text(seg)):
+                print(f'  WARN  {slug}.yaml pros_cons: not verbatim in {f.stem}.md, dropped: "{text[:60]}…"'); warnings += 1; continue
+            items.append({'text': text, 'student': fm.get('name', '').split()[0] if fm.get('name') else '',
+                          'year': fm.get('year', ''), 'studentSlug': f.stem})
+        out[side] = items
+    return (out if out.get('love') and out.get('change') else None), warnings
+
+
 def _year_number(label):
     """'MS2', 'M2', 'OMS-2', 'OSM3', 'MS3 (MD/PhD)' → 2, 2, 2, 3, 3 (None if no year 1–4 found)."""
     m = re.search(r'[1-4]', str(label))
@@ -1383,6 +1414,7 @@ def write_site_data(content_dir):
     Everything is counted from content/ and the school data files, so nothing on those pages
     needs to be updated by hand. Returns the number of warnings printed."""
     schools, interviews = [], []
+    warnings = 0
     for slug, data in SCHOOLS.items():
         iv_files = sorted((content_dir / slug).glob('*.md')) if (content_dir / slug).exists() else []
         page = load_school_data(slug) or {}
@@ -1394,8 +1426,13 @@ def write_site_data(content_dir):
             interviews.append({'name': fm.get('name', 'Anonymous'), 'year': fm.get('year', ''),
                                'school': data['name'], 'schoolSlug': slug, 'studentSlug': f.stem,
                                'city': city, 'quote': q})
-        schools.append({'slug': slug, 'name': data['name'], 'shortName': page.get('short_name') or data['name'],
-                        'city': city, 'state': data['state'], 'type': data['type'], 'interviews': len(iv_files)})
+        entry = {'slug': slug, 'name': data['name'], 'shortName': page.get('short_name') or data['name'],
+                 'city': city, 'state': data['state'], 'type': data['type'], 'interviews': len(iv_files)}
+        pros_cons, w = _verified_pros_cons(slug, page, content_dir)
+        warnings += w
+        if pros_cons:
+            entry['prosCons'] = pros_cons
+        schools.append(entry)
 
     all_files = sorted(content_dir.glob('**/*.md'))            # includes interviews not tied to a school (misc/)
     by_year = {str(n): 0 for n in range(1, 5)}
@@ -1418,7 +1455,6 @@ def write_site_data(content_dir):
     print(f'  data  {out.relative_to(ROOT)}  ({stats["schools"]} schools, {stats["interviews"]} interviews, {stats["states"]} states)')
 
     # The directory map needs coordinates for every school; flag any that are missing
-    warnings = 0
     directory = (ROOT / 'directory' / 'index.html').read_text(encoding='utf-8')
     on_map = set(re.findall(r"slug:'([^']+)'", directory))
     for s in schools:

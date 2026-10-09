@@ -294,106 +294,30 @@
     return name.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
   }
 
-  const PROS_CONS_SCHOOLS = [
-    {
-      name: "USC Keck School of Medicine", shortName: "Keck",
-      schoolSlug: "usc-keck-school-of-medicine", firstStudentSlug: "dominic-carusillo",
-      pros: [
-        { text: "Patient diversity at LAC+USC is <strong>unmatched</strong>. MS3s here see pathology other students only read about.", student: "Sam", year: "MS1" },
-        { text: "Pass/fail preclinical <strong>removes grade anxiety</strong>. People share notes instead of hoarding them.", student: "Sam", year: "MS1" },
-        { text: "All lectures are webcasted — most students watch at <strong>2x from home</strong> and reclaim their mornings.", student: "Dominic", year: "MS1" },
-      ],
-      cons: [
-        { text: "The campus area is <strong>economically impoverished</strong> — the surrounding neighborhood takes real adjustment.", student: "Dominic", year: "MS1" },
-        { text: "LA traffic is relentless. A bad commute to LAC+USC can <strong>eat 90 minutes</strong> each way.", student: "Sam", year: "MS1" },
-        { text: "Housing near campus is <strong>genuinely tough</strong> on a student budget — trendy areas like Silver Lake aren't cheap.", student: "Sam", year: "MS1" },
-      ]
-    },
-    {
-      name: "UC Irvine School of Medicine", shortName: "UCI",
-      schoolSlug: "uc-irvine-school-of-medicine", firstStudentSlug: "alexa-lucas",
-      pros: [
-        { text: "Brilliant curriculum structure: <strong>normal physiology MS1, pathology MS2</strong>. You encounter every system twice before boards.", student: "Alexa", year: "MS1" },
-        { text: "Campus is <strong>15 minutes from the ocean</strong>. Laguna Beach, Newport, and Disneyland are real weekend decompression options.", student: "Steven", year: "MS2" },
-        { text: "Administration <strong>actually acts on feedback</strong> quickly. Your opinion visibly shapes how the curriculum runs.", student: "Arnie", year: "MS1" },
-      ],
-      cons: [
-        { text: "Irvine itself is <strong>very suburban</strong> — limited city feel or nightlife without driving 30+ minutes.", student: "Alexa", year: "MS1" },
-        { text: "Frequent guest lecturers mean <strong>constant adjustment</strong> to different slide styles and teaching approaches.", student: "Alexa", year: "MS1" },
-        { text: "Small class size is great for community, but you <strong>can't disappear quietly</strong> when you need a mental health day.", student: "Arnie", year: "MS1" },
-      ]
-    },
-    {
-      name: "Baylor College of Medicine", shortName: "Baylor",
-      schoolSlug: "baylor-college-of-medicine", firstStudentSlug: "justin",
-      pros: [
-        { text: "Tuition is shockingly <strong>low for a top-tier school</strong> — you leave with dramatically less debt than peers at comparable programs.", student: "Justin", year: "MS1" },
-        { text: "Being inside the <strong>world's largest medical center</strong> creates clinical exposure you simply can't replicate elsewhere.", student: "Michele", year: "MS1" },
-        { text: "Upper-years genuinely <strong>invest in you</strong> — sharing decks, tips, and insider advice without being asked.", student: "Justin", year: "MS1" },
-      ],
-      cons: [
-        { text: "The campus is <strong>dense and urban</strong> with limited green space — just Rice park nearby if you need to breathe outside.", student: "Justin", year: "MS1" },
-        { text: "Four morning lectures plus afternoon classes <strong>from day one</strong> — there's no warm-up period.", student: "Justin", year: "MS1" },
-        { text: "Being embedded in the medical center means <strong>no real separation</strong> between school and hospital. The environment never turns off.", student: "Michele", year: "MS1" },
-      ]
-    },
-    {
-      name: "Rosalind Franklin University", shortName: "Rosalind Franklin",
-      schoolSlug: "rosalind-franklin-university", firstStudentSlug: "drew-weinstein",
-      pros: [
-        { text: "The culture is genuinely <strong>collaborative</strong> — 'we will show up to support you' isn't a cliché here, it's how the class actually runs.", student: "Allison", year: "MS2" },
-        { text: "No hospital affiliation means you rotate <strong>across all Chicagoland hospitals</strong>. You graduate with clinical breadth most schools can't offer.", student: "Allison", year: "MS2" },
-        { text: "Faculty are <strong>not looking to fail you</strong>. Office hours are informal and they genuinely want everyone to succeed.", student: "Drew", year: "MS2" },
-      ],
-      cons: [
-        { text: "North Chicago is <strong>quiet to the point of isolation</strong>. The 'middle of nowhere' feeling in MS1 and MS2 is very real.", student: "Drew", year: "MS2" },
-        { text: "Downtown Chicago is a <strong>45-minute train ride</strong> — it's a trip, not a walk, which matters on tired weeknights.", student: "Drew", year: "MS2" },
-        { text: "Clinical skills development in early years can feel <strong>slower than you'd like</strong> — dedicated simulation in MS1/MS2 is limited.", student: "Allison", year: "MS2" },
-      ]
-    },
-    {
-      name: "USF Morsani College of Medicine", shortName: "Morsani",
-      schoolSlug: "morsani-college-of-medicine", firstStudentSlug: "brian-james",
-      pros: [
-        { text: "Tampa is a genuinely <strong>exciting city</strong> — Lightning games, Ybor City nightlife, and Clearwater Beach are all within 30 minutes.", student: "Brian", year: "MS2" },
-        { text: "Student feedback gets <strong>incorporated nearly immediately</strong>. Faculty responsiveness here is unusually good.", student: "Chetna", year: "M2" },
-        { text: "Doctoring class gives you <strong>real clinical practice from MS1</strong> — standardized patients, H&amp;P, and actual preceptors.", student: "Chetna", year: "M2" },
-      ],
-      cons: [
-        { text: "The school is <strong>mid-relocation downtown</strong> — parking near the new campus is a real, unresolved problem.", student: "Chetna", year: "M2" },
-        { text: "Coming straight from undergrad, you may hit <strong>near-burnout by MS2</strong> earlier than peers who took a gap year.", student: "Chetna", year: "M2" },
-        { text: "The downtown move comes with <strong>ongoing transition disruptions</strong> — some growing pains of relocation are still being worked out.", student: "Brian", year: "MS2" },
-      ]
-    },
-    {
-      name: "University of Miami Miller School", shortName: "Miller",
-      schoolSlug: "university-of-miami-miller-school-of-medicine", firstStudentSlug: "todd-jackson",
-      pros: [
-        { text: "Miami's patient population is <strong>one of the most diverse in the country</strong> — pathology shaped by global migration and socioeconomic extremes.", student: "Todd", year: "MS3" },
-        { text: "Clinical immersion is <strong>integrated from year one</strong>. You're not waiting until third year to encounter real patients.", student: "Zach", year: "MS2" },
-        { text: "Over 70% of students participate in the DOCS clinic. The <strong>service culture runs deep</strong> and shapes how everyone here thinks.", student: "Zach", year: "MS2" },
-      ],
-      cons: [
-        { text: "Miami is <strong>expensive</strong>. Most students live in Brickell or Downtown — that comfort costs real money on a student budget.", student: "Zach", year: "MS2" },
-        { text: "Case-based learning puts <strong>significant self-teaching responsibility</strong> on you. Lecture-heavy learners often struggle to adapt.", student: "Todd", year: "MS3" },
-        { text: "The work-hard-play-hard culture is real — without <strong>deliberate self-discipline</strong>, the balance tips quickly.", student: "Zach", year: "MS2" },
-      ]
-    },
-  ];
+  // Schools with a verified love/change card (pros_cons in content/schools/<slug>.yaml). Every line is a
+  // word-for-word excerpt checked against the interview when the site is built. One school a month.
+  const PROS_CONS_SCHOOLS = SITE.schools.filter(sc => sc.prosCons);
 
   function monthlySchool() {
+    // Preview any school's card with ?pc=<school-slug>, e.g. index.html?pc=baylor-college-of-medicine
+    const preview = PROS_CONS_SCHOOLS.find(sc => sc.slug === new URLSearchParams(location.search).get('pc'));
+    if (preview) return preview;
     const now = new Date();
-    const idx = (now.getFullYear() * 12 + now.getMonth()) % PROS_CONS_SCHOOLS.length;
-    return PROS_CONS_SCHOOLS[idx];
+    return PROS_CONS_SCHOOLS[(now.getFullYear() * 12 + now.getMonth()) % PROS_CONS_SCHOOLS.length];
   }
 
+  // Excerpts are plain text with **bold** markers for emphasis
+  const escapeHTML = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const withBold = t => escapeHTML(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
   function renderProsConsHero(school) {
-    const url = `interviews/${school.schoolSlug}/${school.firstStudentSlug}/index.html`;
-    const voices = (SCHOOL_BY_SLUG[school.schoolSlug] || {}).interviews || 0;
+    if (!school) return;
+    const url = `schools/${school.slug}/index.html`;
+    const voices = school.interviews;
     const item = (d) => `
       <div class="mb-[14px] last:mb-0">
-        <p class="font-body-md text-[14px] leading-snug text-primary">${d.text}</p>
-        <p class="font-body-md text-[11px] text-slate-gray mt-[3px]">${d.student} &middot; ${d.year}</p>
+        <p class="font-body-md text-[14px] leading-snug text-primary">“${withBold(d.text)}”</p>
+        <p class="font-body-md text-[11px] text-slate-gray mt-[3px]">${escapeHTML(d.student)} &middot; ${escapeHTML(d.year)}</p>
       </div>`;
     document.getElementById('hero-featured').innerHTML = `
       <div class="flex-1 flex flex-col min-h-0">
@@ -410,14 +334,14 @@
               <span class="w-[18px] h-[18px] rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-[11px] font-bold leading-none select-none">+</span>
               <span class="font-label-md text-[10px] text-emerald-700 tracking-widest uppercase">What Students Love</span>
             </div>
-            ${school.pros.map(item).join('')}
+            ${school.prosCons.love.map(item).join('')}
           </div>
           <div>
             <div class="flex items-center gap-[6px] mb-sm">
               <span class="w-[18px] h-[18px] rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 text-[11px] font-bold leading-none select-none">&minus;</span>
               <span class="font-label-md text-[10px] text-orange-600 tracking-widest uppercase">What They'd Change</span>
             </div>
-            ${school.cons.map(item).join('')}
+            ${school.prosCons.change.map(item).join('')}
           </div>
         </div>
       </div>

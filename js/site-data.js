@@ -84,7 +84,43 @@ window.DOCSTORY_SITE = {
    "city": "Irvine, CA",
    "state": "CA",
    "type": "md",
-   "interviews": 3
+   "interviews": 3,
+   "prosCons": {
+    "love": [
+     {
+      "text": "Normal function of all systems 1st year and then pathology of all the systems 2nd year. I feel it is a good way to be **exposed to every system twice** before studying for boards.",
+      "student": "Alexa",
+      "year": "MS1",
+      "studentSlug": "alexa-lucas"
+     },
+     {
+      "text": "In PACE, med students spend **one half day a week seeing real patients** with a preceptor in clinic.",
+      "student": "Steven",
+      "year": "MS2",
+      "studentSlug": "steven-tohmasi"
+     },
+     {
+      "text": "At every step of the way, administrators want our feedback. They **act on this feedback promptly** and you feel like your opinion matters",
+      "student": "Arnie",
+      "year": "MS1",
+      "studentSlug": "arnie-shah"
+     }
+    ],
+    "change": [
+     {
+      "text": "Irvine itself is **suburbia AKA not much going on**.",
+      "student": "Alexa",
+      "year": "MS1",
+      "studentSlug": "alexa-lucas"
+     },
+     {
+      "text": "For some courses you have **different professors for 1-2 lectures**, which makes it a bit hard to adjust to lecturing/powerpoint style.",
+      "student": "Alexa",
+      "year": "MS1",
+      "studentSlug": "alexa-lucas"
+     }
+    ]
+   }
   },
   {
    "slug": "university-of-massachusetts-medical-school",
@@ -147,7 +183,43 @@ window.DOCSTORY_SITE = {
    "city": "Tampa, FL",
    "state": "FL",
    "type": "md",
-   "interviews": 2
+   "interviews": 2,
+   "prosCons": {
+    "love": [
+     {
+      "text": "**Tampa is an amazing city.** … the Tampa Bay Lightning are only a few blocks away.",
+      "student": "Brian",
+      "year": "MS2",
+      "studentSlug": "brian-james"
+     },
+     {
+      "text": "The faculty **listens to the class and actually tries to adjust** based on the classes needs.",
+      "student": "Chetna",
+      "year": "M2",
+      "studentSlug": "chetna-thawani"
+     },
+     {
+      "text": "I’ve had **so much practice** by now interviewing standardized patients, and practicing physicals on each other and standardized patients.",
+      "student": "Chetna",
+      "year": "M2",
+      "studentSlug": "chetna-thawani"
+     }
+    ],
+    "change": [
+     {
+      "text": "The only thing I don’t love about it are **the parking problems**, but that’s in any big city.",
+      "student": "Chetna",
+      "year": "M2",
+      "studentSlug": "chetna-thawani"
+     },
+     {
+      "text": "The medical school is moving downtown which makes it a bit more crowded with downtown Tampa but **away from the main campus**.",
+      "student": "Brian",
+      "year": "MS2",
+      "studentSlug": "brian-james"
+     }
+    ]
+   }
   },
   {
    "slug": "rosalind-franklin-university",
@@ -156,7 +228,43 @@ window.DOCSTORY_SITE = {
    "city": "North Chicago, IL",
    "state": "IL",
    "type": "md",
-   "interviews": 2
+   "interviews": 2,
+   "prosCons": {
+    "love": [
+     {
+      "text": "When folks are having difficulties, we also **come together as a class** to do whatever needs to happen to support that person.",
+      "student": "Allison",
+      "year": "MS2",
+      "studentSlug": "allison-martin"
+     },
+     {
+      "text": "We get to **rotate through most of the hospitals in Chicago-land** plus many small clinics.",
+      "student": "Allison",
+      "year": "MS2",
+      "studentSlug": "allison-martin"
+     },
+     {
+      "text": "They all want you to succeed. **They are not looking to fail anyone.**",
+      "student": "Drew",
+      "year": "MS2",
+      "studentSlug": "drew-weinstein"
+     }
+    ],
+    "change": [
+     {
+      "text": "My school is **the middle of no where** which is no fun but it is great to study.",
+      "student": "Drew",
+      "year": "MS2",
+      "studentSlug": "drew-weinstein"
+     },
+     {
+      "text": "There’s enough around there – restaurants, gyms, shopping – to provide the necessities, but **its still pretty quiet**.",
+      "student": "Allison",
+      "year": "MS2",
+      "studentSlug": "allison-martin"
+     }
+    ]
+   }
   },
   {
    "slug": "usc-keck-school-of-medicine",
@@ -165,7 +273,49 @@ window.DOCSTORY_SITE = {
    "city": "Los Angeles, CA",
    "state": "CA",
    "type": "md",
-   "interviews": 2
+   "interviews": 2,
+   "prosCons": {
+    "love": [
+     {
+      "text": "Being able to see **patients at County** is special because these are people who are grateful for your help and for someone that will listen to them.",
+      "student": "Sam",
+      "year": "MS1",
+      "studentSlug": "sam-teles"
+     },
+     {
+      "text": "There are **so many resources and opportunities** to see really cool specialties, and as a med student, attendings are very excited to show you all the cool things they do",
+      "student": "Dominic",
+      "year": "MS1",
+      "studentSlug": "dominic-carusillo"
+     },
+     {
+      "text": "The faculty really pay attention to the students here and **make real changes based on student feedback**.",
+      "student": "Sam",
+      "year": "MS1",
+      "studentSlug": "sam-teles"
+     }
+    ],
+    "change": [
+     {
+      "text": "Directly surrounding my school is a **fairly economically impoverished area**.",
+      "student": "Dominic",
+      "year": "MS1",
+      "studentSlug": "dominic-carusillo"
+     },
+     {
+      "text": "I like that LA has a bunch of things you can do … but **the traffic and number of people** here is absolutely exhausting.",
+      "student": "Dominic",
+      "year": "MS1",
+      "studentSlug": "dominic-carusillo"
+     },
+     {
+      "text": "Sometimes, they only want to talk to the doctor or surgeon and as a medical student who can’t offer much to them, **you’re kind of left out**.",
+      "student": "Sam",
+      "year": "MS1",
+      "studentSlug": "sam-teles"
+     }
+    ]
+   }
   },
   {
    "slug": "western-university-osteopathic",
@@ -219,7 +369,43 @@ window.DOCSTORY_SITE = {
    "city": "Houston, TX",
    "state": "TX",
    "type": "md",
-   "interviews": 2
+   "interviews": 2,
+   "prosCons": {
+    "love": [
+     {
+      "text": "The older students **really look out for the younger ones** with resources, tips, and advice.",
+      "student": "Justin",
+      "year": "MS1",
+      "studentSlug": "justin"
+     },
+     {
+      "text": "**The low tuition is amazing.**",
+      "student": "Justin",
+      "year": "MS1",
+      "studentSlug": "justin"
+     },
+     {
+      "text": "Patients come from all over the world to receive their care, and since Houston itself is such a diverse city, you get to interact with **patients from all walks of life**.",
+      "student": "Michele",
+      "year": "MS1",
+      "studentSlug": "michele-cabeza"
+     }
+    ],
+    "change": [
+     {
+      "text": "We’re located in the biggest medical center in the world, so it is very urban and busy. I like the hustle and bustle, but **I would like more green spaces**.",
+      "student": "Justin",
+      "year": "MS1",
+      "studentSlug": "justin"
+     },
+     {
+      "text": "Our preclinical curriculum is **only 1.5 years** … This means you have an even shorter amount of time to learn the same volume of material before you start clinics.",
+      "student": "Michele",
+      "year": "MS1",
+      "studentSlug": "michele-cabeza"
+     }
+    ]
+   }
   },
   {
    "slug": "ut-health-science-center",
@@ -327,7 +513,49 @@ window.DOCSTORY_SITE = {
    "city": "Miami, FL",
    "state": "FL",
    "type": "md",
-   "interviews": 2
+   "interviews": 2,
+   "prosCons": {
+    "love": [
+     {
+      "text": "The biggest strength is the **breadth of diversity** that the institution sees and also learning how to care for some of the most disadvantaged, at-risk populations in the nation.",
+      "student": "Todd",
+      "year": "MS3",
+      "studentSlug": "todd-jackson"
+     },
+     {
+      "text": "The DOCS clinic is a popular activity at our school, with **over 70% of students participating**.",
+      "student": "Zach",
+      "year": "MS2",
+      "studentSlug": "zach-donato"
+     },
+     {
+      "text": "Everyone here is very nice and we have a **very non-cutthroat culture** from my experience.",
+      "student": "Zach",
+      "year": "MS2",
+      "studentSlug": "zach-donato"
+     }
+    ],
+    "change": [
+     {
+      "text": "**It is very expensive to live here** … Brickell traffic can be quite annoying.",
+      "student": "Zach",
+      "year": "MS2",
+      "studentSlug": "zach-donato"
+     },
+     {
+      "text": "The only thing I dislike about Miami is **the humidity** that can get really uncomfortable in the summer and the potential for hurricanes that disrupt scheduling.",
+      "student": "Todd",
+      "year": "MS3",
+      "studentSlug": "todd-jackson"
+     },
+     {
+      "text": "There was **much more responsibility on us to learn material on our own**",
+      "student": "Zach",
+      "year": "MS2",
+      "studentSlug": "zach-donato"
+     }
+    ]
+   }
   },
   {
    "slug": "university-of-iowa-carver-college-of-medicine",

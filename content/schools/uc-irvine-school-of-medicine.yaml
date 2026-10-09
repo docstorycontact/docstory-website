@@ -162,3 +162,12 @@ cost_of_living:
   fips: "06059"
   median_rent: 2434             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: alexa-lucas, text: "Normal function of all systems 1st year and then pathology of all the systems 2nd year. I feel it is a good way to be **exposed to every system twice** before studying for boards."}
+    - {student: steven-tohmasi, text: "In PACE, med students spend **one half day a week seeing real patients** with a preceptor in clinic."}
+    - {student: arnie-shah, text: "At every step of the way, administrators want our feedback. They **act on this feedback promptly** and you feel like your opinion matters"}
+  change:
+    - {student: alexa-lucas, text: "Irvine itself is **suburbia AKA not much going on**."}
+    - {student: alexa-lucas, text: "For some courses you have **different professors for 1-2 lectures**, which makes it a bit hard to adjust to lecturing/powerpoint style."}

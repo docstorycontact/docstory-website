@@ -111,3 +111,12 @@ cost_of_living:
   fips: "17097"
   median_rent: 1477             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: allison-martin, text: "When folks are having difficulties, we also **come together as a class** to do whatever needs to happen to support that person."}
+    - {student: allison-martin, text: "We get to **rotate through most of the hospitals in Chicago-land** plus many small clinics."}
+    - {student: drew-weinstein, text: "They all want you to succeed. **They are not looking to fail anyone.**"}
+  change:
+    - {student: drew-weinstein, text: "My school is **the middle of no where** which is no fun but it is great to study."}
+    - {student: allison-martin, text: "There’s enough around there – restaurants, gyms, shopping – to provide the necessities, but **its still pretty quiet**."}
