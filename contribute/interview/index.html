@@ -97,6 +97,8 @@
     .notice { display: flex; gap: 10px; align-items: flex-start; border-radius: var(--r-sm); padding: 10px 12px; font-size: 14px; line-height: 1.5; }
     .notice .material-symbols-outlined { font-size: 20px; line-height: 1.2; }
     .notice.paid { background: #e8f5ee; color: #14532d; }
+    .notice.fade-in { animation: notice-in 300ms ease-out both; }
+    @keyframes notice-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
     .notice.cap  { background: #fff4e5; color: #7a3d00; }
     .notice.info { background: var(--tint); color: var(--text); }
     .publish { font-size: 14px; color: var(--muted); }
@@ -164,7 +166,7 @@
     #out { font: 13px/1.5 ui-monospace, 'SF Mono', Menlo, monospace; min-height: 240px; }
     .spin { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.5); border-top-color: #fff; border-radius: 50%; animation: spin 700ms linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .spin { animation: none; } * { transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .spin, .notice.fade-in { animation: none; } * { transition: none !important; } }
   </style>
 </head>
 <body class="font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
@@ -265,11 +267,13 @@
       <div class="row2">
         <div class="field">
           <label for="undergrad">Undergraduate school <span class="opt-tag">(optional)</span></label>
-          <input type="text" id="undergrad" class="in" placeholder="e.g. UCLA, B.S. Biology">
+          <input type="text" id="undergrad" class="in" placeholder="e.g. UCLA, B.S. Biology" aria-describedby="undergradHint">
+          <span class="hint" id="undergradHint">School name, then degree and major.</span>
         </div>
         <div class="field">
           <label for="hometown">Hometown <span class="opt-tag">(optional)</span></label>
-          <input type="text" id="hometown" class="in" placeholder="e.g. Dallas, TX">
+          <input type="text" id="hometown" class="in" placeholder="City, State (e.g. Dallas, TX)" aria-describedby="hometownHint">
+          <span class="hint" id="hometownHint">City and two-letter state abbreviation.</span>
         </div>
       </div>
 
@@ -385,7 +389,7 @@
 <script src="../../js/contribute-config.js?v=2"></script>
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js"></script>
-<script src="../../js/contribute.js?v=4"></script>
+<script src="../../js/contribute.js?v=5"></script>
 <script src="../../js/main.js?v=3"></script>
 </body>
 </html>

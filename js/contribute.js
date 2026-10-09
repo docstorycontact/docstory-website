@@ -216,12 +216,28 @@ function payInfo() {
   return { paid: false, html: '<span class="material-symbols-outlined" aria-hidden="true">info</span><span>We already have ' + st.count + ' interviews from <b>' + esc(name) +
     '</b>, so new ones from this school aren’t paid right now. You’re still very welcome to contribute: another perspective helps applicants.</span>' };
 }
-function renderPay() {
+/* The notice fades in rather than changing letter by letter. While someone types an
+   unlisted school's name it stays hidden, then appears once they pause (delay in ms). */
+let payTimer = null, payShown = '';
+function showNotice(info) {
+  const n = $('payNotice');
+  if (!info) { n.hidden = true; payShown = ''; return; }
+  if (info.html === payShown && !n.hidden) return;          // unchanged: don't replay the fade
+  payShown = info.html;
+  n.className = 'notice ' + (info.paid ? 'paid' : 'cap');
+  n.innerHTML = info.html;
+  n.hidden = false;
+  void n.offsetWidth;                                       // restart the animation
+  n.classList.add('fade-in');
+}
+function renderPay(delay = 0) {
   const info = payInfo(), n = $('payNotice'), b = $('paybadge');
+  clearTimeout(payTimer);
+  if (delay) { n.hidden = true; payShown = ''; payTimer = setTimeout(() => showNotice(info), delay); }
+  else showNotice(info);
   // Long label on wide screens, short one on phones so the progress bar stays one line
   const badge = (long, short) => '<span class="long">' + long + '</span><span class="short" aria-hidden="true">' + short + '</span>';
-  if (!info) { n.hidden = true; b.hidden = !C.payEnabled; b.className = 'paybadge'; b.innerHTML = badge(D.money(C.payAmount) + ' per published interview', D.money(C.payAmount)); return; }
-  n.hidden = false; n.className = 'notice ' + (info.paid ? 'paid' : 'cap'); n.innerHTML = info.html;
+  if (!info) { b.hidden = !C.payEnabled; b.className = 'paybadge'; b.innerHTML = badge(D.money(C.payAmount) + ' per published interview', D.money(C.payAmount)); return; }
   b.hidden = false;
   b.className = 'paybadge' + (info.paid ? '' : ' off');
   b.innerHTML = info.paid ? badge(D.money(C.payAmount) + ' once published', D.money(C.payAmount)) : badge('Unpaid for this school', 'Unpaid');
@@ -231,8 +247,10 @@ function renderPay() {
 function buildStep1() {
   $('intro').textContent = 'Pick ' + MIN_PICK + ' to ' + MAX_PICK + ' questions that fit your year, then answer them in your own words. Plan for 30 to 45 minutes. Your draft saves in this browser, so you can stop and come back.';
   $('school').innerHTML = '<option value="">Select your school</option>' +
+    '<option value="other">Other (school not listed)</option>' +
+    '<optgroup label="Schools on DocStory">' +
     D.schools.map(s => '<option value="' + s.slug + '">' + esc(s.name) + '</option>').join('') +
-    '<option value="other">Other: my school isn’t listed</option>';
+    '</optgroup>';
   $('years').innerHTML = YEARS.map(y =>
     '<label class="opt"><input type="radio" name="year" id="year-' + y[0] + '" value="' + y[0] + '"><b>' + y[2] + '</b><span>' + y[3] + '</span></label>').join('');
   $('foci').innerHTML = FOCI.map(f =>
@@ -251,7 +269,7 @@ function buildStep1() {
   if ($('credit-' + S.credit)) $('credit-' + S.credit).checked = true;
   refreshStep1();
 }
-function refreshStep1() {
+function refreshStep1(payDelay = 0) {
   $('schoolOtherWrap').hidden = !isOther();
   const stage = stageLabel() || 'MS3';
   const sample = { named: 'Jordan Lee · ', first: 'Jordan · ', anon: 'Anonymous · ' };
@@ -259,7 +277,7 @@ function refreshStep1() {
   const p = $('publishAs');
   if (S.name.trim() && S.year) p.innerHTML = 'Published as: <b>' + esc(creditLine()) + '</b>' + (schoolName() ? ' at ' + esc(schoolName()) : '');
   else p.textContent = 'Add your name and year to preview how your credit will read.';
-  renderPay();
+  renderPay(payDelay);
 }
 function readStep1() {
   S.school = $('school').value;
@@ -581,7 +599,7 @@ document.addEventListener('click', e => {
   tryGo(+b.getAttribute('data-go'));
 });
 $('f1').addEventListener('submit', e => { e.preventDefault(); tryGo(2); });
-function step1Changed() { readStep1(); refreshStep1(); if (!$('e1').hidden && !step1Problem()) showErr('e1', ''); save(); }
+function step1Changed(e) { readStep1(); refreshStep1(e && e.target.id === 'schoolOther' ? 700 : 0); if (!$('e1').hidden && !step1Problem()) showErr('e1', ''); save(); }
 $('f1').addEventListener('input', step1Changed);
 $('f1').addEventListener('change', step1Changed);
 $('go3').addEventListener('click', () => tryGo(3));
