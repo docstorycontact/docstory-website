@@ -147,7 +147,7 @@
         <li class="flex flex-col gap-xs">
           <span class="w-9 h-9 rounded-full bg-iris-deep text-white font-semibold flex items-center justify-center" aria-hidden="true">2</span>
           <h3 class="font-headline-md text-headline-md text-primary">Verify and approve</h3>
-          <p class="text-slate-gray text-body-lg">Within <span data-c="reviewDays">7</span> days, we email your school (.edu) address with your edited interview. Reply to confirm it’s you and approve the edits.</p>
+          <p class="text-slate-gray text-body-lg">Within <span data-c="reviewDays">7</span> days, we email your school (.edu) address with your edited interview. Reply to confirm it’s you and approve the edits<span data-if-paid>, and tell us whether you’d like to be paid by <span data-c="methods">PayPal or Venmo</span></span>.</p>
         </li>
         <li class="flex flex-col gap-xs">
           <span class="w-9 h-9 rounded-full bg-iris-deep text-white font-semibold flex items-center justify-center" aria-hidden="true">3</span>
@@ -177,6 +177,7 @@
       </h2>
       <ul class="flex flex-col gap-xs text-slate-gray text-body-lg list-disc pl-md">
         <li><strong class="text-primary"><span data-c="amount">$50</span></strong> per interview, paid after it’s verified and published</li>
+        <li>Choose <span data-c="methods">PayPal or Venmo</span> when you reply to our verification email</li>
         <li>One paid interview per person</li>
         <li>Paid for any school with fewer than <span data-c="cap">5</span> published interviews: right now that’s <span data-c="paidSchools">all</span> of the <span data-c="totalSchools">40</span> schools on DocStory, plus any school we don’t cover yet</li>
         <li>Schools with <span data-c="cap">5</span> or more interviews are welcome too, unpaid</li>
@@ -202,7 +203,7 @@
       </details>
       <details class="faq group" data-if-paid>
         <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">When and how do I get paid?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
-        <p class="pb-sm text-slate-gray text-body-lg">Within <span data-c="payDays">7</span> days of your interview going live, by <span data-c="methods">PayPal or Venmo</span>. When you reply to our verification email, just tell us which you prefer and the username or email to send it to. We never ask for bank details.</p>
+        <p class="pb-sm text-slate-gray text-body-lg">You choose how you’re paid when you reply to the verification email we send your school (.edu) address: just tell us whether you prefer PayPal or Venmo, and the username or email address to send it to. Payment goes out within <span data-c="payDays">7</span> days of your interview going live. We never ask for bank details.</p>
       </details>
       <details class="faq group" data-if-paid>
         <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">My school already has 5 interviews. Can I still contribute?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>

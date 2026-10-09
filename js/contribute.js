@@ -383,7 +383,7 @@ function buildStep4() {
   if (info) {
     pr.className = 'notice ' + (info.paid ? 'paid' : 'cap');
     pr.innerHTML = info.paid
-      ? '<span class="material-symbols-outlined" aria-hidden="true">payments</span><span>You’ll receive <b>' + D.money(C.payAmount) + '</b> by ' + esc(C.payMethods) + ' within ' + C.payDays + ' days of your interview being published.</span>'
+      ? '<span class="material-symbols-outlined" aria-hidden="true">payments</span><span>You’ll receive <b>' + D.money(C.payAmount) + '</b> within ' + C.payDays + ' days of your interview being published. You’ll choose ' + esc(C.payMethods) + ' when you reply to our verification email.</span>'
       : info.html;
   }
   $('rlist').innerHTML = ids.map((id, i) =>
