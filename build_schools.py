@@ -1642,6 +1642,8 @@ def write_static_heads(content_dir):
         text = path.read_text(encoding='utf-8')
         noindex = rel == 'contribute/interview/index.html'
         tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, robots='noindex' if noindex else None)
+        if rel == 'index.html':
+            tags += f'\n  <meta name="msvalidate.01" content="{seo.BING_SITE_VERIFICATION}">'
         block = (f'  <title>{html_mod.escape(title, quote=False)}</title>\n'
                  f'  <meta name="description" content="{html_mod.escape(desc)}">\n'
                  f'  <!-- seo -->\n  {tags}\n  <!-- /seo -->\n')
