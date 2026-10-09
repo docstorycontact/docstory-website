@@ -90,6 +90,17 @@ quotes:
   student-file-name: >-
     "A quote from the interview."
 
+# Optional homepage card ("What students love / What they'd change"). Schools with this section
+# rotate monthly on the homepage. Every line must be copied word for word from the student's
+# interview; use … where you skip words and **double asterisks** to bold a phrase. The build
+# checks each line against the interview and drops (with a warning) anything that doesn't match.
+# Needs at least one item on each side; 2–3 per side reads best.
+pros_cons:
+  love:
+    - {student: student-file-name, text: "An exact sentence from the interview, with **a key phrase** bolded."}
+  change:
+    - {student: student-file-name, text: "Another exact sentence … with skipped words marked."}
+
 # ── Extra dashboard sections ─────────────────────────────────────────────────
 # Shown by default: selectivity, cost (+ rent) and scale & reach.
 # Toggle 1 "Clinical training & research": clinical sites + research depth.

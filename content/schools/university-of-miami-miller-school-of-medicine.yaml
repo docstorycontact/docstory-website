@@ -115,3 +115,13 @@ cost_of_living:
   fips: "12086"
   median_rent: 1829             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: todd-jackson, text: "The biggest strength is the **breadth of diversity** that the institution sees and also learning how to care for some of the most disadvantaged, at-risk populations in the nation."}
+    - {student: zach-donato, text: "The DOCS clinic is a popular activity at our school, with **over 70% of students participating**."}
+    - {student: zach-donato, text: "Everyone here is very nice and we have a **very non-cutthroat culture** from my experience."}
+  change:
+    - {student: zach-donato, text: "**It is very expensive to live here** … Brickell traffic can be quite annoying."}
+    - {student: todd-jackson, text: "The only thing I dislike about Miami is **the humidity** that can get really uncomfortable in the summer and the potential for hurricanes that disrupt scheduling."}
+    - {student: zach-donato, text: "There was **much more responsibility on us to learn material on our own**"}

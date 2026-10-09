@@ -115,3 +115,12 @@ cost_of_living:
   fips: "48201"
   median_rent: 1401             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: justin, text: "The older students **really look out for the younger ones** with resources, tips, and advice."}
+    - {student: justin, text: "**The low tuition is amazing.**"}
+    - {student: michele-cabeza, text: "Patients come from all over the world to receive their care, and since Houston itself is such a diverse city, you get to interact with **patients from all walks of life**."}
+  change:
+    - {student: justin, text: "We’re located in the biggest medical center in the world, so it is very urban and busy. I like the hustle and bustle, but **I would like more green spaces**."}
+    - {student: michele-cabeza, text: "Our preclinical curriculum is **only 1.5 years** … This means you have an even shorter amount of time to learn the same volume of material before you start clinics."}

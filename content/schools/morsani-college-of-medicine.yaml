@@ -122,3 +122,12 @@ cost_of_living:
   fips: "12057"
   median_rent: 1667             # Census ACS 2020–2024 via QuickFacts
   acs_year: 2020–2024
+
+pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
+  love:
+    - {student: brian-james, text: "**Tampa is an amazing city.** … the Tampa Bay Lightning are only a few blocks away."}
+    - {student: chetna-thawani, text: "The faculty **listens to the class and actually tries to adjust** based on the classes needs."}
+    - {student: chetna-thawani, text: "I’ve had **so much practice** by now interviewing standardized patients, and practicing physicals on each other and standardized patients."}
+  change:
+    - {student: chetna-thawani, text: "The only thing I don’t love about it are **the parking problems**, but that’s in any big city."}
+    - {student: brian-james, text: "The medical school is moving downtown which makes it a bit more crowded with downtown Tampa but **away from the main campus**."}
