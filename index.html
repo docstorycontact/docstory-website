@@ -116,7 +116,7 @@
       <a href="index.html"           class="text-vibrant-iris border-b-2 border-vibrant-iris font-body-md text-body-md h-full flex items-center px-xs font-medium">Home</a>
       <a href="directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Interviews</a>
       <a href="about/index.html"     class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">About</a>
-      <a href="contribute/index.html"     class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Contribute</a>
+      <a href="contribute/index.html"     class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Contribute<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span></a>
     </div>
     <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris transition-colors">
       <span class="material-symbols-outlined text-[28px]">menu</span>
@@ -140,7 +140,7 @@
       <a href="index.html"           class="text-vibrant-iris font-semibold py-xs">Home</a>
       <a href="directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Interviews</a>
       <a href="about/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">About</a>
-      <a href="contribute/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Contribute</a>
+      <a href="contribute/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Contribute<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span></a>
     </nav>
     <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto" data-signup>Join Now</button>
   </div>
@@ -222,6 +222,23 @@
     </a>
   </div>
 </section>
+
+<!-- ══════════════════ CONTRIBUTE CALLOUT ══════════════════ -->
+<section class="py-xl" data-get-paid aria-labelledby="contribute-callout-title">
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="relative overflow-hidden bg-primary rounded-[24px] px-md py-lg md:px-xl md:py-xl flex flex-col md:flex-row md:items-center md:justify-between gap-md">
+      <span class="hidden md:block material-symbols-outlined absolute right-4 bottom-2 md:right-6 md:bottom-3 text-[120px] leading-none text-white/[0.06] pointer-events-none select-none" aria-hidden="true">edit_note</span>
+      <div class="relative flex flex-col gap-xs max-w-[60ch]">
+        <span class="self-start inline-flex items-center rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2.5 py-1 text-[12px] leading-none font-semibold tracking-wide">Get Paid!</span>
+        <h2 id="contribute-callout-title" class="font-headline-lg text-[26px] leading-[34px] md:text-headline-lg font-semibold text-white">Are you a medical student?</h2>
+        <p class="font-body-lg text-body-lg text-white/80">Get paid <strong class="text-white font-semibold"><span data-pay-amount>$50</span></strong> to share what your school is really like. It takes 30–45 minutes, and you can stay anonymous if you like.</p>
+      </div>
+      <a href="contribute/index.html" class="relative shrink-0 inline-flex items-center justify-center gap-xs bg-white text-primary px-lg py-sm rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+        Share your story <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
@@ -245,7 +262,8 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=3"></script>
+<script src="js/contribute-config.js?v=2"></script>
+<script src="js/main.js?v=4"></script>
 <script src="js/doodles.js" defer></script>
 <script>
 (function() {
