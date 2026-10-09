@@ -117,6 +117,7 @@ NAV_ITEMS = """
       <a href="{root}index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
       <a href="{root}directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
       <a href="{root}about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute</a>
 """
 
 def related_card(iv, root):
@@ -297,6 +298,20 @@ def render_interview_page(iv, all_interviews):
           {body_html}
         </div>
       </div>
+
+      <!-- Contributor call to action -->
+      <aside class="mt-xl bg-surface-container-low border border-primary/10 rounded-xl p-md md:p-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-md" aria-label="Contribute an interview">
+        <div class="flex items-start gap-sm">
+          <span class="material-symbols-outlined text-vibrant-iris text-[28px]" aria-hidden="true">edit_note</span>
+          <div>
+            <h2 class="font-headline-md text-headline-md text-primary">Med student? Share your story.</h2>
+            <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes<span id="contrib-pay">, and get paid <span id="contrib-amount">$50</span> once it’s published</span>.</p>
+          </div>
+        </div>
+        <a href="{root}contribute/index.html" class="shrink-0 inline-flex items-center justify-center gap-1 bg-primary text-white px-md py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
+          Contribute <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+        </a>
+      </aside>
     </article>
 
     <!-- Sidebar -->
@@ -333,6 +348,7 @@ def render_interview_page(iv, all_interviews):
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
         <a href="{root}about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="{root}contribute/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -384,6 +400,16 @@ def render_interview_page(iv, all_interviews):
 }})();
 </script>
 
+<script src="{root}js/contribute-config.js"></script>
+<script>
+// Keep the contribute banner's amount in step with js/contribute-config.js
+(function () {{
+  var c = window.DOCSTORY_CONTRIBUTE;
+  if (!c) return;
+  if (!c.payEnabled) document.getElementById('contrib-pay').hidden = true;
+  else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
+}})();
+</script>
 <script src="{root}js/main.js?v=3"></script>
 </body>
 </html>"""
