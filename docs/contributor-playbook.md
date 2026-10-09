@@ -54,6 +54,10 @@ Add a row to the tracker with status **Received**. The email contains:
 - **One paid interview per person.** Search the tracker for the same name and email.
 - **Content check:** real, specific answers; no patient details (dates + places + conditions
   can identify someone); nothing defamatory; no exam content.
+- **Quality bar** (Contributor Terms, section 5): roughly the caliber of the average
+  interview already on the site. If it falls short, don't decline straight away. Send
+  Template E naming the answers that need more detail, and wait for the expanded version
+  before sending the verification email. Decline (unpaid) only if it still falls short.
 - **Paid-eligibility still holds.** Honor what the email says. It reflects the count when
   they submitted, which is the promise in the Contributor Terms.
 
