@@ -1,0 +1,104 @@
+# School page data for Midwestern University Chicago College of Osteopathic Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Midwestern pages (see `sources`). Checked 2026-10-09.
+# CCOM does not publish a named list of rotation hospitals, so the clinical card describes the
+# rotation structure from its official manual instead. NIH funding is minimal, so no nih_org.
+
+short_name: Midwestern CCOM
+
+stats:
+  entering_class: 2025           # CCOM Class of 2029 profile
+  stats_kind: average
+  profile_url: https://www.midwestern.edu/academics/degrees-programs/doctor-osteopathic-medicine-program/doctor-osteopathic-medicine-do-chicago-college-osteopathic-medicine
+  mcat: 509
+  gpa_overall: 3.65
+  gpa_science: 3.61
+  women_pct: 51
+  class_size: 214                # Class of 2030 welcomed 214 new students
+  tuition: 86780                 # 2026–27: $85,232 tuition + $1,500 student services + $48 disability insurance
+  cost_year: 2026–27
+
+sources:
+  - label: CCOM Doctor of Osteopathic Medicine (Class of 2029 profile)
+    url: https://www.midwestern.edu/academics/degrees-programs/doctor-osteopathic-medicine-program/doctor-osteopathic-medicine-do-chicago-college-osteopathic-medicine
+  - label: Costs for Doctor of Osteopathic Medicine, Downers Grove (2026–27)
+    url: https://www.midwestern.edu/admissions/paying-college/cost-attendance/downers-grove-campus-budgets/costs-doctor-osteopathic-medicine-downers-grove
+  - label: CCOM Clinical Rotations Manual
+    url: https://www.midwestern.edu/documents/ccom-rotation-manual
+  - label: CCOM Admission Requirements
+    url: https://connect.midwestern.edu/downers-grove-il-campus-catalog/chicago-college-of-osteopathic-medicine/admissions/admission-requirements
+  - label: Census QuickFacts (DuPage County, IL)
+    url: https://www.census.gov/quickfacts/fact/table/dupagecountyillinois/HSG860224
+
+highlights:
+  - title: Symptoms-Based Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        CCOM organizes the preclinical years around a weekly symptom rather than organ systems alone. Dani
+        Sychowski describes weeks where the symptom ties together lectures, anatomy, osteopathic
+        manipulative medicine, and the physical exam lab, though not every week lines up that neatly.
+      - >-
+        Dani notes that lectures are optional, recorded, and posted within hours, and that courses are
+        letter-graded, with a few pass/fail exceptions.
+
+  - title: Early Clinical Exposure
+    icon: stethoscope
+    paragraphs:
+      - >-
+        The mandatory **Early Clinical Contact Program** places first- and second-years with a preceptor,
+        where students write SOAP notes and get physician feedback. Students can also volunteer in local
+        community health clinics and a student-run OMM clinic on campus.
+      - >-
+        Third- and fourth-year core rotations, including family medicine, internal medicine, surgery,
+        pediatrics, psychiatry, and OB/GYN, take place at approved affiliated sites around Chicago.
+
+  - title: Class Culture
+    icon: groups
+    paragraphs:
+      - >-
+        Classes are large, around 200 students, but Dani has never felt cut-throat competition. Classmates
+        share notes and mnemonics in group chats, and a big-little program pairs each first-year with a
+        second-year.
+      - >-
+        With dozens of student organizations, from wilderness medicine to food as medicine, Dani says it’s
+        easy to find your people.
+
+  - title: Downers Grove
+    icon: park
+    paragraphs:
+      - >-
+        The campus is in **Downers Grove**, a western suburb, with Chicago an easy drive or train ride away.
+        It backs onto the Lyman Woods forest preserve, with a trail gate right on campus.
+      - >-
+        Dani lives on campus in the student dorms and notes the suburbs offer restaurants, a Saturday farmers
+        market, and Naperville close by.
+
+highlight_sources:
+  - label: DocStory interview with Dani Sychowski
+    url: /interviews/midwestern-chicago-college-of-osteopathic-medicine/dani-sychowski/index.html
+  - label: CCOM Clinical Rotations Manual
+    url: https://www.midwestern.edu/documents/ccom-rotation-manual
+  - label: CCOM Doctor of Osteopathic Medicine
+    url: https://www.midwestern.edu/academics/degrees-programs/doctor-osteopathic-medicine-program/doctor-osteopathic-medicine-do-chicago-college-osteopathic-medicine
+
+quotes:
+  dani-sychowski: >-
+    "I really have never once felt like there's been cut-throat competition among our class. In fact,
+    we're pretty collaborative."
+
+programs:
+  tracks:
+    - {name: Rural Scholar Program, note: With the University of Wisconsin/Monroe family medicine residency}
+
+applying:
+  - {label: Application, value: AACOMAS}
+  - {label: Minimums, value: "GPA 2.75 cumulative and science for a supplemental application"}
+  - {label: MCAT, value: Taken within three years of enrollment}
+  - {label: Letters, value: "Two required · letters from osteopathic physicians strongly recommended"}
+
+cost_of_living:
+  county: DuPage County, IL
+  fips: "17043"
+  median_rent: 1688             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

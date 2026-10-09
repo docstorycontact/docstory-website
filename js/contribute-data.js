@@ -13,6 +13,12 @@ window.DOCSTORY_SCHOOLS = [
   "interviews": 2
  },
  {
+  "slug": "brody-school-of-medicine",
+  "name": "Brody School of Medicine at East Carolina University",
+  "type": "md",
+  "interviews": 1
+ },
+ {
   "slug": "california-university-of-science-and-medicine",
   "name": "California University of Science and Medicine",
   "type": "md",
@@ -103,6 +109,12 @@ window.DOCSTORY_SCHOOLS = [
   "interviews": 1
  },
  {
+  "slug": "midwestern-chicago-college-of-osteopathic-medicine",
+  "name": "Midwestern University Chicago College of Osteopathic Medicine",
+  "type": "do",
+  "interviews": 1
+ },
+ {
   "slug": "new-york-medical-college",
   "name": "New York Medical College",
   "type": "md",
@@ -129,6 +141,12 @@ window.DOCSTORY_SCHOOLS = [
  {
   "slug": "tcu-burnett-school-of-medicine",
   "name": "TCU Burnett School of Medicine",
+  "type": "md",
+  "interviews": 1
+ },
+ {
+  "slug": "texas-a-and-m-college-of-medicine",
+  "name": "Texas A&M University Naresh K. Vashisht College of Medicine",
   "type": "md",
   "interviews": 1
  },
@@ -193,6 +211,12 @@ window.DOCSTORY_SCHOOLS = [
   "interviews": 2
  },
  {
+  "slug": "university-of-oklahoma-college-of-medicine",
+  "name": "University of Oklahoma College of Medicine",
+  "type": "md",
+  "interviews": 1
+ },
+ {
   "slug": "ut-health-science-center",
   "name": "University of Tennessee Health Science Center College of Medicine",
   "type": "md",
@@ -202,7 +226,7 @@ window.DOCSTORY_SCHOOLS = [
   "slug": "usc-keck-school-of-medicine",
   "name": "USC Keck School of Medicine",
   "type": "md",
-  "interviews": 2
+  "interviews": 3
  },
  {
   "slug": "morsani-college-of-medicine",

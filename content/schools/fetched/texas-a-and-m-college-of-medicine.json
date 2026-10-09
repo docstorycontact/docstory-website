@@ -1,0 +1,87 @@
+{
+  "hospitals": {
+    "450011": {
+      "city": "BRYAN",
+      "emergency": true,
+      "name": "CHI ST JOSEPH HEALTH REGIONAL HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "450021": {
+      "city": "DALLAS",
+      "emergency": true,
+      "name": "BAYLOR UNIVERSITY MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "450035": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "ST JOSEPH MEDICAL CENTER",
+      "ownership": "Physician",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "450358": {
+      "city": "HOUSTON",
+      "emergency": true,
+      "name": "HOUSTON METHODIST HOSPITAL",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "670034": {
+      "city": "ROUND ROCK",
+      "emergency": true,
+      "name": "BAYLOR SCOTT & WHITE MEDICAL CENTER - ROUND ROCK",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "670088": {
+      "city": "COLLEGE STATION",
+      "emergency": true,
+      "name": "BAYLOR SCOTT & WHITE MEDICAL CENTER- COLLEGE STATI",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-09"
+  },
+  "nih": {
+    "amount": 19991300,
+    "ctsa": false,
+    "fetched": "2026-10-09",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "TEXAS A&M UNIVERSITY HEALTH SCIENCE CTR",
+    "top_departments": [
+      {
+        "amount": 7221005,
+        "dept": "Other Basic Sciences"
+      },
+      {
+        "amount": 4113566,
+        "dept": "Microbiology / Immun / Virology"
+      },
+      {
+        "amount": 3927977,
+        "dept": "Anatomy / Cell Biology"
+      }
+    ],
+    "trend": {
+      "2021": 13231973,
+      "2022": 20875591,
+      "2023": 15073678,
+      "2024": 16576654,
+      "2025": 19991300
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-09",
+    "recruiting": 25,
+    "sponsor": "Texas A&M University"
+  }
+}

@@ -1,0 +1,108 @@
+# School page data for University of Oklahoma College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Facts from official OU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-09.
+# OU's class-profile and admissions pages now require a login, so the MCAT/GPA tiles are hidden
+# rather than citing pages readers can't open.
+
+short_name: OU
+nih_org: UNIVERSITY OF OKLAHOMA HLTH SCIENCES CTR
+trials_sponsor: University of Oklahoma
+
+stats:
+  class_size: 202                # Class of 2029, OU College of Medicine MD program page
+
+sources:
+  - label: OU College of Medicine Doctor of Medicine (MD)
+    url: https://medicine.ouhsc.edu/prospective-students/degree-programs/doctor-of-medicine-md
+  - label: OU-TU School of Community Medicine (Tulsa)
+    url: https://www.ou.edu/tulsa/community_medicine
+  - label: NCI-Designated Cancer Centers (Stephenson Cancer Center)
+    url: https://www.cancer.gov/research/infrastructure/cancer-centers/find/stephenson
+  - label: Census QuickFacts (Oklahoma County, OK)
+    url: https://www.census.gov/quickfacts/fact/table/oklahomacountyoklahoma/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        OU’s MD program runs an 18-month preclinical phase followed by 30 months of clerkships,
+        electives, and sub-internships. Wilson Hoyt says the pace was exactly as described, yet hard to truly
+        comprehend before arriving: more than a semester of undergraduate material in the first month.
+      - >-
+        Wilson pairs third-party resources for the big picture with OU’s in-house materials for the
+        details, and says the in-house materials are put together carefully enough to be worth using.
+
+  - title: Clinical Skills from Week One
+    icon: stethoscope
+    paragraphs:
+      - >-
+        Clinical medicine courses run through both preclinical years. Starting in week one, students learn
+        the physical exam and get training in ultrasound and x-ray, usually with standardized patients
+        rather than mannequins.
+      - >-
+        A patient simulation center is open for extra practice outside class, and Wilson notes that OU
+        students get more early clinical exposure than friends at other schools describe.
+
+  - title: Mods and Community
+    icon: groups
+    paragraphs:
+      - >-
+        Each class is split into **mods** of 15–17 students who share a private, swipe-access mod room
+        with desks, lockers, and white coat racks, and stay together for the first two years. Wilson calls
+        the student culture one of the best things OU has to offer.
+      - >-
+        Modlympics, interest groups, intramurals, and student government round out the calendar.
+
+  - title: Two Campuses
+    icon: location_city
+    paragraphs:
+      - >-
+        Students train in **Oklahoma City** or **Tulsa**, where the OU-TU School of Community Medicine uses
+        community hospitals and clinics. The Oklahoma City campus sits near downtown, with affordable food
+        and nightlife a short drive away.
+      - >-
+        Wilson’s one complaint is that the blocks right around campus are a bit of a food desert, so pack
+        a lunch. Wilson describes the campus as secure, with gated parking.
+
+highlight_sources:
+  - label: DocStory interview with Wilson Hoyt
+    url: /interviews/university-of-oklahoma-college-of-medicine/wilson-hoyt/index.html
+  - label: OU College of Medicine Doctor of Medicine (MD)
+    url: https://medicine.ouhsc.edu/prospective-students/degree-programs/doctor-of-medicine-md
+  - label: OU-TU School of Community Medicine (Tulsa)
+    url: https://www.ou.edu/tulsa/community_medicine
+
+quotes:
+  wilson-hoyt: >-
+    "I would say that the student culture at OU is one of the best things that it has to offer. There is
+    a great system in place from OU called the module system."
+
+clinical_sites:
+  - {name: OU Health University of Oklahoma Medical Center, role: Oklahoma City flagship · Level I trauma, cms_id: "370093"}
+  - {name: Oklahoma City VA Medical Center, cms_id: "37014F"}
+  - {name: OU Health Stephenson Cancer Center, role: NCI-designated cancer center}
+  - {name: Hillcrest Medical Center, role: Tulsa campus, cms_id: "370001"}
+  - {name: Saint Francis Hospital, role: Tulsa campus, cms_id: "370091"}
+
+research_badges:
+  - NCI Cancer Center · Stephenson Cancer Center
+
+programs:
+  tracks:
+    - {name: OU-TU School of Community Medicine, note: Tulsa campus}
+
+applying:
+  - {label: Minimums, value: "GPA 3.0 and MCAT 492"}
+  - {label: MCAT, value: Most recent score · valid for 2 years}
+  - {label: PREview, value: Recommended}
+
+outcomes:
+  match_rate: 97%
+  match_year: 2024
+
+cost_of_living:
+  county: Oklahoma County, OK
+  fips: "40109"
+  median_rent: 1116             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
