@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Med School Story — Contribute to DocStory</title>
+  <meta name="description" content="Current medical students: answer 8–10 questions about your school in your own words and get paid once your interview is verified and published on DocStory.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          'vibrant-iris':'#9580FF','iris-deep':'#6c5ce7','primary':'#333e4d','slate-gray':'#4A5565','salmon-coral':'#FA8072',
+          'tertiary':'#3d20a3','tertiary-container':'#553dba','surface':'#fcf8ff','surface-bright':'#fcf8ff',
+          'surface-dim':'#dbd8e8','surface-variant':'#e3e0f1','surface-container':'#efecfc',
+          'surface-container-low':'#f5f2ff','surface-container-high':'#e9e6f6',
+          'surface-container-highest':'#e3e0f1','surface-container-lowest':'#ffffff',
+          'on-surface':'#1b1b26','on-surface-variant':'#44474c','background':'#fcf8ff','on-background':'#1b1b26',
+          'tertiary-fixed':'#e6deff','tertiary-fixed-dim':'#c9beff','outline-variant':'#c5c6cc','deep-onyx':'#14141F',
+        },
+        borderRadius: { DEFAULT:'0.25rem', lg:'0.5rem', xl:'0.75rem', '2xl':'1rem', full:'9999px' },
+        spacing: {
+          xs:'0.5rem',sm:'1rem',md:'1.5rem',lg:'2rem',xl:'4rem',
+          base:'10px',gutter:'20px','margin-desktop':'40px','margin-mobile':'16px',
+        },
+        fontFamily: {
+          'display-lg':['Inter','sans-serif'],'headline-lg':['Inter','sans-serif'],
+          'headline-md':['Inter','sans-serif'],'body-lg':['Inter','sans-serif'],
+          'body-md':['Inter','sans-serif'],'label-md':['Plus Jakarta Sans','sans-serif'],
+        },
+        fontSize: {
+          'display-lg':['48px',{lineHeight:'56px',letterSpacing:'-0.02em',fontWeight:'700'}],
+          'headline-lg':['32px',{lineHeight:'40px',letterSpacing:'-0.01em',fontWeight:'600'}],
+          'headline-md':['20px',{lineHeight:'28px',fontWeight:'600'}],
+          'body-lg':['16px',{lineHeight:'24px',fontWeight:'400'}],
+          'body-md':['14px',{lineHeight:'20px',fontWeight:'400'}],
+          'label-md':['12px',{lineHeight:'16px',letterSpacing:'0.05em',fontWeight:'600'}],
+        },
+      }},
+    }
+  </script>
+  <style>
+    .faq summary { list-style: none; cursor: pointer; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary .chev { transition: transform 200ms ease-out; }
+    .faq[open] summary .chev { transform: rotate(180deg); }
+    @media (prefers-reduced-motion: reduce) { .faq summary .chev { transition: none; } }
+    :focus-visible { outline: 2px solid #6c5ce7; outline-offset: 2px; border-radius: 4px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
+
+<!-- NAV -->
+<nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
+  <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
+    <a href="../index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+      <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+    </a>
+    <div class="hidden md:flex items-center gap-lg h-full">
+      <a href="../index.html"           class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Home</a>
+      <a href="../directory/index.html" class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">Interviews</a>
+      <a href="../about/index.html"     class="text-slate-gray hover:text-vibrant-iris transition-colors font-body-md text-body-md h-full flex items-center px-xs">About</a>
+      <a href="index.html"              class="text-vibrant-iris border-b-2 border-vibrant-iris font-body-md text-body-md h-full flex items-center px-xs font-medium" aria-current="page">Contribute</a>
+    </div>
+    <div class="flex items-center">
+      <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block" data-signup>Join Now</button>
+      <button id="mobile-menu-toggle" class="md:hidden text-primary hover:text-vibrant-iris ml-2" aria-label="Open menu">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-primary/20 backdrop-blur-sm translate-x-full transition-transform duration-300 md:hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-64 bg-white shadow-2xl p-md flex flex-col gap-md">
+    <div class="flex justify-between items-center border-b border-primary/5 pb-sm">
+      <span class="font-bold text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </span>
+      <button id="mobile-menu-close" class="text-primary hover:text-vibrant-iris" aria-label="Close menu"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="flex flex-col gap-sm">
+      <a href="../index.html"           class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="../directory/index.html" class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">Interviews</a>
+      <a href="../about/index.html"     class="text-slate-gray py-xs hover:text-vibrant-iris transition-colors">About</a>
+      <a href="index.html"              class="text-vibrant-iris font-semibold py-xs">Contribute</a>
+    </nav>
+    <button class="w-full bg-vibrant-iris text-white py-sm rounded-full font-label-md text-label-md hover:opacity-90 mt-auto" data-signup>Join Now</button>
+  </div>
+</div>
+
+<main class="flex-grow">
+
+  <!-- HERO -->
+  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-xl md:pt-[96px] md:pb-[96px] grid md:grid-cols-12 gap-lg md:gap-xl items-center">
+    <div class="md:col-span-7 flex flex-col gap-md">
+      <p class="font-label-md text-label-md uppercase text-tertiary">For current medical students</p>
+      <h1 class="font-display-lg font-bold text-[36px] leading-[44px] md:text-display-lg text-primary tracking-tight" data-if-paid>
+        Get paid <span class="text-iris-deep" data-c="amount">$50</span> to tell applicants what your school is really like.
+      </h1>
+      <h1 class="font-display-lg font-bold text-[36px] leading-[44px] md:text-display-lg text-primary tracking-tight" data-if-unpaid hidden>
+        Tell applicants what your school is really like.
+      </h1>
+      <p class="font-body-lg text-body-lg text-slate-gray max-w-[56ch]">
+        Answer 8–10 questions about your medical school in your own words. It takes 30–45 minutes, and your draft saves as you go.
+        <span data-if-paid>Once we verify your school email and publish your interview, we send you <span data-c="amount">$50</span>.</span>
+      </p>
+      <div class="flex flex-wrap items-center gap-sm pt-xs">
+        <a href="interview/index.html" class="inline-flex items-center gap-xs bg-iris-deep text-white px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+          Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+        </a>
+        <a href="#how" class="inline-flex items-center gap-xs text-primary px-md py-sm rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors">How it works</a>
+      </div>
+    </div>
+
+    <!-- What a published interview looks like -->
+    <figure class="md:col-span-5 bg-surface-container-lowest border border-primary/10 rounded-2xl shadow-[0_8px_30px_rgba(51,62,77,0.08)] p-md md:p-lg flex flex-col gap-sm" aria-label="Example of a published DocStory interview">
+      <figcaption class="font-label-md text-label-md uppercase text-slate-gray">What gets published</figcaption>
+      <div class="flex items-center gap-sm">
+        <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">KP</div>
+        <div>
+          <div class="font-semibold text-primary text-body-lg">Kyung Park</div>
+          <div class="text-slate-gray text-body-md">MS2 · TCU Burnett School of Medicine</div>
+        </div>
+      </div>
+      <p class="text-on-surface-variant text-body-lg leading-relaxed border-l-4 border-vibrant-iris pl-sm">
+        “Also being in a class of 60 students, the faculty are incredibly invested in your success and often know us by name.”
+      </p>
+      <a href="../interviews/tcu-burnett-school-of-medicine/kyung-park/index.html" class="text-iris-deep font-label-md text-label-md hover:underline self-start">Read the full interview →</a>
+    </figure>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="bg-surface-container-low border-y border-primary/10 scroll-mt-[70px]">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+      <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-primary mb-lg">How it works</h2>
+      <ol class="grid md:grid-cols-3 gap-lg">
+        <li class="flex flex-col gap-xs">
+          <span class="w-9 h-9 rounded-full bg-iris-deep text-white font-semibold flex items-center justify-center" aria-hidden="true">1</span>
+          <h3 class="font-headline-md text-headline-md text-primary">Answer 8–10 questions</h3>
+          <p class="text-slate-gray text-body-lg">Pick the questions that fit your year and interests, then write the way you’d talk to a friend with an interview invite. About 30–45 minutes.</p>
+        </li>
+        <li class="flex flex-col gap-xs">
+          <span class="w-9 h-9 rounded-full bg-iris-deep text-white font-semibold flex items-center justify-center" aria-hidden="true">2</span>
+          <h3 class="font-headline-md text-headline-md text-primary">Verify and approve</h3>
+          <p class="text-slate-gray text-body-lg">Within <span data-c="reviewDays">7</span> days, we email your school (.edu) address with your edited interview. Reply to confirm it’s you and approve the edits<span data-if-paid>, and tell us whether you’d like to be paid by <span data-c="methods">PayPal or Venmo</span></span>.</p>
+        </li>
+        <li class="flex flex-col gap-xs">
+          <span class="w-9 h-9 rounded-full bg-iris-deep text-white font-semibold flex items-center justify-center" aria-hidden="true">3</span>
+          <h3 class="font-headline-md text-headline-md text-primary" data-if-paid>Get published and paid</h3>
+          <h3 class="font-headline-md text-headline-md text-primary" data-if-unpaid hidden>Get published</h3>
+          <p class="text-slate-gray text-body-lg">Your interview goes live on DocStory<span data-if-paid>, and we send <span data-c="amount">$50</span> by <span data-c="methods">PayPal or Venmo</span> within <span data-c="payDays">7</span> days</span>.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY + PAYMENT -->
+  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl grid md:grid-cols-2 gap-lg">
+    <div class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm">
+      <h2 class="font-headline-md text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-iris-deep" aria-hidden="true">school</span>Who can contribute
+      </h2>
+      <ul class="flex flex-col gap-xs text-slate-gray text-body-lg list-disc pl-md">
+        <li>Current students at a U.S. MD or DO school, first through fourth year, before graduation</li>
+        <li>You have an active school email address ending in .edu</li>
+        <li>You write about your own experience, with no patient information</li>
+      </ul>
+    </div>
+    <div class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm" data-if-paid>
+      <h2 class="font-headline-md text-headline-md text-primary flex items-center gap-xs">
+        <span class="material-symbols-outlined text-iris-deep" aria-hidden="true">payments</span>Payment
+      </h2>
+      <ul class="flex flex-col gap-xs text-slate-gray text-body-lg list-disc pl-md">
+        <li><strong class="text-primary"><span data-c="amount">$50</span></strong> per interview, paid after it’s verified and published</li>
+        <li>Choose <span data-c="methods">PayPal or Venmo</span> when you reply to our verification email</li>
+        <li>One paid interview per person</li>
+        <li>Paid for any school with fewer than <span data-c="cap">5</span> published interviews: right now that’s <span data-c="paidSchools">all</span> of the <span data-c="totalSchools">40</span> schools on DocStory, plus any school we don’t cover yet</li>
+        <li>Schools with <span data-c="cap">5</span> or more interviews are welcome too, unpaid</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-[820px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
+    <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-primary mb-md">Questions</h2>
+    <div class="flex flex-col divide-y divide-primary/10 border-y border-primary/10">
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Can I stay anonymous?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">Yes. You choose how you’re credited: full name, first name only, or anonymous. We still need your name and school email privately to verify you<span data-if-paid> and pay you</span>, but neither is ever published.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Why do you need my .edu email?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">It’s how we confirm every interview comes from a real student at that school. Before anything is published, we email that address and ask you to reply. We only email you from <span data-c="contact">a DocStory email address</span>, and we never ask for passwords or bank details.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Will my answers be edited?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">Lightly, for formatting, length, and clarity. We don’t change what you meant. You’ll see the edited version in our verification email and nothing goes live until you approve it.</p>
+      </details>
+      <details class="faq group" data-if-paid>
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">When and how do I get paid?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">You choose how you’re paid when you reply to the verification email we send your school (.edu) address: just tell us whether you prefer PayPal or Venmo, and the username or email address to send it to. Payment goes out within <span data-c="payDays">7</span> days of your interview going live. We never ask for bank details.</p>
+      </details>
+      <details class="faq group" data-if-paid>
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">My school already has 5 interviews. Can I still contribute?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">Yes, and we’d love more perspectives, but we aren’t paying for new interviews from schools with <span data-c="cap">5</span> or more published right now. The form tells you as soon as you pick your school.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Do I have to finish in one sitting?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">No. Your draft saves automatically in your browser, so you can close the page and pick up where you left off on the same device.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Is there a quality bar?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">Yes. Whether an interview is ready to publish is at our discretion, and the bar is roughly the caliber of the typical interview <a href="../directory/index.html" class="text-iris-deep underline">already on DocStory</a>: specific, first-hand answers with real detail. We make every effort to accept<span data-if-paid> and pay for</span> every good-faith submission, so if something falls short we’ll usually ask you to expand a few answers rather than turn it down.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">What if my interview isn’t accepted?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">We’ll tell you why. Most often it’s an unverifiable email, answers that are too thin, or details that could identify a patient. We’ll usually ask you to revise first; if it still doesn’t meet the bar after that, we may decline it<span data-if-paid>, and declined interviews aren’t paid</span>.</p>
+      </details>
+      <details class="faq group">
+        <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">Can I take my interview down later?<span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span></summary>
+        <p class="pb-sm text-slate-gray text-body-lg">Yes. Email us from your school address and we’ll remove it or switch it to anonymous. See the <a href="terms/index.html" class="text-iris-deep underline">Contributor Terms</a> for details.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
+    <div class="bg-primary rounded-2xl px-md py-lg md:px-xl md:py-xl flex flex-col md:flex-row md:items-center md:justify-between gap-md">
+      <div class="flex flex-col gap-xs">
+        <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-white">Be the interview you wish you’d read.</h2>
+        <p class="text-white/80 text-body-lg">30–45 minutes<span data-if-paid> · <span data-c="amount">$50</span> once published</span> · anonymous if you like</p>
+      </div>
+      <a href="interview/index.html" class="inline-flex items-center justify-center gap-xs bg-white text-primary px-lg py-sm rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors shrink-0">
+        Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-lg px-margin-desktop py-xl max-w-[1200px] mx-auto">
+    <div class="flex flex-col gap-sm">
+      <div class="flex items-center gap-2 font-bold text-headline-md text-primary">
+        <span class="material-symbols-outlined text-vibrant-iris" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
+      </div>
+      <p class="font-body-md text-body-md text-slate-gray opacity-80">© 2026 DocStory. Empowering the next generation of medical professionals.</p>
+    </div>
+    <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
+      <nav class="flex flex-wrap gap-md md:justify-end">
+        <a href="../about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="index.html"          class="text-vibrant-iris font-semibold font-body-md text-body-md">Contribute</a>
+        <a href="terms/index.html"    class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contributor Terms</a>
+        <a href="#"                   class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/contribute-config.js?v=2"></script>
+<script src="../js/contribute-data.js"></script>
+<script src="../js/contribute-common.js"></script>
+<script>
+  DocStoryContribute.fill();
+  // "all" reads better than "40 of the 40"
+  (function () {
+    var d = DocStoryContribute;
+    var el = document.querySelector('[data-c="paidSchools"]');
+    if (el && d.paidSchoolCount() === d.schools.length) el.textContent = 'all';
+  })();
+</script>
+<script src="../js/main.js?v=3"></script>
+</body>
+</html>
