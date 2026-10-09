@@ -1,0 +1,119 @@
+# School page data for Texas A&M University Naresh K. Vashisht College of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official Texas A&M pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-09.
+# Tuition is published only through Texas A&M's tuition calculator, so there is no tuition tile.
+
+short_name: Texas A&M
+nih_org: TEXAS A&M UNIVERSITY HEALTH SCIENCE CTR
+trials_sponsor: Texas A&M University
+
+stats:
+  cohort_label: Recent matriculants
+  stats_kind: average
+  profile_url: https://catalog.tamu.edu/graduate/admission/college-school--information/medicine/
+  mcat: 510                      # "Matriculants Avg. MCAT 510 (84%-tile)", 2026–2027 catalog
+  gpa_overall: 3.70
+  class_size: 200                # "currently enrolls 200 students per year"
+
+sources:
+  - label: Texas A&M Catalog, Vashisht College of Medicine admission
+    url: https://catalog.tamu.edu/graduate/admission/college-school--information/medicine/
+  - label: Texas A&M MD Program Information (campus tracks)
+    url: https://medicine.tamu.edu/degrees/md/index.html
+  - label: Bryan-College Station Regional Campus
+    url: https://medicine.tamu.edu/campuses/bryan-cs/index.html
+  - label: Houston Regional Campus
+    url: https://medicine.tamu.edu/campuses/houston/index.html
+  - label: Dallas Regional Campus
+    url: https://medicine.tamu.edu/campuses/dallas/index.html
+  - label: Round Rock Regional Campus
+    url: https://medicine.tamu.edu/campuses/round-rock/index.html
+  - label: Engineering Medicine (EnMed) Program
+    url: https://enmed.tamu.edu/
+  - label: Vital Record, College of Medicine debuts new name
+    url: https://vitalrecord.tamu.edu/college-of-medicine-debuts-new-name-at-white-coat-ceremony/
+  - label: Census QuickFacts (Brazos County, TX)
+    url: https://www.census.gov/quickfacts/fact/table/brazoscountytexas/HSG860224
+
+highlights:
+  - title: Four Campus Tracks
+    icon: map
+    paragraphs:
+      - >-
+        Every student starts with an 18-month pre-clerkship phase, and the class of about 200 is spread
+        across campus tracks for clerkships: **Bryan–College Station** (with the AIM longitudinal integrated
+        curriculum), **Dallas**, **Round Rock**, and **Houston**.
+      - >-
+        The college was renamed the Naresh K. Vashisht College of Medicine in August 2025, after a gift that
+        funds full-tuition scholarships, research, and the Rural Medicine Program.
+
+  - title: EnMed in Houston
+    icon: precision_manufacturing
+    paragraphs:
+      - >-
+        **EnMed** is a fully integrated engineering and medicine track based in the Texas Medical Center
+        for all four years. Students earn an MD and a Master of Engineering, in partnership with Houston
+        Methodist.
+      - >-
+        Caleb, an EnMed student, describes a small cohort of 34, a flipped classroom with faculty-led
+        discussions and team-based learning, and a cap of 15 mandatory hours a week in pre-clerkship.
+
+  - title: A School That Listens
+    icon: forum
+    paragraphs:
+      - >-
+        Caleb calls the program incredibly responsive to student feedback. Students sit on curriculum
+        committees, and their proposals moved pre-clerkship to true pass/fail and unranked, cut mandatory
+        sessions, and reworked courses.
+      - >-
+        Caleb describes Practice of Medicine courses that build the physical exam, clinical reasoning with standardized
+        patients, and weekly half-day preceptorships before clerkships.
+
+  - title: Life in Houston
+    icon: location_city
+    paragraphs:
+      - >-
+        For EnMed students, Houston offers nightlife, parks, museums, world-class food, and baseball. Caleb
+        bikes to the hospital and parks free in the medical center.
+      - >-
+        The downsides Caleb lists: no hills to climb, horrible traffic, and a city that isn’t very walkable
+        outside the medical center area.
+
+highlight_sources:
+  - label: DocStory interview with Caleb
+    url: /interviews/texas-a-and-m-college-of-medicine/caleb/index.html
+  - label: Texas A&M MD Program Information (campus tracks)
+    url: https://medicine.tamu.edu/degrees/md/index.html
+  - label: Engineering Medicine (EnMed) Program
+    url: https://enmed.tamu.edu/
+
+quotes:
+  caleb: >-
+    "Our program is also incredibly responsive to student feedback. They involve students in curriculum
+    committee meetings and actually make tangible changes based on our suggestions."
+
+clinical_sites:
+  - {name: CHI St. Joseph Health Regional Hospital, role: Bryan–College Station campus, cms_id: "450011"}
+  - {name: Baylor Scott & White Medical Center – College Station, role: Bryan–College Station campus, cms_id: "670088"}
+  - {name: Houston Methodist Hospital, role: Houston campus · EnMed partner, cms_id: "450358"}
+  - {name: St. Joseph Medical Center, role: Houston campus, cms_id: "450035"}
+  - {name: Baylor University Medical Center, role: Dallas campus, cms_id: "450021"}
+  - {name: Baylor Scott & White Medical Center – Round Rock, role: Round Rock campus, cms_id: "670034"}
+
+programs:
+  tracks:
+    - {name: EnMed, note: MD + Master of Engineering · Houston}
+    - {name: AIM, note: Longitudinal integrated curriculum · Bryan–College Station}
+  dual_degrees: [MD/PhD]
+
+applying:
+  - {label: Application, value: TMDSAS}
+  - {label: MCAT, value: Taken within five years of enrollment}
+  - {label: Interviews, value: "About 740 applicants a year (five-year average)"}
+  - {label: Tuition, value: "Use Texas A&M’s tuition calculator (Vashisht College of Medicine)"}
+
+cost_of_living:
+  county: Brazos County, TX
+  fips: "48041"
+  median_rent: 1193             # Census ACS 2020–2024 via QuickFacts (Houston/EnMed: see Harris County)
+  acs_year: 2020–2024

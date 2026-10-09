@@ -1,0 +1,71 @@
+{
+  "hospitals": {
+    "370001": {
+      "city": "TULSA",
+      "emergency": true,
+      "name": "HILLCREST MEDICAL CENTER",
+      "ownership": "Proprietary",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "370091": {
+      "city": "TULSA",
+      "emergency": true,
+      "name": "SAINT FRANCIS HOSPITAL, INC",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 5,
+      "type": "Acute Care Hospitals"
+    },
+    "370093": {
+      "city": "OKLAHOMA CITY",
+      "emergency": true,
+      "name": "O U MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "37014F": {
+      "city": "OKLAHOMA CITY",
+      "emergency": true,
+      "name": "OKLAHOMA CITY VA MEDICAL CENTER",
+      "ownership": "Veterans Health Administration",
+      "stars": 2,
+      "type": "Acute Care - Veterans Administration"
+    },
+    "fetched": "2026-10-09"
+  },
+  "nih": {
+    "amount": 71077639,
+    "ctsa": false,
+    "fetched": "2026-10-09",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "UNIVERSITY OF OKLAHOMA HLTH SCIENCES CTR",
+    "top_departments": [
+      {
+        "amount": 15153371,
+        "dept": "Internal Medicine / Medicine"
+      },
+      {
+        "amount": 11991407,
+        "dept": "Physiology"
+      },
+      {
+        "amount": 9978979,
+        "dept": "Microbiology / Immun / Virology"
+      }
+    ],
+    "trend": {
+      "2021": 56584573,
+      "2022": 53142562,
+      "2023": 56464236,
+      "2024": 65734251,
+      "2025": 71077639
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-09",
+    "recruiting": 81,
+    "sponsor": "University of Oklahoma"
+  }
+}

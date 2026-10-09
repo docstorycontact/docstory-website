@@ -257,6 +257,26 @@ SCHOOLS = {
         city='Albany', state='NY', type='md', public=False, founded=1839,
         hospital='Albany Medical Center Hospital', class_size=135,
     ),
+    'university-of-oklahoma-college-of-medicine': dict(
+        name='University of Oklahoma College of Medicine',
+        city='Oklahoma City', state='OK', type='md', public=True, founded=1900,
+        hospital='OU Health University of Oklahoma Medical Center', class_size=202,
+    ),
+    'brody-school-of-medicine': dict(
+        name='Brody School of Medicine at East Carolina University',
+        city='Greenville', state='NC', type='md', public=True,
+        hospital='ECU Health Medical Center', class_size=96,
+    ),
+    'texas-a-and-m-college-of-medicine': dict(
+        name='Texas A&M University Naresh K. Vashisht College of Medicine',
+        city='Bryan', state='TX', type='md', public=True, founded=1977,
+        hospital='Four Regional Campuses', class_size=200,
+    ),
+    'midwestern-chicago-college-of-osteopathic-medicine': dict(
+        name='Midwestern University Chicago College of Osteopathic Medicine',
+        city='Downers Grove', state='IL', type='do', public=False,
+        hospital='Chicago-Area Clinical Affiliates', class_size=214,
+    ),
 }
 
 # ── Full school pages (stats dashboard + Program Highlights) ──────────────────

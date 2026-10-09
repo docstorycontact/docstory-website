@@ -91,8 +91,8 @@ quotes:
     "The biggest strength is the breadth of diversity that the institution sees and also learning how to
     care for some of the most disadvantaged, at-risk populations in the nation."
   zach-donato: >-
-    "Miami is a very service-oriented school. The DOCS clinic is a popular activity at our school, with
-    over 70% of students participating."
+    "Miami is a very service-oriented school. The DOCS clinic is a huge activity at our school and over
+    70% of students participate."
 
 clinical_sites:
   - {name: Jackson Memorial Hospital, role: Jackson Health System, cms_id: "100022"}
@@ -119,8 +119,8 @@ cost_of_living:
 pros_cons:                     # homepage "What students love / What they'd change" card: verbatim excerpts only (checked at build)
   love:
     - {student: todd-jackson, text: "The biggest strength is the **breadth of diversity** that the institution sees and also learning how to care for some of the most disadvantaged, at-risk populations in the nation."}
-    - {student: zach-donato, text: "The DOCS clinic is a popular activity at our school, with **over 70% of students participating**."}
-    - {student: zach-donato, text: "Everyone here is very nice and we have a **very non-cutthroat culture** from my experience."}
+    - {student: zach-donato, text: "The DOCS clinic is a huge activity at our school and **over 70% of students participate**."}
+    - {student: zach-donato, text: "Everyone is very nice, **very non-cutthroat culture** from my experience"}
   change:
     - {student: zach-donato, text: "**It is very expensive to live here** … Brickell traffic can be quite annoying."}
     - {student: todd-jackson, text: "The only thing I dislike about Miami is **the humidity** that can get really uncomfortable in the summer and the potential for hurricanes that disrupt scheduling."}

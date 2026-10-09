@@ -1,0 +1,47 @@
+{
+  "hospitals": {
+    "340040": {
+      "city": "GREENVILLE",
+      "emergency": true,
+      "name": "ECU HEALTH MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 2,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-09"
+  },
+  "nih": {
+    "amount": 3656208,
+    "ctsa": false,
+    "fetched": "2026-10-09",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "EAST CAROLINA UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 1627591,
+        "dept": "Microbiology / Immun / Virology"
+      },
+      {
+        "amount": 688777,
+        "dept": "None"
+      },
+      {
+        "amount": 505226,
+        "dept": "Anatomy / Cell Biology"
+      }
+    ],
+    "trend": {
+      "2021": 7124911,
+      "2022": 6934788,
+      "2023": 6042697,
+      "2024": 4737133,
+      "2025": 3656208
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-09",
+    "recruiting": 14,
+    "sponsor": "East Carolina University"
+  }
+}

@@ -1,0 +1,111 @@
+# School page data for Brody School of Medicine at East Carolina University.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official ECU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-09.
+# Brody bills tuition per semester, so the rate is listed under Applying rather than as a yearly tile.
+
+short_name: Brody
+nih_org: EAST CAROLINA UNIVERSITY
+trials_sponsor: East Carolina University
+
+stats:
+  cohort_label: Class of 2030 accepted students   # ECU's profile reports averages of accepted students
+  stats_kind: average
+  profile_url: https://ppac.ecu.edu/advising/pre-professional/medicine/
+  mcat: 511
+  gpa_overall: 3.74
+  gpa_science: 3.65
+  applied: 2516
+  enrolled: 96
+  class_size: 96
+
+sources:
+  - label: ECU Pre-Professional Advising (Brody Class of 2030 profile)
+    url: https://ppac.ecu.edu/advising/pre-professional/medicine/
+  - label: Brody Admission Requirements
+    url: https://medicine.ecu.edu/admissions/admission-requirements/
+  - label: Brody Tuition & Fees, Fall 2026
+    url: https://financialservices.ecu.edu/bsom-tuition-and-fees-fall-2026/
+  - label: Brody Scholars Program
+    url: https://brodyscholars.ecu.edu/
+  - label: Brody Medical Education At a Glance
+    url: https://medicine.ecu.edu/medicaleducation/at-a-glance/
+  - label: ECU News, Class of 2030 orientation
+    url: https://news.ecu.edu/2026/07/28/record-breaking-medical-school-class-orients-itself-toward-success/
+  - label: Census QuickFacts (Pitt County, NC)
+    url: https://www.census.gov/quickfacts/fact/table/pittcountynorthcarolina/HSG860224
+
+highlights:
+  - title: Curriculum
+    icon: menu_book
+    paragraphs:
+      - >-
+        Most preclinical lectures are recorded and optional, and the Brody student interviewed says most
+        classmates watch them at 2x. First and second year include weekly problem-based learning on
+        clinical cases, and second year adds sessions practicing exams in clinical or simulated settings.
+      - >-
+        According to the student, preclinical courses moved to pass/fail in 2022, while clerkships stayed
+        graded, with shelf exam performance and evaluations both counting.
+
+  - title: One Hospital, Next Door
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Nearly all core rotations happen at **ECU Health Medical Center** and ECU clinics in Greenville, so
+        students don’t scatter across the region. The student describes it as the major hospital for
+        that part of the state, with very sick, high-risk patients and unusual pathology.
+      - >-
+        The school building connects to the hospital by a hallway. A $265 million construction project is
+        underway to expand medical education.
+
+  - title: A Small, Collaborative Class
+    icon: groups
+    paragraphs:
+      - >-
+        Brody enrolled 96 students in the Class of 2030, its largest class yet. The student says a class
+        that size means you can recognize everyone, and the culture errs on the collaborative side.
+      - >-
+        Each year, second-years cover the sidewalk outside the school in chalk messages of encouragement
+        the night before the first-years’ first exam.
+
+  - title: Greenville and Cost
+    icon: savings
+    paragraphs:
+      - >-
+        Greenville is a college town centered on the university and the hospital. You have to hunt for
+        your kind of fun, but there are breweries, cafes, River Park North, and kayaking on the Tar River.
+        Raleigh is about 1.25 hours away and the beach about 1.75.
+      - >-
+        Rent is very low, and the **Brody Scholars Program** covers full tuition and fees, plus most living
+        expenses, for four years.
+
+highlight_sources:
+  - label: DocStory interview with a Brody MS3
+    url: /interviews/brody-school-of-medicine/anonymous-ms3/index.html
+  - label: ECU News, Class of 2030 orientation
+    url: https://news.ecu.edu/2026/07/28/record-breaking-medical-school-class-orients-itself-toward-success/
+  - label: Brody Scholars Program
+    url: https://brodyscholars.ecu.edu/
+
+quotes:
+  anonymous-ms3: >-
+    "It's the little things like that that I appreciate and I think it's a good example of how the
+    culture at our school errs on the collaborative side - we want to support each other and share what
+    we know."
+
+clinical_sites:
+  - {name: ECU Health Medical Center, role: Primary teaching hospital · connected to the school, cms_id: "340040"}
+  - {name: ECU clinics in Greenville, role: Outpatient rotations}
+
+programs:
+  tracks:
+    - {name: Brody Scholars, note: Full tuition and fees for four years}
+
+applying:
+  - {label: Minimums, value: "MCAT 500 and science GPA 3.0 (in-state and out-of-state)"}
+  - {label: Tuition, value: "$13,094.80 per semester full-time, including fees (Fall 2026)"}
+
+cost_of_living:
+  county: Pitt County, NC
+  fips: "37147"
+  median_rent: 993              # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024
