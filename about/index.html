@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About DocStory — Our Mission &amp; Story</title>
-  <meta name="description" content="Learn how DocStory is bringing transparency to the medical school application journey through authentic student stories and a supportive community.">
+  <title>About DocStory</title>
+  <meta name="description" content="DocStory was started in 2017 by medical students who wanted balanced, detailed information about medical schools. We share interviews with current students in their own words.">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -49,6 +49,16 @@
       }},
     }
   </script>
+  <style>
+    .about h2 { margin-top: 48px; font: 600 22px/30px Inter, sans-serif; color: #333e4d; letter-spacing: -0.01em; }
+    .about p:not([class*="mt-"]):not([aria-label]) { margin-top: 16px; font-size: 17px; line-height: 1.75; color: #4A5565; }
+    .about .about-list { margin-top: 16px; display: flex; flex-direction: column; gap: 16px; padding-left: 0; list-style: none; }
+    .about .about-list li { position: relative; padding-left: 22px; font-size: 17px; line-height: 1.7; color: #4A5565; }
+    .about .about-list li::before { content: ''; position: absolute; left: 2px; top: 0.72em; width: 7px; height: 7px; border-radius: 50%; background: #9580FF; }
+    .about .about-list strong { color: #333e4d; font-weight: 600; }
+    .about a[href^="mailto"] { color: #6c5ce7; text-decoration: underline; text-underline-offset: 3px; }
+    :focus-visible { outline: 2px solid #6c5ce7; outline-offset: 2px; }
+  </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
 
@@ -91,98 +101,50 @@
 </div>
 
 <!-- MAIN -->
-<main class="flex-grow flex flex-col items-center">
+<main class="flex-grow w-full">
+  <article class="about max-w-[680px] mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-xl md:pt-[96px]">
 
-  <!-- Hero -->
-  <section class="w-full max-w-[1200px] px-margin-mobile md:px-margin-desktop py-xl md:py-[120px] flex flex-col items-center text-center">
-    <span class="bg-surface-container-highest text-primary font-label-md text-label-md px-sm py-xs rounded-full mb-md inline-block uppercase tracking-wider">Our Mission</span>
-    <h1 class="font-display-lg text-display-lg text-primary max-w-3xl mb-lg">Bringing Transparency to the Medical School Journey</h1>
-    <p class="font-body-lg text-body-lg text-slate-gray max-w-2xl mb-xl">We believe that every aspiring physician deserves access to authentic insights, real experiences, and a supportive community during the high-stakes application and interview process.</p>
-  </section>
+    <p class="mt-0 font-label-md text-label-md uppercase tracking-wide text-tertiary">About DocStory</p>
+    <h1 class="mt-sm font-bold text-[34px] leading-[42px] md:text-[44px] md:leading-[52px] tracking-tight text-primary [text-wrap:balance]">We built the resource we wished we’d had.</h1>
+    <p class="mt-md text-[18px] leading-[30px] text-slate-gray">DocStory shares interviews with current medical students about what their schools are really like: the curriculum, the culture, the city, and the downsides.</p>
 
-  <!-- Our Story Bento -->
-  <section class="w-full max-w-[1200px] px-margin-mobile md:px-margin-desktop py-xl">
-    <h2 class="font-headline-lg text-headline-lg text-primary mb-xl text-center md:text-left">Our Story</h2>
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px]">
+    <!-- Live numbers from js/site-data.js (generated from content/ at build time) -->
+    <p class="mt-lg flex flex-wrap gap-x-md gap-y-xs text-[15px] text-slate-gray" aria-label="DocStory at a glance">
+      <span><strong class="text-primary font-semibold" data-site-stat="interviews">49</strong> interviews</span>
+      <span aria-hidden="true" class="hidden sm:inline text-primary/30">·</span>
+      <span><strong class="text-primary font-semibold" data-site-stat="schools">40</strong> medical schools</span>
+      <span aria-hidden="true" class="hidden sm:inline text-primary/30">·</span>
+      <span><strong class="text-primary font-semibold" data-site-stat="states">23</strong> states</span>
+    </p>
 
-      <!-- Large block -->
-      <div class="md:col-span-8 rounded-xl bg-soft-surface border border-primary/10 p-xl flex flex-col justify-end relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-vibrant-iris/10 to-transparent z-0"></div>
-        <div class="relative z-10">
-          <span class="material-symbols-outlined text-vibrant-iris text-[48px] mb-md block">menu_book</span>
-          <h3 class="font-headline-md text-headline-md text-primary mb-sm">The Problem with the Process</h3>
-          <p class="font-body-md text-body-md text-slate-gray max-w-lg">For decades, the medical school application process has been shrouded in mystery. Students relied on rumors, fragmented forums, and expensive consultants. We saw a system that favored connections over raw talent and decided it was time to level the playing field.</p>
-        </div>
-      </div>
+    <h2>How it started</h2>
+    <p>In 2017, a few of us were medical students at UC Irvine, Creighton, and the John A. Burns School of Medicine in Hawaiʻi. We all remembered the same frustration from applying.</p>
+    <p>Official school materials told us what every school says about itself. Forums and other sites swung between glowing and furious, and it was hard to tell what was typical and what was exaggerated. When an application or an interviewer asked why a school was a good fit for us, it was hard to give an answer that was specific and true.</p>
+    <p>What actually helped was talking to students: personal connections, friends of friends, phone calls. Not everyone has those connections. So we started asking current students the questions we’d wanted answered, and sharing their answers in their own words. The first interviews went up in 2018.</p>
 
-      <!-- Stat block -->
-      <div class="md:col-span-4 rounded-xl bg-primary text-white p-lg flex flex-col justify-center items-center text-center">
-        <span class="font-display-lg text-display-lg text-vibrant-iris mb-xs">10k+</span>
-        <span class="font-label-md text-label-md text-surface-variant uppercase tracking-wider">Interview Reports</span>
-      </div>
+    <h2>How DocStory works</h2>
+    <ul class="about-list">
+      <li><strong>Students answer in their own words.</strong> Each interview is a current student answering questions about their school. We edit lightly for length and clarity, and we ask about the downsides as well as the strengths.</li>
+      <li><strong>School pages add the facts.</strong> Each school page pairs student interviews with figures from the school’s own website and U.S. government data, with the sources listed.</li>
+      <li><strong>Quotes are exact.</strong> When we quote a student anywhere on the site, the words are theirs, checked against the full interview.</li>
+      <li><strong>Contributors are verified.</strong> New contributors confirm their school email before anything is published, and we compensate them for their time.</li>
+    </ul>
 
-      <!-- Image block -->
-      <div class="md:col-span-5 rounded-xl border border-primary/10 overflow-hidden relative">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOHupEujo_dMQJRudJz-1inBh1SUo4dFxqdOWPg3k36MmeY3551Fx1nyhMkU5N5tPLk92KEGsTU5J8FFi6uu3UisyvfUTYgJ1b7MKi_me0gVT_yxlUFy1iDzdD9S9CAq1s1NobAzsUbJhJrfjc2TgHr27LEvF2XRgFnG8YTZnEYC2or9-M5jQ95cosHZ6BwH1C57kQSt9pwPDDlwLBHPO5M4tipYRyewm67lgPbctJWCLvWWL16FGOW2SXGkY4kPiDG8OVIBrE_Lfa')"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-lg">
-          <p class="text-white font-body-md text-body-md">Empowering the next generation of physicians through shared knowledge.</p>
-        </div>
-      </div>
+    <h2>What DocStory isn’t</h2>
+    <p>We’re not admissions consultants, we’re not affiliated with any medical school, and we don’t rank schools. Every interview is one student’s experience at one point in time, and some were written several years ago, so check the date and read more than one perspective when you can.</p>
 
-      <!-- Feature block -->
-      <div class="md:col-span-7 rounded-xl bg-surface-bright border border-primary/10 p-lg flex flex-col justify-center gap-md">
-        <div class="flex items-start gap-md">
-          <div class="bg-surface-container-low p-sm rounded-lg flex-shrink-0">
-            <span class="material-symbols-outlined text-vibrant-iris">lightbulb</span>
-          </div>
-          <div>
-            <h4 class="font-headline-md text-headline-md text-primary mb-xs">The Turning Point</h4>
-            <p class="font-body-md text-body-md text-slate-gray">DocStory was born from a simple idea: what if every applicant could read a detailed, honest review of the interview day before they stepped foot on campus? We started by collecting stories from our peers, and the response was overwhelming.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-md">
-          <div class="bg-surface-container-low p-sm rounded-lg flex-shrink-0">
-            <span class="material-symbols-outlined text-vibrant-iris">diversity_3</span>
-          </div>
-          <div>
-            <h4 class="font-headline-md text-headline-md text-primary mb-xs">Building the Community</h4>
-            <p class="font-body-md text-body-md text-slate-gray">Today, we are a thriving community of thousands of pre-meds and current medical students. We don't just share interview questions; we share the vibe, the culture, and the reality of medical education.</p>
-          </div>
-        </div>
-      </div>
+    <h2>Get in touch</h2>
+    <p>Questions, corrections, or a story to share? Email us at <a href="mailto:docstory.contact@gmail.com">docstory.contact@gmail.com</a>.</p>
 
+    <div class="mt-lg flex flex-wrap gap-sm">
+      <a href="../directory/index.html" class="inline-flex items-center gap-xs bg-[#6c5ce7] text-white px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
+        Read interviews <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+      </a>
+      <a href="../contribute/index.html" class="inline-flex items-center gap-xs border border-primary/20 text-primary px-lg py-sm rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+        Share your story
+      </a>
     </div>
-  </section>
-
-  <!-- Core Values -->
-  <section class="w-full bg-soft-surface py-xl">
-    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-      <h2 class="font-headline-lg text-headline-lg text-primary mb-xl text-center">Core Values</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
-        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
-            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">visibility</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Radical Transparency</h3>
-          <p class="font-body-md text-body-md text-slate-gray">No gatekeeping. We believe all applicants should have access to the same high-quality information, regardless of background or connections.</p>
-        </div>
-        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
-            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">favorite</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Empathetic Support</h3>
-          <p class="font-body-md text-body-md text-slate-gray">The premed journey is grueling. Our platform is designed to be a supportive space where students validate each other's experiences and reduce anxiety.</p>
-        </div>
-        <div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-md">
-            <span class="material-symbols-outlined text-vibrant-iris text-3xl" style="font-variation-settings:'FILL' 1">verified</span>
-          </div>
-          <h3 class="font-headline-md text-headline-md text-primary mb-sm">Authenticity First</h3>
-          <p class="font-body-md text-body-md text-slate-gray">We prioritize real voices over polished marketing. Every review on DocStory comes from a student who has actually been through the process.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  </article>
 </main>
 
 <!-- FOOTER -->
@@ -207,6 +169,17 @@
 </footer>
 
 <script src="../js/contribute-config.js?v=2"></script>
+<script src="../js/site-data.js"></script>
+<script>
+  // Keep the at-a-glance numbers in step with the site's content
+  (function () {
+    var st = (window.DOCSTORY_SITE || {}).stats || {};
+    document.querySelectorAll('[data-site-stat]').forEach(function (el) {
+      var v = st[el.getAttribute('data-site-stat')];
+      if (v != null) el.textContent = v;
+    });
+  })();
+</script>
 <script src="../js/main.js?v=5"></script>
 </body>
 </html>
