@@ -12,6 +12,7 @@ SITE_URL = 'https://www.docstory.org'
 SITE_NAME = 'DocStory'
 OG_IMAGE = SITE_URL + '/images/og-default.png'
 CONTACT_EMAIL = 'docstory.contact@gmail.com'
+BING_SITE_VERIFICATION = 'AF26F8B55DCF9964E6198B219F49D353'   # Bing Webmaster Tools ownership check (homepage only)
 
 ORGANIZATION = {
     '@type': 'Organization',
