@@ -11,6 +11,8 @@ from pathlib import Path
 
 import yaml
 
+import seo
+
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / 'content' / 'schools'
 
@@ -1130,6 +1132,24 @@ def render_voice_card(school_slug, fm, body, student_slug, quote=None):
       </a>'''
 
 
+def _seo_title_description(name, city, state, degree, stats, n):
+    """Search title and snippet built from the same official figures the page shows."""
+    has_cost = any(stats.get(k) for k in ('tuition', 'tuition_in_state'))
+    title = f'{name}: Student Interviews, Stats & Costs | DocStory' if has_cost else f'{name}: Student Interviews & Stats | DocStory'
+    facts = []
+    if stats.get('mcat'):
+        mcat = round(float(stats['mcat']))
+        facts.append(f'average MCAT {mcat}' if stats.get('stats_kind') == 'average' else f'MCAT {mcat}')
+    if stats.get('gpa_overall'):
+        facts.append(f'GPA {float(stats["gpa_overall"]):.2f}')
+    if stats.get('class_size'):
+        facts.append(f'class size {stats["class_size"]}')
+    ivs = f'{n} student interviews' if n != 1 else 'A student interview'
+    base = f'What is {name} ({degree}, {city}, {state}) really like? {ivs} on daily life, curriculum, and culture'
+    full = base + (f', plus official figures: {", ".join(facts)}.' if facts else '.')
+    return title, (full if len(full) <= 200 else base + '.')
+
+
 def render_page(school_slug, data, interviews, page=None):
     name     = data['name']
     city     = data['city']
@@ -1246,13 +1266,27 @@ def render_page(school_slug, data, interviews, page=None):
     </div>
   </div>'''
 
+    page_title, description = _seo_title_description(name, city, state, degree, stats, n)
+    page_path = f'/schools/{school_slug}/'
+    school_ld = {'@type': 'CollegeOrUniversity', 'name': name,
+                 'address': {'@type': 'PostalAddress', 'addressLocality': city, 'addressRegion': state,
+                             'addressCountry': 'US'}}
+    if founded:
+        school_ld['foundingDate'] = str(founded)
+    head_seo = seo.head_tags(page_title, description, page_path, jsonld=[
+        {'@type': 'WebPage', 'name': page_title.replace(' | DocStory', ''), 'url': seo.url(page_path),
+         'description': description, 'about': school_ld, 'publisher': {'@id': seo.SITE_URL + '/#organization'}},
+        seo.breadcrumbs([('Home', '/'), ('Schools', '/directory/'), (name, page_path)]),
+    ])
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{html_mod.escape(name)} — School Profile | DocStory</title>
-  <meta name="description" content="Explore {html_mod.escape(name)} — program stats, curriculum highlights, research, and real student interview experiences.">
+  <title>{html_mod.escape(page_title)}</title>
+  <meta name="description" content="{html_mod.escape(description)}">
+  {head_seo}
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -1389,6 +1423,9 @@ def main():
 
     write_contribute_data(content_dir)
     warned += write_site_data(content_dir)
+    write_sitemap_and_llms(content_dir)
+    write_static_heads(content_dir)
+    write_prerendered(content_dir)
     print(f'\nDone: {generated} pages generated, {skipped} skipped, {warned} warnings.')
 
 
@@ -1482,6 +1519,226 @@ def write_site_data(content_dir):
             print(f'  WARN  directory/index.html: no map entry for {s["slug"]} (add name, city, lat, lng)')
             warnings += 1
     return warnings
+
+
+STATIC_PAGES = [            # hand-written pages to list in the sitemap (contribute/interview/ is noindex)
+    ('/', 'Home'),
+    ('/directory/', 'School directory and map'),
+    ('/about/', 'About DocStory'),
+    ('/contribute/', 'Contribute an interview'),
+    ('/contribute/terms/', 'Contributor terms and FAQ'),
+]
+
+
+def write_sitemap_and_llms(content_dir):
+    """sitemap.xml for search engines and llms.txt (a plain-text site guide for AI assistants).
+    Both list every school and interview page, so they stay current with each build."""
+    schools, interviews = [], []
+    for slug, data in SCHOOLS.items():
+        files = sorted((content_dir / slug).glob('*.md')) if (content_dir / slug).exists() else []
+        if not files:
+            continue
+        schools.append((slug, data, len(files)))
+        for f in files:
+            fm, _ = parse_md(f)
+            interviews.append((f'/interviews/{slug}/{f.stem}/', fm.get('name', 'Anonymous'), fm.get('year', ''),
+                               data['name'], str(fm.get('date', ''))))
+    for f in sorted((content_dir / 'misc').glob('*.md')):
+        fm, _ = parse_md(f)
+        interviews.append((f'/interviews/misc/{f.stem}/', fm.get('name', 'Anonymous'), fm.get('year', ''),
+                           'School not given', str(fm.get('date', ''))))
+
+    urls = [seo.url(path) for path, _ in STATIC_PAGES]
+    urls += [seo.url(f'/schools/{slug}/') for slug, _, _ in schools]
+    urls += [seo.url(path) for path, *_ in interviews]
+    sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    sitemap += [f'  <url><loc>{html_mod.escape(u)}</loc></url>' for u in urls]
+    sitemap.append('</urlset>')
+    (ROOT / 'sitemap.xml').write_text('\n'.join(sitemap) + '\n', encoding='utf-8')
+
+    md = sum(d['type'] == 'md' for _, d, _ in schools)
+    lines = [
+        '# DocStory',
+        '',
+        f'> First-hand interviews with medical students about what their schools are really like: '
+        f'{len(interviews)} interviews covering {len(schools)} U.S. medical schools ({md} MD, {len(schools) - md} DO). '
+        'Each school page pairs the interviews with figures from the school\'s own published class profile '
+        'and cost of attendance and, where available, U.S. government data (NIH research funding, ClinicalTrials.gov, CMS hospital '
+        'data, Census rent). Run since 2017 by people who were medical students at UC Irvine, Creighton, and the '
+        'John A. Burns School of Medicine.',
+        '',
+        'Interviews are written by the students themselves, mostly in answer to a standard set of questions (typical '
+        'day, curriculum, culture, clinical training, advice for applicants), and are edited only for typos and '
+        'obvious grammar. Each interview reflects one student\'s experience in the year it was written; the publication date '
+        'is shown on the interview page. School pages list the official sources for their figures.',
+        '',
+        '## Pages',
+        '',
+    ]
+    lines += [f'- [{label}]({seo.url(path)})' for path, label in STATIC_PAGES]
+    lines += ['', '## Schools', '']
+    for slug, data, n in sorted(schools, key=lambda x: x[1]['name'].lower()):
+        kind = 'MD' if data['type'] == 'md' else 'DO'
+        lines.append(f'- [{data["name"]}]({seo.url(f"/schools/{slug}/")}): {kind}, {data["city"]}, '
+                     f'{data["state"]}; {n} interview{"s" if n != 1 else ""}')
+    lines += ['', '## Interviews', '']
+    for path, name, year, school, date in sorted(interviews, key=lambda x: (x[3].lower(), x[1].lower())):
+        meta = ', '.join(x for x in (str(year), date[:4]) if x)
+        lines.append(f'- [{name} — {school}]({seo.url(path)}){f" ({meta})" if meta else ""}')
+    lines += ['', '## Contact', '', f'- {seo.CONTACT_EMAIL}', '']
+    (ROOT / 'llms.txt').write_text('\n'.join(lines), encoding='utf-8')
+    print(f'  seo   sitemap.xml ({len(urls)} URLs), llms.txt')
+
+
+_SEO_BLOCK = re.compile(r'  <title>.*?</title>\n(?:  <meta name="description"[^\n]*\n)?'
+                        r'(?:  <!-- seo -->.*?<!-- /seo -->\n)?', re.S)
+
+
+def write_static_heads(content_dir):
+    """Title, description, canonical, link-preview tags and JSON-LD for the hand-written pages.
+    Counts come from content/, so the descriptions never go stale."""
+    n_schools = sum(1 for slug in SCHOOLS if (content_dir / slug).exists() and any((content_dir / slug).glob('*.md')))
+    n_interviews = len(list(content_dir.glob('**/*.md')))
+    states = len({d['state'] for slug, d in SCHOOLS.items() if (content_dir / slug).exists()})
+    pages = {
+        'index.html': (
+            'DocStory: Medical Students on What Their Schools Are Really Like',
+            f'Read {n_interviews} first-hand interviews with medical students at {n_schools} U.S. MD and DO schools, '
+            'paired with official class profiles, costs, and research data.',
+            [{'@type': 'WebSite', '@id': seo.SITE_URL + '/#website', 'name': 'DocStory', 'url': seo.SITE_URL + '/',
+              'publisher': {'@id': seo.SITE_URL + '/#organization'}}]),
+        'directory/index.html': (
+            'Medical School Directory: Student Interviews by School | DocStory',
+            f'Browse {n_schools} U.S. medical schools in {states} states on a map or by name. Filter MD and DO '
+            'programs and read interviews with students at each school.',
+            [{'@type': 'CollectionPage', 'name': 'Medical school directory', 'url': seo.url('/directory/')},
+             seo.breadcrumbs([('Home', '/'), ('Schools', '/directory/')])]),
+        'about/index.html': (
+            'About DocStory',
+            'DocStory was started in 2017 by medical students who wanted balanced, detailed information about '
+            'medical schools. We share interviews with current students in their own words.',
+            [{'@type': 'AboutPage', 'name': 'About DocStory', 'url': seo.url('/about/'),
+              'about': {'@id': seo.SITE_URL + '/#organization'}},
+             seo.breadcrumbs([('Home', '/'), ('About', '/about/')])]),
+        'contribute/index.html': (
+            'Share Your Med School Story: Contribute to DocStory',
+            'Current medical students: answer 8–10 questions about your school in your own words and get paid '
+            'once your interview is verified and published on DocStory.',
+            [seo.breadcrumbs([('Home', '/'), ('Contribute', '/contribute/')])]),
+        'contribute/terms/index.html': (
+            'Contributor Terms | DocStory',
+            'The terms for contributing a student interview to DocStory: eligibility, verification, payment, '
+            'editing, and removal.',
+            [seo.breadcrumbs([('Home', '/'), ('Contribute', '/contribute/'), ('Terms', '/contribute/terms/')])]),
+        'contribute/interview/index.html': (
+            'Your Interview: Contribute to DocStory',
+            'Choose 8–10 questions about your medical school and answer them in your own words.',
+            []),
+    }
+    for rel, (title, desc, jsonld) in pages.items():
+        path = ROOT / rel
+        text = path.read_text(encoding='utf-8')
+        noindex = rel == 'contribute/interview/index.html'
+        tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, robots='noindex' if noindex else None)
+        block = (f'  <title>{html_mod.escape(title, quote=False)}</title>\n'
+                 f'  <meta name="description" content="{html_mod.escape(desc)}">\n'
+                 f'  <!-- seo -->\n  {tags}\n  <!-- /seo -->\n')
+        new, count = _SEO_BLOCK.subn(lambda m: block, text, count=1)
+        if not count:
+            print(f'  WARN  {rel}: no <title> found for SEO tags')
+            continue
+        if noindex:
+            new = new.replace('  <meta name="robots" content="noindex">\n', '', 1)
+        if new != text:
+            path.write_text(new, encoding='utf-8')
+    print(f'  seo   head tags for {len(pages)} static pages')
+
+
+def _fill(text, name, inner):
+    """Replace what sits between <!-- prerender:name --> and <!-- /prerender:name -->."""
+    pat = re.compile(rf'(<!-- prerender:{name} -->).*?(<!-- /prerender:{name} -->)', re.S)
+    if not pat.search(text):
+        print(f'  WARN  prerender marker "{name}" not found')
+        return text
+    return pat.sub(lambda m: m.group(1) + inner + m.group(2), text, count=1)
+
+
+def write_prerendered(content_dir):
+    """Static copies of the homepage and directory content that JavaScript normally draws, so search
+    engines and AI crawlers that don't run scripts still see the schools, counts, and featured interviews.
+    The page scripts replace these copies on load, so visitors see the same thing as before."""
+    e = lambda t: html_mod.escape(str(t), quote=True)
+    site = json.loads((ROOT / 'js' / 'site-data.js').read_text(encoding='utf-8')
+                      .split('window.DOCSTORY_SITE = ', 1)[1].rstrip().rstrip(';'))
+    st = site['stats']
+    ini = lambda name: ''.join(p[0] for p in str(name).split())[:2].upper()
+
+    # Homepage: coverage counter + three featured interview cards (the first quoted ones; JS rotates weekly)
+    coverage = (f'\n      <div class="font-display-lg text-display-lg text-primary leading-none">{st["schools"]}</div>'
+                f'\n      <div class="mt-[4px] mb-xs"><span class="inline-flex items-center gap-[2px] text-[11px] font-semibold '
+                f'text-emerald-600 bg-emerald-50 px-[8px] py-[2px] rounded-full">{st["md"]} MD · {st["do"]} DO</span></div>'
+                f'\n      <div class="font-body-md text-[13px] font-medium text-primary">Medical schools</div>'
+                f'\n      <div class="font-body-md text-[12px] text-slate-gray mt-[2px]">Student interviews from MD and DO '
+                f'programs in {st["states"]} states.</div>\n')
+    types = {sc['slug']: sc['type'] for sc in site['schools']}
+    cards = []
+    for iv in [iv for iv in site['interviews'] if iv['quote']][:3]:
+        cards.append(f'''
+      <a href="interviews/{iv['schoolSlug']}/{iv['studentSlug']}/index.html" class="bg-white rounded-xl border border-primary/10 overflow-hidden hover:shadow-[0_4px_20px_rgb(0,0,0,0.06)] transition-shadow group cursor-pointer flex flex-col">
+        <div class="h-40 bg-surface-container relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div class="absolute bottom-sm left-sm right-sm text-white">
+            <span class="bg-vibrant-iris px-2 py-1 rounded text-[10px] font-label-md mb-1 inline-block uppercase tracking-wider">{types.get(iv['schoolSlug'], 'md').upper()}</span>
+            <div class="font-headline-md text-headline-md leading-tight line-clamp-2">{e(iv['school'])}</div>
+          </div>
+        </div>
+        <div class="p-md flex flex-col gap-md flex-1">
+          <div class="flex items-center gap-sm">
+            <div class="w-8 h-8 rounded-full bg-vibrant-iris/15 flex items-center justify-center text-vibrant-iris font-bold text-xs">{e(ini(iv['name']))}</div>
+            <div>
+              <div class="font-label-md text-label-md text-primary">{e(iv['name'])}</div>
+              <div class="font-body-md text-[12px] text-slate-gray">{e(iv['year'])} · {e(iv['city'])}</div>
+            </div>
+          </div>
+          <p class="font-body-md text-body-md text-slate-gray italic line-clamp-3">“{e(iv['quote'])}”</p>
+        </div>
+      </a>''')
+    path = ROOT / 'index.html'
+    text = path.read_text(encoding='utf-8')
+    new = _fill(_fill(text, 'coverage', coverage), 'featured', ''.join(cards) + '\n')
+    if new != text:
+        path.write_text(new, encoding='utf-8')
+
+    # Directory: the school cards, in the same order and markup as the map list
+    path = ROOT / 'directory' / 'index.html'
+    text = path.read_text(encoding='utf-8')
+    counts = {sc['slug']: sc['interviews'] for sc in site['schools']}
+    entries = re.findall(r"\{ id:'([^']+)',\s*name:'([^']+)',\s*city:'([^']+)',\s*type:'(md|do)'.*?slug:'([^']+)'", text)
+    items = []
+    for sid, name, city, kind, slug in entries:
+        n = counts.get(slug, 0)
+        items.append(f'''
+<article id="card-{sid}" data-school-id="{sid}" class="bg-white border border-primary/5 rounded-xl p-4 shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all cursor-pointer group">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-vibrant-iris/10 group-hover:text-vibrant-iris transition-colors">
+          <span class="material-symbols-outlined">school</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-headline-md text-sm font-semibold text-primary group-hover:text-vibrant-iris transition-colors leading-tight">{e(name)}</h3>
+          <p class="font-body-md text-xs text-slate-gray mt-0.5">{e(city)} · {kind.upper()}</p>
+        </div>
+      </div>
+      <div class="mt-2 pt-2 border-t border-primary/5 flex items-center justify-between">
+        <span class="font-body-md text-[11px] text-slate-gray">{n} interview{"s" if n != 1 else ""}</span>
+        <a href="/schools/{slug}/index.html" class="font-label-md text-[10px] font-semibold text-vibrant-iris hover:underline">View →</a>
+      </div>
+    </article>''')
+    new = _fill(text, 'count', f'Showing {len(entries)} results.')
+    new = _fill(new, 'schools', ''.join(items) + '\n')
+    if new != text:
+        path.write_text(new, encoding='utf-8')
+    print(f'  seo   prerendered homepage counters + {len(cards)} cards, {len(entries)} directory cards')
 
 
 def write_contribute_data(content_dir):

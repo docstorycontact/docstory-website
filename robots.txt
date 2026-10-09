@@ -1,0 +1,5 @@
+# DocStory welcomes search engines and AI assistants.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.docstory.org/sitemap.xml

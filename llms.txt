@@ -1,0 +1,121 @@
+# DocStory
+
+> First-hand interviews with medical students about what their schools are really like: 54 interviews covering 44 U.S. medical schools (40 MD, 4 DO). Each school page pairs the interviews with figures from the school's own published class profile and cost of attendance and, where available, U.S. government data (NIH research funding, ClinicalTrials.gov, CMS hospital data, Census rent). Run since 2017 by people who were medical students at UC Irvine, Creighton, and the John A. Burns School of Medicine.
+
+Interviews are written by the students themselves, mostly in answer to a standard set of questions (typical day, curriculum, culture, clinical training, advice for applicants), and are edited only for typos and obvious grammar. Each interview reflects one student's experience in the year it was written; the publication date is shown on the interview page. School pages list the official sources for their figures.
+
+## Pages
+
+- [Home](https://www.docstory.org/)
+- [School directory and map](https://www.docstory.org/directory/)
+- [About DocStory](https://www.docstory.org/about/)
+- [Contribute an interview](https://www.docstory.org/contribute/)
+- [Contributor terms and FAQ](https://www.docstory.org/contribute/terms/)
+
+## Schools
+
+- [Albany Medical College](https://www.docstory.org/schools/albany-medical-college/): MD, Albany, NY; 1 interview
+- [Baylor College of Medicine](https://www.docstory.org/schools/baylor-college-of-medicine/): MD, Houston, TX; 2 interviews
+- [Brody School of Medicine at East Carolina University](https://www.docstory.org/schools/brody-school-of-medicine/): MD, Greenville, NC; 1 interview
+- [California University of Science and Medicine](https://www.docstory.org/schools/california-university-of-science-and-medicine/): MD, Colton, CA; 1 interview
+- [Chicago Medical School at Rosalind Franklin University](https://www.docstory.org/schools/rosalind-franklin-university/): MD, North Chicago, IL; 2 interviews
+- [Creighton University School of Medicine](https://www.docstory.org/schools/creighton-university-school-of-medicine/): MD, Omaha, NE; 1 interview
+- [David Geffen School of Medicine at UCLA](https://www.docstory.org/schools/ucla-geffen-school-of-medicine/): MD, Los Angeles, CA; 1 interview
+- [Drexel University College of Medicine](https://www.docstory.org/schools/drexel-university-college-of-medicine/): MD, Philadelphia, PA; 1 interview
+- [Duke University School of Medicine](https://www.docstory.org/schools/duke-university-school-of-medicine/): MD, Durham, NC; 1 interview
+- [Eastern Virginia Medical School](https://www.docstory.org/schools/eastern-virginia-medical-school/): MD, Norfolk, VA; 1 interview
+- [Florida State University College of Medicine](https://www.docstory.org/schools/florida-state-university-college-of-medicine/): MD, Tallahassee, FL; 1 interview
+- [Harvard Medical School](https://www.docstory.org/schools/harvard-medical-school/): MD, Boston, MA; 1 interview
+- [Indiana University School of Medicine](https://www.docstory.org/schools/indiana-university-school-of-medicine/): MD, Indianapolis, IN; 1 interview
+- [Johns Hopkins School of Medicine](https://www.docstory.org/schools/johns-hopkins-school-of-medicine/): MD, Baltimore, MD; 1 interview
+- [Kentucky College of Osteopathic Medicine](https://www.docstory.org/schools/kentucky-college-of-osteopathic-medicine/): DO, Pikeville, KY; 1 interview
+- [Mayo Clinic Alix School of Medicine](https://www.docstory.org/schools/mayo-clinic-school-of-medicine/): MD, Rochester, MN; 1 interview
+- [Medical College of Georgia at Augusta University](https://www.docstory.org/schools/medical-college-of-georgia/): MD, Augusta, GA; 1 interview
+- [Medical College of Wisconsin](https://www.docstory.org/schools/medical-college-of-wisconsin/): MD, Milwaukee, WI; 1 interview
+- [Midwestern University Chicago College of Osteopathic Medicine](https://www.docstory.org/schools/midwestern-chicago-college-of-osteopathic-medicine/): DO, Downers Grove, IL; 1 interview
+- [New York Medical College](https://www.docstory.org/schools/new-york-medical-college/): MD, Valhalla, NY; 1 interview
+- [Northwestern Feinberg School of Medicine](https://www.docstory.org/schools/northwestern-feinberg-school-of-medicine/): MD, Chicago, IL; 1 interview
+- [Rush Medical College](https://www.docstory.org/schools/rush-medical-college/): MD, Chicago, IL; 1 interview
+- [Southern Illinois University School of Medicine](https://www.docstory.org/schools/southern-illinois-university-school-of-medicine/): MD, Springfield, IL; 1 interview
+- [TCU Burnett School of Medicine](https://www.docstory.org/schools/tcu-burnett-school-of-medicine/): MD, Fort Worth, TX; 1 interview
+- [Texas A&M University Naresh K. Vashisht College of Medicine](https://www.docstory.org/schools/texas-a-and-m-college-of-medicine/): MD, Bryan, TX; 1 interview
+- [Touro College of Osteopathic Medicine](https://www.docstory.org/schools/touro-college-of-osteopathic-medicine/): DO, Middletown, NY; 2 interviews
+- [Tulane University School of Medicine](https://www.docstory.org/schools/tulane-university-school-of-medicine/): MD, New Orleans, LA; 1 interview
+- [UAB Heersink School of Medicine](https://www.docstory.org/schools/university-of-alabama-birmingham/): MD, Birmingham, AL; 1 interview
+- [UC Irvine School of Medicine](https://www.docstory.org/schools/uc-irvine-school-of-medicine/): MD, Irvine, CA; 3 interviews
+- [UC San Diego School of Medicine](https://www.docstory.org/schools/uc-san-diego-school-of-medicine/): MD, La Jolla, CA; 1 interview
+- [UMass Chan Medical School](https://www.docstory.org/schools/university-of-massachusetts-medical-school/): MD, Worcester, MA; 1 interview
+- [University of Cincinnati College of Medicine](https://www.docstory.org/schools/university-of-cincinnati-college-of-medicine/): MD, Cincinnati, OH; 1 interview
+- [University of Florida College of Medicine](https://www.docstory.org/schools/university-of-florida-college-of-medicine/): MD, Gainesville, FL; 1 interview
+- [University of Iowa Carver College of Medicine](https://www.docstory.org/schools/university-of-iowa-carver-college-of-medicine/): MD, Iowa City, IA; 1 interview
+- [University of Miami Miller School of Medicine](https://www.docstory.org/schools/university-of-miami-miller-school-of-medicine/): MD, Miami, FL; 2 interviews
+- [University of Oklahoma College of Medicine](https://www.docstory.org/schools/university-of-oklahoma-college-of-medicine/): MD, Oklahoma City, OK; 1 interview
+- [University of Tennessee Health Science Center College of Medicine](https://www.docstory.org/schools/ut-health-science-center/): MD, Memphis, TN; 1 interview
+- [USC Keck School of Medicine](https://www.docstory.org/schools/usc-keck-school-of-medicine/): MD, Los Angeles, CA; 3 interviews
+- [USF Health Morsani College of Medicine](https://www.docstory.org/schools/morsani-college-of-medicine/): MD, Tampa, FL; 2 interviews
+- [VCU School of Medicine](https://www.docstory.org/schools/virginia-commonwealth-university/): MD, Richmond, VA; 1 interview
+- [Wayne State University School of Medicine](https://www.docstory.org/schools/wayne-state-school-of-medicine/): MD, Detroit, MI; 1 interview
+- [Weill Cornell Medical College](https://www.docstory.org/schools/weill-cornell-medical-college/): MD, New York, NY; 1 interview
+- [Western University College of Osteopathic Medicine of the Pacific](https://www.docstory.org/schools/western-university-osteopathic/): DO, Pomona, CA; 1 interview
+- [Yale School of Medicine](https://www.docstory.org/schools/yale-school-of-medicine/): MD, New Haven, CT; 1 interview
+
+## Interviews
+
+- [Ana Khatia — Albany Medical College](https://www.docstory.org/interviews/albany-medical-college/ana-khatia/) (MS2, 2022)
+- [Justin — Baylor College of Medicine](https://www.docstory.org/interviews/baylor-college-of-medicine/justin/) (MS1, 2019)
+- [Michele Cabeza — Baylor College of Medicine](https://www.docstory.org/interviews/baylor-college-of-medicine/michele-cabeza/) (MS1, 2018)
+- [Anonymous — Brody School of Medicine at East Carolina University](https://www.docstory.org/interviews/brody-school-of-medicine/anonymous-ms3/) (MS3, 2022)
+- [Bao Vu — California University of Science and Medicine](https://www.docstory.org/interviews/california-university-of-science-and-medicine/bao-vu/) (MS1, 2020)
+- [Allison Martin — Chicago Medical School at Rosalind Franklin University](https://www.docstory.org/interviews/rosalind-franklin-university/allison-martin/) (MS2, 2018)
+- [Drew Weinstein — Chicago Medical School at Rosalind Franklin University](https://www.docstory.org/interviews/rosalind-franklin-university/drew-weinstein/) (MS2, 2018)
+- [Eric Nguyen — Creighton University School of Medicine](https://www.docstory.org/interviews/creighton-university-school-of-medicine/eric-nguyen/) (MS2, 2018)
+- [Tim Ellis-Caleo — David Geffen School of Medicine at UCLA](https://www.docstory.org/interviews/ucla-geffen-school-of-medicine/tim-ellis-caleo/) (MS4, 2018)
+- [Jonathan Acosta — Drexel University College of Medicine](https://www.docstory.org/interviews/drexel-university-college-of-medicine/jonathan-acosta/) (MS2, 2018)
+- [Alex — Duke University School of Medicine](https://www.docstory.org/interviews/duke-university-school-of-medicine/alex/) (MS2, 2018)
+- [Rossen Kirkov — Eastern Virginia Medical School](https://www.docstory.org/interviews/eastern-virginia-medical-school/rossen-kirkov/) (MS3, 2018)
+- [Anonymous — Florida State University College of Medicine](https://www.docstory.org/interviews/florida-state-university-college-of-medicine/anonymous-ms3/) (MS3, 2019)
+- [Abraham Cheloff — Harvard Medical School](https://www.docstory.org/interviews/harvard-medical-school/abraham-cheloff/) (MS2, 2020)
+- [Austin Wininger — Indiana University School of Medicine](https://www.docstory.org/interviews/indiana-university-school-of-medicine/austin-wininger/) (MS3, 2018)
+- [Will Tobolowsky — Johns Hopkins School of Medicine](https://www.docstory.org/interviews/johns-hopkins-school-of-medicine/will-tobolowsky/) (MS3, 2018)
+- [Jeremy Storck — Kentucky College of Osteopathic Medicine](https://www.docstory.org/interviews/kentucky-college-of-osteopathic-medicine/jeremy-storck/) (OSM3, 2018)
+- [Arya Shah — Mayo Clinic Alix School of Medicine](https://www.docstory.org/interviews/mayo-clinic-school-of-medicine/arya-shah/) (MS4, 2018)
+- [Catherine Boatman — Medical College of Georgia at Augusta University](https://www.docstory.org/interviews/medical-college-of-georgia/catherine-boatman/) (M2, 2019)
+- [Austin Dopp — Medical College of Wisconsin](https://www.docstory.org/interviews/medical-college-of-wisconsin/austin-dopp/) (MS2, 2018)
+- [Dani Sychowski — Midwestern University Chicago College of Osteopathic Medicine](https://www.docstory.org/interviews/midwestern-chicago-college-of-osteopathic-medicine/dani-sychowski/) (MS1, 2023)
+- [Nick Bacher — New York Medical College](https://www.docstory.org/interviews/new-york-medical-college/nick-bacher/) (MS3, 2018)
+- [Regine Goh — Northwestern Feinberg School of Medicine](https://www.docstory.org/interviews/northwestern-feinberg-school-of-medicine/regine-goh/) (MS3, 2018)
+- [Emily He — Rush Medical College](https://www.docstory.org/interviews/rush-medical-college/emily-he/) (MS1, 2018)
+- [Jonathan Carnino — School not given](https://www.docstory.org/interviews/misc/jonathan-carnino/) (MS1, 2023)
+- [Alexander Worix — Southern Illinois University School of Medicine](https://www.docstory.org/interviews/southern-illinois-university-school-of-medicine/alexander-worix/) (MS2, 2018)
+- [Kyung Park — TCU Burnett School of Medicine](https://www.docstory.org/interviews/tcu-burnett-school-of-medicine/kyung-park/) (MS2, 2022)
+- [Caleb — Texas A&M University Naresh K. Vashisht College of Medicine](https://www.docstory.org/interviews/texas-a-and-m-college-of-medicine/caleb/) (MS3, 2022)
+- [Brittany Stelmar — Touro College of Osteopathic Medicine](https://www.docstory.org/interviews/touro-college-of-osteopathic-medicine/brittany-stelmar/) (MS2, 2018)
+- [Wei Ming Liang — Touro College of Osteopathic Medicine](https://www.docstory.org/interviews/touro-college-of-osteopathic-medicine/wei-ming-liang/) (OMS-2, 2023)
+- [David — Tulane University School of Medicine](https://www.docstory.org/interviews/tulane-university-school-of-medicine/david/) (MS2, 2018)
+- [Emily Hayward — UAB Heersink School of Medicine](https://www.docstory.org/interviews/university-of-alabama-birmingham/emily-hayward/) (MS3 (MD/PhD), 2018)
+- [Alexa Lucas — UC Irvine School of Medicine](https://www.docstory.org/interviews/uc-irvine-school-of-medicine/alexa-lucas/) (MS1, 2018)
+- [Arnie Shah — UC Irvine School of Medicine](https://www.docstory.org/interviews/uc-irvine-school-of-medicine/arnie-shah/) (MS1, 2018)
+- [Steven Tohmasi — UC Irvine School of Medicine](https://www.docstory.org/interviews/uc-irvine-school-of-medicine/steven-tohmasi/) (MS2, 2018)
+- [Neela — UC San Diego School of Medicine](https://www.docstory.org/interviews/uc-san-diego-school-of-medicine/neela/) (MS1, 2018)
+- [Prithwijit Roychowdhury — UMass Chan Medical School](https://www.docstory.org/interviews/university-of-massachusetts-medical-school/prithwijit-roychowdhury/) (MS2, 2018)
+- [Priya Sorab — University of Cincinnati College of Medicine](https://www.docstory.org/interviews/university-of-cincinnati-college-of-medicine/priya-sorab/) (MS2, 2018)
+- [Anonymous — University of Florida College of Medicine](https://www.docstory.org/interviews/university-of-florida-college-of-medicine/anonymous-ms2/) (MS2, 2019)
+- [Gabriel Conley — University of Iowa Carver College of Medicine](https://www.docstory.org/interviews/university-of-iowa-carver-college-of-medicine/gabriel-conley/) (MS2, 2018)
+- [Todd Jackson — University of Miami Miller School of Medicine](https://www.docstory.org/interviews/university-of-miami-miller-school-of-medicine/todd-jackson/) (MS3, 2018)
+- [Zach Donato — University of Miami Miller School of Medicine](https://www.docstory.org/interviews/university-of-miami-miller-school-of-medicine/zach-donato/) (MS2, 2022)
+- [Wilson Hoyt — University of Oklahoma College of Medicine](https://www.docstory.org/interviews/university-of-oklahoma-college-of-medicine/wilson-hoyt/) (MS1, 2022)
+- [Jay Patel — University of Tennessee Health Science Center College of Medicine](https://www.docstory.org/interviews/ut-health-science-center/jay-patel/) (MS1, 2018)
+- [Dominic Carusillo — USC Keck School of Medicine](https://www.docstory.org/interviews/usc-keck-school-of-medicine/dominic-carusillo/) (MS1, 2018)
+- [Guillaume Kugener — USC Keck School of Medicine](https://www.docstory.org/interviews/usc-keck-school-of-medicine/guillaume-kugener/) (MS4, 2023)
+- [Sam Teles — USC Keck School of Medicine](https://www.docstory.org/interviews/usc-keck-school-of-medicine/sam-teles/) (MS1, 2018)
+- [Brian James — USF Health Morsani College of Medicine](https://www.docstory.org/interviews/morsani-college-of-medicine/brian-james/) (MS2, 2018)
+- [Chetna Thawani — USF Health Morsani College of Medicine](https://www.docstory.org/interviews/morsani-college-of-medicine/chetna-thawani/) (M2, 2019)
+- [Chris — VCU School of Medicine](https://www.docstory.org/interviews/virginia-commonwealth-university/chris/) (MS2, 2018)
+- [Nik — Wayne State University School of Medicine](https://www.docstory.org/interviews/wayne-state-school-of-medicine/nik/) (MS1, 2018)
+- [Annie Yau — Weill Cornell Medical College](https://www.docstory.org/interviews/weill-cornell-medical-college/annie-yau/) (MS1, 2018)
+- [Chuck Chan — Western University College of Osteopathic Medicine of the Pacific](https://www.docstory.org/interviews/western-university-osteopathic/chuck-chan/) (OSM1, 2018)
+- [Hadrian Mendoza — Yale School of Medicine](https://www.docstory.org/interviews/yale-school-of-medicine/hadrian-mendoza/) (MS2, 2018)
+
+## Contact
+
+- docstory.contact@gmail.com

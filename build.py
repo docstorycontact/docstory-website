@@ -5,12 +5,15 @@ Run from the project root: python3 build.py
 """
 
 import os
+import html
 import re
 import json
 import yaml
 import markdown
 from pathlib import Path
 from datetime import datetime
+
+import seo
 
 CONTENT_DIR = Path("content/interviews")
 OUTPUT_DIR  = Path("interviews")
@@ -171,7 +174,41 @@ def render_interview_page(iv, all_interviews):
     if date_str:
         facts += f'<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">{date_str}</span></li>\n'
 
-    page_title = f"{name}, {year} — {school} | DocStory" if year else f"{name} — {school} | DocStory"
+    who_short  = f"{name} ({year})" if year else name
+    page_title = f"{who_short} on {school}: Student Interview | DocStory"
+    known_school = school_slug != "misc"
+    if known_school:
+        who = f"{name}, {year} at {school}," if year else f"{name}, a student at {school},"
+    else:
+        who = f"{name}, a medical student ({year}),"  if year else f"{name}, a medical student,"
+        page_title = f"{who_short}: Medical Student Interview | DocStory"
+    description = seo.clip(f"{who} describes a typical day, the curriculum, class culture, "
+                           f"clinical training, and life outside class.")
+    page_path = f"/interviews/{school_slug}/{student_slug}/"
+    article = {
+        '@type': 'Article',
+        'headline': page_title.replace(' | DocStory', ''),
+        'description': description,
+        'url': seo.url(page_path),
+        'mainEntityOfPage': seo.url(page_path),
+        'publisher': {'@id': seo.SITE_URL + '/#organization'},
+        'genre': 'Interview',
+        'inLanguage': 'en',
+    }
+    if known_school:
+        article['about'] = {'@type': 'CollegeOrUniversity', 'name': school,
+                            'url': seo.url(f"/schools/{school_slug}/")}
+        trail = [('Home', '/'), (school, f"/schools/{school_slug}/"), (name, page_path)]
+    else:
+        trail = [('Home', '/'), ('Interviews', '/directory/'), (name, page_path)]
+    if name and name.lower() != 'anonymous':
+        article['author'] = {'@type': 'Person', 'name': name}
+    if meta.get("date"):
+        article['datePublished'] = str(meta.get("date"))
+    head_seo = seo.head_tags(page_title, description, page_path, og_type='article', jsonld=[
+        article,
+        seo.breadcrumbs(trail),
+    ])
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -179,7 +216,8 @@ def render_interview_page(iv, all_interviews):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{page_title}</title>
-  <meta name="description" content="Read {name}'s first-hand experience at {school}, covering curriculum, culture, and life as a medical student.">
+  <meta name="description" content="{html.escape(description)}">
+  {head_seo}
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -455,8 +493,8 @@ def build():
         out_dir = OUTPUT_DIR / school_slug / student_slug
         out_dir.mkdir(parents=True, exist_ok=True)
 
-        html = render_interview_page(iv, all_interviews)
-        (out_dir / "index.html").write_text(html, encoding="utf-8")
+        page_html = render_interview_page(iv, all_interviews)
+        (out_dir / "index.html").write_text(page_html, encoding="utf-8")
         print(f"  ✓  interviews/{school_slug}/{student_slug}/index.html")
         built += 1
 
