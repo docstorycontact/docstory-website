@@ -10,11 +10,11 @@ window.DOCSTORY_CONTRIBUTE = {
 
   // Web3Forms access key. It's meant to be public (it only lets people send TO your inbox).
   // Submissions are emailed to the address you signed up to Web3Forms with.
-  web3formsKey: '',
+  web3formsKey: '0f6bf157-5949-423d-b2c2-22b4aba34487',
 
   // The address you'll send verification emails from. Shown to contributors so they know
   // which emails are really from DocStory. Leave empty to show "a DocStory email address".
-  contactEmail: '',
+  contactEmail: 'docstory.contact@gmail.com',
 
   reviewDays: 7,            // we email the contributor within this many days of submission
   replyDays: 14,            // they have this long to verify and approve

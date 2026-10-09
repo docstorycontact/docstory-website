@@ -400,7 +400,7 @@ def render_interview_page(iv, all_interviews):
 }})();
 </script>
 
-<script src="{root}js/contribute-config.js"></script>
+<script src="{root}js/contribute-config.js?v=2"></script>
 <script>
 // Keep the contribute banner's amount in step with js/contribute-config.js
 (function () {{
