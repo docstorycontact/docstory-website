@@ -11,6 +11,7 @@ Interviews are written by the students themselves, mostly in answer to a standar
 - [About DocStory](https://www.docstory.org/about/)
 - [Contribute an interview](https://www.docstory.org/contribute/)
 - [Contributor terms and FAQ](https://www.docstory.org/contribute/terms/)
+- [Privacy policy](https://www.docstory.org/privacy/)
 
 ## Schools
 
