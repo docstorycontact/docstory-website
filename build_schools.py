@@ -1273,7 +1273,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 </footer>
 
-<script src="/js/contribute-config.js?v=2"></script>
+<script src="/js/contribute-config.js?v=3"></script>
 <script src="/js/main.js?v=6"></script>
 </body>
 </html>'''
@@ -1553,7 +1553,7 @@ def write_static_heads(content_dir):
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')
         noindex = rel == 'contribute/interview/index.html'
-        image = seo.SITE_URL + '/images/og-contribute.png' if rel.startswith('contribute/') else seo.OG_IMAGE
+        image = seo.SITE_URL + '/images/og-contribute.png?v=2' if rel.startswith('contribute/') else seo.OG_IMAGE
         tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, image=image, robots='noindex' if noindex else None)
         if rel == 'index.html':
             tags += f'\n  <meta name="msvalidate.01" content="{seo.BING_SITE_VERIFICATION}">'
@@ -1728,6 +1728,11 @@ def write_contribute_values():
         'contact': txt('contactEmail') or 'a DocStory email address',
         'paidSchools': 'all' if paid == len(schools) else str(paid), 'totalSchools': str(len(schools)),
     }
+    home = ROOT / 'index.html'
+    text = home.read_text(encoding='utf-8')
+    new = re.sub(r'(<span data-pay-amount>)[^<]*(</span>)', lambda m: m.group(1) + values['amount'] + m.group(2), text)
+    if new != text:
+        home.write_text(new, encoding='utf-8')
     for rel in ('contribute/index.html', 'contribute/interview/index.html', 'contribute/terms/index.html'):
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')

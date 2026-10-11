@@ -4,7 +4,7 @@
  */
 window.DOCSTORY_CONTRIBUTE = {
   payEnabled: true,
-  payAmount: 50,            // dollars per verified, published interview
+  payAmount: 20,            // dollars per verified, published interview
   paidCap: 5,               // schools with this many published interviews or more are no longer paid
   payMethods: 'PayPal or Venmo',
 
