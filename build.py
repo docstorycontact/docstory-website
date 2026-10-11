@@ -15,6 +15,11 @@ from datetime import datetime
 
 import seo
 
+def pay_amount():
+    """Dollars per published interview, from js/contribute-config.js (shown before the page script runs)."""
+    cfg = Path("js/contribute-config.js").read_text(encoding="utf-8")
+    return int(re.search(r"payAmount:\s*(\d+)", cfg).group(1))
+
 CONTENT_DIR = Path("content/interviews")
 OUTPUT_DIR  = Path("interviews")
 
@@ -311,7 +316,7 @@ def render_interview_page(iv, all_interviews):
           <span class="material-symbols-outlined text-vibrant-iris text-[28px]" aria-hidden="true">edit_note</span>
           <div>
             <h2 class="font-headline-md text-headline-md text-primary">Med student? Share your story.</h2>
-            <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes<span id="contrib-pay">, and get paid <span id="contrib-amount">$50</span> once it’s published</span>.</p>
+            <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes<span id="contrib-pay">, and get paid <span id="contrib-amount">${pay_amount()}</span> once it’s published</span>.</p>
           </div>
         </div>
         <a href="{root}contribute/index.html" class="shrink-0 inline-flex items-center justify-center gap-1 bg-primary text-white px-md py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
@@ -411,7 +416,7 @@ def render_interview_page(iv, all_interviews):
 }})();
 </script>
 
-<script src="{root}js/contribute-config.js?v=2"></script>
+<script src="{root}js/contribute-config.js?v=3"></script>
 <script>
 // Keep the contribute banner's amount in step with js/contribute-config.js
 (function () {{

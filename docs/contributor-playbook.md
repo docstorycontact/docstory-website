@@ -15,7 +15,7 @@ the new number here too.
 | **Reminder sent** | No reply after 7 days (Template B) | Day 7 after verification email |
 | **Verified & approved** | They reply from the .edu address approving | They have 14 days |
 | **Published** | Interview file committed, site rebuilt, live link emailed (Template D) | — |
-| **Paid** | $50 sent by PayPal or Venmo, recorded | Within 7 days of publishing |
+| **Paid** | $20 sent by PayPal or Venmo, recorded | Within 7 days of publishing |
 | **Lapsed / Declined** | No reply in 14 days (Template C), or declined (Template E) | — |
 
 ## One-time setup
@@ -40,7 +40,7 @@ the new number here too.
 ## Step by step
 
 ### 1. A submission arrives
-The subject reads like `Interview DS-261008-K7QM · Rush Medical College · MS3 · Paid $50`.
+The subject reads like `Interview DS-261008-K7QM · Rush Medical College · MS3 · Paid $20`.
 Add a row to the tracker with status **Received**. The email contains:
 
 - **Payment:** whether the school was eligible when they submitted (published count vs. the cap of 5)
@@ -90,7 +90,7 @@ pick it up again; lapsing is about not leaving things open forever.
 3. Send Template D with the live link. Mark **Published**.
 
 ### 7. Pay (within 7 days of publishing)
-- Send $50 by their chosen method with the note `DocStory interview DS-XXXXXX-XXXX`.
+- Send $20 by their chosen method with the note `DocStory interview DS-XXXXXX-XXXX`.
 - **Check the payee name** on the PayPal or Venmo account roughly matches the contributor. If
   it doesn't, confirm by email first.
 - Record method, handle, date, and amount. Mark **Paid**. Template D already tells them it's
@@ -120,7 +120,7 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 >
 > **To verify and approve, reply to this email from this address** with:
 > 1. “I approve,” or any changes you'd like.
-> 2. [Paid only] How you'd like your $50: PayPal or Venmo, and the username or email to send it to.
+> 2. [Paid only] How you'd like your $20: PayPal or Venmo, and the username or email to send it to.
 >
 > Please reply by **[date, 14 days out]**. Once you approve, we'll publish your interview
 > [paid only: and send payment within 7 days of it going live].
@@ -160,7 +160,7 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 >
 > Your interview is now live: [link]
 >
-> [Paid only] We'll send your $50 to [handle] by [method] within 7 days, with the note
+> [Paid only] We'll send your $20 to [handle] by [method] within 7 days, with the note
 > “DocStory interview [REF]”.
 >
 > Thank you for helping applicants see what [School] is really like. If you ever want it
