@@ -7,6 +7,7 @@ previews, and schema.org JSON-LD so search engines and AI tools can tell what th
 """
 import html
 import json
+from pathlib import Path
 
 SITE_URL = 'https://www.docstory.org'
 SITE_NAME = 'DocStory'
@@ -83,3 +84,9 @@ def head_tags(title, description, path, og_type='website', jsonld=(), image=OG_I
     payload = payload.replace('</', '<\\/')          # never let a value close the <script> early
     lines.append(f'<script type="application/ld+json">\n{payload}\n</script>')
     return '\n  '.join(lines)
+
+
+def tw_link(group):
+    """<link> to the built Tailwind stylesheet for a page type (see build_css.py), versioned by content."""
+    versions = json.loads((Path(__file__).parent / 'tailwind' / 'versions.json').read_text(encoding='utf-8'))
+    return f'<link rel="stylesheet" href="/css/tw/{group}.css?v={versions[group]}">'
