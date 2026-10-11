@@ -405,8 +405,6 @@ def render_interview_page(iv, all_interviews):
   var get = function (k) {{ try {{ return localStorage.getItem(k); }} catch (e) {{ return null; }} }};
   var set = function (k, v) {{ try {{ localStorage.setItem(k, v); }} catch (e) {{}} }};
 
-  var track = function (name) {{ if (window.DocStoryTrack) window.DocStoryTrack.event(name); }};
-
   // Already signed up, a contributor or ad visitor, or said "No thanks" in the last 7 days: no prompt
   if (get('emailSignedUp') === 'true' || get('docstoryContributor') === 'true') return;
   if (Date.now() - Number(get('signupDeclinedAt') || 0) < 7 * 864e5) return;
@@ -429,19 +427,16 @@ def render_interview_page(iv, all_interviews):
   document.addEventListener('DOMContentLoaded', function () {{
     var wrapper = document.getElementById('article-body-wrapper');
     if (wrapper) wrapper.classList.add('paywall-gated');
-    track('signup_gate_shown');
     window.DocStorySignup.open({{
       gate: true,
       onSuccess: function () {{
         readList.push(ID);
         set(LS_READ, JSON.stringify(readList));
         if (wrapper) wrapper.classList.remove('paywall-gated');
-        track('signup_gate_signed_up');
       }},
       onDecline: function () {{
         set('signupDeclinedAt', String(Date.now()));
         if (wrapper) wrapper.classList.remove('paywall-gated');
-        track('signup_gate_no_thanks');
       }}
     }});
   }});

@@ -62,7 +62,7 @@ def head_tags(title, description, path, og_type='website', jsonld=(), image=OG_I
         f'<link rel="canonical" href="{canonical}">',
         '<link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">',
         '<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">',
-        '<script src="/js/analytics.js?v=1"></script>',
+        '<script src="/js/analytics.js?v=2"></script>',
         f'<meta property="og:site_name" content="{SITE_NAME}">',
         f'<meta property="og:type" content="{og_type}">',
         f'<meta property="og:title" content="{e(title)}">',

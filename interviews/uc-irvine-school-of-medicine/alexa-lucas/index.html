@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://www.docstory.org/interviews/uc-irvine-school-of-medicine/alexa-lucas/">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <script src="/js/analytics.js?v=1"></script>
+  <script src="/js/analytics.js?v=2"></script>
   <meta property="og:site_name" content="DocStory">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Alexa Lucas (MS1) on UC Irvine School of Medicine: Student Interview | DocStory">
@@ -330,8 +330,6 @@
   var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
   var set = function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} };
 
-  var track = function (name) { if (window.DocStoryTrack) window.DocStoryTrack.event(name); };
-
   // Already signed up, a contributor or ad visitor, or said "No thanks" in the last 7 days: no prompt
   if (get('emailSignedUp') === 'true' || get('docstoryContributor') === 'true') return;
   if (Date.now() - Number(get('signupDeclinedAt') || 0) < 7 * 864e5) return;
@@ -354,19 +352,16 @@
   document.addEventListener('DOMContentLoaded', function () {
     var wrapper = document.getElementById('article-body-wrapper');
     if (wrapper) wrapper.classList.add('paywall-gated');
-    track('signup_gate_shown');
     window.DocStorySignup.open({
       gate: true,
       onSuccess: function () {
         readList.push(ID);
         set(LS_READ, JSON.stringify(readList));
         if (wrapper) wrapper.classList.remove('paywall-gated');
-        track('signup_gate_signed_up');
       },
       onDecline: function () {
         set('signupDeclinedAt', String(Date.now()));
         if (wrapper) wrapper.classList.remove('paywall-gated');
-        track('signup_gate_no_thanks');
       }
     });
   });

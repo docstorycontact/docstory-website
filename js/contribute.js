@@ -532,7 +532,6 @@ async function submit() {
   }
 
   submitted = { ref, text: plainText(ref), paid: st.paid };
-  if (window.DocStoryTrack) window.DocStoryTrack.event('contribute_submitted', { paid: !!st.paid });
   try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
   showDone();
 }
@@ -579,7 +578,6 @@ function go(n) {
     if (k === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
   });
   if (n === 3) { $('alist').querySelectorAll('textarea').forEach(grow); showQuestion(S.qi); }
-  if (window.DocStoryTrack) window.DocStoryTrack.event('contribute_step', { step: n });
   window.scrollTo(0, 0);
 }
 function tryGo(n) {
@@ -635,7 +633,6 @@ $('go4').addEventListener('click', () => tryGo(4));
     $('appnote').hidden = true;
     try { sessionStorage.setItem('appnoteSeen', '1'); } catch (e) { /* ignore */ }
   });
-  if (window.DocStoryTrack) window.DocStoryTrack.event('in_app_browser_banner', { app: app || 'storage blocked' });
 })();
 
 /* ---------- Start ---------- */

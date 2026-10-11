@@ -3,33 +3,25 @@
  * Loaded on every page from the shared <head> block (seo.py).
  *
  * - Page views: Vercel Web Analytics (cookieless; on whenever the site runs on Vercel).
- * - Events (button clicks, form steps): sent to Umami once UMAMI_WEBSITE_ID is set below.
- *   Vercel's Hobby plan doesn't record custom events, so Umami is where these get counted.
  * - Attribution: remembers which ad or link first brought someone here (utm_* tags or the
  *   referring site), so the contribute form can include it with each submission.
  *
  * Nothing here sets cookies or records personal information.
  */
 (function () {
-  var UMAMI_WEBSITE_ID = '';   // from cloud.umami.is → Settings → Websites → your site's Website ID
-
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } },
   };
-  function addScript(src, attrs) {
+  function addScript(src) {
     var s = document.createElement('script');
     s.defer = true; s.src = src;
-    Object.keys(attrs || {}).forEach(function (k) { s.setAttribute(k, attrs[k]); });
     document.head.appendChild(s);
   }
 
   // Vercel Web Analytics (page views)
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   if (!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) addScript('/_vercel/insights/script.js');
-
-  // Umami (events), only once a website ID is configured
-  if (UMAMI_WEBSITE_ID) addScript('https://cloud.umami.is/script.js', { 'data-website-id': UMAMI_WEBSITE_ID });
 
   // Attribution: first touch is kept; last touch updates whenever someone arrives from outside
   var params = new URLSearchParams(location.search);
@@ -54,10 +46,6 @@
   function read(k) { try { return JSON.parse(store.get(k) || 'null'); } catch (e) { return null; } }
 
   window.DocStoryTrack = {
-    /** Count an event, e.g. DocStoryTrack.event('signup_gate_no_thanks'). Never throws. */
-    event: function (name, data) {
-      try { if (window.umami && window.umami.track) window.umami.track(name, data || {}); } catch (e) { /* ignore */ }
-    },
     /** Where this visitor came from, as one readable line for the submission email. */
     source: function () {
       var t = read('docstoryFirstTouch'), last = read('docstoryLastTouch');
