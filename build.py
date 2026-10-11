@@ -387,16 +387,16 @@ def render_interview_page(iv, all_interviews):
       <nav class="flex flex-wrap gap-md md:justify-end">
         <a href="{root}about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
         <a href="{root}contribute/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+        <a href="mailto:docstory.contact@gmail.com" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="/privacy/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="/contribute/terms/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
       </nav>
     </div>
   </div>
 </footer>
 
 <script>
-// 3-free-interviews gate: counts interviews read in this browser, then asks for an email.
+// 3-free-interviews prompt: counts interviews read in this browser, then asks for an email ("No thanks" allowed).
 // The signup box itself lives in js/main.js (window.DocStorySignup), which sends the address to Kit.
 (function () {{
   var ID = '{school_slug}/{student_slug}';
@@ -405,8 +405,9 @@ def render_interview_page(iv, all_interviews):
   var get = function (k) {{ try {{ return localStorage.getItem(k); }} catch (e) {{ return null; }} }};
   var set = function (k, v) {{ try {{ localStorage.setItem(k, v); }} catch (e) {{}} }};
 
-  // Already signed up: nothing to gate
-  if (get('emailSignedUp') === 'true') return;
+  // Already signed up, a contributor or ad visitor, or said "No thanks" in the last 7 days: no prompt
+  if (get('emailSignedUp') === 'true' || get('docstoryContributor') === 'true') return;
+  if (Date.now() - Number(get('signupDeclinedAt') || 0) < 7 * 864e5) return;
 
   var readList;
   try {{ readList = JSON.parse(get(LS_READ) || '[]'); }} catch (e) {{ readList = []; }}
@@ -432,6 +433,10 @@ def render_interview_page(iv, all_interviews):
         readList.push(ID);
         set(LS_READ, JSON.stringify(readList));
         if (wrapper) wrapper.classList.remove('paywall-gated');
+      }},
+      onDecline: function () {{
+        set('signupDeclinedAt', String(Date.now()));
+        if (wrapper) wrapper.classList.remove('paywall-gated');
       }}
     }});
   }});
@@ -448,7 +453,7 @@ def render_interview_page(iv, all_interviews):
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 }})();
 </script>
-<script src="{root}js/main.js?v=5"></script>
+<script src="{root}js/main.js?v=6"></script>
 </body>
 </html>"""
 

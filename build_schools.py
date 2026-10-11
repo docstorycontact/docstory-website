@@ -1358,9 +1358,9 @@ def render_page(school_slug, data, interviews, page=None):
       <nav class="flex flex-wrap gap-md md:justify-end">
         <a href="/about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
         <a href="/contribute/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
-        <a href="#" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
+        <a href="mailto:docstory.contact@gmail.com" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
+        <a href="/privacy/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
+        <a href="/contribute/terms/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
       </nav>
     </div>
   </div>
@@ -1368,7 +1368,7 @@ def render_page(school_slug, data, interviews, page=None):
 
 {VOICES_JUMP_JS}
 <script src="/js/contribute-config.js?v=2"></script>
-<script src="/js/main.js?v=5"></script>
+<script src="/js/main.js?v=6"></script>
 </body>
 </html>'''
 
@@ -1422,6 +1422,7 @@ def main():
         generated += 1
 
     write_contribute_data(content_dir)
+    write_contribute_values()
     warned += write_site_data(content_dir)
     write_sitemap_and_llms(content_dir)
     write_static_heads(content_dir)
@@ -1528,6 +1529,7 @@ STATIC_PAGES = [            # hand-written pages to list in the sitemap (contrib
     ('/about/', 'About DocStory'),
     ('/contribute/', 'Contribute an interview'),
     ('/contribute/terms/', 'Contributor terms and FAQ'),
+    ('/privacy/', 'Privacy policy'),
 ]
 
 
@@ -1632,6 +1634,10 @@ def write_static_heads(content_dir):
             'The terms for contributing a student interview to DocStory: eligibility, verification, payment, '
             'editing, and removal.',
             [seo.breadcrumbs([('Home', '/'), ('Contribute', '/contribute/'), ('Terms', '/contribute/terms/')])]),
+        'privacy/index.html': (
+            'Privacy Policy | DocStory',
+            'What DocStory collects, why, which services handle it, and how to see, correct, or delete your information.',
+            [seo.breadcrumbs([('Home', '/'), ('Privacy Policy', '/privacy/')])]),
         'contribute/interview/index.html': (
             'Your Interview: Contribute to DocStory',
             'Choose 8–10 questions about your medical school and answer them in your own words.',
@@ -1641,7 +1647,8 @@ def write_static_heads(content_dir):
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')
         noindex = rel == 'contribute/interview/index.html'
-        tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, robots='noindex' if noindex else None)
+        image = seo.SITE_URL + '/images/og-contribute.png' if rel.startswith('contribute/') else seo.OG_IMAGE
+        tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, image=image, robots='noindex' if noindex else None)
         if rel == 'index.html':
             tags += f'\n  <meta name="msvalidate.01" content="{seo.BING_SITE_VERIFICATION}">'
         block = (f'  <title>{html_mod.escape(title, quote=False)}</title>\n'
@@ -1797,6 +1804,33 @@ def write_vercel_config(content_dir):
     (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + rules}, indent=2) + '\n', encoding='utf-8')
     print(f'  seo   vercel.json ({len(rules)} old-address redirects)')
     return warnings
+
+
+def write_contribute_values():
+    """Write the contributor program's numbers (amount, cap, school counts, ...) straight into the
+    contribute pages, so they're right even before js/contribute-common.js runs (or if it can't)."""
+    cfg = (ROOT / 'js' / 'contribute-config.js').read_text(encoding='utf-8')
+    num = lambda k: int(re.search(rf'{k}:\s*(\d+)', cfg).group(1))
+    txt = lambda k: re.search(rf"{k}:\s*'([^']*)'", cfg).group(1)
+    schools = json.loads((ROOT / 'js' / 'contribute-data.js').read_text(encoding='utf-8')
+                         .split('window.DOCSTORY_SCHOOLS = ', 1)[1].rstrip().rstrip(';'))
+    cap = num('paidCap')
+    paid = sum(s['interviews'] < cap for s in schools)
+    values = {
+        'amount': f"${num('payAmount'):,}", 'cap': str(cap), 'methods': txt('payMethods'),
+        'reviewDays': str(num('reviewDays')), 'replyDays': str(num('replyDays')), 'payDays': str(num('payDays')),
+        'contact': txt('contactEmail') or 'a DocStory email address',
+        'paidSchools': 'all' if paid == len(schools) else str(paid), 'totalSchools': str(len(schools)),
+    }
+    for rel in ('contribute/index.html', 'contribute/interview/index.html', 'contribute/terms/index.html'):
+        path = ROOT / rel
+        text = path.read_text(encoding='utf-8')
+        new = re.sub(r'(<span data-c="(\w+)">)[^<]*(</span>)',
+                     lambda m: m.group(1) + html_mod.escape(values.get(m.group(2), m.group(0)), quote=False) + m.group(3)
+                     if m.group(2) in values else m.group(0), text)
+        if new != text:
+            path.write_text(new, encoding='utf-8')
+    print(f'  data  contribute pages ({values["totalSchools"]} schools, {values["paidSchools"]} paid)')
 
 
 def write_contribute_data(content_dir):

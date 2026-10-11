@@ -111,7 +111,7 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 /* ---------- State (draft saved in this browser) ---------- */
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
-  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {} });
+  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, qi: 0 });
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -171,6 +171,10 @@ const qText = id => id === 'own' ? S.own.trim() : byId[id][4];
 const qCat = id => id === 'own' ? 'Your question' : catLabel[byId[id][1]];
 
 /* ---------- Payment display ---------- */
+function spotsLeft(count) {
+  const n = Math.max(0, C.paidCap - count);
+  return 'This school has ' + n + ' paid spot' + (n === 1 ? '' : 's') + ' left.';
+}
 function payInfo() {
   if (!S.school || (isOther() && !S.schoolOther.trim())) return null;
   const st = D.payStatus(S.school);
@@ -179,7 +183,8 @@ function payInfo() {
   if (st.paid) {
     return { paid: true, html: '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span><span>Interviews from <b>' + esc(name) +
       '</b> are eligible for <b>' + D.money(C.payAmount) + '</b>, paid once your interview is verified and published.' +
-      (st.reason === 'new' ? ' We’ll confirm eligibility for schools we don’t cover yet when we review.' : '') + '</span>' };
+      (st.reason === 'new' ? ' We’ll confirm eligibility for schools we don’t cover yet when we review.'
+        : ' ' + spotsLeft(st.count) + ' Paid spots go to the first interviews we accept.') + '</span>' };
   }
   return { paid: false, html: '<span class="material-symbols-outlined" aria-hidden="true">info</span><span>We already have ' + st.count + ' interviews from <b>' + esc(name) +
     '</b>, so new ones from this school aren’t paid right now. You’re still very welcome to contribute: another perspective helps applicants.</span>' };
@@ -349,12 +354,46 @@ function buildStep3() {
   }).join('');
 }
 function grow(t) { t.style.height = 'auto'; t.style.height = Math.max(160, t.scrollHeight + 2) + 'px'; }
+
+/* On phones, step 3 shows one question at a time with a progress bar; wider screens list them all */
+const phone = window.matchMedia('(max-width: 640px)');
+const paged = () => phone.matches && orderedPicks().length > 1;
+const answeredCount = ids => ids.filter(id => words(S.answers[id]) >= MIN_WORDS).length;
+function showQuestion(i, focus) {
+  const ids = orderedPicks(); if (!ids.length) return;
+  const on = paged(), qi = Math.max(0, Math.min(i || 0, ids.length - 1)), last = qi === ids.length - 1;
+  S.qi = qi;
+  $('s3').classList.toggle('paged', on);
+  $('qprog').hidden = !on;
+  document.querySelector('#s3 .tips').hidden = on && qi > 0;
+  ids.forEach((id, k) => { $('card-' + id).hidden = on && k !== qi; });
+  $('changeQs').hidden = on && qi > 0;
+  $('qprev').hidden = !on || qi === 0;
+  $('qnext').hidden = !on || last;
+  $('go4').hidden = on && !last;
+  if (!on) return;
+  $('qprogLabel').textContent = 'Question ' + (qi + 1) + ' of ' + ids.length;
+  $('qprogDone').textContent = answeredCount(ids) + ' of ' + ids.length + ' answered';
+  $('qprogFill').style.width = ((qi + 1) / ids.length * 100) + '%';
+  $('qprogBar').setAttribute('aria-valuemax', ids.length);
+  $('qprogBar').setAttribute('aria-valuenow', qi + 1);
+  const t = $('ans-' + ids[qi]); grow(t);
+  if (focus) t.focus({ preventScroll: true });
+}
+function stepQuestion(delta) {
+  showQuestion(S.qi + delta, true); save();
+  $('s3').scrollIntoView({ block: 'start' });
+}
+$('qprev').addEventListener('click', () => stepQuestion(-1));
+$('qnext').addEventListener('click', () => stepQuestion(1));
+phone.addEventListener('change', () => { if (S.step === 3) showQuestion(S.qi); });
 $('alist').addEventListener('input', e => {
   const t = e.target; if (t.tagName !== 'TEXTAREA') return;
   const id = t.getAttribute('data-id'); S.answers[id] = t.value;
   const n = words(t.value), w = $('wc-' + id);
   w.textContent = wcText(n); w.className = 'wc' + (n >= MIN_WORDS ? ' ok' : (n ? ' short' : ''));
   if (n >= MIN_WORDS) $('card-' + id).classList.remove('bad');
+  if (paged()) $('qprogDone').textContent = answeredCount(orderedPicks()) + ' of ' + orderedPicks().length + ' answered';
   grow(t); save();
 });
 const shortAnswers = () => orderedPicks().filter(id => words(S.answers[id]) < MIN_WORDS);
@@ -468,6 +507,7 @@ async function submit() {
   if (S.undergrad) fd.append('Undergraduate', S.undergrad);
   if (S.hometown) fd.append('Hometown', S.hometown);
   fd.append('Submitted', today);
+  fd.append('Came from', window.DocStoryTrack ? window.DocStoryTrack.source() : 'Unknown');
   fd.append('Answers', ids.length + ' answers · ' + ids.reduce((s, id) => s + words(S.answers[id]), 0) + ' words');
   fd.append('Consent', 'Own experience, no patient information, may be published and edited · Agreed to Contributor Terms');
   fd.append('Interview', plainText(ref));
@@ -537,7 +577,7 @@ function go(n) {
     b.disabled = k > max && k !== n;
     if (k === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
   });
-  if (n === 3) $('alist').querySelectorAll('textarea').forEach(grow);
+  if (n === 3) { $('alist').querySelectorAll('textarea').forEach(grow); showQuestion(S.qi); }
   window.scrollTo(0, 0);
 }
 function tryGo(n) {
@@ -553,9 +593,10 @@ function tryGo(n) {
     if (bad.length) {
       if (S.step !== 3) go(3);
       bad.forEach(id => $('card-' + id).classList.add('bad'));
+      if (paged()) showQuestion(orderedPicks().indexOf(bad[0]));
       showErr('e3', bad.length === 1
-        ? '1 answer is under ' + MIN_WORDS + ' words. It’s outlined above.'
-        : bad.length + ' answers are under ' + MIN_WORDS + ' words. They’re outlined above.');
+        ? '1 answer is under ' + MIN_WORDS + ' words. ' + (paged() ? 'It’s shown above.' : 'It’s outlined above.')
+        : bad.length + ' answers are under ' + MIN_WORDS + ' words. ' + (paged() ? 'Here’s the first one.' : 'They’re outlined above.'));
       $('ans-' + bad[0]).focus(); return;
     }
     showErr('e3', '');
@@ -572,6 +613,27 @@ $('f1').addEventListener('input', step1Changed);
 $('f1').addEventListener('change', step1Changed);
 $('go3').addEventListener('click', () => tryGo(3));
 $('go4').addEventListener('click', () => tryGo(4));
+
+/* ---------- In-app browsers ----------
+   Links tapped inside apps like Reddit open in the app's own browser, which may throw away the saved
+   draft when someone switches apps. Suggest opening the page in a regular browser before writing. */
+(function appNote() {
+  try { if (sessionStorage.getItem('appnoteSeen') === '1') return; } catch (e) { /* ignore */ }
+  const ua = navigator.userAgent || '';
+  const app = /Reddit/i.test(ua) ? 'Reddit' : /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB/.test(ua) ? 'Facebook'
+    : /LinkedInApp/i.test(ua) ? 'LinkedIn' : /Snapchat/i.test(ua) ? 'Snapchat' : /TikTok|musical_ly|BytedanceWebview/i.test(ua) ? 'TikTok' : '';
+  let canSave = true;
+  try { localStorage.setItem('ds-storage-test', '1'); localStorage.removeItem('ds-storage-test'); } catch (e) { canSave = false; }
+  if (!app && canSave) return;
+  $('appnoteText').textContent = !canSave
+    ? 'This browser isn’t letting us save your draft. Open this page in Safari or Chrome before you start writing so you don’t lose your work.'
+    : 'You’re in the ' + app + ' app’s browser, which may not keep your draft if you switch away. To be safe, tap the ⋯ menu and choose “Open in browser” before you start writing.';
+  $('appnote').hidden = false;
+  $('appnoteClose').addEventListener('click', () => {
+    $('appnote').hidden = true;
+    try { sessionStorage.setItem('appnoteSeen', '1'); } catch (e) { /* ignore */ }
+  });
+})();
 
 /* ---------- Start ---------- */
 (function preset() {

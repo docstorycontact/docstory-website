@@ -65,6 +65,10 @@ window.DocStorySignup = (function () {
             Get free access →
           </button>
         </form>
+        <button type="button" data-signup-decline
+          class="hidden w-full mt-sm py-xs rounded-full font-label-md text-label-md text-slate-gray hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-vibrant-iris">
+          No thanks
+        </button>
         <p data-signup-fine class="font-body-md text-xs text-slate-gray text-center mt-md">No spam. Unsubscribe anytime.</p>
       </div>`;
     document.body.appendChild(el);
@@ -72,15 +76,15 @@ window.DocStorySignup = (function () {
   }
 
   /**
-   * open({ gate: true, onSuccess })  — the 3-interview paywall: can't be dismissed
-   * open()                           — "Join Now": dismissible with ×, Esc, or backdrop
+   * open({ gate: true, onSuccess, onDecline }) — the 3-interview prompt: closes only by signing up or "No thanks"
+   * open()                                    — "Join Now": dismissible with ×, Esc, or backdrop
    */
   function open(opts = {}) {
     let gate = !!opts.gate;
     modal = modal || build();
     const $ = sel => modal.querySelector(sel);
     const form = $('[data-signup-form]'), input = $('#signup-email'), err = $('#signup-error');
-    const submit = $('[data-signup-submit]'), closeBtn = $('[data-signup-close]');
+    const submit = $('[data-signup-submit]'), closeBtn = $('[data-signup-close]'), decline = $('[data-signup-decline]');
     const returnFocus = document.activeElement;
 
     $('#signup-title').textContent = gate ? "You've read 3 free interviews" : 'Join DocStory';
@@ -89,6 +93,7 @@ window.DocStorySignup = (function () {
       : 'Get unlimited access to every student interview, free.';
     $('[data-signup-icon]').textContent = gate ? 'lock' : 'mail';
     closeBtn.classList.toggle('hidden', gate);
+    decline.classList.toggle('hidden', !gate);
     form.classList.remove('hidden');
     $('[data-signup-fine]').textContent = 'No spam. Unsubscribe anytime.';
     err.classList.add('hidden');
@@ -104,6 +109,7 @@ window.DocStorySignup = (function () {
     function showError(msg) { err.textContent = msg; err.classList.remove('hidden'); input.focus(); }
 
     closeBtn.onclick = close;
+    decline.onclick = () => { close(); if (opts.onDecline) opts.onDecline(); };
     $('[data-signup-backdrop]').onclick = gate ? null : close;
     input.oninput = () => err.classList.add('hidden');
     form.onsubmit = async e => {
@@ -125,6 +131,7 @@ window.DocStorySignup = (function () {
       $('[data-signup-text]').textContent = `Check ${email} for a link to confirm your subscription.`;
       $('[data-signup-icon]').textContent = 'mark_email_read';
       form.classList.add('hidden');
+      decline.classList.add('hidden');
       closeBtn.classList.remove('hidden');
       $('[data-signup-backdrop]').onclick = close;
       gate = false;   // now dismissible either way
