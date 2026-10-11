@@ -24,117 +24,84 @@ const YEARS = [
   ['m4', '4', 'Fourth year', 'Sub-Is and the Match',   'MS4', 'OMS-IV',  'a fourth-year student'],
 ];
 const CATS = [
-  ['academics', 'Curriculum & academics'],
-  ['clinical', 'Clinical training'],
-  ['research', 'Research'],
-  ['service', 'Community service & advocacy'],
-  ['global', 'Global health'],
-  ['life', 'Student life & support'],
-  ['career', 'Advising, boards & the Match'],
-  ['candid', 'Straight talk'],
+  ['pre', 'Pre-clinical'],
+  ['clin', 'Clinical'],
+  ['res', 'Research'],
+  ['glob', 'Global health'],
+  ['adv', 'Advocacy'],
+  ['life', 'Lifestyle'],
+  ['match', 'Boards, advising & the Match'],
+  ['big', 'Big picture'],
 ];
 /* [id, label, description, how it reads after "who wants to focus on"] */
 const FOCI = [
   ['general', 'A bit of everything', 'Good default if you’re not sure', ''],
-  ['academics', 'Curriculum & academics', 'Teaching, grading, exams', 'curriculum and academics'],
-  ['clinical', 'Clinical training', 'Rotations, sites, hands-on work', 'clinical training'],
-  ['research', 'Research', 'Mentors, funding, publishing', 'research'],
-  ['service', 'Community service & advocacy', 'Free clinics, outreach, equity', 'community service and advocacy'],
-  ['global', 'Global health', 'Electives abroad, partner sites', 'global health'],
-  ['life', 'Student life & support', 'Culture, cost, wellbeing', 'student life and support'],
-  ['career', 'Advising, boards & the Match', 'Step prep, advising, residency', 'advising, boards and the Match'],
+  ['pre', 'Pre-clinical', 'Classes, grading, the first two years', 'the pre-clinical years'],
+  ['clin', 'Clinical', 'Rotations, hospitals, teams', 'clinical training'],
+  ['res', 'Research', 'Mentors, time, publishing', 'research'],
+  ['glob', 'Global health', 'Underserved care, work abroad', 'global health'],
+  ['adv', 'Advocacy', 'Service, outreach, community', 'advocacy and service'],
+  ['life', 'Lifestyle', 'Culture, cost, wellbeing', 'lifestyle'],
+  ['match', 'Boards, advising & the Match', 'Step prep, advising, residency', 'boards, advising and the Match'],
 ];
+/* Topic ids before the October 2026 rework, so saved drafts and old recruiting links still work */
+const OLD_FOCUS = { academics: 'pre', clinical: 'clin', research: 'res', service: 'adv', global: 'glob', career: 'match' };
 
-/* ---------- Question bank (to be refined) ----------
+/* ---------- Question bank (reworked October 2026) ----------
    [id, topic, years it's offered to, years it's a core suggestion for, question]
    Years: 1 = first year … 4 = fourth year */
 const Q = [
-  ['a1','academics','12','12','Walk us through a typical week in the preclinical curriculum. How much is lecture, small group, lab, and self-study?'],
-  ['a2','academics','1234','1234','How are the preclinical years graded (pass/fail, tiers, internal ranking), and how does that shape the way classmates treat each other?'],
-  ['a3','academics','12','','Is lecture attendance required? What do most of your classmates actually do: attend, stream, or study from outside resources?'],
-  ['a4','academics','1','1','What was the adjustment to the first semester like, and what would you tell an incoming student to do differently?'],
-  ['a5','academics','12','','How is anatomy taught (dissection, prosection, virtual), and how well did it work for you?'],
-  ['a6','academics','234','2','How well did the curriculum prepare you for Step 1 or Level 1? How much dedicated study time did you get, and was it enough?'],
-  ['a7','academics','1234','','Which course, block, or professor has been the best part of the curriculum, and why?'],
-  ['a8','academics','1234','','Which part of the curriculum would you redesign, and what specifically is not working?'],
-  ['a9','academics','12','','How early do students see patients, and what does that early exposure actually involve?'],
-  ['a10','academics','234','','How responsive is the administration to student feedback? Give an example of something that changed, or did not, after students spoke up.'],
-  ['a11','academics','34','3','Looking back, how well did the preclinical years prepare you for the wards? Where did you feel ahead or behind?'],
-  ['a12','academics','1234','','What support exists for students who are struggling academically (tutoring, learning specialists, remediation), and do people use it?'],
+  ['a1','pre','1234','12','Walk us through a typical week in the pre-clinical curriculum. Roughly how much is lecture, small group, lab, and self-study?'],
+  ['a2','pre','1234','12','How are the preclinical years graded (pass/fail, tiers, internal ranking, etc.)? Do you think this has a major impact on the student culture at your school?'],
+  ['a3','pre','1234','','Is lecture attendance required? What do most of your classmates actually do (attend, stream, study from outside resources, etc.)?'],
+  ['a4','pre','1234','1','What was the adjustment to the first semester like, and what would you tell an incoming student to do differently? Did your school do anything specific to help you through the first semester and where did you feel on your own?'],
+  ['a7','pre','1234','','Which course, block, or professor has been the best part of the curriculum, and why?'],
+  ['a8','pre','1234','','Which part of the curriculum do you think has room for improvement, and what specifically is not working?'],
+  ['c8','pre','1234','2','What experiences have you had before clerkships (preceptorships, student-run clinics, standardized patients, simulation) to give you at least some exposure to clinical work prior to third year? What experiences provided by your medical school do you think are most helpful in making this transition successful?'],
+  ['c9','pre','1234','1','How is clinical skills teaching organized, and how confident do you feel taking a history and doing a physical exam right now?'],
 
-  ['c1','clinical','34','34','Where do students rotate? Describe the main hospitals and clinics and the patients you see at each.'],
-  ['c2','clinical','34','34','How much hands-on responsibility do students get on clerkships? Give an example of something you did yourself rather than watched.'],
-  ['c3','clinical','34','','How are clerkships graded, and how fair does it feel? How much rides on evaluations versus shelf exams?'],
-  ['c4','clinical','34','','Which rotation was your strongest and which was your weakest, and what made the difference?'],
-  ['c5','clinical','34','','How are rotation sites and schedules assigned? Did you get what you wanted, and how much travel or relocation was involved?'],
-  ['c6','clinical','34','','How do residents and attendings treat students? Is teaching built in, or do you have to seek it out?'],
-  ['c7','clinical','4','','How did the school support sub-internships and away rotations? Was it easy to get the electives your specialty required?'],
-  ['c8','clinical','12','12','What clinical experience have you had before clerkships (preceptorships, student-run clinics, standardized patients, simulation)?'],
-  ['c9','clinical','12','','How is clinical skills teaching organized, and how confident do you feel taking a history and doing a physical exam right now?'],
-  ['c10','clinical','12','','What have older students told you about clerkships here? What are you looking forward to, and what worries you?'],
-  ['c11','clinical','34','','Do students compete with residents, fellows, or other learners for patients and procedures? How does that play out day to day?'],
-  ['c12','clinical','34','','How many hours does a typical clerkship week run, and how much time is left to study?'],
-  ['c13','clinical','234','','How does the school handle the transition into clerkships (bootcamp, orientation, shadowing)? Did you, or do you expect to, feel ready on day one?'],
+  ['c1','clin','34','34','Briefly describe the main hospitals and clinics you work at and what sort of patient population you see at each. Has one of these clinical sites or clinics been particularly rewarding or influential for you? We want to know about experiences that might be unique to your medical school.'],
+  ['c14','clin','34','34','Walk us through a recent day on your current or most recent rotation.'],
+  ['c2','clin','34','34','During clinical rotations, were you happy with how directly involved you were in patient care and your value on the team? What did you think about the balance between autonomy and guidance/teaching during your rotations? This is going to differ for every rotation and team you are a part of, so feel free to give examples you feel are representative.'],
+  ['c4','clin','34','','Which rotation was your strongest and which was your weakest, and what made the difference?'],
+  ['c5','clin','34','','Have there been particular challenges with the logistics of clinical rotations that you wish were different? For example, distance between sites, number of sites to be covered, challenge getting select rotations you want, etc.'],
+  ['c6','clin','34','3','How would you describe the culture of feedback during rotations? Were you happy with how/when feedback was given and did you find that it was generally constructive feedback?'],
+  ['a11','clin','34','34','Looking back, how well did the pre-clinical years prepare you for the wards? Did you feel by the time clerkships came about, you had an adequate foundation of knowledge to start building clinical skills? Do you feel that foundation of knowledge was a result of structured course work or self-study?'],
+  ['c15','clin','34','34','While residents, attendings, and fellows you work with are going to differ from rotation to rotation, can you describe an experience that you think is representative of the housestaff culture at the clinical sites you are at?'],
 
-  ['r1','research','1234','1234','How easy is it to find a research mentor? Describe how you or a classmate actually got connected with one.'],
-  ['r2','research','1234','','Is research required, optional, or built into the curriculum? How much protected time do students get?'],
-  ['r3','research','12','','What does the summer after first year look like? Are there funded research programs, and how competitive are they?'],
-  ['r4','research','1234','','What project have you worked on, and what did you personally do on it?'],
-  ['r5','research','234','','How realistic is it to publish or present as a student here? What support exists for abstracts, posters, and conference travel?'],
-  ['r6','research','1234','','Which departments or centers are strongest for student research, and which are hard to break into?'],
-  ['r7','research','34','','Do many students take a research year or pursue a dual degree? How does the school support that, and what does it do to cost?'],
-  ['r8','research','34','','How much did research matter for the specialties your classmates applied to, and did the school make it easy to build that record?'],
-  ['r9','research','1234','','For someone arriving with no research background, what is the realistic path to getting started here?'],
-  ['r10','research','1234','','Is there funding for student research (stipends, grants, travel awards)? How did you or classmates get it?'],
+  ['r1','res','1234','123','Was it challenging to find a research mentor and do you think a medical student that arrives with no research experience would be able to find a research mentor if they desired? Describe how you or a classmate actually got connected with one.'],
+  ['r2','res','1234','','Beyond finding a mentor, you also need the time to be able to conduct research projects you are a part of. Is it feasible for medical students to participate in research during pre-clinical and clinical years? Does the program do something to facilitate this participation?'],
+  ['r4','res','1234','','What research are you a part of and what is your specific role in it?'],
+  ['r11','res','234','','Have you presented or published your work? What support did the school give you, such as funding, conference travel, or help with abstracts?'],
 
-  ['s1','service','1234','1234','What community service or outreach are students involved in? Describe the one you know best and what the work looks like.'],
-  ['s2','service','1234','','Is there a student-run free clinic? What do students at your level do there, and how hard is it to get a spot?'],
-  ['s3','service','1234','','Who lives in the community around the school, and how does the school’s relationship with them show up in your training?'],
-  ['s4','service','1234','','Is service required, tracked, or purely voluntary? Does the culture value it or treat it as a box to check?'],
-  ['s5','service','1234','','Are there tracks, concentrations, or electives in health equity, advocacy, or policy? What do they involve?'],
-  ['s6','service','1234','','Have students organized around an issue on campus or in the community? What happened?'],
-  ['s7','service','34','','How did caring for underserved patients on rotations compare with how the school describes its mission?'],
-  ['s8','service','12','','How much time do you realistically have for service alongside coursework, and what have you had to give up?'],
-  ['s9','service','1234','','Which student organization does the most meaningful work, in your view, and why?'],
+  ['g1','glob','1234','','Have you participated in global health opportunities? If so, describe what the opportunity was and how it was valuable as a personal experience and as a part of your medical education.'],
+  ['g10','glob','1234','','For an applicant who wants a career in global health, what makes this school a good or a poor choice?'],
+  ['g11','glob','1234','','Are there chances to work with underserved populations? If so, describe the population you work with, the experience itself, and how it contributes to your medical training.'],
+  ['g12','glob','1234','','If you were interested in global health but haven\'t done anything abroad, what got in the way: cost, timing, or how the curriculum is set up?'],
 
-  ['g1','global','1234','','What global health opportunities are open to students (electives abroad, partner sites, tracks, certificates)?'],
-  ['g2','global','1234','','Have you or a classmate done a rotation or project abroad? Where, for how long, and what was the work?'],
-  ['g3','global','1234','','Who pays for global health experiences? Describe the funding that exists and what students cover themselves.'],
-  ['g4','global','12','','When is the earliest a student can go abroad, and how do you apply?'],
-  ['g5','global','34','','How do international electives fit into fourth year alongside sub-internships and interviews?'],
-  ['g6','global','1234','','Does the school have long-standing partner sites, or do students arrange their own placements?'],
-  ['g7','global','1234','','Is there local work with refugee, immigrant, or border communities? What do students do?'],
-  ['g8','global','1234','','Which faculty do global health work that students can join, and how approachable are they?'],
-  ['g9','global','1234','','How does the school prepare students for work abroad (ethics, language, safety), and was it adequate?'],
-  ['g10','global','1234','','For an applicant who wants a career in global health, what makes this school a good or a poor choice?'],
+  ['s1','adv','1234','12','What community service or outreach are you involved in? What does the work look like and how has it been meaningful to you? If you are not involved in any, is there work that other medical students are doing at your school that you think is particularly meaningful?'],
+  ['s5','adv','1234','','If you\'ve done a track or elective in equity, advocacy, or policy, what did it involve, and was it worth the time?'],
+  ['s6','adv','1234','','Have students organized around an issue on campus or in the community? What happened?'],
+  ['s10','adv','1234','','Does the community within which your medical school is located have a significant impact on the clinical work that you are doing? Is the patient population unique in a way that gives medical students significantly more exposure to a particular type of medicine that may not be the case at other schools?'],
 
-  ['l1','life','1234','1234','How would you describe your class: collaborative, competitive, cliquey, close? Give an example that shows it.'],
-  ['l2','life','1234','1234','What does a normal week look like outside of school? Where do you live, how do you get around, and what do you do for fun?'],
-  ['l3','life','1234','','What is the cost of living like, and how do students manage housing and money on loans?'],
-  ['l4','life','1234','','How does the school handle student wellbeing and mental health? Is help easy to get, and do people use it?'],
-  ['l5','life','1234','','How diverse are your class and the faculty, and how supported do students from underrepresented backgrounds feel?'],
-  ['l6','life','1234','','How accessible are deans and faculty? Is there someone in the administration you would go to with a problem?'],
-  ['l7','life','1234','','What is it like here for students with partners, kids, or other obligations outside school?'],
-  ['l8','life','1','1','What surprised you most in the first few months that you did not hear on interview day?'],
-  ['l9','life','1234','','How is financial aid? Were scholarships and aid packages what you expected, and how helpful is the office?'],
-  ['l10','life','1234','','What are the campus and facilities like (study space, library, gym, parking, safety)?'],
+  ['l1','life','1234','1234','How would you describe your class: collaborative, competitive, diverse, close? Give an example that shows it.'],
+  ['l2','life','1234','12','What area do you live in? Do you think this area makes it easy to do things to decompress when you have down time? Give examples of things you or other students might do in the area for fun.'],
+  ['a10','life','1234','','How responsive is the administration to student feedback? Give an example of something that is currently being discussed, was recently changed, or did not change after students spoke up.'],
+  ['l11','life','1234','13','When school got hard, what helped you cope, and did the school\'s own support make a difference?'],
+  ['l12','life','1234','2','Roughly what does a month cost you here (rent, food, getting around), and how far does the financial aid budget really stretch?'],
 
-  ['k1','career','34','34','How does specialty and career advising work? Who advised you, and how useful was it?'],
-  ['k2','career','4','4','How did the school support you through residency applications (letters, the MSPE, mock interviews, application review)?'],
-  ['k3','career','4','','Does the school’s name, location, or home programs help or limit students in the Match? What have you seen?'],
-  ['k4','career','34','','Is there a home residency program in the specialty you are interested in, and how has that mattered?'],
-  ['k5','career','12','','How does the school help you explore specialties early (shadowing, interest groups, mentorship)?'],
-  ['k6','career','234','','How does the school prepare students for Step 2 CK or Level 2, and how do students do?'],
-  ['k9','career','4','','How open is the school about Match outcomes, including students who did not match?'],
-  ['k10','career','1234','','How easy is it to find mentors, and are alumni involved with current students?'],
-  ['k11','career','34','','How flexible is fourth year? What did you, or will you, do with elective time?'],
+  ['a6','match','234','2','How well did the curriculum prepare you for Step 1 or Level 1? To expand, did you feel the designed curriculum was a major contributor to your success on the exams, or was this mainly a result of dedicated study on your own? How much dedicated study time did you get, and did you feel it was enough?'],
+  ['k1','match','1234','4','How does specialty and career advising work? Who advised you, and how useful was it?'],
+  ['k12','match','1234','4','Broadly speaking, how do you feel about the success of students at your medical school in the match? While there is always going to be variation in the match rate across specialties, did you feel there were specialties that were difficult to match into from your medical school? Or residency programs/institutions that were difficult to match to from your medical school?'],
+  ['k13','match','4','4','Are you happy with the extent to which your school supported you in your efforts to match at the program of your choice (in terms of letters of recommendation, phone calls to program leadership, providing general guidance, etc.)?'],
+  ['k14','match','1234','','Are there specialties at your school that are particularly strong and therefore typically garner a lot of interest amongst students?'],
 
-  ['x1','candid','1234','1234','What is the biggest downside of this school? Be specific.'],
-  ['x2','candid','1234','1234','Who thrives here, and who would be happier somewhere else?'],
-  ['x3','candid','1234','1234','Why did you choose this school, and would you choose it again?'],
-  ['x4','candid','1234','1234','What do you know now that you wish you had known before you committed?'],
-  ['x5','candid','1234','','What does the school advertise that does not match the day-to-day reality?'],
-  ['x6','candid','1234','','What is one thing about this school that deserves more credit than it gets?'],
+  ['x1','big','1234','','What do you think is a shortcoming of your school or an area that could be improved? Be specific.'],
+  ['x2','big','1234','1234','Who thrives here, and who would be happier somewhere else?'],
+  ['x3','big','1234','1234','Why did you choose this school over your other options, and would you make the same choice today?'],
+  ['x4','big','1234','1234','Have there been moments or experiences you\'ve had that made you glad you chose this medical school/reaffirmed your choice? Have there been some moments that made you question it?'],
+  ['x5','big','1234','','What has been different from what you expected based on interview day or the school\'s materials, for better or worse?'],
+  ['x6','big','1234','','What is one thing about this school that deserves more credit than it gets?'],
 ];
 
 const byId = {}; Q.forEach(q => { byId[q[0]] = q; });
@@ -153,6 +120,7 @@ let submitted = null;   // { ref, text } after a successful submission
     const d = JSON.parse(localStorage.getItem(KEY) || 'null');
     if (d) Object.keys(S).forEach(k => { if (d[k] !== undefined) S[k] = d[k]; });
   } catch (e) { /* storage blocked or corrupt: start fresh */ }
+  if (OLD_FOCUS[S.focus]) S.focus = OLD_FOCUS[S.focus];
   if (!Array.isArray(S.picks)) S.picks = [];
   S.picks = S.picks.filter(id => id === 'own' || byId[id]);
   if (!S.answers || typeof S.answers !== 'object') S.answers = {};
@@ -189,7 +157,7 @@ function suggested(d, focus) {
   const core = p.filter(q => q[3].indexOf(d) > -1);
   if (focus === 'general') return core;
   const out = p.filter(q => q[1] === focus);
-  p.filter(q => q[1] === 'candid').slice(0, 3).forEach(q => { if (out.indexOf(q) < 0) out.push(q); });
+  p.filter(q => q[1] === 'big').slice(0, 3).forEach(q => { if (out.indexOf(q) < 0) out.push(q); });
   core.forEach(q => { if (out.length < 12 && out.indexOf(q) < 0) out.push(q); });
   return out;
 }
@@ -607,9 +575,10 @@ $('go4').addEventListener('click', () => tryGo(4));
 
 /* ---------- Start ---------- */
 (function preset() {
-  // Recruiting links can preselect fields: /contribute/interview/?school=rush-medical-college&year=m3&focus=clinical
+  // Recruiting links can preselect fields: /contribute/interview/?school=rush-medical-college&year=m3&focus=clin
   const p = new URLSearchParams(location.search);
-  const sc = (p.get('school') || '').toLowerCase(), y = (p.get('year') || '').toLowerCase(), f = (p.get('focus') || '').toLowerCase();
+  const sc = (p.get('school') || '').toLowerCase(), y = (p.get('year') || '').toLowerCase();
+  let f = (p.get('focus') || '').toLowerCase(); f = OLD_FOCUS[f] || f;
   if (!S.school && D.bySlug[sc]) S.school = sc;
   if (!S.year && YEARS.some(v => v[0] === y)) S.year = y;
   if (!S.focus && fociRow[f]) S.focus = f;
