@@ -60,6 +60,14 @@ Add a row to the tracker with status **Received**. The email contains:
 - **Payment:** whether the school was eligible when they submitted (published count vs. the cap of 5)
 - **School email (verify):** the address you'll verify
 - **Interview file path** and **Interview file (markdown):** a ready-to-publish file
+- **Writing check** and **Writing record (per answer):** how much of each answer was typed vs pasted,
+  the largest single paste, roughly how long it took, and in how many sittings. If any answer is at
+  least half pasted, the subject ends in `· ⚠ check writing`.
+
+  Treat this as a prompt to read closely, not a verdict: some students draft in Notes or Docs and paste.
+  Together with generic wording, a mostly-pasted answer written in under a minute is a strong sign of AI
+  text. Ask for a rewrite in their own words (Template E) or decline under the terms (section 2).
+  "No record" means the answer was written before tracking began (2026-10-12) or in another browser.
 
 ### 2. Screen it (within 7 days)
 - **Domain matches the school.** Rush students use `@rush.edu`, not some other college's
