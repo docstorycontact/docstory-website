@@ -191,6 +191,9 @@
     .check { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; cursor: pointer; font-size: 15px; line-height: 1.5; color: var(--ink); }
     .check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); border-radius: 4px; }
     .check a { color: var(--accent); text-decoration: underline; }
+    /* Optional reader questions opt-in (step 4) */
+    .rq { display: flex; flex-direction: column; gap: 12px; }
+    .rq-more { display: flex; flex-direction: column; gap: 12px; padding: 4px 0 4px 16px; border-left: 3px solid var(--accent-soft); }
 
     .ref { font: 600 20px/1.2 ui-monospace, 'SF Mono', Menlo, monospace; letter-spacing: .04em; color: var(--text); }
     .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
@@ -416,6 +419,26 @@
     <div class="card"><dl class="sum" id="sum"></dl></div>
     <div id="payReview" class="notice" hidden></div>
     <div id="rlist" class="cards"></div>
+    <div class="rq">
+      <label class="check" for="rqOpt">
+        <input type="checkbox" id="rqOpt">
+        <span><b>Optional: I’m open to follow-up questions from readers</b> until I graduate (through <span id="rqUntil">June 1 of your graduation year</span>). DocStory forwards each question to you, you decide whether to answer, and your email is never shown on the site.</span>
+      </label>
+      <div class="rq-more" id="rqMore" hidden>
+        <fieldset>
+          <legend>Where should we send reader questions?</legend>
+          <div class="opts credit" id="rqTo">
+            <label class="opt"><input type="radio" name="rqTo" id="rqTo-edu" value="edu"><b>My school email</b><span id="rqEduAddr">The .edu address above</span></label>
+            <label class="opt"><input type="radio" name="rqTo" id="rqTo-personal" value="personal"><b>A personal email</b><span>Any address you check often</span></label>
+          </div>
+        </fieldset>
+        <div class="field" id="rqEmailField" hidden>
+          <label for="rqEmail">Personal email for reader questions</label>
+          <input type="email" id="rqEmail" class="in" autocomplete="email">
+        </div>
+        <span class="hint">If you reply to a reader directly, they’ll see the address you reply from. To stay anonymous, reply to our email instead and we’ll pass your answer along without your address. You can opt out anytime.</span>
+      </div>
+    </div>
     <label class="check" for="consent">
       <input type="checkbox" id="consent">
       <span>These answers describe my own experience as a current student, include no patient information, and may be published on DocStory, edited for format, length, and clarity, with the credit I chose.</span>
@@ -468,7 +491,7 @@
 <script src="../../js/contribute-config.js?v=4"></script>
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js"></script>
-<script src="../../js/contribute.js?v=17"></script>
+<script src="../../js/contribute.js?v=18"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>

@@ -111,7 +111,8 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 /* ---------- State (draft saved in this browser) ---------- */
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
-  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0 });
+  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0,
+  rq: false, rqTo: 'edu', rqEmail: '' });   // rq: open to reader questions until graduation
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -502,10 +503,35 @@ function buildStep4() {
     '<p class="qtext">' + esc(qText(id)) + '</p><p class="ans">' + esc(S.answers[id] || '') + '</p></div>').join('');
   $('consent').checked = !!S.consent;
   $('terms').checked = !!S.terms;
+  renderRq();
   loadCaptcha();
 }
 $('consent').addEventListener('change', () => { S.consent = $('consent').checked; save(); });
 $('terms').addEventListener('change', () => { S.terms = $('terms').checked; save(); });
+
+/* ---------- Reader questions (optional) ----------
+   A contributor can agree to receive readers' follow-up questions until June 1 of their graduation
+   year. DocStory forwards each question by hand; the address chosen here goes only into the
+   submission email, never into the published interview file. */
+const rqUntil = () => S.gradYear ? S.gradYear + '-06-01' : '';
+const rqAddress = () => S.rqTo === 'personal' ? S.rqEmail.trim() : S.email;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function renderRq() {
+  $('rqOpt').checked = !!S.rq;
+  $('rqMore').hidden = !S.rq;
+  $('rqUntil').textContent = S.gradYear ? 'June 1, ' + S.gradYear : 'June 1 of your graduation year';
+  $('rqEduAddr').textContent = S.email || 'The .edu address above';
+  $('rqTo-edu').checked = S.rqTo !== 'personal';
+  $('rqTo-personal').checked = S.rqTo === 'personal';
+  $('rqEmailField').hidden = S.rqTo !== 'personal';
+  $('rqEmail').value = S.rqEmail;
+}
+$('rqOpt').addEventListener('change', () => { S.rq = $('rqOpt').checked; renderRq(); save(); });
+$('rqTo').addEventListener('change', e => {
+  S.rqTo = e.target.value === 'personal' ? 'personal' : 'edu'; renderRq(); save();
+  if (S.rqTo === 'personal') $('rqEmail').focus();
+});
+$('rqEmail').addEventListener('input', () => { S.rqEmail = $('rqEmail').value; save(); });
 
 /* hCaptcha spam check, loaded only when someone reaches the last step */
 let captchaId = null, captchaState = 'idle';   // idle | loading | ready | failed
@@ -539,6 +565,7 @@ function interviewMarkdown(ref, today) {
     'school_slug: ' + yq(isOther() ? slugify(schoolName()) : S.school), 'year: ' + yq(stageLabel())];
   if (S.undergrad) lines.push('undergraduate: ' + yq(S.undergrad));
   if (S.hometown) lines.push('hometown: ' + yq(S.hometown));
+  if (S.rq && rqUntil()) lines.push('reader_questions: true', 'questions_until: ' + yq(rqUntil()));   // never the email itself
   lines.push('date: ' + yq(today), 'contributor_ref: ' + yq(ref), '---', '',
     '# ' + creditName() + ', ' + stageLabel() + ' — ' + schoolName(), '');
   ids.forEach(id => { lines.push('**Q: ' + qText(id) + '**', '', (S.answers[id] || '').trim(), ''); });
@@ -559,6 +586,10 @@ function suggestedPath() {
 
 async function submit() {
   if (!$('consent').checked || !$('terms').checked) return showErr('e4', 'Tick both boxes above to send your interview.');
+  if (S.rq && S.rqTo === 'personal' && !EMAIL_RE.test(S.rqEmail.trim())) {
+    $('rqEmail').focus();
+    return showErr('e4', 'Add the personal email where you’d like reader questions, or choose your school email.');
+  }
   if (!C.web3formsKey) {
     console.warn('DocStory: set web3formsKey in js/contribute-config.js to enable submissions.');
     return showErr('e4', 'Submissions are temporarily unavailable. Your draft is saved, so please try again later.');
@@ -597,6 +628,9 @@ async function submit() {
   fd.append('Submitted', today);
   fd.append('Came from', window.DocStoryTrack ? window.DocStoryTrack.source() : 'Unknown');
   fd.append('Answers', ids.length + ' answers · ' + ids.reduce((s, id) => s + words(S.answers[id]), 0) + ' words');
+  fd.append('Reader questions', S.rq
+    ? 'OPTED IN · send to ' + rqAddress() + ' (' + (S.rqTo === 'personal' ? 'personal email' : 'school email') + ') · until June 1, ' + S.gradYear
+    : 'Not opted in');
   fd.append('Writing check', wr.summary);
   fd.append('Writing record (per answer)', wr.detail);
   fd.append('Consent', 'Own experience, no patient information, may be published and edited · Agreed to Contributor Terms');

@@ -49,7 +49,12 @@ Switch it a few days before outreach: Google snippets and cached link previews c
 4. **Tracker:** a Google Sheet with one row per submission and these columns:
    `Reference · Received · School · Year · Full name · School email · Credit · Paid-eligible ·
    Status · Verification sent · Reminder sent · Verified on · Published on · Live URL ·
-   Payment method · Payment handle · Paid on · Amount · Notes`
+   Payment method · Payment handle · Paid on · Amount · Questions opt-in · Questions email ·
+   Questions until · Notes`
+
+   Add a second tab, **Reader questions**, with one row per question:
+   `Received · Reader email · Interview ref · Student · Status (forwarded / not forwarded / relayed) ·
+   Forwarded on · Notes`
 
 ## Step by step
 
@@ -60,6 +65,9 @@ Add a row to the tracker with status **Received**. The email contains:
 - **Payment:** whether the school was eligible when they submitted (published count vs. the cap of 5)
 - **School email (verify):** the address you'll verify
 - **Interview file path** and **Interview file (markdown):** a ready-to-publish file
+- **Reader questions:** `OPTED IN · send to … · until June 1, YYYY` or `Not opted in`. Copy the
+  address into the tracker's **Questions email** column. It's deliberately not in the markdown file,
+  which only says `reader_questions: true` and the end date; that's what shows the question box.
 - **Writing check** and **Writing record (per answer):** how much of each answer was typed vs pasted,
   the largest single paste, roughly how long it took, and in how many sittings. If any answer is at
   least half pasted, the subject ends in `· ⚠ check writing`.
@@ -112,6 +120,10 @@ pick it up again; lapsing is about not leaving things open forever.
    payment for it.
 3. Send Template D with the live link. Mark **Published**.
 
+If the contributor opted in to reader questions, keep the `reader_questions` and `questions_until`
+lines in the file. The "Ask [name] a question" box then appears on their interview until that date.
+To turn it off (they opt out, or ask early), delete those two lines and rebuild.
+
 ### 7. Pay (within 7 days of publishing)
 - **PayPal or Venmo:** send $20 with the note `DocStory interview DS-XXXXXX-XXXX`. **Check the
   payee name** on the account roughly matches the contributor. If it doesn't, confirm by email first.
@@ -124,6 +136,21 @@ pick it up again; lapsing is about not leaving things open forever.
   If a handle or gift card email already appears in the tracker for another contributor, stop and
   check before paying. Mark **Paid**. Template D already tells them it's
   coming; no separate email needed unless something goes wrong.
+
+### 8. Reader questions (for contributors who opted in)
+A reader's question arrives with the subject `Reader question · DS-XXXXXX-XXXX · [Student] · [School]`.
+It includes the interview link, the reader's email and first name, and the question. Add a row to the
+**Reader questions** tab.
+
+1. **Screen it.** Don't forward anything abusive, sexual, harassing, spammy, asking for patient
+   information, or unrelated to medical school. Mark those **not forwarded**; there's no need to reply.
+   Also check the student is still within their **Questions until** date.
+2. **Forward it** with Template F to the student's **Questions email** from the tracker, and mark
+   **Forwarded**. The student then either emails the reader directly or replies to you.
+3. **If the student replies to you**, send their answer to the reader with Template G, from your
+   DocStory address, without the student's email. Mark **Relayed**.
+4. **Opt-outs:** if a student asks to stop, delete `reader_questions` and `questions_until` from
+   their interview file, rebuild, and update the tracker.
 
 ### Safety rules
 - Never pay before the interview is published.
@@ -152,6 +179,10 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 > 1. “I approve,” or any changes you'd like.
 > 2. [Paid only] How you'd like your $20: PayPal, Venmo, or an Amazon.com eGift card. For PayPal or
 >    Venmo, the username or email to send it to; for a gift card, the email address to deliver it to.
+>
+> [If they opted in to reader questions] You also chose to receive follow-up questions from readers
+> until **June 1, [YYYY]**, sent to **[address]**. If that's not right, or you'd rather not, just say
+> so in your reply.
 >
 > Please reply by **[date, 14 days out]**. Once you approve, we'll publish your interview
 > [paid only: and send payment within 7 days of it going live].
@@ -210,5 +241,39 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 >
 > [If declining: Unfortunately we're not able to publish this interview because [reason].
 > We really appreciate the time you took.]
+>
+> [Signature]
+
+### Template F: Forward a reader's question to the student
+**Subject:** A reader has a question about [School] ([REF])
+
+> Hi [First name],
+>
+> A reader of your DocStory interview sent you a question:
+>
+> > [Question]
+>
+> — [Reader first name, or "A reader"]
+>
+> **Want to answer?** You can email them directly at **[reader email]**. They'll see the address you
+> reply from. Or, to keep your email private, just reply to this message and we'll pass your answer
+> along without your address. If you'd rather not answer, no need to do anything.
+>
+> You're receiving this because you opted in to reader questions until **June 1, [YYYY]**. Reply
+> "stop" anytime to opt out.
+>
+> [Signature]
+
+### Template G: Pass a student's answer to the reader
+**Subject:** Re: your question for [Student credit name] at [School]
+
+> Hi [Reader first name],
+>
+> [Student credit name] answered your question:
+>
+> > [Answer]
+>
+> They chose to reply through DocStory, so please reply to this email if you'd like us to pass a
+> short follow-up along.
 >
 > [Signature]
