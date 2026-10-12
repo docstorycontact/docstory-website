@@ -16,6 +16,17 @@ import seo
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / 'content' / 'schools'
 
+
+def pay_enabled():
+    """Whether the paid contributor program is on (payEnabled in js/contribute-config.js).
+    Every page is built to match: payment wording is shown, or left out entirely."""
+    cfg = (ROOT / 'js' / 'contribute-config.js').read_text(encoding='utf-8')
+    return re.search(r'payEnabled:\s*(true|false)', cfg).group(1) == 'true'
+
+
+GET_PAID_PILL = ('<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] '
+                 'text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span>')
+
 # ── Static HTML fragments (plain strings — no f-string escaping needed) ───────
 # Tailwind settings for school pages live in tailwind/schools.config.js (built by build_css.py)
 
@@ -1219,7 +1230,7 @@ def render_page(school_slug, data, interviews, page=None):
       <a href="/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
       <a href="/directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
       <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
-      <a href="/contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span></a>
+      <a href="/contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute{GET_PAID_PILL if pay_enabled() else ''}</a>
     </div>
     <div class="flex items-center gap-2">
       <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm" data-signup>Join Now</button>
@@ -1520,6 +1531,7 @@ def write_static_heads(content_dir):
     n_schools = sum(1 for slug in SCHOOLS if (content_dir / slug).exists() and any((content_dir / slug).glob('*.md')))
     n_interviews = len(list(content_dir.glob('**/*.md')))
     states = len({d['state'] for slug, d in SCHOOLS.items() if (content_dir / slug).exists()})
+    paid = pay_enabled()
     pages = {
         'index.html': (
             'DocStory: Medical Students on What Their Schools Are Really Like',
@@ -1543,12 +1555,14 @@ def write_static_heads(content_dir):
         'contribute/index.html': (
             'Share Your Med School Story: Contribute to DocStory',
             'Current medical students: answer 8–10 questions about your school in your own words and get paid '
-            'once your interview is verified and published on DocStory.',
+            'once your interview is verified and published on DocStory.' if paid else
+            'Current medical students: answer 8–10 questions about your school in your own words and help '
+            'applicants see what it’s really like. About 30–45 minutes, and anonymous if you like.',
             [seo.breadcrumbs([('Home', '/'), ('Contribute', '/contribute/')])]),
         'contribute/terms/index.html': (
             'Contributor Terms | DocStory',
-            'The terms for contributing a student interview to DocStory: eligibility, verification, payment, '
-            'editing, and removal.',
+            'The terms for contributing a student interview to DocStory: eligibility, verification, '
+            + ('payment, ' if paid else '') + 'editing, and removal.',
             [seo.breadcrumbs([('Home', '/'), ('Contribute', '/contribute/'), ('Terms', '/contribute/terms/')])]),
         'privacy/index.html': (
             'Privacy Policy | DocStory',
@@ -1563,7 +1577,8 @@ def write_static_heads(content_dir):
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')
         noindex = rel == 'contribute/interview/index.html'
-        image = seo.SITE_URL + '/images/og-contribute.png?v=2' if rel.startswith('contribute/') else seo.OG_IMAGE
+        contribute_image = '/images/og-contribute.png?v=2' if paid else '/images/og-contribute-volunteer.png?v=1'
+        image = seo.SITE_URL + contribute_image if rel.startswith('contribute/') else seo.OG_IMAGE
         tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, image=image, robots='noindex' if noindex else None)
         if rel == 'index.html':
             tags += f'\n  <meta name="msvalidate.01" content="{seo.BING_SITE_VERIFICATION}">'
@@ -1728,6 +1743,19 @@ def write_vercel_config(content_dir):
     return warnings
 
 
+# Hand-written pages with payment wording. Elements marked data-get-paid / data-if-paid show only while
+# payment is on, and data-if-unpaid only while it's off; the build sets their hidden attribute to match.
+PAY_PAGES = ('index.html', 'about/index.html', 'directory/index.html', 'privacy/index.html',
+             'contribute/index.html', 'contribute/interview/index.html', 'contribute/terms/index.html')
+_PAY_TAG = re.compile(r'<([a-z][a-z0-9]*)(\s[^>]*?\b(data-get-paid|data-if-paid|data-if-unpaid)\b[^>]*)>')
+
+
+def _pay_tag(m, paid):
+    show = (not paid) if m.group(3) == 'data-if-unpaid' else paid
+    attrs = [a for a in re.findall(r'\s+[^\s=>]+(?:="[^"]*")?', m.group(2)) if a.strip() != 'hidden']
+    return '<' + m.group(1) + ''.join(attrs) + ('' if show else ' hidden') + '>'
+
+
 def write_contribute_values():
     """Write the contributor program's numbers (amount, cap, school counts, ...) straight into the
     contribute pages, so they're right even before js/contribute-common.js runs (or if it can't)."""
@@ -1749,6 +1777,13 @@ def write_contribute_values():
     new = re.sub(r'(<span data-pay-amount>)[^<]*(</span>)', lambda m: m.group(1) + values['amount'] + m.group(2), text)
     if new != text:
         home.write_text(new, encoding='utf-8')
+    paid = pay_enabled()
+    for rel in PAY_PAGES:
+        path = ROOT / rel
+        text = path.read_text(encoding='utf-8')
+        new = _PAY_TAG.sub(lambda m: _pay_tag(m, paid), text)
+        if new != text:
+            path.write_text(new, encoding='utf-8')
     for rel in ('contribute/index.html', 'contribute/interview/index.html', 'contribute/terms/index.html'):
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')
@@ -1757,7 +1792,8 @@ def write_contribute_values():
                      if m.group(2) in values else m.group(0), text)
         if new != text:
             path.write_text(new, encoding='utf-8')
-    print(f'  data  contribute pages ({values["totalSchools"]} schools, {values["paidSchools"]} paid)')
+    print(f'  data  contribute pages ({values["totalSchools"]} schools, {values["paidSchools"]} paid)'
+          if paid else '  data  contribute pages (payment OFF: volunteer wording)')
 
 
 def write_contribute_data(content_dir):

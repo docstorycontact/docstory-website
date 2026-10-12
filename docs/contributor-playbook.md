@@ -18,6 +18,20 @@ the new number here too.
 | **Paid** | $20 sent by PayPal or Venmo, recorded | Within 7 days of publishing |
 | **Lapsed / Declined** | No reply in 14 days (Template C), or declined (Template E) | — |
 
+## Turning payment on or off (volunteer mode)
+
+One switch controls everything: `payEnabled` in `js/contribute-config.js`. Set it to `false` for volunteer
+mode (for outreach through admissions offices or ambassador programs), `true` to pay again. Then rebuild:
+
+    python3 build.py && python3 build_schools.py
+
+The build updates every page to match: the "Get Paid!" nav pill, the homepage banner, the contribute page,
+the terms (the payment section and its numbering), the form's pay notices, submission emails ("Payment
+program off"), and the link-preview text and image (`images/og-contribute-volunteer.png` when off).
+Amount, cap and payment methods are kept, so turning it back on picks up where you left off.
+
+Switch it a few days before outreach: Google snippets and cached link previews can lag by days or weeks.
+
 ## One-time setup
 
 1. **Use one dedicated sending address** for all contributor email, and put it in
