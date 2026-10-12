@@ -163,6 +163,13 @@
     .ans { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; margin: 0; color: var(--ink); line-height: 1.6; }
     .tips { border-left: 3px solid var(--vibrant, #9580FF); padding: 2px 0 2px 16px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--text); }
     .tips ul { margin: 0; padding-left: 18px; color: var(--muted); list-style: disc; display: flex; flex-direction: column; gap: 4px; }
+    .tips li b { color: var(--text); font-weight: 600; }
+    /* Phones: just the bold points, with a toggle for the rest */
+    .tips-toggle { display: none; }
+    @media (max-width: 640px) {
+      .tips:not(.open) .more { display: none; }
+      .tips-toggle { display: inline-block; align-self: flex-start; background: none; border: 0; padding: 4px 0; color: var(--accent); font: 600 14px/1.4 inherit; text-decoration: underline; cursor: pointer; }
+    }
 
     .sum { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin: 0; }
     .sum dt { font-size: 13px; color: var(--muted); }
@@ -340,16 +347,17 @@
       <h2 class="title">Your answers</h2>
       <p class="lede">Write the way you’d talk to a friend who just got an interview invite to your school.</p>
     </div>
-    <div class="tips">
-      <b>What makes an answer useful</b>
+    <div class="tips" id="tips">
+      <b>General guidance</b>
       <ul>
-        <li>Name the specific program, site, course, or person. Details beat adjectives.</li>
-        <li>Say what you did or saw yourself, and say so when you’re passing on what classmates told you.</li>
-        <li>Include the downsides. Applicants trust a school more when the picture is complete.</li>
-        <li>Leave out patient details and anything that could identify a patient.</li>
-        <li>Write it yourself. AI-written answers aren’t accepted. Drafting elsewhere and pasting is fine; the form notes what was typed versus pasted.</li>
+        <li><b>Show, don’t tell.</b><span class="more"> Instead of saying something is good or bad, describe a moment that shows it.</span></li>
+        <li><b>Use the questions as a starting point.</b><span class="more"> Many have several parts. You don’t have to answer every part; they’re there to spark ideas and point you in directions to expand on.</span></li>
+        <li><b>Every good answer has a few specific details.</b><span class="more"> A course, a site, a person, a number, a moment: they’re what applicants can’t find anywhere else.</span></li>
+        <li><b>Include the downsides.</b><span class="more"> Also say when you’re passing on what classmates told you rather than what you saw yourself.</span></li>
+        <li><b>Leave out anything that could identify a patient.</b></li>
       </ul>
-      <span class="hint">We publish interviews of similar depth to the ones <a href="../../directory/index.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">already on DocStory</a>. If some answers are thin, we’ll ask you to expand them before publishing.</span>
+      <span class="hint more">We publish interviews of similar depth to the ones <a href="../../directory/index.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">already on DocStory</a>. If some answers are thin, we’ll ask you to expand them before publishing.</span>
+      <button type="button" class="tips-toggle" id="tipsToggle" aria-expanded="false" aria-controls="tips">Show details</button>
     </div>
     <div class="qprog" id="qprog" hidden>
       <div class="qprog-top"><b id="qprogLabel"></b><span id="qprogDone"></span></div>
@@ -427,7 +435,7 @@
 <script src="../../js/contribute-config.js?v=3"></script>
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js"></script>
-<script src="../../js/contribute.js?v=10"></script>
+<script src="../../js/contribute.js?v=12"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>

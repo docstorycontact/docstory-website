@@ -340,7 +340,7 @@ $('qlist').addEventListener('input', e => {
 
 /* ---------- Step 3 ---------- */
 function wcText(n) {
-  if (n === 0) return 'Aim for 100 to 200 words. Minimum ' + MIN_WORDS + '.';
+  if (n === 0) return 'Aim for a few specific details. Minimum ' + MIN_WORDS + ' words.';
   if (n < MIN_WORDS) return n + ' words. ' + (MIN_WORDS - n) + ' more to reach the minimum.';
   return n + ' words';
 }
@@ -385,6 +385,11 @@ function stepQuestion(delta) {
   showQuestion(S.qi + delta, true); save();
   $('s3').scrollIntoView({ block: 'start' });
 }
+$('tipsToggle').addEventListener('click', () => {
+  const open = $('tips').classList.toggle('open');
+  $('tipsToggle').setAttribute('aria-expanded', open);
+  $('tipsToggle').textContent = open ? 'Hide details' : 'Show details';
+});
 $('qprev').addEventListener('click', () => stepQuestion(-1));
 $('qnext').addEventListener('click', () => stepQuestion(1));
 phone.addEventListener('change', () => { if (S.step === 3) showQuestion(S.qi); });
