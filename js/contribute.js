@@ -111,7 +111,7 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 /* ---------- State (draft saved in this browser) ---------- */
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
-  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, qi: 0 });
+  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0 });
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -124,6 +124,7 @@ let submitted = null;   // { ref, text } after a successful submission
   if (!Array.isArray(S.picks)) S.picks = [];
   S.picks = S.picks.filter(id => id === 'own' || byId[id]);
   if (!S.answers || typeof S.answers !== 'object') S.answers = {};
+  if (!S.writing || typeof S.writing !== 'object') S.writing = {};
 })();
 let saveT;
 function save() {
@@ -389,14 +390,59 @@ $('qnext').addEventListener('click', () => stepQuestion(1));
 phone.addEventListener('change', () => { if (S.step === 3) showQuestion(S.qi); });
 $('alist').addEventListener('input', e => {
   const t = e.target; if (t.tagName !== 'TEXTAREA') return;
-  const id = t.getAttribute('data-id'); S.answers[id] = t.value;
+  const id = t.getAttribute('data-id');
+  noteWriting(id, (S.answers[id] || '').length, t.value.length, e.inputType);
+  S.answers[id] = t.value;
   const n = words(t.value), w = $('wc-' + id);
   w.textContent = wcText(n); w.className = 'wc' + (n >= MIN_WORDS ? ' ok' : (n ? ' short' : ''));
   if (n >= MIN_WORDS) $('card-' + id).classList.remove('bad');
   if (paged()) $('qprogDone').textContent = answeredCount(orderedPicks()) + ' of ' + orderedPicks().length + ' answered';
   grow(t); save();
 });
+$('alist').addEventListener('paste', e => {
+  const t = e.target; if (t.tagName !== 'TEXTAREA') return;
+  const n = ((e.clipboardData && e.clipboardData.getData('text')) || '').length;
+  if (n) { const r = writingRecord(t.getAttribute('data-id')); r.pasted += n; r.bigPaste = Math.max(r.bigPaste, n); }
+});
 const shortAnswers = () => orderedPicks().filter(id => words(S.answers[id]) < MIN_WORDS);
+
+/* ---------- Writing record ----------
+   For each answer: characters typed vs pasted, the largest single paste, roughly how long was spent
+   writing, and in how many sittings. It goes out with the submission so reviewers can spot answers
+   pasted in whole (often from an AI tool). Nothing is blocked: drafting elsewhere and pasting is
+   allowed. The Contributor Terms and Privacy Policy say we record this. */
+const IDLE_MS = 2 * 60 * 1000;   // a longer pause isn't counted as writing time, and starts a new sitting
+const FLAG_PASTED = 50;          // flag answers that are at least this % pasted
+const writingRecord = id => S.writing[id] || (S.writing[id] = { typed: 0, pasted: 0, bigPaste: 0, ms: 0, sittings: 0, last: 0 });
+function noteWriting(id, before, after, type) {
+  const r = writingRecord(id), now = Date.now();
+  if (r.last && now - r.last < IDLE_MS) r.ms += now - r.last; else r.sittings++;
+  r.last = now;
+  // Pastes are counted by the paste listener (it knows the pasted length even when it replaces a selection)
+  if (after <= before || /^insertFromPaste/.test(type || '')) return;
+  if (/^insertFromDrop/.test(type || '')) { r.pasted += after - before; r.bigPaste = Math.max(r.bigPaste, after - before); }
+  else r.typed += after - before;
+}
+const pastedPct = r => (r.typed + r.pasted) ? Math.round(r.pasted / (r.typed + r.pasted) * 100) : 0;
+const minutes = ms => ms < 60000 ? 'under 1 min' : '~' + Math.round(ms / 60000) + ' min';
+function writingLine(id) {
+  const r = S.writing[id];
+  if (!r || !(r.typed + r.pasted)) return 'no record (written before tracking began, or in another browser)';
+  const pct = pastedPct(r);
+  return (pct ? pct + '% pasted (largest paste ' + r.bigPaste + ' characters)' : 'all typed') +
+    ' · ' + minutes(r.ms) + ' writing · ' + r.sittings + ' sitting' + (r.sittings === 1 ? '' : 's') +
+    (pct >= FLAG_PASTED ? '  ⚠ mostly pasted' : '');
+}
+function writingReport() {
+  const ids = orderedPicks();
+  const flagged = ids.filter(id => S.writing[id] && pastedPct(S.writing[id]) >= FLAG_PASTED);
+  const all = ids.map(id => S.writing[id]).filter(Boolean);
+  const total = all.reduce((a, r) => ({ typed: a.typed + r.typed, pasted: a.pasted + r.pasted, ms: a.ms + r.ms }), { typed: 0, pasted: 0, ms: 0 });
+  const summary = (flagged.length ? '⚠ ' + flagged.length + ' of ' + ids.length + ' answers mostly pasted · ' : 'No answers mostly pasted · ') +
+    pastedPct(total) + '% pasted overall · ' + minutes(total.ms) + ' writing in total';
+  return { flagged: flagged.length, summary,
+    detail: ids.map((id, i) => 'Q' + (i + 1) + ' (' + words(S.answers[id]) + ' words): ' + writingLine(id)).join('\n') };
+}
 
 /* ---------- Step 4 ---------- */
 function buildStep4() {
@@ -493,7 +539,9 @@ async function submit() {
   const ids = orderedPicks();
   const fd = new FormData();
   fd.append('access_key', C.web3formsKey);
-  fd.append('subject', 'Interview ' + ref + ' · ' + schoolName() + ' · ' + stageLabel() + ' · ' + (st.paid ? 'Paid ' + D.money(C.payAmount) : 'Unpaid'));
+  const wr = writingReport();
+  fd.append('subject', 'Interview ' + ref + ' · ' + schoolName() + ' · ' + stageLabel() + ' · ' + (st.paid ? 'Paid ' + D.money(C.payAmount) : 'Unpaid') +
+    (wr.flagged ? ' · ⚠ check writing' : ''));
   fd.append('from_name', 'DocStory Contribute');
   fd.append('email', S.email);                       // reply-to: replying starts verification
   fd.append('Reference', ref);
@@ -509,6 +557,8 @@ async function submit() {
   fd.append('Submitted', today);
   fd.append('Came from', window.DocStoryTrack ? window.DocStoryTrack.source() : 'Unknown');
   fd.append('Answers', ids.length + ' answers · ' + ids.reduce((s, id) => s + words(S.answers[id]), 0) + ' words');
+  fd.append('Writing check', wr.summary);
+  fd.append('Writing record (per answer)', wr.detail);
   fd.append('Consent', 'Own experience, no patient information, may be published and edited · Agreed to Contributor Terms');
   fd.append('Interview', plainText(ref));
   fd.append('Interview file path', suggestedPath());
