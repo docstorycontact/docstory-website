@@ -142,3 +142,11 @@
     opacity: 0;
     transform: translateY(7px);
 }
+
+/* =============================================
+   Contributor payment wording (payEnabled in js/contribute-config.js).
+   The build sets `hidden` on these; !important beats display utilities like inline-flex.
+   ============================================= */
+[data-get-paid][hidden],
+[data-if-paid][hidden],
+[data-if-unpaid][hidden] { display: none !important; }

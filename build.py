@@ -20,6 +20,13 @@ def pay_amount():
     cfg = Path("js/contribute-config.js").read_text(encoding="utf-8")
     return int(re.search(r"payAmount:\s*(\d+)", cfg).group(1))
 
+
+def pay_enabled():
+    """Whether the paid contributor program is on (payEnabled in js/contribute-config.js).
+    When it's off, the pages are built with no mention of payment at all."""
+    cfg = Path("js/contribute-config.js").read_text(encoding="utf-8")
+    return re.search(r"payEnabled:\s*(true|false)", cfg).group(1) == "true"
+
 CONTENT_DIR = Path("content/interviews")
 OUTPUT_DIR  = Path("interviews")
 
@@ -121,11 +128,13 @@ def related_interviews(current, all_interviews, n=3):
 # HTML templates
 # ---------------------------------------------------------------------------
 
+GET_PAID_PILL = '<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span>'
+
 NAV_ITEMS = """
       <a href="{root}index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
       <a href="{root}directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
       <a href="{root}about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
-      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span></a>
+      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute""" + (GET_PAID_PILL if pay_enabled() else "") + """</a>
 """
 
 def related_card(iv, root):
@@ -164,6 +173,8 @@ def render_interview_page(iv, all_interviews):
     type_label, type_cls = school_type_tag(meta)
     rel       = related_interviews(iv, all_interviews)
     rel_html  = "".join(related_card(r, root) for r in rel)
+    contrib_pay = (f'<span id="contrib-pay">, and get paid <span id="contrib-amount">${pay_amount()}</span> once it’s published</span>'
+                   if pay_enabled() else "")
 
     facts = ""
     if school:
@@ -316,7 +327,7 @@ def render_interview_page(iv, all_interviews):
           <span class="material-symbols-outlined text-vibrant-iris text-[28px]" aria-hidden="true">edit_note</span>
           <div>
             <h2 class="font-headline-md text-headline-md text-primary">Med student? Share your story.</h2>
-            <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes<span id="contrib-pay">, and get paid <span id="contrib-amount">${pay_amount()}</span> once it’s published</span>.</p>
+            <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes{contrib_pay}.</p>
           </div>
         </div>
         <a href="{root}contribute/index.html" class="shrink-0 inline-flex items-center justify-center gap-1 bg-primary text-white px-md py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
@@ -422,7 +433,9 @@ def render_interview_page(iv, all_interviews):
 (function () {{
   var c = window.DOCSTORY_CONTRIBUTE;
   if (!c) return;
-  if (!c.payEnabled) document.getElementById('contrib-pay').hidden = true;
+  var pay = document.getElementById('contrib-pay');
+  if (!pay) return;
+  if (!c.payEnabled) pay.hidden = true;
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 }})();
 </script>

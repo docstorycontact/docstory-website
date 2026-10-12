@@ -381,7 +381,9 @@
 (function () {
   var c = window.DOCSTORY_CONTRIBUTE;
   if (!c) return;
-  if (!c.payEnabled) document.getElementById('contrib-pay').hidden = true;
+  var pay = document.getElementById('contrib-pay');
+  if (!pay) return;
+  if (!c.payEnabled) pay.hidden = true;
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 })();
 </script>

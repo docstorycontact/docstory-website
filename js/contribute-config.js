@@ -3,6 +3,9 @@
  * Every page in /contribute/ reads these, so a change here updates the whole program.
  */
 window.DOCSTORY_CONTRIBUTE = {
+  // The single on/off switch for paying contributors. After changing it, rebuild so every page matches:
+  //   python3 build.py && python3 build_schools.py
+  // Off = volunteer mode: no "Get Paid!" pill, no amounts, volunteer wording and link preview.
   payEnabled: true,
   payAmount: 20,            // dollars per verified, published interview
   paidCap: 5,               // schools with this many published interviews or more are no longer paid

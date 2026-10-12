@@ -254,7 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
   =============================================== */
   const contrib = window.DOCSTORY_CONTRIBUTE;
   if (contrib) {
-    if (!contrib.payEnabled) document.querySelectorAll('[data-get-paid]').forEach(el => { el.style.display = 'none'; });
+    const paid = !!contrib.payEnabled;
+    document.querySelectorAll('[data-get-paid], [data-if-paid]').forEach(el => { el.hidden = !paid; });
+    document.querySelectorAll('[data-if-unpaid]').forEach(el => { el.hidden = paid; });
     document.querySelectorAll('[data-pay-amount]').forEach(el => { el.textContent = '$' + contrib.payAmount; });
   }
 
