@@ -195,13 +195,13 @@ window.DOCSTORY_SITE = {
      {
       "text": "The faculty **listens to the class and actually tries to adjust** based on the classes needs.",
       "student": "Chetna",
-      "year": "M2",
+      "year": "MS2",
       "studentSlug": "chetna-thawani"
      },
      {
       "text": "I’ve had **so much practice** by now interviewing standardized patients, and practicing physicals on each other and standardized patients.",
       "student": "Chetna",
-      "year": "M2",
+      "year": "MS2",
       "studentSlug": "chetna-thawani"
      }
     ],
@@ -209,7 +209,7 @@ window.DOCSTORY_SITE = {
      {
       "text": "The only thing I don’t love about it are **the parking problems**, but that’s in any big city.",
       "student": "Chetna",
-      "year": "M2",
+      "year": "MS2",
       "studentSlug": "chetna-thawani"
      },
      {
@@ -643,6 +643,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Abraham Cheloff",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Harvard Medical School",
    "schoolSlug": "harvard-medical-school",
    "studentSlug": "abraham-cheloff",
@@ -652,6 +653,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Hadrian Mendoza",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Yale School of Medicine",
    "schoolSlug": "yale-school-of-medicine",
    "studentSlug": "hadrian-mendoza",
@@ -661,6 +663,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Will Tobolowsky",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Johns Hopkins School of Medicine",
    "schoolSlug": "johns-hopkins-school-of-medicine",
    "studentSlug": "will-tobolowsky",
@@ -670,6 +673,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Alex",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Duke University School of Medicine",
    "schoolSlug": "duke-university-school-of-medicine",
    "studentSlug": "alex",
@@ -679,6 +683,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Annie Yau",
    "year": "MS1",
+   "yearNum": 1,
    "school": "Weill Cornell Medical College",
    "schoolSlug": "weill-cornell-medical-college",
    "studentSlug": "annie-yau",
@@ -688,6 +693,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Regine Goh",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Northwestern Feinberg School of Medicine",
    "schoolSlug": "northwestern-feinberg-school-of-medicine",
    "studentSlug": "regine-goh",
@@ -696,7 +702,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Emily Hayward",
-   "year": "MS3 (MD/PhD)",
+   "year": "MS3",
+   "yearNum": 3,
    "school": "UAB Heersink School of Medicine",
    "schoolSlug": "university-of-alabama-birmingham",
    "studentSlug": "emily-hayward",
@@ -706,6 +713,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Alexa Lucas",
    "year": "MS1",
+   "yearNum": 1,
    "school": "UC Irvine School of Medicine",
    "schoolSlug": "uc-irvine-school-of-medicine",
    "studentSlug": "alexa-lucas",
@@ -715,6 +723,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Arnie Shah",
    "year": "MS1",
+   "yearNum": 1,
    "school": "UC Irvine School of Medicine",
    "schoolSlug": "uc-irvine-school-of-medicine",
    "studentSlug": "arnie-shah",
@@ -724,6 +733,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Steven Tohmasi",
    "year": "MS2",
+   "yearNum": 2,
    "school": "UC Irvine School of Medicine",
    "schoolSlug": "uc-irvine-school-of-medicine",
    "studentSlug": "steven-tohmasi",
@@ -733,6 +743,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Prithwijit Roychowdhury",
    "year": "MS2",
+   "yearNum": 2,
    "school": "UMass Chan Medical School",
    "schoolSlug": "university-of-massachusetts-medical-school",
    "studentSlug": "prithwijit-roychowdhury",
@@ -742,6 +753,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Neela",
    "year": "MS1",
+   "yearNum": 1,
    "school": "UC San Diego School of Medicine",
    "schoolSlug": "uc-san-diego-school-of-medicine",
    "studentSlug": "neela",
@@ -751,6 +763,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Arya Shah",
    "year": "MS4",
+   "yearNum": 4,
    "school": "Mayo Clinic Alix School of Medicine",
    "schoolSlug": "mayo-clinic-school-of-medicine",
    "studentSlug": "arya-shah",
@@ -760,6 +773,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "David",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Tulane University School of Medicine",
    "schoolSlug": "tulane-university-school-of-medicine",
    "studentSlug": "david",
@@ -769,6 +783,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Jonathan Acosta",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Drexel University College of Medicine",
    "schoolSlug": "drexel-university-college-of-medicine",
    "studentSlug": "jonathan-acosta",
@@ -778,6 +793,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Eric Nguyen",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Creighton University School of Medicine",
    "schoolSlug": "creighton-university-school-of-medicine",
    "studentSlug": "eric-nguyen",
@@ -787,6 +803,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Brian James",
    "year": "MS2",
+   "yearNum": 2,
    "school": "USF Health Morsani College of Medicine",
    "schoolSlug": "morsani-college-of-medicine",
    "studentSlug": "brian-james",
@@ -795,7 +812,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Chetna Thawani",
-   "year": "M2",
+   "year": "MS2",
+   "yearNum": 2,
    "school": "USF Health Morsani College of Medicine",
    "schoolSlug": "morsani-college-of-medicine",
    "studentSlug": "chetna-thawani",
@@ -805,6 +823,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Allison Martin",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Chicago Medical School at Rosalind Franklin University",
    "schoolSlug": "rosalind-franklin-university",
    "studentSlug": "allison-martin",
@@ -814,6 +833,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Drew Weinstein",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Chicago Medical School at Rosalind Franklin University",
    "schoolSlug": "rosalind-franklin-university",
    "studentSlug": "drew-weinstein",
@@ -823,6 +843,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Dominic Carusillo",
    "year": "MS1",
+   "yearNum": 1,
    "school": "USC Keck School of Medicine",
    "schoolSlug": "usc-keck-school-of-medicine",
    "studentSlug": "dominic-carusillo",
@@ -832,6 +853,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Guillaume Kugener",
    "year": "MS4",
+   "yearNum": 4,
    "school": "USC Keck School of Medicine",
    "schoolSlug": "usc-keck-school-of-medicine",
    "studentSlug": "guillaume-kugener",
@@ -841,6 +863,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Sam Teles",
    "year": "MS1",
+   "yearNum": 1,
    "school": "USC Keck School of Medicine",
    "schoolSlug": "usc-keck-school-of-medicine",
    "studentSlug": "sam-teles",
@@ -849,7 +872,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Chuck Chan",
-   "year": "OSM1",
+   "year": "OMS1",
+   "yearNum": 1,
    "school": "Western University College of Osteopathic Medicine of the Pacific",
    "schoolSlug": "western-university-osteopathic",
    "studentSlug": "chuck-chan",
@@ -859,6 +883,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Chris",
    "year": "MS2",
+   "yearNum": 2,
    "school": "VCU School of Medicine",
    "schoolSlug": "virginia-commonwealth-university",
    "studentSlug": "chris",
@@ -867,7 +892,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Jeremy Storck",
-   "year": "OSM3",
+   "year": "OMS3",
+   "yearNum": 3,
    "school": "Kentucky College of Osteopathic Medicine",
    "schoolSlug": "kentucky-college-of-osteopathic-medicine",
    "studentSlug": "jeremy-storck",
@@ -877,6 +903,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Austin Dopp",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Medical College of Wisconsin",
    "schoolSlug": "medical-college-of-wisconsin",
    "studentSlug": "austin-dopp",
@@ -886,6 +913,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Nik",
    "year": "MS1",
+   "yearNum": 1,
    "school": "Wayne State University School of Medicine",
    "schoolSlug": "wayne-state-school-of-medicine",
    "studentSlug": "nik",
@@ -895,6 +923,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Justin",
    "year": "MS1",
+   "yearNum": 1,
    "school": "Baylor College of Medicine",
    "schoolSlug": "baylor-college-of-medicine",
    "studentSlug": "justin",
@@ -904,6 +933,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Michele Cabeza",
    "year": "MS1",
+   "yearNum": 1,
    "school": "Baylor College of Medicine",
    "schoolSlug": "baylor-college-of-medicine",
    "studentSlug": "michele-cabeza",
@@ -913,6 +943,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Jay Patel",
    "year": "MS1",
+   "yearNum": 1,
    "school": "University of Tennessee Health Science Center College of Medicine",
    "schoolSlug": "ut-health-science-center",
    "studentSlug": "jay-patel",
@@ -922,6 +953,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Tim Ellis-Caleo",
    "year": "MS4",
+   "yearNum": 4,
    "school": "David Geffen School of Medicine at UCLA",
    "schoolSlug": "ucla-geffen-school-of-medicine",
    "studentSlug": "tim-ellis-caleo",
@@ -931,6 +963,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Anonymous",
    "year": "MS2",
+   "yearNum": 2,
    "school": "University of Florida College of Medicine",
    "schoolSlug": "university-of-florida-college-of-medicine",
    "studentSlug": "anonymous-ms2",
@@ -940,6 +973,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Anonymous",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Florida State University College of Medicine",
    "schoolSlug": "florida-state-university-college-of-medicine",
    "studentSlug": "anonymous-ms3",
@@ -948,7 +982,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Catherine Boatman",
-   "year": "M2",
+   "year": "MS2",
+   "yearNum": 2,
    "school": "Medical College of Georgia at Augusta University",
    "schoolSlug": "medical-college-of-georgia",
    "studentSlug": "catherine-boatman",
@@ -958,6 +993,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Bao Vu",
    "year": "MS1",
+   "yearNum": 1,
    "school": "California University of Science and Medicine",
    "schoolSlug": "california-university-of-science-and-medicine",
    "studentSlug": "bao-vu",
@@ -967,6 +1003,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Austin Wininger",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Indiana University School of Medicine",
    "schoolSlug": "indiana-university-school-of-medicine",
    "studentSlug": "austin-wininger",
@@ -976,6 +1013,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Alexander Worix",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Southern Illinois University School of Medicine",
    "schoolSlug": "southern-illinois-university-school-of-medicine",
    "studentSlug": "alexander-worix",
@@ -984,7 +1022,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Brittany Stelmar",
-   "year": "MS2",
+   "year": "OMS2",
+   "yearNum": 2,
    "school": "Touro College of Osteopathic Medicine",
    "schoolSlug": "touro-college-of-osteopathic-medicine",
    "studentSlug": "brittany-stelmar",
@@ -993,7 +1032,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Wei Ming Liang",
-   "year": "OMS-2",
+   "year": "OMS2",
+   "yearNum": 2,
    "school": "Touro College of Osteopathic Medicine",
    "schoolSlug": "touro-college-of-osteopathic-medicine",
    "studentSlug": "wei-ming-liang",
@@ -1003,6 +1043,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Priya Sorab",
    "year": "MS2",
+   "yearNum": 2,
    "school": "University of Cincinnati College of Medicine",
    "schoolSlug": "university-of-cincinnati-college-of-medicine",
    "studentSlug": "priya-sorab",
@@ -1012,6 +1053,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Nick Bacher",
    "year": "MS3",
+   "yearNum": 3,
    "school": "New York Medical College",
    "schoolSlug": "new-york-medical-college",
    "studentSlug": "nick-bacher",
@@ -1021,6 +1063,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Todd Jackson",
    "year": "MS3",
+   "yearNum": 3,
    "school": "University of Miami Miller School of Medicine",
    "schoolSlug": "university-of-miami-miller-school-of-medicine",
    "studentSlug": "todd-jackson",
@@ -1030,6 +1073,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Zach Donato",
    "year": "MS2",
+   "yearNum": 2,
    "school": "University of Miami Miller School of Medicine",
    "schoolSlug": "university-of-miami-miller-school-of-medicine",
    "studentSlug": "zach-donato",
@@ -1039,6 +1083,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Gabriel Conley",
    "year": "MS2",
+   "yearNum": 2,
    "school": "University of Iowa Carver College of Medicine",
    "schoolSlug": "university-of-iowa-carver-college-of-medicine",
    "studentSlug": "gabriel-conley",
@@ -1048,6 +1093,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Rossen Kirkov",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Eastern Virginia Medical School",
    "schoolSlug": "eastern-virginia-medical-school",
    "studentSlug": "rossen-kirkov",
@@ -1057,6 +1103,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Emily He",
    "year": "MS1",
+   "yearNum": 1,
    "school": "Rush Medical College",
    "schoolSlug": "rush-medical-college",
    "studentSlug": "emily-he",
@@ -1066,6 +1113,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Kyung Park",
    "year": "MS2",
+   "yearNum": 2,
    "school": "TCU Burnett School of Medicine",
    "schoolSlug": "tcu-burnett-school-of-medicine",
    "studentSlug": "kyung-park",
@@ -1075,6 +1123,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Ana Khatia",
    "year": "MS2",
+   "yearNum": 2,
    "school": "Albany Medical College",
    "schoolSlug": "albany-medical-college",
    "studentSlug": "ana-khatia",
@@ -1084,6 +1133,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Wilson Hoyt",
    "year": "MS1",
+   "yearNum": 1,
    "school": "University of Oklahoma College of Medicine",
    "schoolSlug": "university-of-oklahoma-college-of-medicine",
    "studentSlug": "wilson-hoyt",
@@ -1093,6 +1143,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Anonymous",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Brody School of Medicine at East Carolina University",
    "schoolSlug": "brody-school-of-medicine",
    "studentSlug": "anonymous-ms3",
@@ -1102,6 +1153,7 @@ window.DOCSTORY_SITE = {
   {
    "name": "Caleb",
    "year": "MS3",
+   "yearNum": 3,
    "school": "Texas A&M University Naresh K. Vashisht College of Medicine",
    "schoolSlug": "texas-a-and-m-college-of-medicine",
    "studentSlug": "caleb",
@@ -1110,7 +1162,8 @@ window.DOCSTORY_SITE = {
   },
   {
    "name": "Dani Sychowski",
-   "year": "MS1",
+   "year": "OMS1",
+   "yearNum": 1,
    "school": "Midwestern University Chicago College of Osteopathic Medicine",
    "schoolSlug": "midwestern-chicago-college-of-osteopathic-medicine",
    "studentSlug": "dani-sychowski",

@@ -2,7 +2,7 @@
 name: "Brittany Stelmar"
 school: "Touro College of Osteopathic Medicine"
 school_slug: "touro-college-of-osteopathic-medicine"
-year: "MS2"
+year: "OMS2"
 undergraduate: "UCLA, B.S. Biology"
 age: 24
 hometown: "Moorpark, CA"
@@ -10,7 +10,7 @@ date: "2018-06-16"
 url: "https://docstoryorg.wordpress.com/2018/06/16/brittany-stelmar-ms2/"
 ---
 
-# Brittany Stelmar, MS2 — Touro College of Osteopathic Medicine
+# Brittany Stelmar, OMS2 — Touro College of Osteopathic Medicine
 
 **Q: What does your typical day of medical school look like?**
 

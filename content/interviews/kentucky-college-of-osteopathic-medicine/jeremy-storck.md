@@ -2,12 +2,12 @@
 name: "Jeremy Storck"
 school: "Kentucky College of Osteopathic Medicine"
 school_slug: "kentucky-college-of-osteopathic-medicine"
-year: "OSM3"
+year: "OMS3"
 date: "2018-10-03"
 url: "https://docstoryorg.wordpress.com/2018/10/03/jeremy-storck-osm3/"
 ---
 
-# Jeremy Storck, OSM3 — Kentucky College of Osteopathic Medicine
+# Jeremy Storck, OMS3 — Kentucky College of Osteopathic Medicine
 
 **Q: What does your typical day of medical school look like?**
 

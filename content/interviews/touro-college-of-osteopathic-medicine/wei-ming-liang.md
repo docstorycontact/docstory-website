@@ -2,7 +2,7 @@
 name: "Wei Ming Liang"
 school: "Touro College of Osteopathic Medicine"
 school_slug: "touro-college-of-osteopathic-medicine"
-year: "OMS-2"
+year: "OMS2"
 undergraduate: "Stony Brook University (B.S. Biology)"
 age: 28
 hometown: "New York City, New York"
@@ -10,7 +10,7 @@ date: "2023-08-01"
 url: "https://docstoryorg.wordpress.com/2023/08/01/wei-ming-liang-oms-2/"
 ---
 
-# Wei Ming Liang, OMS-2 — Touro College of Osteopathic Medicine
+# Wei Ming Liang, OMS2 — Touro College of Osteopathic Medicine
 
 **Q: What does your typical day of medical school look like?**
 

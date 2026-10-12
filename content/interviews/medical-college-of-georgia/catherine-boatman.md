@@ -2,12 +2,12 @@
 name: "Catherine Boatman"
 school: "Medical College of Georgia at Augusta University"
 school_slug: "medical-college-of-georgia"
-year: "M2"
+year: "MS2"
 date: "2019-12-20"
 url: "https://docstoryorg.wordpress.com/2019/12/20/catherine-boatman-m2/"
 ---
 
-# Catherine Boatman, M2 — Medical College of Georgia at Augusta University
+# Catherine Boatman, MS2 — Medical College of Georgia at Augusta University
 
 **Q: What does your typical day of medical school look like?**
 

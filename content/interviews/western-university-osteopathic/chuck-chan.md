@@ -2,7 +2,7 @@
 name: "Chuck Chan"
 school: "Western University of Health Sciences College of Osteopathic Medicine"
 school_slug: "western-university-osteopathic"
-year: "OSM1"
+year: "OMS1"
 undergraduate: "UC Berkeley, B.A. Public Health"
 age: 25
 hometown: "Cerritos, CA"
@@ -10,7 +10,7 @@ date: "2018-05-22"
 url: "https://docstoryorg.wordpress.com/2018/05/22/chuck-chan-osm1/"
 ---
 
-# Chuck Chan, OSM1 — Western University of Health Sciences College of Osteopathic Medicine
+# Chuck Chan, OMS1 — Western University of Health Sciences College of Osteopathic Medicine
 
 **Q: What does your typical day of medical school look like?**
 
