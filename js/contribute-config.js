@@ -9,7 +9,7 @@ window.DOCSTORY_CONTRIBUTE = {
   payEnabled: true,
   payAmount: 20,            // dollars per verified, published interview
   paidCap: 5,               // schools with this many published interviews or more are no longer paid
-  payMethods: 'PayPal or Venmo',
+  payMethods: 'PayPal, Venmo, or an Amazon.com eGift card',
 
   // Web3Forms access key. It's meant to be public (it only lets people send TO your inbox).
   // Submissions are emailed to the address you signed up to Web3Forms with.

@@ -111,7 +111,8 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 /* ---------- State (draft saved in this browser) ---------- */
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
-  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0 });
+  gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0,
+  rq: false, rqTo: 'edu', rqEmail: '' });   // rq: open to reader questions until graduation
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -129,11 +130,46 @@ let submitted = null;   // { ref, text } after a successful submission
 let saveT;
 function save() {
   clearTimeout(saveT);
-  saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } }, 250);
+  saveT = setTimeout(() => {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); showSaveState(true); }
+    catch (e) { showSaveState(false); }           // storage blocked or full: say so rather than fail quietly
+  }, 250);
 }
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* ---------- Save status in the step rail ----------
+   "Draft saved" once there's something worth keeping; tapping it explains where the draft lives.
+   If the browser refuses to save, it turns into a warning instead. */
+const hasDraft = () => !!(S.school || S.name || S.email || S.picks.length || Object.values(S.answers).some(a => String(a || '').trim()));
+const SAVE_HELP = {
+  ok: '<b>Your draft saves automatically</b> in this browser on this device, so you can close the tab and come back to it later. ' +
+      'It won’t carry over to a different browser or device, and a private window deletes it when you close it.',
+  err: '<b>This browser is blocking saved drafts</b>, so leaving or closing this page will lose your answers. ' +
+       'Use Safari or Chrome in a regular (not private) window, or write your answers somewhere else and paste them in.'
+};
+function showSaveState(ok) {
+  const b = $('savestate');
+  if (ok && !hasDraft()) return;
+  b.hidden = false;
+  b.classList.toggle('err', !ok);
+  $('savestateLabel').textContent = ok ? 'Draft saved' : 'Not saving';
+  $('savestateShort').textContent = ok ? 'Saved' : '';      // phones: the warning icon alone, to fit the rail
+  b.setAttribute('aria-label', ok ? 'Draft saved. What this means' : 'Draft not saving. What to do');
+  $('savepop').innerHTML = ok ? SAVE_HELP.ok : SAVE_HELP.err;
+  if (ok) { b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse'); }
+  else if (!warned) { warned = true; toggleSavePop(true); }   // the first time saving fails, explain without waiting for a tap
+}
+let warned = false;
+function toggleSavePop(open) {
+  $('savepop').hidden = !open;
+  $('savestate').setAttribute('aria-expanded', open);
+}
+$('savestate').addEventListener('click', e => { e.stopPropagation(); toggleSavePop($('savepop').hidden); });
+document.addEventListener('click', e => { if (!$('savepop').hidden && !$('savepop').contains(e.target)) toggleSavePop(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('savepop').hidden) { toggleSavePop(false); $('savestate').focus(); } });
+
 const words = s => (String(s || '').trim().match(/\S+/g) || []).length;
 const yearRow = () => YEARS.find(y => y[0] === S.year) || null;
 
@@ -467,10 +503,35 @@ function buildStep4() {
     '<p class="qtext">' + esc(qText(id)) + '</p><p class="ans">' + esc(S.answers[id] || '') + '</p></div>').join('');
   $('consent').checked = !!S.consent;
   $('terms').checked = !!S.terms;
+  renderRq();
   loadCaptcha();
 }
 $('consent').addEventListener('change', () => { S.consent = $('consent').checked; save(); });
 $('terms').addEventListener('change', () => { S.terms = $('terms').checked; save(); });
+
+/* ---------- Reader questions (optional) ----------
+   A contributor can agree to receive readers' follow-up questions until June 1 of their graduation
+   year. DocStory forwards each question by hand; the address chosen here goes only into the
+   submission email, never into the published interview file. */
+const rqUntil = () => S.gradYear ? S.gradYear + '-06-01' : '';
+const rqAddress = () => S.rqTo === 'personal' ? S.rqEmail.trim() : S.email;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function renderRq() {
+  $('rqOpt').checked = !!S.rq;
+  $('rqMore').hidden = !S.rq;
+  $('rqUntil').textContent = S.gradYear ? 'June 1, ' + S.gradYear : 'June 1 of your graduation year';
+  $('rqEduAddr').textContent = S.email || 'The .edu address above';
+  $('rqTo-edu').checked = S.rqTo !== 'personal';
+  $('rqTo-personal').checked = S.rqTo === 'personal';
+  $('rqEmailField').hidden = S.rqTo !== 'personal';
+  $('rqEmail').value = S.rqEmail;
+}
+$('rqOpt').addEventListener('change', () => { S.rq = $('rqOpt').checked; renderRq(); save(); });
+$('rqTo').addEventListener('change', e => {
+  S.rqTo = e.target.value === 'personal' ? 'personal' : 'edu'; renderRq(); save();
+  if (S.rqTo === 'personal') $('rqEmail').focus();
+});
+$('rqEmail').addEventListener('input', () => { S.rqEmail = $('rqEmail').value; save(); });
 
 /* hCaptcha spam check, loaded only when someone reaches the last step */
 let captchaId = null, captchaState = 'idle';   // idle | loading | ready | failed
@@ -504,6 +565,7 @@ function interviewMarkdown(ref, today) {
     'school_slug: ' + yq(isOther() ? slugify(schoolName()) : S.school), 'year: ' + yq(stageLabel())];
   if (S.undergrad) lines.push('undergraduate: ' + yq(S.undergrad));
   if (S.hometown) lines.push('hometown: ' + yq(S.hometown));
+  if (S.rq && rqUntil()) lines.push('reader_questions: true', 'questions_until: ' + yq(rqUntil()));   // never the email itself
   lines.push('date: ' + yq(today), 'contributor_ref: ' + yq(ref), '---', '',
     '# ' + creditName() + ', ' + stageLabel() + ' — ' + schoolName(), '');
   ids.forEach(id => { lines.push('**Q: ' + qText(id) + '**', '', (S.answers[id] || '').trim(), ''); });
@@ -524,6 +586,10 @@ function suggestedPath() {
 
 async function submit() {
   if (!$('consent').checked || !$('terms').checked) return showErr('e4', 'Tick both boxes above to send your interview.');
+  if (S.rq && S.rqTo === 'personal' && !EMAIL_RE.test(S.rqEmail.trim())) {
+    $('rqEmail').focus();
+    return showErr('e4', 'Add the personal email where you’d like reader questions, or choose your school email.');
+  }
   if (!C.web3formsKey) {
     console.warn('DocStory: set web3formsKey in js/contribute-config.js to enable submissions.');
     return showErr('e4', 'Submissions are temporarily unavailable. Your draft is saved, so please try again later.');
@@ -562,6 +628,9 @@ async function submit() {
   fd.append('Submitted', today);
   fd.append('Came from', window.DocStoryTrack ? window.DocStoryTrack.source() : 'Unknown');
   fd.append('Answers', ids.length + ' answers · ' + ids.reduce((s, id) => s + words(S.answers[id]), 0) + ' words');
+  fd.append('Reader questions', S.rq
+    ? 'OPTED IN · send to ' + rqAddress() + ' (' + (S.rqTo === 'personal' ? 'personal email' : 'school email') + ') · until June 1, ' + S.gradYear
+    : 'Not opted in');
   fd.append('Writing check', wr.summary);
   fd.append('Writing record (per answer)', wr.detail);
   fd.append('Consent', 'Own experience, no patient information, may be published and edited · Agreed to Contributor Terms');
@@ -587,6 +656,7 @@ async function submit() {
   }
 
   submitted = { ref, text: plainText(ref), paid: st.paid };
+  clearTimeout(saveT);                               // a pending save would bring the sent draft back
   try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
   showDone();
 }
@@ -599,7 +669,7 @@ function showDone() {
   const paid = submitted.paid && C.payEnabled;
   $('doneStep3').textContent = paid ? 'Published and paid' : 'Published';
   $('doneStep3Text').textContent = paid
-    ? 'Once you approve, your interview goes live and we send ' + D.money(C.payAmount) + ' by ' + C.payMethods + ' within ' + C.payDays + ' days.'
+    ? 'Once you approve, your interview goes live and we send your ' + D.money(C.payAmount) + ' within ' + C.payDays + ' days, by the method you chose.'
     : 'Once you approve, your interview goes live on DocStory and we email you the link.';
   for (let i = 1; i <= 5; i++) $('s' + i).hidden = i !== 5;
   document.querySelector('.rail').hidden = true;
@@ -670,23 +740,57 @@ $('go3').addEventListener('click', () => tryGo(3));
 $('go4').addEventListener('click', () => tryGo(4));
 
 /* ---------- In-app browsers ----------
-   Links tapped inside apps like Reddit open in the app's own browser, which may throw away the saved
-   draft when someone switches apps. Suggest opening the page in a regular browser before writing. */
+   Links tapped inside apps like Reddit open in the app's own browser. Drafts saved there can be lost
+   when the app closes, and they never show up in the phone's regular browser. So before someone starts
+   writing, suggest switching: Android can hand the page to Chrome directly; iPhones can't, so we offer
+   Copy link plus where to find "Open in Safari". Also shown if the browser refuses to save at all. */
 (function appNote() {
-  try { if (sessionStorage.getItem('appnoteSeen') === '1') return; } catch (e) { /* ignore */ }
   const ua = navigator.userAgent || '';
   const app = /Reddit/i.test(ua) ? 'Reddit' : /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB/.test(ua) ? 'Facebook'
     : /LinkedInApp/i.test(ua) ? 'LinkedIn' : /Snapchat/i.test(ua) ? 'Snapchat' : /TikTok|musical_ly|BytedanceWebview/i.test(ua) ? 'TikTok' : '';
   let canSave = true;
   try { localStorage.setItem('ds-storage-test', '1'); localStorage.removeItem('ds-storage-test'); } catch (e) { canSave = false; }
   if (!app && canSave) return;
-  $('appnoteText').textContent = !canSave
-    ? 'This browser isn’t letting us save your draft. Open this page in Safari or Chrome before you start writing so you don’t lose your work.'
-    : 'You’re in the ' + app + ' app’s browser, which may not keep your draft if you switch away. To be safe, tap the ⋯ menu and choose “Open in browser” before you start writing.';
+  // Once they've started answering, switching browsers would leave their draft behind, so don't suggest it
+  if (canSave && Object.values(S.answers).some(a => String(a || '').trim())) return;
+  const DISMISSED = 'ds-appnote-dismissed';
+  try { if ((canSave ? localStorage : sessionStorage).getItem(DISMISSED) === '1') return; } catch (e) { /* ignore */ }
+
+  const android = /Android/i.test(ua);
+  if (!canSave) {
+    $('appnoteText').textContent = 'This browser isn’t letting us save your draft, so leaving the page would lose your answers. ' +
+      'Open this page in Safari or Chrome (not a private window) before you start writing.';
+  } else if (android) {
+    $('appnoteText').textContent = 'You’re in the ' + app + ' app’s browser, which may not keep your draft. ' +
+      'Before you start writing, open this page in Chrome so your work stays saved.';
+  } else {
+    $('appnoteText').textContent = 'You’re in the ' + app + ' app’s browser, which may not keep your draft. ' +
+      'Before you start writing, tap ⋯ or the share icon and choose “Open in Safari” (or copy the link and paste it into Safari).';
+  }
+  if (android) {
+    // Hands the page to Chrome; if Chrome isn't installed, Android reloads it here instead
+    const here = location.host + location.pathname + location.search;
+    $('appnoteOpen').href = 'intent://' + here + '#Intent;scheme=' + location.protocol.replace(':', '') + ';package=com.android.chrome;S.browser_fallback_url=' +
+      encodeURIComponent(location.href) + ';end';
+    $('appnoteOpen').hidden = false;
+  }
+  $('appnoteCopy').addEventListener('click', () => {
+    const url = location.href, msg = $('appnoteCopied');
+    const done = () => { msg.textContent = 'Link copied. Paste it into ' + (android ? 'Chrome' : 'Safari') + '.'; };
+    const manual = () => { msg.textContent = url; };    // last resort: show it so they can press and hold to copy
+    const legacy = () => {
+      const t = document.createElement('textarea');
+      t.value = url; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e) { /* ignore */ }
+      t.remove(); ok ? done() : manual();
+    };
+    try { navigator.clipboard.writeText(url).then(done, legacy); } catch (e) { legacy(); }
+  });
   $('appnote').hidden = false;
   $('appnoteClose').addEventListener('click', () => {
     $('appnote').hidden = true;
-    try { sessionStorage.setItem('appnoteSeen', '1'); } catch (e) { /* ignore */ }
+    try { (canSave ? localStorage : sessionStorage).setItem(DISMISSED, '1'); } catch (e) { /* ignore */ }
   });
 })();
 

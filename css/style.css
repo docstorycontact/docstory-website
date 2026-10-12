@@ -150,3 +150,22 @@
 [data-get-paid][hidden],
 [data-if-paid][hidden],
 [data-if-unpaid][hidden] { display: none !important; }
+
+/* =============================================
+   Reader questions box on interview pages (js/ask.js)
+   ============================================= */
+.ask-form { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+.ask-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.ask-field { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #333e4d; }
+.ask-field em { font-style: normal; font-weight: 400; color: #5b6573; }
+.ask-field small { font-size: 12px; font-weight: 400; color: #5b6573; }
+.ask-field input, .ask-field textarea { width: 100%; background: #fff; border: 1px solid #c9c4e0; border-radius: 8px; padding: 10px 12px; font: 400 15px/1.5 Inter, sans-serif; color: #1b1b26; }
+.ask-field textarea { resize: vertical; min-height: 110px; }
+.ask-field input:focus-visible, .ask-field textarea:focus-visible, .ask-check input:focus-visible, .ask-send:focus-visible { outline: 2px solid #6c5ce7; outline-offset: 2px; }
+.ask-check { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14px; color: #333e4d; cursor: pointer; }
+.ask-check input { width: 18px; height: 18px; margin-top: 2px; accent-color: #6c5ce7; }
+.ask-err { margin: 0; color: #b42318; font-size: 14px; }
+.ask-send { align-self: flex-start; background: #333e4d; color: #fff; border: 0; border-radius: 999px; padding: 12px 24px; font: 600 14px/1 Inter, sans-serif; cursor: pointer; transition: opacity 150ms ease-out; }
+.ask-send:hover { opacity: .9; }
+.ask-send[disabled] { opacity: .6; cursor: default; }
+.ask-done { margin: 16px 0 0; padding: 12px 14px; border-radius: 8px; background: #e6f4ec; color: #14532d; font-size: 15px; line-height: 1.5; }

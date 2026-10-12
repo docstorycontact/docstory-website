@@ -155,6 +155,42 @@ def related_card(iv, root):
           </li>"""
 
 
+def ask_box(meta, name, school):
+    """"Ask a question" box for students who opted in to reader questions, shown until
+    questions_until (June 1 of their graduation year). js/ask.js re-checks the date in the
+    browser, so the box also disappears on time if the site hasn't been rebuilt."""
+    until = str(meta.get("questions_until", ""))
+    if meta.get("reader_questions") is not True or not re.match(r"^\d{4}-\d{2}-\d{2}$", until):
+        return ""
+    if datetime.strptime(until, "%Y-%m-%d").date() <= datetime.now().date():
+        return ""
+    anon = str(name).lower().startswith("anonymous")
+    first = "this student" if anon else html.escape(str(name).split()[0])
+    who = "This student" if anon else html.escape(str(name).split()[0])
+    ref = html.escape(str(meta.get("contributor_ref", "")))
+    return f"""
+      <!-- Reader questions: the student opted in; DocStory forwards each question by email -->
+      <section id="ask" class="mt-xl bg-soft-surface border border-primary/10 rounded-xl p-md md:p-lg" data-until="{until}" data-ref="{ref}" data-student="{html.escape(str(name))}" data-school="{html.escape(str(school))}" aria-labelledby="ask-title">
+        <h2 id="ask-title" class="font-headline-md text-headline-md text-primary flex items-center gap-xs">
+          <span class="material-symbols-outlined text-vibrant-iris" aria-hidden="true">forum</span>Ask {first} a question
+        </h2>
+        <p class="font-body-md text-body-md text-slate-gray mt-1">{who} is open to follow-up questions from applicants. We’ll pass yours along privately. Students are volunteers, so a reply isn’t guaranteed.</p>
+        <form class="ask-form" id="askForm" novalidate>
+          <div class="ask-row">
+            <label class="ask-field"><span>Your email</span><input type="email" id="askEmail" autocomplete="email" required></label>
+            <label class="ask-field"><span>Your first name <em>(optional)</em></span><input type="text" id="askName" autocomplete="given-name" maxlength="60"></label>
+          </div>
+          <label class="ask-field"><span>Your question</span><textarea id="askQ" rows="4" maxlength="1000" required></textarea><small id="askCount">Up to 1,000 characters</small></label>
+          <label class="ask-check"><input type="checkbox" id="askOk"><span>Share my email with {first} so they can reply. They may answer from their own email or through DocStory.</span></label>
+          <div id="askCaptcha"></div>
+          <p class="ask-err" id="askErr" role="alert" hidden></p>
+          <button type="submit" class="ask-send" id="askSend">Send question</button>
+        </form>
+        <p class="ask-done" id="askDone" role="status" hidden></p>
+      </section>
+"""
+
+
 def render_interview_page(iv, all_interviews):
     meta         = iv["meta"]
     body_html    = md_to_html(iv["body"])
@@ -173,6 +209,8 @@ def render_interview_page(iv, all_interviews):
     type_label, type_cls = school_type_tag(meta)
     rel       = related_interviews(iv, all_interviews)
     rel_html  = "".join(related_card(r, root) for r in rel)
+    ask_html  = ask_box(meta, name, school)
+    ask_js    = f'<script src="{root}js/ask.js?v=1"></script>\n' if ask_html else ""
     contrib_pay = (f'<span id="contrib-pay">, and get paid <span id="contrib-amount">${pay_amount()}</span> once it’s published</span>'
                    if pay_enabled() else "")
 
@@ -320,7 +358,7 @@ def render_interview_page(iv, all_interviews):
           {body_html}
         </div>
       </div>
-
+{ask_html}
       <!-- Contributor call to action -->
       <aside class="mt-xl bg-surface-container-low border border-primary/10 rounded-xl p-md md:p-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-md" aria-label="Contribute an interview">
         <div class="flex items-start gap-sm">
@@ -427,7 +465,7 @@ def render_interview_page(iv, all_interviews):
 }})();
 </script>
 
-<script src="{root}js/contribute-config.js?v=3"></script>
+<script src="{root}js/contribute-config.js?v=4"></script>
 <script>
 // Keep the contribute banner's amount in step with js/contribute-config.js
 (function () {{
@@ -439,7 +477,7 @@ def render_interview_page(iv, all_interviews):
   else document.getElementById('contrib-amount').textContent = '$' + c.payAmount;
 }})();
 </script>
-<script src="{root}js/main.js?v=6"></script>
+{ask_js}<script src="{root}js/main.js?v=6"></script>
 </body>
 </html>"""
 
