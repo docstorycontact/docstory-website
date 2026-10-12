@@ -50,6 +50,28 @@ def class_tokens():
     return sorted(tokens)
 
 
+# Icons set from JavaScript or used as a fallback, which the markup scan below can't see
+EXTRA_ICONS = {'mail', 'mark_email_read', 'lock', 'star', 'expand_less', 'expand_more'}
+
+
+def icon_names():
+    """Every Material Symbols icon the site uses, so pages load a small font with only those icons
+    (the full font is over 1 MB and shows icon names as text while it downloads)."""
+    names = set(EXTRA_ICONS)
+    pat = re.compile(r'material-symbols-outlined[^>]*>\s*([a-z0-9_]+)\s*<')
+    for p in list(source_files()) + list((ROOT / 'content' / 'schools').glob('*.yaml')):
+        text = p.read_text(encoding='utf-8', errors='ignore')
+        names.update(pat.findall(text))
+        if p.suffix == '.yaml':
+            names.update(re.findall(r'^\s*icon:\s*([a-z0-9_]+)', text, re.M))
+    return sorted(names)
+
+
+def icon_font_url(names):
+    return ('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1'
+            f'&icon_names={",".join(names)}&display=block')
+
+
 def compile_group(group, tokens):
     cfg = (ROOT / 'tailwind' / f'{group}.config.js').read_text(encoding='utf-8')
     page = (f'<!doctype html><html><head><meta charset="utf-8"><script src="{CDN}{GROUP_PLUGINS.get(group, PLUGINS)}"></script>'
@@ -81,7 +103,10 @@ def main():
         versions[g] = hashlib.md5(out.read_bytes()).hexdigest()[:8]
         print(f'  css   {out.relative_to(ROOT)}  ({size // 1024} KB)')
     (ROOT / 'tailwind' / 'versions.json').write_text(json.dumps(versions, indent=1) + '\n', encoding='utf-8')
-    link_pages(versions)
+    icons = icon_names()
+    (ROOT / 'tailwind' / 'icons.json').write_text(json.dumps(icons) + '\n', encoding='utf-8')
+    print(f'  css   {len(icons)} icons in the icon font')
+    link_pages(versions, icons)
 
 
 STATIC_PAGES = {
@@ -95,7 +120,7 @@ def link_tag(group, versions):
     return f'<link rel="stylesheet" href="/css/tw/{group}.css?v={versions[group]}">'
 
 
-def link_pages(versions):
+def link_pages(versions, icons):
     """Point the hand-written pages at their stylesheet (the page builders do the generated ones)."""
     for rel, group in STATIC_PAGES.items():
         path = ROOT / rel
@@ -105,6 +130,8 @@ def link_pages(versions):
         new = re.sub(r'\s*<link rel="stylesheet" href="/css/tw/[^"]+">', '', new)
         # Last in <head>, where the in-browser compiler used to inject its styles, so the cascade is unchanged
         new = new.replace('</head>', '  ' + link_tag(group, versions) + '\n</head>', 1)
+        new = re.sub(r'<link href="https://fonts\.googleapis\.com/css2\?family=Material\+Symbols\+Outlined[^"]*" rel="stylesheet">',
+                     lambda m: f'<link href="{icon_font_url(icons).replace("&", "&amp;")}" rel="stylesheet">', new)
         if new != text:
             path.write_text(new, encoding='utf-8')
             print(f'  css   linked {rel}')
