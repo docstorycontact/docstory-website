@@ -1363,15 +1363,24 @@ def _verified_pros_cons(slug, page, content_dir):
             if not text or any(_norm_text(seg) not in haystack for seg in text.replace('**', '').split('…') if _norm_text(seg)):
                 print(f'  WARN  {slug}.yaml pros_cons: not verbatim in {f.stem}.md, dropped: "{text[:60]}…"'); warnings += 1; continue
             items.append({'text': text, 'student': fm.get('name', '').split()[0] if fm.get('name') else '',
-                          'year': fm.get('year', ''), 'studentSlug': f.stem})
+                          'year': year_label(fm.get('year', ''), SCHOOLS[slug]['type']), 'studentSlug': f.stem})
         out[side] = items
     return (out if out.get('love') and out.get('change') else None), warnings
 
 
 def _year_number(label):
-    """'MS2', 'M2', 'OMS-2', 'OSM3', 'MS3 (MD/PhD)' → 2, 2, 2, 3, 3 (None if no year 1–4 found)."""
+    """'MS2', 'M2', 'OMS-2', 'OSM3', 'OMS-III', 'MS3 (MD/PhD)' → 2, 2, 2, 3, 3, 3 (None if no year 1–4 found)."""
     m = re.search(r'[1-4]', str(label))
-    return int(m.group()) if m else None
+    if m:
+        return int(m.group())
+    m = re.search(r'(?<![A-Za-z])(IV|III|II|I)(?![A-Za-z])', str(label))
+    return {'I': 1, 'II': 2, 'III': 3, 'IV': 4}[m.group(1)] if m else None
+
+
+def year_label(label, kind):
+    """Standard year label: MS1–MS4 at MD schools, OMS1–OMS4 at DO schools (unchanged if no year is found)."""
+    n = _year_number(label)
+    return f"{'OMS' if kind == 'do' else 'MS'}{n}" if n else str(label or '')
 
 
 def write_site_data(content_dir):
@@ -1388,7 +1397,8 @@ def write_site_data(content_dir):
         for f in iv_files:
             fm, _ = parse_md(f)
             q = ' '.join(str(quotes.get(f.stem, '')).split()).strip().strip('"').strip()
-            interviews.append({'name': fm.get('name', 'Anonymous'), 'year': fm.get('year', ''),
+            interviews.append({'name': fm.get('name', 'Anonymous'), 'year': year_label(fm.get('year', ''), data['type']),
+                               'yearNum': _year_number(fm.get('year', '')),
                                'school': data['name'], 'schoolSlug': slug, 'studentSlug': f.stem,
                                'city': city, 'quote': q})
         entry = {'slug': slug, 'name': data['name'], 'shortName': page.get('short_name') or data['name'],
@@ -1580,6 +1590,15 @@ def _fill(text, name, inner):
     return pat.sub(lambda m: m.group(1) + inner + m.group(2), text, count=1)
 
 
+# One soft color per year (same for MD and DO); index.html's YEAR_CLS uses the same classes
+YEAR_CLS = {
+    1: 'bg-[#f1edff] text-[#4c35b5] border-[#dcd4fb]',
+    2: 'bg-[#e9f0fd] text-[#2c56a8] border-[#cfdcf7]',
+    3: 'bg-[#e6f4ef] text-[#23705a] border-[#cbe7dd]',
+    4: 'bg-[#fcecea] text-[#a2463a] border-[#f4d2cd]',
+}
+
+
 def write_prerendered(content_dir):
     """Static copies of the homepage and directory content that JavaScript normally draws, so search
     engines and AI crawlers that don't run scripts still see the schools, counts, and featured interviews.
@@ -1605,7 +1624,7 @@ def write_prerendered(content_dir):
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">{types.get(iv['schoolSlug'], 'md').upper()} · {e(iv['city'])}</span>
-            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">{e(iv['year'])}</span>
+            <span class="inline-flex items-center justify-center rounded-full border {YEAR_CLS.get(iv.get('yearNum'), 'bg-white text-tertiary border-tertiary/10')} px-2.5 py-1 font-label-md text-[11px] font-semibold whitespace-nowrap" title="Year when interviewed">{e(iv['year'])}</span>
           </div>
           <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">{e(iv['school'])}</h3>
         </div>

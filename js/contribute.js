@@ -18,10 +18,10 @@ const EDU_RE = /^[^\s@]+@[^\s@]+\.edu$/i;
 
 /* [id, digit used by the question bank, label, sub-label, MD credit, DO credit, "a/an ..." phrase] */
 const YEARS = [
-  ['m1', '1', 'First year',  'Foundations',            'MS1', 'OMS-I',   'a first-year student'],
-  ['m2', '2', 'Second year', 'Boards on the horizon',  'MS2', 'OMS-II',  'a second-year student'],
-  ['m3', '3', 'Third year',  'Clerkships',             'MS3', 'OMS-III', 'a third-year student'],
-  ['m4', '4', 'Fourth year', 'Sub-Is and the Match',   'MS4', 'OMS-IV',  'a fourth-year student'],
+  ['m1', '1', 'First year',  'Foundations',            'MS1', 'OMS1',   'a first-year student'],
+  ['m2', '2', 'Second year', 'Boards on the horizon',  'MS2', 'OMS2',  'a second-year student'],
+  ['m3', '3', 'Third year',  'Clerkships',             'MS3', 'OMS3', 'a third-year student'],
+  ['m4', '4', 'Fourth year', 'Sub-Is and the Match',   'MS4', 'OMS4',  'a fourth-year student'],
 ];
 const CATS = [
   ['pre', 'Pre-clinical'],

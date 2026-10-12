@@ -2,14 +2,14 @@
 name: "Dani Sychowski"
 school: "Midwestern University Chicago College of Osteopathic Medicine"
 school_slug: "midwestern-chicago-college-of-osteopathic-medicine"
-year: "MS1"
+year: "OMS1"
 undergraduate: "Lake Forest College, B.A. Neuroscience and Psychology"
 age: 25
 hometown: "Northern Chicago suburbs"
 date: "2023-01-24"
 ---
 
-# Dani Sychowski, MS1 — Midwestern University Chicago College of Osteopathic Medicine
+# Dani Sychowski, OMS1 — Midwestern University Chicago College of Osteopathic Medicine
 
 **Q: What does your typical day of medical school look like?**
 

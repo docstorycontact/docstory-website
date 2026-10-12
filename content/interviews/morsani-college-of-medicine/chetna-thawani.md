@@ -2,14 +2,14 @@
 name: "Chetna Thawani"
 school: "University of South Florida Morsani College of Medicine"
 school_slug: "morsani-college-of-medicine"
-year: "M2"
+year: "MS2"
 undergraduate: "Rutgers University, B.S. Biological Sciences"
 hometown: "Voorhees, New Jersey"
 date: "2019-12-20"
 url: "https://docstoryorg.wordpress.com/2019/12/20/chetna-thawani-m2/"
 ---
 
-# Chetna Thawani, M2 — University of South Florida Morsani College of Medicine
+# Chetna Thawani, MS2 — University of South Florida Morsani College of Medicine
 
 **Q: How do your classes and lectures compare to those at your undergraduate institution?**
 

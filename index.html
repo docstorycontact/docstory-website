@@ -67,7 +67,7 @@
     .stat-exit  { animation: stat-out 0.25s ease forwards; }
     .stat-enter { animation: stat-in  0.3s  ease forwards; }
   </style>
-  <link rel="stylesheet" href="/css/tw/home.css?v=898512bd">
+  <link rel="stylesheet" href="/css/tw/home.css?v=0047721c">
 </head>
 <body class="bg-background text-on-background font-body-md antialiased flex flex-col min-h-screen selection:bg-vibrant-iris selection:text-white">
 
@@ -194,7 +194,7 @@
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">MD · Boston, MA</span>
-            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">MS2</span>
+            <span class="inline-flex items-center justify-center rounded-full border bg-[#e9f0fd] text-[#2c56a8] border-[#cfdcf7] px-2.5 py-1 font-label-md text-[11px] font-semibold whitespace-nowrap" title="Year when interviewed">MS2</span>
           </div>
           <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">Harvard Medical School</h3>
         </div>
@@ -210,7 +210,7 @@
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">MD · New Haven, CT</span>
-            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">MS2</span>
+            <span class="inline-flex items-center justify-center rounded-full border bg-[#e9f0fd] text-[#2c56a8] border-[#cfdcf7] px-2.5 py-1 font-label-md text-[11px] font-semibold whitespace-nowrap" title="Year when interviewed">MS2</span>
           </div>
           <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">Yale School of Medicine</h3>
         </div>
@@ -226,7 +226,7 @@
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">MD · Baltimore, MD</span>
-            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">MS3</span>
+            <span class="inline-flex items-center justify-center rounded-full border bg-[#e6f4ef] text-[#23705a] border-[#cbe7dd] px-2.5 py-1 font-label-md text-[11px] font-semibold whitespace-nowrap" title="Year when interviewed">MS3</span>
           </div>
           <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">Johns Hopkins School of Medicine</h3>
         </div>
@@ -385,6 +385,15 @@
       </div>`;
   }
 
+  // One soft color per year (same for MD and DO), shared by the card bubbles and the Voices tab
+  const YEAR_CLS = {
+    1: 'bg-[#f1edff] text-[#4c35b5] border-[#dcd4fb]',
+    2: 'bg-[#e9f0fd] text-[#2c56a8] border-[#cfdcf7]',
+    3: 'bg-[#e6f4ef] text-[#23705a] border-[#cbe7dd]',
+    4: 'bg-[#fcecea] text-[#a2463a] border-[#f4d2cd]',
+  };
+  const yearCls = n => YEAR_CLS[n] || 'bg-white text-tertiary border-tertiary/10';
+
   function renderFeaturedCards(picks) {
     const container = document.getElementById('featured-cards');
     container.innerHTML = picks.map(iv => {
@@ -395,7 +404,7 @@
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">${(sc.type || 'md').toUpperCase()} · ${iv.city}</span>
-            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">${iv.year}</span>
+            <span class="inline-flex items-center justify-center rounded-full border ${yearCls(iv.yearNum)} px-2.5 py-1 font-label-md text-[11px] font-semibold whitespace-nowrap" title="Year when interviewed">${iv.year}</span>
           </div>
           <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">${iv.school}</h3>
         </div>
@@ -447,9 +456,9 @@ ${d.badge}
       <div class="font-body-md text-[13px] font-medium text-primary">${d.label}</div>
       ${d.desc ? `<div class="font-body-md text-[12px] text-slate-gray mt-[2px]">${d.desc}</div>` : ''}
       ${d.breakdown ? `<div class="grid grid-cols-4 gap-[6px] mt-sm">
-        ${d.breakdown.map(([yr,n]) => `<div class="text-center bg-white rounded-lg py-xs border border-primary/10">
-          <div class="font-headline-md text-headline-md text-primary">${n}</div>
-          <div class="font-body-md text-[10px] text-slate-gray mt-[2px]">${yr}</div>
+        ${d.breakdown.map(([yr,n], i) => `<div class="text-center rounded-lg py-xs border ${yearCls(i + 1)}">
+          <div class="font-headline-md text-headline-md">${n}</div>
+          <div class="font-body-md text-[10px] mt-[2px] opacity-80">${yr}</div>
         </div>`).join('')}</div>` : ''}
     `;
   }
