@@ -1200,7 +1200,7 @@ def render_page(school_slug, data, interviews, page=None):
   <meta name="description" content="{html_mod.escape(description)}">
   {head_seo}
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  {seo.icon_font_link()}
   <link href="/css/style.css" rel="stylesheet">
   <style>
     .line-clamp-4 {{ display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }}{extra_css}

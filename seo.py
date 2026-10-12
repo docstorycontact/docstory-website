@@ -61,6 +61,8 @@ def head_tags(title, description, path, og_type='website', jsonld=(), image=OG_I
     canonical = url(path)
     lines = [
         f'<link rel="canonical" href="{canonical}">',
+        '<link rel="preconnect" href="https://fonts.googleapis.com">',
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">',
         '<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">',
         '<script src="/js/analytics.js?v=2"></script>',
@@ -90,3 +92,11 @@ def tw_link(group):
     """<link> to the built Tailwind stylesheet for a page type (see build_css.py), versioned by content."""
     versions = json.loads((Path(__file__).parent / 'tailwind' / 'versions.json').read_text(encoding='utf-8'))
     return f'<link rel="stylesheet" href="/css/tw/{group}.css?v={versions[group]}">'
+
+
+def icon_font_link():
+    """<link> to a Material Symbols font holding only the icons the site uses (list from build_css.py)."""
+    icons = json.loads((Path(__file__).parent / 'tailwind' / 'icons.json').read_text(encoding='utf-8'))
+    url = ('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1'
+           f'&amp;icon_names={",".join(icons)}&amp;display=block')
+    return f'<link href="{url}" rel="stylesheet">'

@@ -224,7 +224,7 @@ def render_interview_page(iv, all_interviews):
   <meta name="description" content="{html.escape(description)}">
   {head_seo}
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  {seo.icon_font_link()}
   <link href="{root}css/style.css" rel="stylesheet">
   <style>
     .interview-body h1 {{ font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }}
