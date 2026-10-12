@@ -1601,23 +1601,20 @@ def write_prerendered(content_dir):
     cards = []
     for iv in [iv for iv in site['interviews'] if iv['quote']][:3]:
         cards.append(f'''
-      <a href="interviews/{iv['schoolSlug']}/{iv['studentSlug']}/index.html" class="bg-white rounded-xl border border-primary/10 overflow-hidden hover:shadow-[0_4px_20px_rgb(0,0,0,0.06)] transition-shadow group cursor-pointer flex flex-col">
-        <div class="h-40 bg-surface-container relative">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          <div class="absolute bottom-sm left-sm right-sm text-white">
-            <span class="bg-vibrant-iris px-2 py-1 rounded text-[10px] font-label-md mb-1 inline-block uppercase tracking-wider">{types.get(iv['schoolSlug'], 'md').upper()}</span>
-            <div class="font-headline-md text-headline-md leading-tight line-clamp-2">{e(iv['school'])}</div>
+      <a href="interviews/{iv['schoolSlug']}/{iv['studentSlug']}/index.html" class="group bg-white rounded-xl border border-primary/10 overflow-hidden flex flex-col transition-all duration-200 ease-out hover:-translate-y-1 hover:border-vibrant-iris/30 hover:shadow-[0_14px_32px_-14px_rgba(61,32,163,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vibrant-iris focus-visible:ring-offset-2">
+        <div class="bg-surface-container px-md pt-md pb-md">
+          <div class="flex items-center justify-between gap-sm mb-xs">
+            <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">{types.get(iv['schoolSlug'], 'md').upper()} · {e(iv['city'])}</span>
+            <span class="inline-flex items-center justify-center rounded-full bg-white text-tertiary border border-tertiary/10 px-2.5 py-1 font-label-md text-[11px] font-semibold shadow-sm whitespace-nowrap" title="Year when interviewed">{e(iv['year'])}</span>
           </div>
+          <h3 class="font-headline-md text-headline-md text-primary leading-snug line-clamp-3 lg:line-clamp-2 md:min-h-[56px]">{e(iv['school'])}</h3>
         </div>
         <div class="p-md flex flex-col gap-md flex-1">
-          <div class="flex items-center gap-sm">
-            <div class="w-8 h-8 rounded-full bg-vibrant-iris/15 flex items-center justify-center text-vibrant-iris font-bold text-xs">{e(ini(iv['name']))}</div>
-            <div>
-              <div class="font-label-md text-label-md text-primary">{e(iv['name'])}</div>
-              <div class="font-body-md text-[12px] text-slate-gray">{e(iv['year'])} · {e(iv['city'])}</div>
-            </div>
+          <p class="font-body-md text-body-md text-on-surface leading-relaxed line-clamp-4">“{e(iv['quote'])}”</p>
+          <div class="mt-auto flex items-center justify-between gap-sm">
+            <span class="font-label-md text-label-md text-slate-gray truncate">{e(iv['name'])}</span>
+            <span class="inline-flex items-center gap-1 font-label-md text-label-md text-vibrant-iris whitespace-nowrap"><span class="md:hidden lg:inline">Read interview</span><span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span></span>
           </div>
-          <p class="font-body-md text-body-md text-slate-gray italic line-clamp-3">“{e(iv['quote'])}”</p>
         </div>
       </a>''')
     path = ROOT / 'index.html'
