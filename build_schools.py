@@ -1284,7 +1284,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 </footer>
 
-<script src="/js/contribute-config.js?v=3"></script>
+<script src="/js/contribute-config.js?v=4"></script>
 <script src="/js/main.js?v=6"></script>
 </body>
 </html>'''

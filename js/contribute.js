@@ -599,7 +599,7 @@ function showDone() {
   const paid = submitted.paid && C.payEnabled;
   $('doneStep3').textContent = paid ? 'Published and paid' : 'Published';
   $('doneStep3Text').textContent = paid
-    ? 'Once you approve, your interview goes live and we send ' + D.money(C.payAmount) + ' by ' + C.payMethods + ' within ' + C.payDays + ' days.'
+    ? 'Once you approve, your interview goes live and we send your ' + D.money(C.payAmount) + ' within ' + C.payDays + ' days, by the method you chose.'
     : 'Once you approve, your interview goes live on DocStory and we email you the link.';
   for (let i = 1; i <= 5; i++) $('s' + i).hidden = i !== 5;
   document.querySelector('.rail').hidden = true;
