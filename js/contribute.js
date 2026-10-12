@@ -129,11 +129,46 @@ let submitted = null;   // { ref, text } after a successful submission
 let saveT;
 function save() {
   clearTimeout(saveT);
-  saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } }, 250);
+  saveT = setTimeout(() => {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); showSaveState(true); }
+    catch (e) { showSaveState(false); }           // storage blocked or full: say so rather than fail quietly
+  }, 250);
 }
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* ---------- Save status in the step rail ----------
+   "Draft saved" once there's something worth keeping; tapping it explains where the draft lives.
+   If the browser refuses to save, it turns into a warning instead. */
+const hasDraft = () => !!(S.school || S.name || S.email || S.picks.length || Object.values(S.answers).some(a => String(a || '').trim()));
+const SAVE_HELP = {
+  ok: '<b>Your draft saves automatically</b> in this browser on this device, so you can close the tab and come back to it later. ' +
+      'It won’t carry over to a different browser or device, and a private window deletes it when you close it.',
+  err: '<b>This browser is blocking saved drafts</b>, so leaving or closing this page will lose your answers. ' +
+       'Use Safari or Chrome in a regular (not private) window, or write your answers somewhere else and paste them in.'
+};
+function showSaveState(ok) {
+  const b = $('savestate');
+  if (ok && !hasDraft()) return;
+  b.hidden = false;
+  b.classList.toggle('err', !ok);
+  $('savestateLabel').textContent = ok ? 'Draft saved' : 'Not saving';
+  $('savestateShort').textContent = ok ? 'Saved' : '';      // phones: the warning icon alone, to fit the rail
+  b.setAttribute('aria-label', ok ? 'Draft saved. What this means' : 'Draft not saving. What to do');
+  $('savepop').innerHTML = ok ? SAVE_HELP.ok : SAVE_HELP.err;
+  if (ok) { b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse'); }
+  else if (!warned) { warned = true; toggleSavePop(true); }   // the first time saving fails, explain without waiting for a tap
+}
+let warned = false;
+function toggleSavePop(open) {
+  $('savepop').hidden = !open;
+  $('savestate').setAttribute('aria-expanded', open);
+}
+$('savestate').addEventListener('click', e => { e.stopPropagation(); toggleSavePop($('savepop').hidden); });
+document.addEventListener('click', e => { if (!$('savepop').hidden && !$('savepop').contains(e.target)) toggleSavePop(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('savepop').hidden) { toggleSavePop(false); $('savestate').focus(); } });
+
 const words = s => (String(s || '').trim().match(/\S+/g) || []).length;
 const yearRow = () => YEARS.find(y => y[0] === S.year) || null;
 
@@ -587,6 +622,7 @@ async function submit() {
   }
 
   submitted = { ref, text: plainText(ref), paid: st.paid };
+  clearTimeout(saveT);                               // a pending save would bring the sent draft back
   try { localStorage.removeItem(KEY); } catch (e) { /* ignore */ }
   showDone();
 }
@@ -670,23 +706,57 @@ $('go3').addEventListener('click', () => tryGo(3));
 $('go4').addEventListener('click', () => tryGo(4));
 
 /* ---------- In-app browsers ----------
-   Links tapped inside apps like Reddit open in the app's own browser, which may throw away the saved
-   draft when someone switches apps. Suggest opening the page in a regular browser before writing. */
+   Links tapped inside apps like Reddit open in the app's own browser. Drafts saved there can be lost
+   when the app closes, and they never show up in the phone's regular browser. So before someone starts
+   writing, suggest switching: Android can hand the page to Chrome directly; iPhones can't, so we offer
+   Copy link plus where to find "Open in Safari". Also shown if the browser refuses to save at all. */
 (function appNote() {
-  try { if (sessionStorage.getItem('appnoteSeen') === '1') return; } catch (e) { /* ignore */ }
   const ua = navigator.userAgent || '';
   const app = /Reddit/i.test(ua) ? 'Reddit' : /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB/.test(ua) ? 'Facebook'
     : /LinkedInApp/i.test(ua) ? 'LinkedIn' : /Snapchat/i.test(ua) ? 'Snapchat' : /TikTok|musical_ly|BytedanceWebview/i.test(ua) ? 'TikTok' : '';
   let canSave = true;
   try { localStorage.setItem('ds-storage-test', '1'); localStorage.removeItem('ds-storage-test'); } catch (e) { canSave = false; }
   if (!app && canSave) return;
-  $('appnoteText').textContent = !canSave
-    ? 'This browser isn’t letting us save your draft. Open this page in Safari or Chrome before you start writing so you don’t lose your work.'
-    : 'You’re in the ' + app + ' app’s browser, which may not keep your draft if you switch away. To be safe, tap the ⋯ menu and choose “Open in browser” before you start writing.';
+  // Once they've started answering, switching browsers would leave their draft behind, so don't suggest it
+  if (canSave && Object.values(S.answers).some(a => String(a || '').trim())) return;
+  const DISMISSED = 'ds-appnote-dismissed';
+  try { if ((canSave ? localStorage : sessionStorage).getItem(DISMISSED) === '1') return; } catch (e) { /* ignore */ }
+
+  const android = /Android/i.test(ua);
+  if (!canSave) {
+    $('appnoteText').textContent = 'This browser isn’t letting us save your draft, so leaving the page would lose your answers. ' +
+      'Open this page in Safari or Chrome (not a private window) before you start writing.';
+  } else if (android) {
+    $('appnoteText').textContent = 'You’re in the ' + app + ' app’s browser, which may not keep your draft. ' +
+      'Before you start writing, open this page in Chrome so your work stays saved.';
+  } else {
+    $('appnoteText').textContent = 'You’re in the ' + app + ' app’s browser, which may not keep your draft. ' +
+      'Before you start writing, tap ⋯ or the share icon and choose “Open in Safari” (or copy the link and paste it into Safari).';
+  }
+  if (android) {
+    // Hands the page to Chrome; if Chrome isn't installed, Android reloads it here instead
+    const here = location.host + location.pathname + location.search;
+    $('appnoteOpen').href = 'intent://' + here + '#Intent;scheme=' + location.protocol.replace(':', '') + ';package=com.android.chrome;S.browser_fallback_url=' +
+      encodeURIComponent(location.href) + ';end';
+    $('appnoteOpen').hidden = false;
+  }
+  $('appnoteCopy').addEventListener('click', () => {
+    const url = location.href, msg = $('appnoteCopied');
+    const done = () => { msg.textContent = 'Link copied. Paste it into ' + (android ? 'Chrome' : 'Safari') + '.'; };
+    const manual = () => { msg.textContent = url; };    // last resort: show it so they can press and hold to copy
+    const legacy = () => {
+      const t = document.createElement('textarea');
+      t.value = url; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e) { /* ignore */ }
+      t.remove(); ok ? done() : manual();
+    };
+    try { navigator.clipboard.writeText(url).then(done, legacy); } catch (e) { legacy(); }
+  });
   $('appnote').hidden = false;
   $('appnoteClose').addEventListener('click', () => {
     $('appnote').hidden = true;
-    try { sessionStorage.setItem('appnoteSeen', '1'); } catch (e) { /* ignore */ }
+    try { (canSave ? localStorage : sessionStorage).setItem(DISMISSED, '1'); } catch (e) { /* ignore */ }
   });
 })();
 

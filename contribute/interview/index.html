@@ -67,6 +67,20 @@
     .steps .cur .n { background: var(--accent); border-color: var(--accent); color: #fff; }
     .steps .done .n { border-color: var(--accent); color: var(--accent); }
     @media (max-width: 560px) { .steps button:not(.cur) .t { display: none; } }
+    /* Draft save status (next to the pay badge) and its explanation */
+    .rail-in { position: relative; }
+    .rail-end { display: flex; align-items: center; gap: 8px; }
+    .savestate { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; background: none; border: 0; border-radius: 999px; padding: 6px 8px; color: var(--ok); font: 500 13px/1 Inter, sans-serif; cursor: pointer; }
+    .savestate:hover { background: var(--tint); }
+    .savestate .ic.err, .savestate.err .ic.ok { display: none; }
+    .savestate.err .ic.err { display: block; }
+    .savestate.err { color: var(--warn); }
+    .savestate.pulse .ic.ok { animation: saved-in 250ms ease-out both; }
+    @keyframes saved-in { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+    .savepop { position: absolute; right: 16px; top: calc(100% + 6px); width: min(340px, calc(100vw - 32px)); background: #fff; border: 1px solid var(--line); border-radius: var(--r); box-shadow: 0 8px 24px rgba(27,27,38,.12); padding: 12px 14px; font-size: 14px; line-height: 1.5; color: var(--text); }
+    .savepop b { color: var(--ink); }
+    .savestate .lbl-short { display: none; }
+    @media (max-width: 560px) { .savestate .lbl-long { display: none; } .savestate .lbl-short { display: inline; } .savestate { padding: 6px 4px; } }
     .paybadge { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .03em; color: var(--ok); background: #e8f5ee; border-radius: 999px; padding: 6px 10px; }
     .paybadge.off { color: var(--muted); background: var(--tint); }
     .paybadge .short { display: none; }
@@ -198,8 +212,14 @@
     /* Banner for in-app browsers (Reddit, Instagram, ...) where drafts may not be kept */
     .appnote { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 16px; }
     .appnote .notice { flex: 1; }
-    .appnote button { flex-shrink: 0; align-self: center; border: 0; background: none; color: var(--accent); font: 600 14px/1 'Plus Jakarta Sans', sans-serif; padding: 10px 4px; cursor: pointer; }
-    @media (prefers-reduced-motion: reduce) { .spin, .notice.fade-in { animation: none; } * { transition: none !important; } }
+    .appnote-body { display: flex; flex-direction: column; gap: 10px; }
+    .appnote-body p { margin: 0; }
+    .appnote-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .appnote .act { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff; color: var(--ink); font: 600 13px/1 Inter, sans-serif; text-decoration: none; cursor: pointer; }
+    .appnote .act.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .appnote .copied { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+    .appnote > button { flex-shrink: 0; align-self: center; border: 0; background: none; color: var(--accent); font: 600 14px/1 'Plus Jakarta Sans', sans-serif; padding: 10px 4px; cursor: pointer; }
+    @media (prefers-reduced-motion: reduce) { .spin, .notice.fade-in, .savestate.pulse .ic.ok { animation: none; } * { transition: none !important; } }
   </style>
   <link rel="stylesheet" href="/css/tw/contribute-interview.css?v=435b1280">
 </head>
@@ -226,13 +246,26 @@
       <li><button type="button" data-go="3"><span class="n">3</span><span class="t">Answers</span></button></li>
       <li><button type="button" data-go="4"><span class="n">4</span><span class="t">Send</span></button></li>
     </ol>
-    <span class="paybadge" id="paybadge" hidden></span>
+    <div class="rail-end">
+      <button type="button" class="savestate" id="savestate" aria-expanded="false" aria-controls="savepop" hidden><svg class="ic ok" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><svg class="ic err" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3.5l7 12.5H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 8.5v3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="14.4" r="1" fill="currentColor"/></svg><span class="lbl-long" id="savestateLabel">Draft saved</span><span class="lbl-short" id="savestateShort" aria-hidden="true">Saved</span></button>
+      <span class="paybadge" id="paybadge" hidden></span>
+    </div>
+    <div class="savepop" id="savepop" hidden></div>
   </div>
 </div>
 
 <main class="wrap flex-grow w-full">
   <div class="appnote" id="appnote" hidden>
-    <p class="notice info" id="appnoteText" role="status"></p>
+    <div class="notice info" role="status">
+      <div class="appnote-body">
+        <p id="appnoteText"></p>
+        <div class="appnote-actions">
+          <a class="act primary" id="appnoteOpen" hidden>Open in Chrome</a>
+          <button type="button" class="act" id="appnoteCopy">Copy link</button>
+          <span class="copied" id="appnoteCopied"></span>
+        </div>
+      </div>
+    </div>
     <button type="button" id="appnoteClose">Got it</button>
   </div>
 
@@ -435,7 +468,7 @@
 <script src="../../js/contribute-config.js?v=4"></script>
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js"></script>
-<script src="../../js/contribute.js?v=13"></script>
+<script src="../../js/contribute.js?v=17"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>
