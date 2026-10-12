@@ -111,6 +111,13 @@
       flex-direction: column;
     }
     #mobile-sheet.expanded { height: 72vh; }
+    #mobile-sheet.dragging { transition: none; }
+    /* The top strip always drags the sheet; while the sheet is closed, a vertical swipe anywhere on it
+       opens it (the filter chips still scroll sideways). Once open, the list scrolls normally. */
+    #mobile-sheet-handle { touch-action: none; }
+    #mobile-sheet:not(.expanded) { touch-action: none; }
+    #mobile-sheet:not(.expanded) .hide-scrollbar { touch-action: pan-x; }
+    @media (prefers-reduced-motion: reduce) { #mobile-sheet, #mobile-sheet-chevron { transition: none; } }
     #mobile-sheet-chevron { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
     @media (min-width: 768px) { #mobile-sheet { display: none; } }
   </style>
@@ -871,8 +878,8 @@
 
   <!-- Mobile School Sheet (mobile only) -->
   <div id="mobile-sheet" class="md:hidden">
-    <!-- Handle — tapping here expands/collapses -->
-    <div id="mobile-sheet-handle" class="pt-3 px-4 pb-2 cursor-pointer select-none flex-shrink-0">
+    <!-- Handle: tap, drag, or press Enter to expand/collapse -->
+    <div id="mobile-sheet-handle" class="pt-3 px-4 pb-2 cursor-pointer select-none flex-shrink-0" role="button" tabindex="0" aria-expanded="false" aria-controls="mobile-school-list" aria-label="Show more schools">
       <div class="w-10 h-1 bg-primary/20 rounded-full mx-auto mb-3"></div>
       <div class="flex items-center justify-between">
         <div>
@@ -1087,6 +1094,18 @@ window.addEventListener('load', function () {
       if (mob)  mob.className  = cls;
     });
     renderCards(f, document.getElementById('school-search').value);
+    filterMarkers(f);
+  }
+
+  // Map pins follow the MD/DO filter (search only narrows the list)
+  const markerById = {};
+  function filterMarkers(f) {
+    SCHOOLS.forEach(s => {
+      const m = markerById[s.id]; if (!m) return;
+      const show = f === 'all' || s.type === f;
+      if (show && !map.hasLayer(m)) m.addTo(map);
+      if (!show && map.hasLayer(m)) map.removeLayer(m);
+    });
   }
 
   document.getElementById('filter-all').addEventListener('click', () => setFilter('all'));
@@ -1098,12 +1117,15 @@ window.addEventListener('load', function () {
 
   // ── Mobile sheet ─────────────────────────────────────────────
   const mobileSheet = document.getElementById('mobile-sheet');
+  const sheetHandle = document.getElementById('mobile-sheet-handle');
   let sheetExpanded = false;
 
   function expandSheet() {
     if (!mobileSheet) return;
     sheetExpanded = true;
     mobileSheet.classList.add('expanded');
+    sheetHandle.setAttribute('aria-expanded', 'true');
+    sheetHandle.setAttribute('aria-label', 'Show fewer schools');
     const chev = document.getElementById('mobile-sheet-chevron');
     if (chev) chev.style.transform = 'rotate(180deg)';
   }
@@ -1111,13 +1133,60 @@ window.addEventListener('load', function () {
     if (!mobileSheet) return;
     sheetExpanded = false;
     mobileSheet.classList.remove('expanded');
+    sheetHandle.setAttribute('aria-expanded', 'false');
+    sheetHandle.setAttribute('aria-label', 'Show more schools');
     const chev = document.getElementById('mobile-sheet-chevron');
     if (chev) chev.style.transform = '';
   }
 
-  document.getElementById('mobile-sheet-handle').addEventListener('click', () => {
+  sheetHandle.addEventListener('click', () => {
     if (sheetExpanded) collapseSheet(); else expandSheet();
   });
+  sheetHandle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (sheetExpanded) collapseSheet(); else expandSheet(); }
+  });
+
+  // Swipe: drag the top strip up or down, or swipe up anywhere while the sheet is closed.
+  // The sheet follows the finger, then settles open or closed by direction, speed, and distance.
+  let drag = null, suppressClick = false;
+  mobileSheet.addEventListener('pointerdown', e => {
+    if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    if (e.target.closest('input')) return;
+    const fromHandle = !!e.target.closest('#mobile-sheet-handle');
+    if (sheetExpanded && !fromHandle) return;              // open sheet: the list scrolls normally
+    drag = { id: e.pointerId, y0: e.clientY, x0: e.clientX, t0: e.timeStamp, h0: mobileSheet.offsetHeight,
+             fromHandle, active: false, lastY: e.clientY, lastT: e.timeStamp, v: 0 };
+  });
+  mobileSheet.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dy = e.clientY - drag.y0, dx = e.clientX - drag.x0;
+    if (!drag.active) {
+      if (Math.abs(dy) < 8 || Math.abs(dy) < Math.abs(dx)) return;   // a tap, or a sideways scroll of the chips
+      if (!drag.fromHandle && dy > 0) { drag = null; return; }      // closed sheet: only upward swipes open it
+      drag.active = true;
+      mobileSheet.classList.add('dragging');
+      try { mobileSheet.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    }
+    const minH = 220, maxH = window.innerHeight * 0.72;
+    mobileSheet.style.height = Math.max(minH, Math.min(maxH, drag.h0 - dy)) + 'px';
+    if (e.timeStamp > drag.lastT) drag.v = (e.clientY - drag.lastY) / (e.timeStamp - drag.lastT);
+    drag.lastY = e.clientY; drag.lastT = e.timeStamp;
+  });
+  function endDrag(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    const d = drag; drag = null;
+    if (!d.active) return;
+    const dy = e.clientY - d.y0, mid = (220 + window.innerHeight * 0.72) / 2;
+    const open = d.v < -0.3 ? true : d.v > 0.3 ? false : Math.abs(dy) > 60 ? dy < 0 : mobileSheet.offsetHeight > mid;
+    mobileSheet.classList.remove('dragging');
+    mobileSheet.style.height = '';
+    if (open) expandSheet(); else collapseSheet();
+    suppressClick = true; setTimeout(() => { suppressClick = false; }, 0);
+  }
+  mobileSheet.addEventListener('pointerup', endDrag);
+  mobileSheet.addEventListener('pointercancel', endDrag);
+  // A drag shouldn't also count as a tap on the handle or a card
+  mobileSheet.addEventListener('click', e => { if (suppressClick) { e.stopPropagation(); e.preventDefault(); } }, true);
   document.getElementById('mobile-school-search').addEventListener('input', function () {
     document.getElementById('school-search').value = this.value;
     renderCards(activeFilter, this.value);
@@ -1145,6 +1214,7 @@ window.addEventListener('load', function () {
     </div>`;
     const icon   = L.divIcon({ className: '', iconSize: [40, 70], iconAnchor: [20, 70], html });
     const marker = L.marker([s.lat, s.lng], { icon }).addTo(map);
+    markerById[s.id] = marker;
     marker.on('click', () => {
       if (window.innerWidth < 768) expandSheet();
       highlightCard(s.id);
