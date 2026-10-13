@@ -60,7 +60,8 @@ Switch it a few days before outreach: Google snippets and cached link previews c
 
 ### 1. A submission arrives
 The subject reads like `Interview DS-261008-K7QM · Rush Medical College · MS3 · Paid $20`.
-Add a row to the tracker with status **Received**. The email contains:
+Add a row to the tracker with status **Received**, and send Template H so they know it arrived
+(skip it if you'll send Template A within a day or two). The email contains:
 
 - **Payment:** whether the school was eligible when they submitted (published count vs. the cap of 5)
 - **School email (verify):** the address you'll verify
@@ -275,5 +276,18 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 >
 > They chose to reply through DocStory, so please reply to this email if you'd like us to pass a
 > short follow-up along.
+>
+> [Signature]
+
+### Template H: Received (confirmation)
+**Subject:** We received your DocStory interview ([REF])
+
+> Hi [First name],
+>
+> Thanks for sharing your experience at [School]. Your interview arrived safely; your reference
+> number is **[REF]**.
+>
+> We'll review it within 7 days. If any answers need a bit more detail, we'll ask then. After that,
+> we'll email this address with your edited interview to verify and approve before anything goes live.
 >
 > [Signature]
