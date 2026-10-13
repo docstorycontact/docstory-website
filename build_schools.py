@@ -258,6 +258,11 @@ SCHOOLS = {
         city='Downers Grove', state='IL', type='do', public=False,
         hospital='Chicago-Area Clinical Affiliates', class_size=214,
     ),
+    'loma-linda-university-school-of-medicine': dict(
+        name='Loma Linda University School of Medicine',
+        city='Loma Linda', state='CA', type='md', public=False, founded=1909,
+        hospital='Loma Linda University Medical Center', class_size=None,
+    ),
 }
 
 # ── Full school pages (stats dashboard + Program Highlights) ──────────────────

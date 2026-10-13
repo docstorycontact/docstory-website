@@ -1,0 +1,63 @@
+{
+  "hospitals": {
+    "050103": {
+      "city": "LOS ANGELES",
+      "emergency": false,
+      "name": "ADVENTIST HEALTH WHITE MEMORIAL",
+      "ownership": "Voluntary non-profit - Church",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "050292": {
+      "city": "MORENO VALLEY",
+      "emergency": true,
+      "name": "RIVERSIDE UNIVERSITY HEALTH SYSTEM-MEDICAL CENTER",
+      "ownership": "Government - Local",
+      "stars": 3,
+      "type": "Acute Care Hospitals"
+    },
+    "050327": {
+      "city": "LOMA LINDA",
+      "emergency": true,
+      "name": "LOMA LINDA UNIVERSITY MEDICAL CENTER",
+      "ownership": "Voluntary non-profit - Private",
+      "stars": 4,
+      "type": "Acute Care Hospitals"
+    },
+    "fetched": "2026-10-13"
+  },
+  "nih": {
+    "amount": 5890657,
+    "ctsa": false,
+    "fetched": "2026-10-13",
+    "fiscal_year": 2025,
+    "mstp": false,
+    "org_name": "LOMA LINDA UNIVERSITY",
+    "top_departments": [
+      {
+        "amount": 3597370,
+        "dept": "Other Basic Sciences"
+      },
+      {
+        "amount": 1238189,
+        "dept": "Pediatrics"
+      },
+      {
+        "amount": 1055098,
+        "dept": "Internal Medicine / Medicine"
+      }
+    ],
+    "trend": {
+      "2021": 6525026,
+      "2022": 7500019,
+      "2023": 8248076,
+      "2024": 6283173,
+      "2025": 5890657
+    }
+  },
+  "trials": {
+    "fetched": "2026-10-13",
+    "recruiting": 40,
+    "sponsor": "Loma Linda University"
+  }
+}
