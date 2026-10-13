@@ -44,7 +44,7 @@ Switch it a few days before outreach: Google snippets and cached link previews c
    ```
    — Arnie
    DocStory · Real stories from real med schools
-   docstory-website.vercel.app
+   docstory.org
    ```
 4. **Tracker:** a Google Sheet with one row per submission and these columns:
    `Reference · Received · School · Year · Full name · School email · Credit · Paid-eligible ·
