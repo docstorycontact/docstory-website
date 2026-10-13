@@ -44,7 +44,7 @@ Switch it a few days before outreach: Google snippets and cached link previews c
    ```
    — Arnie
    DocStory · Real stories from real med schools
-   docstory-website.vercel.app
+   docstory.org
    ```
 4. **Tracker:** a Google Sheet with one row per submission and these columns:
    `Reference · Received · School · Year · Full name · School email · Credit · Paid-eligible ·
@@ -60,7 +60,8 @@ Switch it a few days before outreach: Google snippets and cached link previews c
 
 ### 1. A submission arrives
 The subject reads like `Interview DS-261008-K7QM · Rush Medical College · MS3 · Paid $20`.
-Add a row to the tracker with status **Received**. The email contains:
+Add a row to the tracker with status **Received**, and send Template H so they know it arrived
+(skip it if you'll send Template A within a day or two). The email contains:
 
 - **Payment:** whether the school was eligible when they submitted (published count vs. the cap of 5)
 - **School email (verify):** the address you'll verify
@@ -91,10 +92,20 @@ Add a row to the tracker with status **Received**. The email contains:
 - **Paid-eligibility still holds.** Honor what the email says. It reflects the count when
   they submitted, which is the promise in the Contributor Terms.
 
-### 3. Edit
-Copy the markdown block from the email into the suggested path (for example
-`content/interviews/rush-medical-college/jordan-lee.md`). Edit lightly for format, length,
-spelling, and clarity, never for meaning. Don't commit it yet.
+### 3. Edit (in the Interview Desk)
+Use the **DocStory Interview Desk**, a private page only you can open:
+https://claude.ai/artifact/JjseiF65jow5UQWL4rNXVu
+
+1. **Add a submission:** paste the whole submission email (or choose the downloaded .eml file).
+2. **Proofread all answers:** Claude fixes spelling, grammar, punctuation and capitalization only.
+   Changes are highlighted, and the original stays one click away.
+3. **Edit the final text** of each answer: lightly, for format, length and clarity, never for meaning.
+4. **Ask for more detail** on any thin answer, with a one-line note on what you'd like added.
+5. **Copy the approval email** (step 4 below is built for you, with your detail requests lettered) and
+   send it from Gmail. Mark it **Sent for approval**.
+6. When they reply, paste each addition under its answer and choose **Add to answer** (it gets the same
+   spelling-only pass). Set the status to **Approved** and tell Claude "publish DS-XXXXXX-XXXX":
+   Claude reads the final text from the desk, adds the file, and rebuilds the site.
 
 ### 4. Send the verification email (Template A)
 Send a **new email** to their school address, not a reply to the Web3Forms notification. A
@@ -275,5 +286,18 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 >
 > They chose to reply through DocStory, so please reply to this email if you'd like us to pass a
 > short follow-up along.
+>
+> [Signature]
+
+### Template H: Received (confirmation)
+**Subject:** We received your DocStory interview ([REF])
+
+> Hi [First name],
+>
+> Thanks for sharing your experience at [School]. Your interview arrived safely; your reference
+> number is **[REF]**.
+>
+> We'll review it within 7 days. If any answers need a bit more detail, we'll ask then. After that,
+> we'll email this address with your edited interview to verify and approve before anything goes live.
 >
 > [Signature]
