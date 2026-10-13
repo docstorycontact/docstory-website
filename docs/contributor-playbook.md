@@ -92,10 +92,20 @@ Add a row to the tracker with status **Received**, and send Template H so they k
 - **Paid-eligibility still holds.** Honor what the email says. It reflects the count when
   they submitted, which is the promise in the Contributor Terms.
 
-### 3. Edit
-Copy the markdown block from the email into the suggested path (for example
-`content/interviews/rush-medical-college/jordan-lee.md`). Edit lightly for format, length,
-spelling, and clarity, never for meaning. Don't commit it yet.
+### 3. Edit (in the Interview Desk)
+Use the **DocStory Interview Desk**, a private page only you can open:
+https://claude.ai/artifact/JjseiF65jow5UQWL4rNXVu
+
+1. **Add a submission:** paste the whole submission email (or choose the downloaded .eml file).
+2. **Proofread all answers:** Claude fixes spelling, grammar, punctuation and capitalization only.
+   Changes are highlighted, and the original stays one click away.
+3. **Edit the final text** of each answer: lightly, for format, length and clarity, never for meaning.
+4. **Ask for more detail** on any thin answer, with a one-line note on what you'd like added.
+5. **Copy the approval email** (step 4 below is built for you, with your detail requests lettered) and
+   send it from Gmail. Mark it **Sent for approval**.
+6. When they reply, paste each addition under its answer and choose **Add to answer** (it gets the same
+   spelling-only pass). Set the status to **Approved** and tell Claude "publish DS-XXXXXX-XXXX":
+   Claude reads the final text from the desk, adds the file, and rebuilds the site.
 
 ### 4. Send the verification email (Template A)
 Send a **new email** to their school address, not a reply to the Web3Forms notification. A
