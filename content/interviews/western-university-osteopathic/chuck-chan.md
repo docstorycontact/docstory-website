@@ -7,6 +7,7 @@ undergraduate: "UC Berkeley, B.A. Public Health"
 age: 25
 hometown: "Cerritos, CA"
 date: "2018-05-22"
+summary: "Chuck describes four to eight hours of class a day, including weekly sessions on patient encounters and OMM, with most students webcasting lectures and focusing on high-yield material. Chuck is in the Lifestyle Medicine track, which covers diet and physical and mental health, and values about eight standardized patient encounters each semester, including a psychiatry-focused OSCE. Chuck is candid about Pomona’s limited food options, crime and homelessness, and about how hard the lack of weekends and breaks can be."
 url: "https://docstoryorg.wordpress.com/2018/05/22/chuck-chan-osm1/"
 ---
 

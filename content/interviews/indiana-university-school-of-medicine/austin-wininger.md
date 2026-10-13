@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S."
 age: 24
 hometown: "Danville, CA"
 date: "2018-06-14"
+summary: "Austin focuses on the clinical years: IU’s eight core clerkships, honors/high pass/pass grading driven mostly by clinical evaluations and NBME shelf exams, and studying with Online MedEd and UWorld. Austin found the jump to third year the hardest adjustment and advises asking preceptors directly for feedback and using the time after being dismissed to study. IU’s nine campuses across Indiana, plus county, children’s and VA hospitals in Indianapolis, offer both community and Level 1 trauma settings."
 url: "https://docstoryorg.wordpress.com/2018/06/14/austin-wininger-ms3/"
 ---
 

@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S. Biochemistry"
 age: 24
 hometown: "Orange County, CA"
 date: "2018-11-22"
+summary: "Regine describes third-year days that vary by rotation, after first two years that mixed lectures with problem-based learning in small groups. From the start of medical school, students spend time twice a month in preceptorships and education-centered medical homes, primary care clinics where students from all four years work together. Regine, from California, loves living in Chicago without it being prohibitively expensive, volunteered at student-run free clinics around the city, and recommends the student sketch comedy show In Vivo."
 url: "https://docstoryorg.wordpress.com/2018/11/22/regine-goh-ms3/"
 ---
 

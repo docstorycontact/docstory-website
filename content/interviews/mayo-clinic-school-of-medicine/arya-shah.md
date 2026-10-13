@@ -7,6 +7,7 @@ undergraduate: "USC, B.S. Neuroscience"
 age: 25
 hometown: "Cerritos, CA"
 date: "2018-03-05"
+summary: "Arya, a fourth-year who settled on psychiatry, describes a lecture-based first year, a second year of systems lectures and hospital-based doctoring groups, and clerkships after that. With only 40 to 50 students per class, Arya knows every classmate, and every faculty member, mentor and preceptor, by name, in a small town built around a large academic medical center. Arya found that food, exercise, sleep and hobbies matter as much as studying, and advises premeds to make time for the humanities."
 url: "https://docstoryorg.wordpress.com/2018/03/05/arya-shah-ms4/"
 ---
 

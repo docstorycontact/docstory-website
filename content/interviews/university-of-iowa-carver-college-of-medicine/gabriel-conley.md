@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "University of Iowa, B.S. Economics"
 hometown: "Cherokee, IA"
 date: "2018-08-03"
+summary: "Gabriel describes Iowa’s fast-paced new curriculum, with exams every other Friday, core clerkships starting half a year earlier than at most schools, and Step 1 taken at the two-and-a-half-year mark. The culture is collaborative, with classmate tutors, shared notes and Carverpedia, a student-built wiki of study guides, plus a spring variety show put on by every class. Students can take a funded research fellowship of nearly $6,000 the summer after first year or pursue global health projects abroad, and Gabriel, an economics major, found that diagramming lectures works best."
 url: "https://docstoryorg.wordpress.com/2018/08/03/gabriel-conley-ms2/"
 ---
 

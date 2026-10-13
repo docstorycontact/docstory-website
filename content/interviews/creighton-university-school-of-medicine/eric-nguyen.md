@@ -7,6 +7,7 @@ undergraduate: "UCSB, B.S. Cell and Developmental Biology"
 age: 24
 hometown: "Cerritos, CA"
 date: "2018-05-18"
+summary: "Eric describes streaming lectures and studying with active recall and spaced repetition, and found Creighton’s faculty unusually available, often answering emails within hours. Eric highlights the school’s Jesuit identity, including Wisdom Groups where students meet with a Jesuit to reflect on meaning in medicine, and teaching that stresses how illness affects a patient’s whole life. Omaha is welcoming and diverse with good food, though Eric misses hiking and finds other major cities a long drive away."
 url: "https://docstoryorg.wordpress.com/2018/05/18/eric-nguyen-ms2/"
 ---
 

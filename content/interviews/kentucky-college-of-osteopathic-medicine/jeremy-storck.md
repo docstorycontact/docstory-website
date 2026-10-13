@@ -4,6 +4,7 @@ school: "Kentucky College of Osteopathic Medicine"
 school_slug: "kentucky-college-of-osteopathic-medicine"
 year: "OMS3"
 date: "2018-10-03"
+summary: "Jeremy describes lecture-heavy days in a single classroom, four-week blocks between exams, and studying with Anki, Pathoma, Sketchy and especially Boards and Beyond. KYCOM’s mission is training primary care physicians for underserved areas, and Pikeville, a town of about 6,000 in Eastern Kentucky’s coal country, offers outdoor life, friendly people and early chances to serve the community. Jeremy advises applicants to choose schools whose missions match their goals instead of applying to dozens, and looks forward each April to Hillbilly Days, a four-day festival that takes over the town and gives students the time off."
 url: "https://docstoryorg.wordpress.com/2018/10/03/jeremy-storck-osm3/"
 ---
 

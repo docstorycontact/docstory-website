@@ -4,6 +4,7 @@ school: "California University of Science and Medicine"
 school_slug: "california-university-of-science-and-medicine"
 year: "MS1"
 date: "2020-03-20"
+summary: "Bao describes a flipped classroom at a new school, with class only three days a week and the rest of the week for self-study with Boards and Beyond, Pathoma, Sketchy and Anki. Because the school was new, students had real say: Bao notes that they helped change grading from letter grades to pass/fail and the schedule from five days a week to three. Bao applied twice before being admitted and advises applicants to be themselves in interviews instead of saying what interviewers want to hear."
 url: "https://docstoryorg.wordpress.com/2020/03/20/bao-vu-ms1/"
 ---
 

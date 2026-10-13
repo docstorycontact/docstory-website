@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "Rutgers University, B.S. Biological Sciences"
 hometown: "Voorhees, New Jersey"
 date: "2019-12-20"
+summary: "Chetna describes USF’s Collegias, learning communities that group students for anatomy lab and doctoring, compete in inter-Collegia events and each have their own career adviser. A student board regularly brings the class’s feedback on lecturers and exams to faculty, who act on it, and the Doctoring course gives plenty of practice with standardized patients, including simulations with pharmacy and physical therapy students. Chetna, one of the youngest in the class, regrets skipping a gap year and is candid about feeling close to burnout."
 url: "https://docstoryorg.wordpress.com/2019/12/20/chetna-thawani-m2/"
 ---
 

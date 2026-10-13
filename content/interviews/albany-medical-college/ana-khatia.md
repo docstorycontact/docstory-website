@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "UCLA (B.S. in Psychology)"
 hometown: "Los Angeles, California"
 date: "2022-09-16"
+summary: "Ana describes days built around Anki reviews in the morning and new material after lunch, with first-year lectures delivered online and instructors quick to hop on a Zoom call to help. Ana calls the class culture “we are all in this together,” and says the school was extremely accommodating during family emergencies in first year. Albany suits outdoorsy students, with hiking, skiing and drives to Boston or New York, though the winters are brutal and the nightlife is limited."
 url: "https://docstoryorg.wordpress.com/2022/09/16/ana-khatia-ms2/"
 ---
 

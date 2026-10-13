@@ -7,6 +7,7 @@ undergraduate: "UC Santa Barbara, B.S. Biological Sciences"
 age: 25
 hometown: "Pleasant Hill, CA"
 date: "2018-08-03"
+summary: "Rossen stopped going to lecture in the second semester and prepared for Step 1 with First Aid, Pathoma and UWorld, and walks through the trade-offs of the common study methods. EVMS is very community-service oriented, with the student-run HOPES clinic for underserved patients and no sense of competition between classmates. Rossen points to clinical training at Sentara Norfolk General, a Level 1 trauma center, and a strong ultrasound program as strengths."
 url: "https://docstoryorg.wordpress.com/2018/08/03/rossen-kirkov/"
 ---
 

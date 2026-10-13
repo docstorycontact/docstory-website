@@ -6,6 +6,7 @@ year: "MS3 (MD/PhD)"
 undergraduate: "Rhodes College, B.S. Biochemistry & Molecular Biology, Minor in English"
 hometown: "Rochester Hills, Michigan"
 date: "2018-11-08"
+summary: "Emily, an MD/PhD student in UAB’s Medical Scientist Training Program, describes Introduction to Clinical Medicine, which pairs groups of six students with one physician preceptor for two years and teaches each physical exam alongside the matching organ module. Within the first two weeks of school, Emily was taking vital signs and interviewing patients at Equal Access Birmingham, the student-run free clinic. Birmingham’s low cost of living stretches the MD/PhD stipend: many of Emily’s peers bought houses near campus, and Emily rents a whole house five minutes away."
 url: "https://docstoryorg.wordpress.com/2018/11/08/emily-hayward-ms3/"
 ---
 

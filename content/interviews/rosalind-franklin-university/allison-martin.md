@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "St John's College (B.A. Liberal Arts), SUNY Fredonia (B.S. Biochemistry, MS Biology)"
 hometown: "Decatur, AL"
 date: "2018-11-08"
+summary: "Allison, a night owl who skips lecture, studies with recorded lectures, Pathoma and Sketchy at double speed late into the night. Allison chose Chicago Medical School for its supportive, collaborative culture, where students show up for each other’s fundraisers and talks and rally around classmates having a hard time. With no single affiliated hospital, students rotate through most hospitals in the Chicago area, which Allison sees as a plus; the first two years are spent in quiet North Chicago."
 url: "https://docstoryorg.wordpress.com/2018/11/08/allison-martin-ms2/"
 ---
 

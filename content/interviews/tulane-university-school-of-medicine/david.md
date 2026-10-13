@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "University of Washington"
 hometown: "Olympia, WA"
 date: "2018-11-11"
+summary: "David studies at home most days, pairing Step 1 resources like Pathoma, Sketchy and First Aid with school lectures at double speed, for six to eight hours including breaks. David says the class itself is Tulane’s best feature: a diverse group with plenty of community programming, from volunteering at clinics to fundraising concerts. Clinical preparation includes monthly standardized patients, a simulation center, preceptors in the first two years and student-run clinics, and New Orleans is full of festivals and restaurants, though getting around without a car is hard."
 url: "https://docstoryorg.wordpress.com/2018/11/11/david-ms2/"
 ---
 

@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S. Neuroscience"
 age: 23
 hometown: "New Castle, PA"
 date: "2018-03-04"
+summary: "Jonathan describes long, self-directed study days: all lectures are podcasted, so Jonathan studies on campus from 6am to about 7pm and then reviews material with a study group of three friends. The class atmosphere is very non-competitive, and Jonathan valued Drexel teaching the business side of health care, from legislation to insurance and reimbursement. Jonathan advises premeds to choose a school by its people and to expect secondary applications to take a lot of time."
 url: "https://docstoryorg.wordpress.com/2018/03/04/jonathan-acosta-ms2/"
 ---
 

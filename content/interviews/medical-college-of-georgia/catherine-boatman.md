@@ -4,6 +4,7 @@ school: "Medical College of Georgia at Augusta University"
 school_slug: "medical-college-of-georgia"
 year: "MS2"
 date: "2019-12-20"
+summary: "Catherine starts studying at 6:30am, attends every lecture while making Anki cards, and studies into the evening, with Brazilian Jiu Jitsu as a break. MCG’s Academic House System splits a class of more than 200 into 13 houses, each with its own apartment-style space in the medical school building, outings paid for by the school and an end-of-year House Olympics; Catherine calls it a leading reason for choosing MCG. Catherine took six gap years before medical school and would not change a thing."
 url: "https://docstoryorg.wordpress.com/2019/12/20/catherine-boatman-m2/"
 ---
 

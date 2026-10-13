@@ -4,6 +4,7 @@ school: "University of Florida College of Medicine"
 school_slug: "university-of-florida-college-of-medicine"
 year: "MS2"
 date: "2019-03-14"
+summary: "This student describes 50-minute lectures, many recorded and optional, plus weekly three-hour Collaborative Learning Groups covering wellness, ethics, interviewing and feedback on write-ups, with dissection starting in the second semester. Students see real patients under their small-group leader from the second semester of first year, complete three preceptorships and can volunteer at the Equal Access Clinic. Gainesville is a college town where football game days transform campus, and clinical rotations also run in an urban setting in Jacksonville."
 url: "https://docstoryorg.wordpress.com/2019/03/14/anonymous-ms2/"
 ---
 

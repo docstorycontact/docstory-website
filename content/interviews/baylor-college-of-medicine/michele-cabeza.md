@@ -4,6 +4,7 @@ school: "Baylor College of Medicine"
 school_slug: "baylor-college-of-medicine"
 year: "MS1"
 date: "2018-11-25"
+summary: "Michele lays out Baylor’s week in detail: recorded morning lectures, anatomy lab and a group problem-solving course in the afternoons, and a Patient, Physician, and Society course that pairs each student with a community preceptor. The preclinical curriculum is only 1.5 years and true pass/fail, which Michele credits for a collaborative culture, helped by a Peer Resource Network of older students who mentor each first-year group. Faculty reach out personally when a student’s exam scores fall well below average."
 url: "https://docstoryorg.wordpress.com/2018/11/25/michele-cabeza-ms1/"
 ---
 

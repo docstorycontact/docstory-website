@@ -4,6 +4,7 @@ school: "Baylor College of Medicine"
 school_slug: "baylor-college-of-medicine"
 year: "MS1"
 date: "2019-06-14"
+summary: "Justin describes four 50-minute lectures each morning, afternoon classes until 4, and daily Anki review using student-made decks for lecture material. Justin calls the class collaborative, with block parties as the best part of each term, and lists older students’ help, expert professors, low tuition and the Texas Medical Center setting as strengths."
 url: "https://docstoryorg.wordpress.com/2019/06/14/justin-ms1/"
 ---
 

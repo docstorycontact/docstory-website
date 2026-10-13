@@ -7,6 +7,7 @@ undergraduate: "University of Michigan, Ann Arbor, B.S. Neuroscience"
 age: 22
 hometown: "West Bloomfield, MI"
 date: "2018-06-18"
+summary: "Priya describes mornings of mostly optional classes and varied afternoons: weekly Learning Community case and ethics discussions with 12 to 13 students and a physician, clinical skills sessions, and seeing patients at a doctor’s office every other week starting in first year. With about 170 students per class, Priya gets to know classmates well, and recommends First Aid, Pathoma and Sketchy. The campus has a college-town feel, with downtown Cincinnati nearby for restaurants and outings after exams."
 url: "https://docstoryorg.wordpress.com/2018/06/18/priya-sorab-ms2/"
 ---
 

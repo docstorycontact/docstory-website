@@ -6,6 +6,7 @@ year: "MS1"
 undergraduate: "UCLA, B.S."
 hometown: "Thousand Oaks, CA"
 date: "2018-05-18"
+summary: "Alexa podcasts most lectures from coffee shops and keeps up with the pace by trading quick typed study guides for friends’ flashcards. UCI teaches the normal function of every system in first year and the pathology of every system in second, which Alexa likes as a way to see each system twice before boards. Alexa helps lead a global health and ultrasound education trip to Tanzania and a mentorship program for underserved high school girls, and decompresses at Orange County’s beaches and with an annual Disneyland pass."
 url: "https://docstoryorg.wordpress.com/2018/05/18/alexa-lucas-ms2/"
 ---
 

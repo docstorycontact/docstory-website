@@ -7,6 +7,7 @@ undergraduate: "Johns Hopkins University, B.S. Molecular Biology and Anthropolog
 age: 24
 hometown: "Sturbridge, MA"
 date: "2018-06-18"
+summary: "Prithwijit describes days built around Anki, with afternoon classes in between, and relies on the Zanki deck, Sketchy, Pathoma and First Aid; Prithwijit’s one regret is not adopting Anki sooner. The culture is positive and supportive, starting with a first-year orientation camping trip run with second-years and continuing with social events where faculty and students mix. Worcester has distinct neighborhoods, new restaurants and a low cost of living, though public transportation is weak."
 url: "https://docstoryorg.wordpress.com/2018/06/18/prithwijit-roychowdhury-ms2/"
 ---
 

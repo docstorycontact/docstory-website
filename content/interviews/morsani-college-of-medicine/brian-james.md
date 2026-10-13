@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "UCSB"
 hometown: "Laguna Niguel, CA"
 date: "2018-05-19"
+summary: "Brian describes four morning lectures, a weekly anatomy lab and a Doctoring course in downtown Tampa that teaches patient interviews and physical exams; lectures are recorded and only about a quarter of the class attends in person. USF’s Scholarly Concentrations put students in one of 11 tracks, such as law, business or nutrition and medicine, and a separate SELECT program focuses on leadership. Brian found faculty quick to act on feedback, and loves Tampa’s sports, nightlife and nearby beaches."
 url: "https://docstoryorg.wordpress.com/2018/05/19/brian-james-ms2/"
 ---
 

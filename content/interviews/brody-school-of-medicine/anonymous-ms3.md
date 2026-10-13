@@ -6,6 +6,7 @@ year: "MS3"
 undergraduate: "A college in New England, biology-related major"
 hometown: "Triangle region, NC"
 date: "2022-10-02"
+summary: "This third-year student describes rotation days at ECU Health Medical Center, the school’s main teaching hospital, which is connected to the school building by a hallway. With about 80 students per class, everyone recognizes each other and the culture leans collaborative; each year second-years chalk encouraging messages on the sidewalk the night before the first-years’ first exam. Greenville is small but rent is very cheap, and preclinical grading had just moved to pass/fail while clerkships still used letter grades."
 ---
 
 # Anonymous, MS3 — Brody School of Medicine at East Carolina University

@@ -6,6 +6,7 @@ undergraduate: "Boston University, Human Physiology"
 age: 24
 hometown: "Foxboro, MA"
 date: "2023-01-06"
+summary: "Jonathan focuses on research: landing a paid undergraduate lab position by emailing several investigators at once, what makes a good research mentor, and why clinical research fits a medical student’s schedule better than basic science. At Boston University School of Medicine, Jonathan describes fully pass/fail preclinical courses with no ranking, LEADS weeks devoted to social determinants of health, and interviewing hospital patients just weeks into first year. Jonathan was a reapplicant and calls the two years spent working in biotech the best thing that could have happened."
 url: "https://docstoryorg.wordpress.com/2023/01/06/jonathan-carnino-ms1/"
 ---
 

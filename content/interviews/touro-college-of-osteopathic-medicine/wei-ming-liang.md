@@ -7,6 +7,7 @@ undergraduate: "Stony Brook University (B.S. Biology)"
 age: 28
 hometown: "New York City, New York"
 date: "2023-08-01"
+summary: "Wei Ming studies at Touro’s Harlem campus and lives at home with family in New York City, with a brother also in medical school. The curriculum is a flipped classroom with clicker questions in class, A-to-F grades and mostly mandatory attendance in first year, and Wei Ming finds OMM useful for building palpation skills while questioning some of its topics. Each student gets an upperclassman mentor and a faculty advisor, and Wei Ming highlights a twice-yearly health fair in Harlem and MedAchieve, a weekly mentoring program for high school students."
 url: "https://docstoryorg.wordpress.com/2023/08/01/wei-ming-liang-oms-2/"
 ---
 

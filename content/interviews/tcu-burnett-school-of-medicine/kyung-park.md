@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "Washington University in St. Louis, B.S. Biology"
 hometown: "Dallas, TX"
 date: "2022-11-01"
+summary: "Kyung describes a pass/fail first phase with in-person application sessions most mornings and plenty of open “white space,” plus a longitudinal clerkship with a family or internal medicine preceptor from first year. With a class of 60, students belong to one of six houses, each with two faculty coaches who check in after exams and give career advice, and every student completes a research thesis to graduate. When inpatient work starts, students get 10 weeks of immersion rotations with feedback but no grades."
 url: "https://docstoryorg.wordpress.com/2022/11/01/kyung-park-ms2/"
 ---
 

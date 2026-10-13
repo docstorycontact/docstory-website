@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S. Molecular, Cell, and Developmental Biology"
 age: 24
 hometown: "La Verne, CA"
 date: "2018-06-13"
+summary: "Steven describes morning basic science classes, recorded lectures and a weekly three-hour small group in clinical foundations, ultrasound or simulation. UCI is a leader in ultrasound education: each year 30 to 40 students spend the summer after first year teaching point-of-care ultrasound abroad, and Steven’s team was headed to the University of Basel in Switzerland. The PACE program puts first- and second-years in clinic with a preceptor one half-day a week, and the campus is less than 15 minutes from the ocean."
 url: "https://docstoryorg.wordpress.com/2018/06/13/steven-tohmasi-ms2/"
 ---
 

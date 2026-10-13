@@ -4,6 +4,7 @@ school: "University of Tennessee Health Science Center College of Medicine"
 school_slug: "ut-health-science-center"
 year: "MS1"
 date: "2018-11-25"
+summary: "Jay describes morning classes followed by mandatory afternoon sessions such as ultrasound practice and a Principles of Medicine course, then studying on campus until 8 or 9pm. After pulling three all-nighters for the first exam, Jay switched to spaced repetition with classmates’ shared Quizlet and Anki sets, and credits SASSI, the student support center, for workshops on time management and wellbeing. The school sits in the Memphis Medical District alongside dentistry, pharmacy and PA programs, and Jay found Memphis vibrant without the traffic of bigger cities."
 url: "https://docstoryorg.wordpress.com/2018/11/25/jay-patel-ms1/"
 ---
 

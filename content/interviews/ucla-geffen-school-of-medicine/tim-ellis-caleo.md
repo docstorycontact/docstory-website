@@ -4,6 +4,7 @@ school: "David Geffen School of Medicine at UCLA"
 school_slug: "ucla-geffen-school-of-medicine"
 year: "MS4"
 date: "2018-12-18"
+summary: "Tim, a fourth-year, describes a pass/fail preclinical curriculum in organ-system blocks with two hours of lecture a day, weekly problem-based learning and a longitudinal preceptorship, followed by a traditional core clerkship year. Tim argues that preclinical curriculum details matter less than they seem, and that UCLA’s real strength is clinical training across many sites with residents and faculty who give students real responsibility. Tim relied almost entirely on Anki and urges applicants to ask how much responsibility third-year students get."
 url: "https://docstoryorg.wordpress.com/2018/12/18/tim-ellis-caleo-ms4/"
 ---
 

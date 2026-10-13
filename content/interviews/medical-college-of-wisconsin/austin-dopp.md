@@ -4,6 +4,7 @@ school: "Medical College of Wisconsin"
 school_slug: "medical-college-of-wisconsin"
 year: "MS2"
 date: "2018-10-09"
+summary: "Austin, who is married with three children, describes a day of morning lectures, afternoon study or research, family time from 5 to 7, and more studying after the kids are in bed. Lectures are recorded, and in a class of about 200 Austin finds the culture very supportive, with classmates constantly sharing tips and study aids. Austin values the school’s ties to the Kern Institute and a weekly Clinical Apprenticeship with a physician, while doubting how meaningful early patient contact is before the first two years are done."
 url: "https://docstoryorg.wordpress.com/2018/10/09/austin-dopp-ms2/"
 ---
 

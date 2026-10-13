@@ -6,6 +6,7 @@ year: "MS3"
 undergraduate: "Morehouse College, B.S. Biology"
 hometown: "Washington, D.C."
 date: "2018-07-17"
+summary: "Todd describes problem-based learning in groups of seven or eight with a faculty member, optional lectures, and third-year internal medicine days that run from 7am pre-rounding to about 5pm. Todd calls the culture laid back, highlighted by the Dean’s Cup, where medical students compete against UM law students in everything from flag football to baking. Todd sees Miami’s greatest strength as training with a diverse population, including many uninsured migrants from the Caribbean and South America who rely on UM and its partners for care."
 url: "https://docstoryorg.wordpress.com/2018/07/17/todd-jackson-ms3/"
 ---
 

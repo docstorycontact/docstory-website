@@ -7,6 +7,7 @@ undergraduate: "UCSB, B.S. Biological Sciences"
 age: 24
 hometown: "Rancho Palos Verdes, CA"
 date: "2018-05-30"
+summary: "Sam studies with Zanki flashcards and webcast lectures, which most of the class watches instead of attending, along with detailed notes the lecturers write for each lecture. Seeing patients at LA County, one of three hospitals on campus with Keck Hospital and Norris Cancer Center, is what Sam values most, because patients there are grateful for someone who listens. Sam is in the Health, Technology and Engineering program, which pairs medical students with engineering PhD students to work on health care innovation, and shares a method for finding out-of-state schools that actually admit out-of-state applicants."
 url: "https://docstoryorg.wordpress.com/2018/05/30/sam-teles/"
 ---
 

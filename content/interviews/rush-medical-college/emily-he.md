@@ -7,6 +7,7 @@ undergraduate: "USC, B.A. Biological Sciences, M.S. Global Medicine"
 age: 24
 hometown: "Cerritos, CA"
 date: "2018-05-29"
+summary: "Emily describes Rush’s flipped classroom with no lectures: students work through self-study packets built around a patient case, take a quiz at 8am, then apply the material in classes of 16 to 17. Hands-on patient care started in the third week of school, with a different clinical placement each semester, and monthly interprofessional sessions put medical students in small groups with nursing, therapy and other health students. Emily, who moved from Southern California, gets around Chicago easily on the students’ unlimited transit pass and enjoys walking to Bulls games, since Rush is the team’s official health care provider."
 url: "https://docstoryorg.wordpress.com/2018/05/29/emily-he-ms1/"
 ---
 

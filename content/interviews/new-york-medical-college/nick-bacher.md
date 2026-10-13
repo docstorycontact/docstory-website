@@ -7,6 +7,7 @@ undergraduate: "University of North Carolina"
 age: 27
 hometown: "Rural Upstate New York"
 date: "2018-06-21"
+summary: "Nick describes regimented first-year days giving way to mostly self-study in second year, with exceptionally good standardized patients and an emergency department preceptorship as clinical highlights. Nick pushes back on the idea that schools without pass/fail preclinical grading are competitive, saying that has never been the case at NYMC, and chose the school for its sense of community. The campus is in suburban Westchester County, just over half an hour by train from Manhattan, and Nick advises premeds to be their own advocate instead of relying only on pre-health advisors."
 url: "https://docstoryorg.wordpress.com/2018/06/21/nick-ms3/"
 ---
 

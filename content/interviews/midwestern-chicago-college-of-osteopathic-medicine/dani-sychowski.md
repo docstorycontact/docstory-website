@@ -7,6 +7,7 @@ undergraduate: "Lake Forest College, B.A. Neuroscience and Psychology"
 age: 25
 hometown: "Northern Chicago suburbs"
 date: "2023-01-24"
+summary: "Dani describes CCOM’s symptoms-based curriculum, where each week centers on one symptom that ties together lectures, anatomy, OMM and physical exam labs; Dani found it works well some weeks and less well others. Preclinical courses use A-through-C letter grades, but the class of about 200 is collaborative, sharing notes in group chats, and second-years mentor first-years through a big-little program. The campus is in suburban Downers Grove, next to a forest preserve and an easy trip into Chicago, and Dani valued living on campus about 45 minutes from family."
 ---
 
 # Dani Sychowski, OMS1 — Midwestern University Chicago College of Osteopathic Medicine

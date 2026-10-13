@@ -7,6 +7,7 @@ undergraduate: "Rutgers University, B.S. Biology"
 age: 22
 hometown: "Bronx, NY"
 date: "2018-11-24"
+summary: "Nik describes four lectures a day plus anatomy reviews, followed by long evenings reviewing with class notes, Boards and Beyond, BRS questions and Firecracker for spaced repetition. Wayne State’s student body is very diverse, which Nik credits for an open, relaxed environment, and the class of about 300 holds its parties in downtown Detroit. Clinical Skills sessions use standardized patients, with feedback from a classmate, the patient and a fourth-year student, and Nik, who struggled in the first weeks, credits asking for help with turning things around."
 url: "https://docstoryorg.wordpress.com/2018/11/24/nik-ms1/"
 ---
 

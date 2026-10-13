@@ -4,6 +4,7 @@ school: "Florida State University College of Medicine"
 school_slug: "florida-state-university-college-of-medicine"
 year: "MS3"
 date: "2019-06-15"
+summary: "This student describes a first year that starts in early June with a summer of full-body dissection, and learning communities: four shared spaces with kitchens and study rooms that split each class into groups of about 30 from the first day. Preclinical grading is true pass/fail with no ranking, and students rotate with community physicians starting in the spring of first year. For third and fourth year the class splits up across regional campuses around Florida, which means mostly one-on-one work with physicians, but also saying goodbye to friends."
 url: "https://docstoryorg.wordpress.com/2019/06/15/anonymous-ms3/"
 ---
 

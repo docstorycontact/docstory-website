@@ -7,6 +7,7 @@ undergraduate: "Texas Christian University, Biology"
 age: 22
 hometown: "Tulsa, OK"
 date: "2022-09-19"
+summary: "Wilson describes OU’s module system, which places 15 to 17 students in a mod with its own swipe-access room, desks and lockers for the first two years, and calls the student culture one of the school’s best features. Clinical medicine courses run through the preclinical years, starting in week one with exam skills, ultrasound and X-ray, and students can book time in a simulation center with standardized patients. Grading is pass/fail with quartile rankings, and the area right around campus is a food desert, though downtown Oklahoma City nearby has affordable food and nightlife."
 ---
 
 # Wilson Hoyt, MS1 — University of Oklahoma College of Medicine

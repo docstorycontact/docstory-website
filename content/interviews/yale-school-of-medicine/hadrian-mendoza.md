@@ -7,6 +7,7 @@ undergraduate: "Georgia State University, B.S. Psychology"
 age: 27
 hometown: "Atlanta, GA"
 date: "2018-07-01"
+summary: "Hadrian skips lecture and studies independently from late morning into the night, relying on Boards and Beyond, Pathoma, Sketchy and Anki. Yale’s pass/fail grading, with no ranking or AOA, supports what Hadrian calls a “gunner-free zone” of independent students; Hadrian directs a jazz band that rehearses weekly. In first year every student joins an interprofessional team with PA and nursing students that spends a half-day in clinic each week, and New Haven is a walkable college town with easy trains to New York and Boston."
 url: "https://docstoryorg.wordpress.com/2018/07/01/hadrian-mendoza-ms2/"
 ---
 

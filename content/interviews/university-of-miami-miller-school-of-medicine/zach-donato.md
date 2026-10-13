@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "Emory University, B.S. Neuroscience"
 hometown: "Denver, CO"
 date: "2022-04-11"
+summary: "Zach describes Miami’s NextGen curriculum, which moved clerkships into second year after a preclinical year of flipped-classroom, case-based learning organized by symptom. More than 70% of students take part in DOCS, a student-run clinic that holds health fairs in underserved neighborhoods roughly every month, and students train at Jackson and the University of Miami hospitals. Most students live in Brickell or downtown, which Zach compares to a mini New York City, though it is expensive."
 url: "https://docstoryorg.wordpress.com/2022/04/11/zach-donato-ms2/"
 ---
 

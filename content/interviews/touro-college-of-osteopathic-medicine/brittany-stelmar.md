@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S. Biology"
 age: 24
 hometown: "Moorpark, CA"
 date: "2018-06-16"
+summary: "Brittany describes Touro’s Middletown campus, where students watch lecture videos beforehand and answer clicker questions in mandatory classes; Brittany likes the format but wishes the assigned videos were shorter and attendance optional. Professors email to set up tutoring whenever a student gets a subpar test grade. Working as an ER technician alongside DOs changed Brittany’s view of osteopathic medicine, and Brittany values the quiet small town, about an hour by train or bus from New York City."
 url: "https://docstoryorg.wordpress.com/2018/06/16/brittany-stelmar-ms2/"
 ---
 

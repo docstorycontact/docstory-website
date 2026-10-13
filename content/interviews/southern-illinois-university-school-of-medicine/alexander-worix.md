@@ -7,6 +7,7 @@ undergraduate: "University of Michigan, Ann Arbor (B.S. General Biology and Span
 age: 25
 hometown: "Crete, IL"
 date: "2018-06-15"
+summary: "Alexander describes SIU’s problem-based learning, built around three-hour tutor groups where five to eight students work through virtual patient cases and teach each other the underlying science. Clinical skills start in the first week, with standardized patients, Clinical Competency Exams and, by the end of first year, a full head-to-toe physical exam to finish in under 45 minutes. Alexander chose SIU partly on cost, about half the yearly price of an out-of-state option, and notes that first year is in Carbondale before the class moves to Springfield."
 url: "https://docstoryorg.wordpress.com/2018/06/15/alexander-worix-ms2/"
 ---
 

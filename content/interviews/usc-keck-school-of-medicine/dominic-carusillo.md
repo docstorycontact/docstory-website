@@ -7,6 +7,7 @@ undergraduate: "UCSB, B.S. Biochemistry-Molecular Biology"
 age: 24
 hometown: "San Diego, CA"
 date: "2018-05-22"
+summary: "Dominic treats school like a full-time job, studying from morning into the evening with webcast lectures and third-party resources like Pathoma for efficiency. Dominic considers webcast lectures and a strong relationship with a large hospital the most important things to look for in a school, and found shadowing the most valuable extracurricular, with attendings eager to show students their work. The area right around campus is economically struggling, but Dominic spends free time elsewhere in Los Angeles, which has plenty to do despite the traffic."
 url: "https://docstoryorg.wordpress.com/2018/05/22/dominic-carusillo/"
 ---
 

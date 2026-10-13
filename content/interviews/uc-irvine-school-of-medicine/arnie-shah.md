@@ -5,6 +5,7 @@ school_slug: "uc-irvine-school-of-medicine"
 year: "MS1"
 undergraduate: "UCLA"
 date: "2018-03-03"
+summary: "Arnie studies mostly from libraries and coffee shops and, with pass/no-pass classes, has learned to prioritize high-yield material and read clinical cases to make facts stick. Arnie describes a collaborative class that feels like family, with whole-class activities and an administration that asks for feedback and acts on it promptly. Arnie contributes to PLEXUS, UCI’s medical humanities journal, and warns that following application threads on Student Doctor Network made the gap year more stressful."
 url: "https://docstoryorg.wordpress.com/2018/03/03/arnie-shah-ms1/"
 ---
 

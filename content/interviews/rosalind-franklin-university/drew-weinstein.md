@@ -6,6 +6,7 @@ year: "MS2"
 undergraduate: "UCSB"
 hometown: "Santa Rosa, CA"
 date: "2018-05-19"
+summary: "Drew describes a structured day from 7:30am in the library through lectures, labs and evening study, using Anki every day because cramming does not work. Instructors rarely take questions during class but are approachable afterward, and Drew says none of them are looking to fail anyone. The campus is quiet and good for studying, 45 minutes by train from Chicago, and Drew advises applying early and broadly and practicing interview skills."
 url: "https://docstoryorg.wordpress.com/2018/05/19/drew-weinstein-ms2/"
 ---
 

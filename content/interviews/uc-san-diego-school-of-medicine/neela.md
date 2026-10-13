@@ -7,6 +7,7 @@ undergraduate: "UCLA, B.S. Psychology"
 age: 23
 hometown: "Los Gatos, CA"
 date: "2018-05-23"
+summary: "Neela videocasts the optional 8am lectures at 1.5x speed and saves in-person time for small-group problem-based learning and Practice of Medicine, with pass/fail grading keeping stress low. Neela chose UCSD because its first-years seemed far happier than expected, and advises applicants to weigh student happiness over rankings. UCSD’s Free Clinic involves almost every student, and Neela helps manage its neurology and psychiatry clinics, seeing patients and presenting to attendings."
 url: "https://docstoryorg.wordpress.com/2018/05/23/neela-ms1/"
 ---
 

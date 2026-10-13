@@ -7,6 +7,7 @@ undergraduate: "University of Texas at San Antonio, Biomedical Engineering"
 age: 24
 hometown: "Seguin, TX"
 date: "2022-11-01"
+summary: "Caleb is in EnMed, Texas A&M’s combined engineering and medicine program in Houston, with a cohort of just 34 students that Caleb says feels like a family, for better and worse. Caleb describes a flipped-classroom preclerkship, Practice of Medicine courses that build to a weekly half-day preceptorship, and clerkship days that start at 6:30am at Houston Methodist. The program acted quickly on student feedback, moving to true pass/fail, unranked preclerkship grading and cutting the number of mandatory sessions."
 ---
 
 # Caleb, MS3 — Texas A&M College of Medicine (EnMed)

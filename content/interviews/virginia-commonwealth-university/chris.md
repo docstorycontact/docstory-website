@@ -7,6 +7,7 @@ undergraduate: "University of Colorado"
 age: 26
 hometown: "Denver, CO"
 date: "2018-05-30"
+summary: "Chris watches lectures in the morning, builds study guides and flow charts to tell similar diseases apart, and attends required afternoon classes about twice a week; about a third of the class attends lecture regularly. Starting early in second year, students can join clinicians on house calls around Richmond to see patients who cannot get to a clinic, which showed Chris how much care has to adapt to patients’ finances, literacy and transportation. Chris loves Richmond’s history, took a gap year working as an EMT, and wishes anatomy were an admissions requirement."
 url: "https://docstoryorg.wordpress.com/2018/05/30/chris-ms2/"
 ---
 

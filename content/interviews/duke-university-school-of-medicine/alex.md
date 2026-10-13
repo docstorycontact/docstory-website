@@ -7,6 +7,7 @@ undergraduate: "University of Colorado, Boulder, B.A. English Literature"
 age: 27
 hometown: "Fort Collins, Colorado"
 date: "2018-06-20"
+summary: "Alex, a former English major who did a post-bacc, describes Duke’s minimal mandatory class time and recorded lectures, with plenty of independent study and a weekly three-hour Clinical Skills Foundation class. Duke’s condensed preclinical curriculum puts students on the wards in second year, which opens with a three-week Clinical Skills Intensive. Alex chose Duke because its students seemed among the happiest on the interview trail, and Durham’s low cost of living let Alex borrow less than offered."
 url: "https://docstoryorg.wordpress.com/2018/06/20/alex-ms2/"
 ---
 

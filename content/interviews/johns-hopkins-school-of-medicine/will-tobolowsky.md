@@ -7,6 +7,7 @@ undergraduate: "UC Santa Barbara, B.S. Microbiology"
 age: 24
 hometown: "Los Angeles, CA"
 date: "2018-06-10"
+summary: "Will describes preclinical days of three to six lectures plus small groups, with one course taught at a time in two- to four-week blocks and a weekly afternoon at an outpatient clinic. Will found more events and opportunities than time and suggests picking a few to stick with. Will is candid about crime in East Baltimore but argues that hospitals in such areas expose students to a wider range of serious cases, and recommends Sketchy, Pathoma, First Aid, USMLE Rx and UWorld."
 url: "https://docstoryorg.wordpress.com/2018/06/10/will-tobolowsky-ms3/"
 ---
 

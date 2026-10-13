@@ -6,6 +6,7 @@ year: "MS1"
 undergraduate: "UC Berkeley, B.S. Molecular and Cell Biology"
 hometown: "Cerritos, CA"
 date: "2018-06-14"
+summary: "Annie describes mornings of problem-based learning, small groups or lecture until 1pm, and afternoons for anatomy, preceptorship, electives or study, with plenty of downtime in first year for shadowing and the student-run free clinic. With just over 100 students, most of whom live in the same building in first year, the class is tight-knit, and pass/fail grading keeps stress down. Weill Cornell’s ties with Memorial Sloan Kettering, Rockefeller University and Hospital for Special Surgery bring abundant research and clinical opportunities, and New York keeps life exciting, from museums to discounted shows."
 url: "https://docstoryorg.wordpress.com/2018/06/14/annie-yau-ms1/"
 ---
 
