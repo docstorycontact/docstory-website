@@ -91,6 +91,12 @@ window.DOCSTORY_SCHOOLS = [
   "interviews": 1
  },
  {
+  "slug": "loma-linda-university-school-of-medicine",
+  "name": "Loma Linda University School of Medicine",
+  "type": "md",
+  "interviews": 1
+ },
+ {
   "slug": "mayo-clinic-school-of-medicine",
   "name": "Mayo Clinic Alix School of Medicine",
   "type": "md",

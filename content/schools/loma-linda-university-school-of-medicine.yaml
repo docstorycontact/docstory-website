@@ -1,0 +1,130 @@
+# School page data for Loma Linda University School of Medicine.
+# Rendered by build_schools.py; field reference: content/schools/_TEMPLATE.yaml
+# Numbers from official LLU pages (see `sources`); NIH/trials/CMS via fetch_public_data.py. Checked 2026-10-13.
+# LLU publishes no entering class size or admissions funnel, so those tiles stay hidden.
+
+short_name: Loma Linda
+nih_org: LOMA LINDA UNIVERSITY
+
+stats:
+  entering_class: 2026
+  stats_kind: average
+  profile_url: https://medicine.llu.edu/admissions/medicine-md-program/selection-criteria
+  mcat: 510                      # Selection Criteria: 2026 entering class average total MCAT
+  gpa_science: 3.80              # Selection Criteria: average BCPM GPA
+  gpa_overall: 3.85              # Selection Criteria: cumulative GPA
+  class_size: null               # not published
+
+  tuition: 71746                 # Medicine, MD: 2026–27 Year 1 tuition & fees (Years 2–4: $71,656); same rate for every applicant
+  cost_year: 2026–27
+  total_cost: 435213             # Medicine, MD: sum of the four yearly budgets, off-campus living
+  total_cost_note: off-campus living
+  tuition_note: Private school · one rate for all students
+
+sources:
+  - label: LLU School of Medicine Selection Criteria (2026 entering class)
+    url: https://medicine.llu.edu/admissions/medicine-md-program/selection-criteria
+  - label: LLU Medicine, MD (2026–27 costs)
+    url: https://llu.edu/academics/programs/school-medicine/medicine-md
+  - label: LLU School of Medicine Curriculum
+    url: https://medicine.llu.edu/academics/medical-student-education/curriculum
+  - label: LLU School of Medicine Regional Campus
+    url: https://medicine.llu.edu/admissions/medicine-md-program/regional-campus
+  - label: LLU Admission Requirements and Application Process
+    url: https://medicine.llu.edu/admissions/medicine-md-program/admission-requirements-and-application-process
+  - label: Census QuickFacts (San Bernardino County, CA)
+    url: https://www.census.gov/quickfacts/fact/table/sanbernardinocountycalifornia/HSG860224
+
+highlights:
+  - title: Curriculum & Grading
+    icon: menu_book
+    paragraphs:
+      - >-
+        The first two years open with a Foundations block, move through seven organ-system blocks, and
+        end with a multisystem block. **Christian Physician Formation** and Clinical Skills Development
+        run alongside them for both years.
+      - >-
+        A Loma Linda fourth-year describes recorded morning lectures, mostly free afternoons, and a
+        remote Thursday before each Friday quiz. Preclinical blocks are **pass/fail**, with a distinction
+        on the MSPE for final block scores of 88% or higher.
+
+  - title: Clinical Training
+    icon: local_hospital
+    paragraphs:
+      - >-
+        Clerkships take place mainly at **Loma Linda University Medical Center**, with the Jerry L. Pettis
+        Memorial VA Medical Center, Riverside University Health System's county hospital, and White
+        Memorial in Los Angeles.
+      - >-
+        The student sees each site as a different "flavor": the county safety net, the VA's veteran
+        population, and the main medical center's rare and complex transfers from across the Inland
+        Empire and beyond.
+
+  - title: Global Health & Mission
+    icon: public
+    paragraphs:
+      - >-
+        Students for International Mission Service (SIMS), part of LLU's Global Health Institute, runs
+        short-term service trips during school breaks, and the school offers a **Deferred Mission
+        Appointee** program for medical students.
+      - >-
+        The student describes summer trips in the preclinical years and fourth-year mission electives
+        at Seventh-day Adventist mission hospitals abroad, where limited resources mean more patient
+        education and lifestyle care.
+
+  - title: Regional Campuses & Advising
+    icon: alt_route
+    paragraphs:
+      - >-
+        Students can choose to spend years three and four at a **regional campus**: AdventHealth Orlando
+        in Florida or Kettering Health in Dayton, Ohio. The choice is made on the secondary application
+        and is binding.
+      - >-
+        For residency applications, the student's internal medicine advising paired small groups with
+        faculty mentors for personal statement review and mock interviews, alongside clerkship-run
+        workshops and match data from earlier classes.
+
+highlight_sources:
+  - label: DocStory interview with an anonymous MS4
+    url: /interviews/loma-linda-university-school-of-medicine/anonymous-ms4/
+  - label: LLU School of Medicine Curriculum
+    url: https://medicine.llu.edu/academics/medical-student-education/curriculum
+  - label: LLU Community Programs and Mission Trips
+    url: https://medicine.llu.edu/about/community-programs-and-mission-trips
+  - label: LLU Students for International Mission Service
+    url: https://ghi.llu.edu/sims
+  - label: LLU School of Medicine Regional Campus
+    url: https://medicine.llu.edu/admissions/medicine-md-program/regional-campus
+
+quotes:
+  anonymous-ms4: >-
+    "Loma Linda is the largest medical center in the Inland Empire and even extending north and east to
+    the Central Valley and rural areas. This means that besides the local underserved populations in San
+    Bernardino we see a lot of zebra cases from an impressively wide geographic distribution."
+
+trials_sponsor: Loma Linda University
+
+clinical_sites:
+  - {name: Loma Linda University Medical Center, role: Principal teaching hospital, cms_id: "050327"}
+  - {name: Jerry L. Pettis Memorial VA Medical Center, role: Major teaching site · veterans}
+  - {name: Riverside University Health System Medical Center, role: County safety-net hospital, cms_id: "050292"}
+  - {name: Adventist Health White Memorial, role: Clerkship site · Los Angeles, cms_id: "050103"}
+  - {name: AdventHealth Orlando, role: Regional campus · years 3–4}
+  - {name: Kettering Health, role: Regional campus · years 3–4}
+
+programs:
+  tracks:
+    - {name: Regional campus, note: AdventHealth Orlando or Kettering Health for years 3–4}
+  dual_degrees: [MD/PhD (Medical Scientist)]
+
+applying:
+  - {label: Interviews, value: "Two one-on-one virtual interviews · by invitation"}
+  - {label: Secondary, value: "Sent to all verified applicants · due November 16 · $85"}
+  - {label: MCAT, value: "Taken by September before matriculation · within three years"}
+  - {label: Regional campus, value: "Chosen on the secondary · binding"}
+
+cost_of_living:
+  county: San Bernardino County, CA
+  fips: "06071"
+  median_rent: 1801             # Census ACS 2020–2024 via QuickFacts
+  acs_year: 2020–2024

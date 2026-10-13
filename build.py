@@ -469,7 +469,7 @@ def render_interview_page(iv, all_interviews):
         </div>
         <h1 class="font-headline-lg text-headline-lg text-primary mb-md leading-tight">{name}, {year} — {school}</h1>
         <div class="flex items-center gap-sm pb-md border-b border-primary/5">
-          <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">{ini}</div>
+          <div class="w-12 h-12 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">{ini}</div>
           <div>
             <div class="font-label-md text-label-md text-primary">{name}</div>
             <div class="font-body-md text-xs text-slate-gray">{year} at {school} at the time · Written {date_str}{updated_html}</div>

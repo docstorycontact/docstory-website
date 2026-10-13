@@ -1742,6 +1742,16 @@
       "permanent": true
     },
     {
+      "source": "/interviews/loma-linda-university-school-of-medicine(/)?",
+      "destination": "/schools/loma-linda-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/loma-linda-university-school-of-medicine(/.*)?",
+      "destination": "/schools/loma-linda-university-school-of-medicine/",
+      "permanent": true
+    },
+    {
       "source": "/2023/01/10/jonathan-carnino-ms1-2(/.*)?",
       "destination": "/interviews/misc/jonathan-carnino/",
       "permanent": true
