@@ -7,6 +7,7 @@ undergraduate: "MIT, Computer Science and Molecular Biology"
 age: 29
 hometown: "Newton, MA"
 date: "2023-01-17"
+page_title: "Clinical Years and Research at USC Keck: Guillaume Kugener (MS4)"
 summary: "Guillaume, a fourth-year headed into general surgery, says the best part of Keck is the time at LA County Hospital, where an under-resourced system gives medical students real responsibility and an up-close view of the social barriers patients face. A former computational biologist, Guillaume joined a lab after the first block to analyze surgical videos with deep learning, work that produced around 11 to 12 papers during medical school. Guillaume describes a preclinical phase of about a year and a half with few in-person requirements, and notes that a car is a must at the USC Health Sciences campus."
 ---
 

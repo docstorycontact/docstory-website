@@ -1047,7 +1047,7 @@ def render_voice_card(school_slug, fm, body, student_slug, quote=None):
 
     quote  = _esc(' '.join(quote.split())) if quote else extract_quote(body)
     inits  = initials(iv_name)
-    iv_url = f'/interviews/{school_slug}/{student_slug}/index.html'
+    iv_url = f'/interviews/{school_slug}/{student_slug}/'
 
     return f'''      <a href="{iv_url}"
          class="bg-white border border-primary/5 rounded-xl p-lg shadow-sm hover:border-vibrant-iris/30 hover:shadow-md transition-all group block">
@@ -1130,7 +1130,8 @@ def _school_summary(name, city, state, degree, pub, hospital, stats, years):
 def _seo_title_description(name, city, state, degree, stats, n):
     """Search title and snippet built from the same official figures the page shows."""
     has_cost = any(stats.get(k) for k in ('tuition', 'tuition_in_state'))
-    title = f'{name}: Student Interviews, Stats & Costs | DocStory' if has_cost else f'{name}: Student Interviews & Stats | DocStory'
+    # "What students say", not "student interviews": searchers read "interview" as the admissions interview
+    title = f'{name}: What Students Say, Stats & Costs | DocStory' if has_cost else f'{name}: What Students Say & Stats | DocStory'
     facts = []
     if stats.get('mcat'):
         mcat = round(float(stats['mcat']))
@@ -1139,8 +1140,8 @@ def _seo_title_description(name, city, state, degree, stats, n):
         facts.append(f'GPA {float(stats["gpa_overall"]):.2f}')
     if stats.get('class_size'):
         facts.append(f'class size {stats["class_size"]}')
-    ivs = f'{n} student interviews' if n != 1 else 'A student interview'
-    base = f'What is {name} ({degree}, {city}, {state}) really like? {ivs} on daily life, curriculum, and culture'
+    ivs = f'{n} students describe' if n != 1 else 'A student describes'
+    base = f'What is {name} ({degree}, {city}, {state}) really like? {ivs} daily life, curriculum, and culture'
     full = base + (f', plus official figures: {", ".join(facts)}.' if facts else '.')
     return title, (full if len(full) <= 200 else base + '.')
 
@@ -1310,14 +1311,14 @@ def render_page(school_slug, data, interviews, page=None):
 <!-- NAV -->
 <nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
   <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full h-[70px]">
-    <a href="/index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+    <a href="/" class="flex items-center gap-2 font-bold text-headline-md text-primary">
       <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:&apos;FILL&apos; 1">medical_services</span>DocStory
     </a>
     <div class="hidden md:flex items-center gap-lg h-full">
-      <a href="/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="/directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
-      <a href="/about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
-      <a href="/contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute{GET_PAID_PILL if pay_enabled() else ''}</a>
+      <a href="/" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="/directory/" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="/about/" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="/contribute/" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute{GET_PAID_PILL if pay_enabled() else ''}</a>
     </div>
     <div class="flex items-center gap-2">
       <button class="bg-vibrant-iris text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all hidden md:block shadow-sm" data-signup>Join Now</button>
@@ -1331,7 +1332,7 @@ def render_page(school_slug, data, interviews, page=None):
   <!-- HERO -->
   <div class="bg-surface-container-low border-b border-primary/5">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-xl">
-      <a href="/directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors mb-lg">
+      <a href="/directory/" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors mb-lg">
         <span class="material-symbols-outlined text-[16px]">arrow_back</span>
         Back to Directory
       </a>
@@ -1361,8 +1362,8 @@ def render_page(school_slug, data, interviews, page=None):
     </div>
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
-        <a href="/about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
-        <a href="/contribute/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
+        <a href="/about/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="/contribute/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
         <a href="mailto:docstory.contact@gmail.com" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="/privacy/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="/contribute/terms/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -1635,7 +1636,7 @@ def write_static_heads(content_dir):
             [{'@type': 'WebSite', '@id': seo.SITE_URL + '/#website', 'name': 'DocStory', 'url': seo.SITE_URL + '/',
               'publisher': {'@id': seo.SITE_URL + '/#organization'}}]),
         'directory/index.html': (
-            'Medical School Directory: Student Interviews by School | DocStory',
+            'Medical School Directory: What Students Say, School by School | DocStory',
             f'Browse {n_schools} U.S. medical schools in {states} states on a map or by name. Filter MD and DO '
             'programs and read interviews with students at each school.',
             [{'@type': 'CollectionPage', 'name': 'Medical school directory', 'url': seo.url('/directory/')},
@@ -1730,7 +1731,7 @@ def write_prerendered(content_dir):
     cards = []
     for iv in [iv for iv in site['interviews'] if iv['quote']][:3]:
         cards.append(f'''
-      <a href="interviews/{iv['schoolSlug']}/{iv['studentSlug']}/index.html" class="group bg-white rounded-xl border border-primary/10 overflow-hidden flex flex-col transition-all duration-200 ease-out hover:-translate-y-1 hover:border-vibrant-iris/30 hover:shadow-[0_14px_32px_-14px_rgba(61,32,163,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vibrant-iris focus-visible:ring-offset-2">
+      <a href="interviews/{iv['schoolSlug']}/{iv['studentSlug']}/" class="group bg-white rounded-xl border border-primary/10 overflow-hidden flex flex-col transition-all duration-200 ease-out hover:-translate-y-1 hover:border-vibrant-iris/30 hover:shadow-[0_14px_32px_-14px_rgba(61,32,163,0.28)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vibrant-iris focus-visible:ring-offset-2">
         <div class="bg-surface-container px-md pt-md pb-md">
           <div class="flex items-center justify-between gap-sm mb-xs">
             <span class="font-label-md text-[11px] text-tertiary tracking-wide uppercase">{types.get(iv['schoolSlug'], 'md').upper()} · {e(iv['city'])}</span>
@@ -1773,7 +1774,7 @@ def write_prerendered(content_dir):
       </div>
       <div class="mt-2 pt-2 border-t border-primary/5 flex items-center justify-between">
         <span class="font-body-md text-[11px] text-slate-gray">{n} interview{"s" if n != 1 else ""}</span>
-        <a href="/schools/{slug}/index.html" class="font-label-md text-[10px] font-semibold text-vibrant-iris hover:underline">View →</a>
+        <a href="/schools/{slug}/" class="font-label-md text-[10px] font-semibold text-vibrant-iris hover:underline">View →</a>
       </div>
     </article>''')
     new = _fill(text, 'count', f'Showing {len(entries)} results.')
@@ -1833,7 +1834,10 @@ def write_vercel_config(content_dir):
 
     host = {'source': '/:path(.*)', 'has': [{'type': 'host', 'value': 'docstory-website.vercel.app'}],
             'destination': seo.SITE_URL + '/:path', 'permanent': True}
-    (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + rules}, indent=2) + '\n', encoding='utf-8')
+    # One address per page: /directory/index.html → /directory/, so search engines don't index both copies
+    clean = [{'source': '/index.html', 'destination': '/', 'permanent': True},
+             {'source': '/:path(.+)/index.html', 'destination': '/:path/', 'permanent': True}]
+    (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + clean + rules}, indent=2) + '\n', encoding='utf-8')
     print(f'  seo   vercel.json ({len(rules)} old-address redirects)')
     return warnings
 
