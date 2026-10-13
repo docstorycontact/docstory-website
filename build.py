@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import datetime
 
 import seo
+from build_schools import SCHOOLS      # official school names, shared with the school pages
 
 def pay_amount():
     """Dollars per published interview, from js/contribute-config.js (shown before the page script runs)."""
@@ -94,6 +95,42 @@ def question_topic(question):
         if re.search(pattern, q):
             return key, label
     return None, None
+
+
+# Search titles say "What <school> Is Like", not "student interview": searchers read "medical school
+# interview" as the admissions interview, which isn't what these pages are. An interview whose
+# content is mostly something else (research, clerkships) sets its own `page_title:` in front matter.
+YEAR_WORDS = {"1": "First-Year", "2": "Second-Year", "3": "Third-Year", "4": "Fourth-Year"}
+NEEDS_ATTENTION = []        # printed at the end of every build; clear it before publishing
+
+
+def interview_title(meta, school):
+    """Search title without the site name: the front-matter override, else the standard pattern."""
+    if meta.get("page_title"):
+        return " ".join(str(meta["page_title"]).split())
+    name, year = str(meta.get("name", "Anonymous")), str(meta.get("year", ""))
+    if name.lower().startswith("anonymous"):
+        m = re.search(r"(\d)", year)
+        who = f"A {YEAR_WORDS[m.group(1)]}’s View" if m and m.group(1) in YEAR_WORDS else "A Student’s View"
+    else:
+        year = re.sub(r"\s*\((.+?)\)", r", \1", year)          # "MS3 (MD/PhD)" → "MS3, MD/PhD"
+        who = f"{name} ({year})" if year else name
+    school = re.sub(r"\s*\(.*?\)", "", school) if school else "Medical School"   # drop "(MSTP)", "(EnMed)"
+    return f"What {school} Is Like: {who}"
+
+
+def check_interview(iv):
+    """Things a person has to decide before an interview is published; listed under "Needs attention"."""
+    meta, path = iv["meta"], iv["path"]
+    if not str(meta.get("summary", "") or "").strip():
+        NEEDS_ATTENTION.append(f"{path}: no `summary:` line (the At a glance box). Add 2–3 sentences, "
+                               "plus one more only if something in the interview is unusual.")
+    qs = re.findall(r"^\*\*Q: (.+?)\*\*\s*$", iv["body"], flags=re.MULTILINE)
+    focused = sum(question_topic(q)[0] in ("research", "clerkships") for q in qs)
+    if qs and focused / len(qs) >= 0.3 and not meta.get("page_title"):
+        NEEDS_ATTENTION.append(f"{path}: {focused} of {len(qs)} questions are about research or clerkships, so "
+                               f"\"{interview_title(meta, SCHOOLS.get(iv['school_slug'], {}).get('name', meta.get('school')) if iv['school_slug'] != 'misc' else None)}\" may oversell it. "
+                               "Add a `page_title:` that says what the interview covers.")
 
 
 def preprocess_body(body):
@@ -182,10 +219,10 @@ def related_interviews(current, all_interviews, n=3):
 GET_PAID_PILL = '<span data-get-paid class="ml-1.5 inline-flex items-center align-middle rounded-full bg-[#e8f5ee] text-[#1f7a4d] px-2 py-[3px] text-[11px] leading-none font-semibold tracking-wide whitespace-nowrap">Get Paid!</span>'
 
 NAV_ITEMS = """
-      <a href="{root}index.html"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
-      <a href="{root}directory/index.html" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
-      <a href="{root}about/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
-      <a href="{root}contribute/index.html" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute""" + (GET_PAID_PILL if pay_enabled() else "") + """</a>
+      <a href="{root}"  class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Home</a>
+      <a href="{root}directory/" class="font-body-md text-body-md text-vibrant-iris border-b-2 border-vibrant-iris pb-1 font-medium">Interviews</a>
+      <a href="{root}about/" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">About</a>
+      <a href="{root}contribute/" class="font-body-md text-body-md text-slate-gray hover:text-vibrant-iris transition-colors">Contribute""" + (GET_PAID_PILL if pay_enabled() else "") + """</a>
 """
 
 def related_card(iv, root):
@@ -193,7 +230,7 @@ def related_card(iv, root):
     school = iv["meta"].get("school", iv["school_slug"].replace("-", " ").title())
     year = iv["meta"].get("year", "")
     ini = initials(name)
-    url = f'{root}interviews/{iv["school_slug"]}/{iv["student_slug"]}/index.html'
+    url = f'{root}interviews/{iv["school_slug"]}/{iv["student_slug"]}/'
     return f"""
           <li>
             <a href="{url}" class="flex items-start gap-sm group">
@@ -304,13 +341,12 @@ def render_interview_page(iv, all_interviews):
       </nav>
 """
     who_short  = f"{name} ({year})" if year else name
-    page_title = f"{school} Student Interview: {who_short} | DocStory"
     known_school = school_slug != "misc"
     if known_school:
         who = f"{name}, {year} at {school}," if year else f"{name}, a student at {school},"
     else:
         who = f"{name}, a medical student ({year}),"  if year else f"{name}, a medical student,"
-        page_title = f"{who_short}: Medical Student Interview | DocStory"
+    page_title = interview_title(meta, SCHOOLS.get(school_slug, {}).get("name", school) if known_school else None) + " | DocStory"
     description = seo.clip(summary or f"{who} describes a typical day, the curriculum, class culture, "
                                       f"clinical training, and life outside class.")
     page_path = f"/interviews/{school_slug}/{student_slug}/"
@@ -397,7 +433,7 @@ def render_interview_page(iv, all_interviews):
 <!-- NAV -->
 <nav class="bg-surface-container-lowest border-b border-primary/10 sticky top-0 z-50">
   <div class="flex justify-between items-center px-margin-desktop py-base max-w-[1200px] mx-auto w-full h-[70px]">
-    <a href="{root}index.html" class="flex items-center gap-2 font-bold text-headline-md text-primary">
+    <a href="{root}" class="flex items-center gap-2 font-bold text-headline-md text-primary">
       <span class="material-symbols-outlined text-vibrant-iris text-2xl" style="font-variation-settings:'FILL' 1">medical_services</span>DocStory
     </a>
     <div class="hidden md:flex items-center gap-lg h-full">
@@ -416,7 +452,7 @@ def render_interview_page(iv, all_interviews):
 <main class="flex-grow max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl w-full">
 
   <nav aria-label="breadcrumb" class="mb-lg">
-    <a href="{root}directory/index.html" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
+    <a href="{root}directory/" class="inline-flex items-center gap-xs text-slate-gray hover:text-vibrant-iris font-label-md text-label-md transition-colors">
       <span class="material-symbols-outlined text-[16px]">arrow_back</span>
       Back to Directory
     </a>
@@ -457,7 +493,7 @@ def render_interview_page(iv, all_interviews):
             <p class="font-body-md text-body-md text-slate-gray mt-1">Answer 8–10 questions about your school in about 30–45 minutes{contrib_pay}.</p>
           </div>
         </div>
-        <a href="{root}contribute/index.html" class="shrink-0 inline-flex items-center justify-center gap-1 bg-primary text-white px-md py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
+        <a href="{root}contribute/" class="shrink-0 inline-flex items-center justify-center gap-1 bg-primary text-white px-md py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
           Contribute <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
         </a>
       </aside>
@@ -496,8 +532,8 @@ def render_interview_page(iv, all_interviews):
     </div>
     <div class="flex flex-col gap-sm md:col-start-3 md:items-end">
       <nav class="flex flex-wrap gap-md md:justify-end">
-        <a href="{root}about/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
-        <a href="{root}contribute/index.html" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
+        <a href="{root}about/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Mission</a>
+        <a href="{root}contribute/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contribute</a>
         <a href="mailto:docstory.contact@gmail.com" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Contact Us</a>
         <a href="/privacy/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Privacy Policy</a>
         <a href="/contribute/terms/" class="text-slate-gray hover:text-vibrant-iris underline opacity-80 hover:opacity-100 transition-opacity font-body-md text-body-md">Terms of Service</a>
@@ -605,6 +641,7 @@ def build():
     built = 0
 
     for iv in all_interviews:
+        check_interview(iv)
         school_slug  = iv["school_slug"]
         student_slug = iv["student_slug"]
 
@@ -617,6 +654,10 @@ def build():
         built += 1
 
     print(f"\nDone — {built} interview pages generated.")
+    if NEEDS_ATTENTION:
+        print(f"\nNeeds attention before publishing ({len(NEEDS_ATTENTION)}):")
+        for line in NEEDS_ATTENTION:
+            print(f"  ⚠  {line}")
 
 
 if __name__ == "__main__":

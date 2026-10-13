@@ -126,10 +126,18 @@ pick it up again; lapsing is about not leaving things open forever.
 
 ### 6. Publish (Template D)
 1. Commit the edited file (I can do this when you tell me the reference number).
-2. Rebuild (`python3 build.py` and `python3 build_schools.py`) and push. The school's
-   published count goes up automatically, and once a school reaches 5 the form stops offering
-   payment for it.
-3. Send Template D with the live link. Mark **Published**.
+2. Rebuild (`python3 build.py` and `python3 build_schools.py`). The school's published count
+   goes up automatically, and once a school reaches 5 the form stops offering payment for it.
+3. **Clear the build's "Needs attention" list** (printed at the end of `build.py`) before pushing:
+   - *No `summary:` line:* add the At a glance summary to the file's front matter: 2–3 sentences in
+     our words, facts only from the interview, the student's name or they/them (never he/she). Add
+     one more sentence only if something in the interview is genuinely unusual.
+   - *Mostly research or clerkships:* the standard search title ("What [School] Is Like: [Name]
+     ([Year])") would oversell it, so add a `page_title:` line that says what it covers, e.g.
+     `page_title: "Third-Year Clerkships at Indiana University School of Medicine: Austin Wininger (MS3)"`.
+
+   Every other interview and every new school gets its search title automatically.
+4. Push, then send Template D with the live link. Mark **Published**.
 
 If the contributor opted in to reader questions, keep the `reader_questions` and `questions_until`
 lines in the file. The "Ask [name] a question" box then appears on their interview until that date.

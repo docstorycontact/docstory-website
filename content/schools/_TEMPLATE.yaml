@@ -80,7 +80,7 @@ highlights:
 
 highlight_sources:
   - label: DocStory interview with <student>
-    url: /interviews/<school-slug>/<student-file-name>/index.html
+    url: /interviews/<school-slug>/<student-file-name>/
   - label: <School> MD Curriculum
     url: https://...
 
