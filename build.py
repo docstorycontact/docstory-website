@@ -102,7 +102,7 @@ def preprocess_body(body):
     Returns (markdown, [(id, label), …]) for the page's jump list."""
     # Remove the top-level h1 (first line starting with a single #)
     body = re.sub(r"^# .+\n?", "", body, count=1)
-    toc, used = [], set()
+    toc, used, labels = [], set(), {}
 
     def heading(m):
         key, label = question_topic(m.group(1))
@@ -112,17 +112,23 @@ def preprocess_body(body):
         while anchor in used:
             anchor, n = f"{key}-{n}", n + 1
         used.add(anchor)
+        labels[anchor] = label
         if label not in [l for _, l in toc]:
             toc.append((anchor, label))
         return f"### {m.group(1)} {{#{anchor}}}"
 
     body = re.sub(r"^\*\*Q: (.+?)\*\*\s*$", heading, body, flags=re.MULTILINE)
-    return body.strip(), toc
+    return body.strip(), toc, labels
 
 
 def md_to_html(body):
-    processed, toc = preprocess_body(body)
-    return markdown.markdown(processed, extensions=["extra"]), toc
+    processed, toc, labels = preprocess_body(body)
+    out = markdown.markdown(processed, extensions=["extra"])
+    # Short topic label above each question; the question itself stays the heading text
+    out = re.sub(r'<h3 id="([^"]+)">',
+                 lambda m: f'<div class="q-topic" aria-hidden="true">{html.escape(labels.get(m.group(1), ""))}</div>\n{m.group(0)}'
+                 if labels.get(m.group(1)) else m.group(0), out)
+    return out, toc
 
 
 def slug_from_path(path):
@@ -252,6 +258,7 @@ def render_interview_page(iv, all_interviews):
     date_str  = format_date(meta.get("date", ""))
     updated   = str(meta.get("updated", "") or "")
     summary   = " ".join(str(meta.get("summary", "") or "").split())
+    standout  = " ".join(str(meta.get("standout", "") or "").split())   # optional: only when something in the interview is unusual
     ini       = initials(name)
     type_label, type_cls = school_type_tag(meta)
     rel       = related_interviews(iv, all_interviews)
@@ -276,6 +283,10 @@ def render_interview_page(iv, all_interviews):
         facts += f'<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Written</span><span class="font-body-md text-body-md text-primary font-medium">{date_str}</span></li>\n'
 
     updated_html = f" · Updated by the author {format_date(updated)}" if updated else ""
+    standout_html = ""
+    if standout:
+        standout_html = f"""
+        <p class="font-body-md text-body-md text-primary leading-relaxed mt-sm"><strong class="text-vibrant-iris font-semibold">What stands out:</strong> {html.escape(standout)}</p>"""
     glance_html = ""
     if summary:
         glance_html = f"""
@@ -284,7 +295,7 @@ def render_interview_page(iv, all_interviews):
         <h2 id="glance-title" class="font-label-md text-label-md text-vibrant-iris uppercase tracking-wider flex items-center gap-xs mb-xs">
           <span class="material-symbols-outlined text-[18px]" aria-hidden="true">summarize</span>At a glance
         </h2>
-        <p class="font-body-md text-body-md text-primary leading-relaxed">{html.escape(summary)}</p>
+        <p class="font-body-md text-body-md text-primary leading-relaxed">{html.escape(summary)}</p>{standout_html}
         <p class="font-body-md text-xs text-slate-gray mt-sm">Summary by DocStory, based on this interview. The full answers follow in the student’s own words.</p>
       </section>
 """
@@ -354,11 +365,16 @@ def render_interview_page(iv, all_interviews):
   <style>
     .interview-body h1 {{ font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }}
     .interview-body h2 {{ font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }}
-    .interview-body h3 {{
-      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
-      scroll-margin-top: 90px;
+    .interview-body .q-topic {{
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #9580FF; margin: 2.5rem 0 0.25rem;
     }}
+    .interview-body h3 {{
+      font-size: 1.0625rem; font-weight: 600; line-height: 1.45;
+      color: #333e4d; margin: 2rem 0 0.5rem;
+      scroll-margin-top: 110px;
+    }}
+    .interview-body .q-topic + h3 {{ margin-top: 0; }}
     .interview-body p  {{ color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }}
     .interview-body strong {{ color: #333e4d; }}
     .interview-body ul, .interview-body ol {{ color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }}

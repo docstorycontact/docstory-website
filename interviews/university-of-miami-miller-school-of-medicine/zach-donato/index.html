@@ -108,11 +108,16 @@
   <style>
     .interview-body h1 { font-size: 1.5rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
     .interview-body h2 { font-size: 1.25rem; font-weight: 600; color: #333e4d; margin: 2rem 0 0.5rem; }
-    .interview-body h3 {
-      font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
-      scroll-margin-top: 90px;
+    .interview-body .q-topic {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #9580FF; margin: 2.5rem 0 0.25rem;
     }
+    .interview-body h3 {
+      font-size: 1.0625rem; font-weight: 600; line-height: 1.45;
+      color: #333e4d; margin: 2rem 0 0.5rem;
+      scroll-margin-top: 110px;
+    }
+    .interview-body .q-topic + h3 { margin-top: 0; }
     .interview-body p  { color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }
     .interview-body strong { color: #333e4d; }
     .interview-body ul, .interview-body ol { color: #4A5565; padding-left: 1.5rem; margin-bottom: 1rem; }
@@ -197,18 +202,25 @@
 
       <div id="article-body-wrapper">
         <div class="interview-body">
-          <h3 id="typical-day">What does your typical day of medical school look like?</h3>
+          <div class="q-topic" aria-hidden="true">Typical day</div>
+<h3 id="typical-day">What does your typical day of medical school look like?</h3>
 <p>The NextGen Curriculum for Miami has changed so that we are on Clerkships during our second year. I wake up around 6am on average to go into the hospital. Depending on my rotation, I will be done anywhere from 2-6pm. We have integrated didactic days that vary based on rotation and we have cut out time in our schedule for that day to attend lectures.</p>
+<div class="q-topic" aria-hidden="true">Classes &amp; curriculum</div>
 <h3 id="classes">How do your classes and lectures compare to those at your undergraduate institution? (Any insight you can give about class structure, instructors, content and how they are similar/different from undergrad)</h3>
 <p>Miami now operates on a case based learning curriculum or "flipped classroom". During our preclinical year, we had it structured to first learn all the normal systems physiology, and would progress block by block in a symptom based fashion for each organ system. We had pre-learning each day that we would complete to then attend a series of lectures the next morning. We would then have a UMCL case that was facilitated by a faculty member where we would be given a case to go through in small groups. For example, on our cardio unit, we would learn about let's say "chest pain" and then have a case focused on CAD and various presentations of Stable vs unstable angina, NSTEMI, and STEMI. This method of learning was completely new to me. Instead of what was standard in our undergraduate classes where we were simply lectured at, there was much more responsibility on us to learn material on our own, often through scholar RX Bricks, B&amp;B, or Pathoma.</p>
+<div class="q-topic" aria-hidden="true">Studying</div>
 <h3 id="studying">How has your approach to learning and/or studying changed since you were an undergrad?</h3>
 <p>There was an emphasis on personal responsibility to learn on our own in medical school. Given this, my studying has become much more structured. I have to allot time during the day for each thing on my to-do list in order to stay on track. Instead of my previous way of studying which heavily involved making my own study guides, with so much material to cover I need to attack studying from various angles unlike undergrad. Now I use Anki flashcards for longitudinal learning, videos to enforce information, and UWorld to test my knowledge through questions.</p>
+<div class="q-topic" aria-hidden="true">Culture</div>
 <h3 id="culture">How would you describe the student culture at your school? Are there special events or activities that you consider very representative of the culture at your institution? What influence has this culture had on your experience in medical school thus far?</h3>
 <p>Miami is a very service-oriented school. The DOCS clinic is a huge activity at our school and over 70% of students participate. It is a student-run clinic that hosts health-fairs usually every month in various underserved areas in the community. It is run by students of various years and you can sign up for a station based on your area of interest. For example, I am interested in Orthopedics so I often did the Bone scan station. Many students go on to be station leaders and it is a great way to be involved and show leadership skills. This has made UM very involved with community health, and Jackson is home to a very diverse patient population which reflects the culture of this school.</p>
+<div class="q-topic" aria-hidden="true">Location</div>
 <h3 id="location">Can you give us a brief description of the area surrounding your school and the things you do for fun? What are some things you like and dislike about the city/town you are located in as a student?</h3>
 <p>Most students live in Brickell or Downtown, which itself feels like a mini New York City. There is a lot of fun night life, and students adopt a very work hard play hard mentality. It is very expensive to live here, but students ultimately enjoy their experiences and there are many social events held by the school to facilitate social interaction among the students. I love the environment of Brickell and Miami and there is always something happening. There are not too many things I can say I dislike, but Brickell traffic can be quite annoying.</p>
+<div class="q-topic" aria-hidden="true">Strengths</div>
 <h3 id="strengths">What would you consider strengths of your medical school?</h3>
 <p>Strengths: Diverse patient and student population, very early clinical experience in a curriculum designed to give students more time for electives and specialization in their field of choice, everyone is very nice, very non-cutthroat culture from my experience, access to Jackson and UMH, abundant research opportunities early on.</p>
+<div class="q-topic" aria-hidden="true">Studying</div>
 <h3 id="studying-2">What resources have been most useful to you in self-learning medical school material or in expanding on material taught in class? Can you briefly describe how you have incorporated them into your learning routine?</h3>
 <p>Pathoma: The bible for my first year. These videos made tough topics like Heme Onc very simple because they break it down so well</p>
 <p>Anki: People either love it or hate it, but I have not found a better way to retain information long-term </p>
@@ -216,16 +228,22 @@
 <p>Amboss: Love for Clerkships, it’s legit an encyclopedia and Qbank that prepared me well for Shelf exams</p>
 <p>UWorld: The Gold Standard for Clerkship and Shelf studying: Not just doing the questions but going over them makes things stick</p>
 <p>Osmosis: IMO useless compared to these other amazing resources</p>
+<div class="q-topic" aria-hidden="true">Clinical skills</div>
 <h3 id="clinical-skills">How much/well have you been able to develop clinical skills alongside your classroom work first and second year? What does your institution do to help you develop clinical skills before the clinical years?</h3>
 <p>Having early clerkships has made the integration between the book and real life much easier for me. Seeing things that we learn early on in real patients is what makes you remember it. Many things in the real world are not like UWorld, and seeing this in practice also makes you understand the goal of what they wanted you to learn in preclinical years and what you actually do in practice.</p>
+<div class="q-topic" aria-hidden="true">Advice for applicants</div>
 <h3 id="advice">What is one thing you would do differently if you could go back to your undergraduate years or the time between undergrad and medical school? (This is open ended...can be related to academics or anything non-academic)</h3>
 <p>Organization, Organization, and I will say it again Organization. I honestly don't know how I made it through college without a daily plan or to do list. No matter if it has to do with studying or anything else, your life is much more manageable when you stick to a schedule.</p>
+<div class="q-topic" aria-hidden="true">Well-being</div>
 <h3 id="wellbeing">Given the number of obstacles we face en route to a career in medicine, everyone at some point feels doubtful of themselves. How has this affected you and what has helped you persevere through these sorts of feelings?</h3>
 <p>"White coat syndrome" as they call it is real. When I first started in the hospital I was overwhelmed and everything you learned in the books goes right out of the window. It takes time and patience to develop skills and you have to understand that as a medical student it is the proper time and place to mess up. Learn from your mistakes while you are not the one responsible for the patient. It is ok to not know everything, but study your patients! I have constant doubts but I always remember how far I have come whether looking back after one rotation or even one block during pre-clinicals. Another thing I used to do was compare myself to other people, do not do this!! This is a journey for yourself and this is something I reflect on a lot. That is when I really gained confidence, when I saw my own personal growth in taking histories, physical exam maneuvers, and clinical knowledge.</p>
+<div class="q-topic" aria-hidden="true">Well-being</div>
 <h3 id="wellbeing-2">How do you maintain your mental health while balancing school, work, family, and other social obligations?</h3>
 <p>Do not make medical school your work and hobby. It is a big part of your life and it is inevitable that at some point you will feel like it is your identity, but it isn't. Take the time to do one thing for yourself each day. I like to go on runs and read at the end of a long day, also Netflix. I am an avid scuba diver and find time to still do this. Adapt to a new normal, do not let it overtake your life and when I feel that it is, I take a day off from studying (yes I actually do). If you don't have your mental health you will not learn anything well I can guarantee this!</p>
+<div class="q-topic" aria-hidden="true">Classes &amp; curriculum</div>
 <h3 id="classes-2">Does your medical school provide access to lecture recordings/podcasts?</h3>
 <p>Yes</p>
+<div class="q-topic" aria-hidden="true">Grading</div>
 <h3 id="grading">How are your pre-clinical and clinical course work graded? (Pass/Fail, Honors, etc.)</h3>
 <p>First year for my class was P/F and my clerkship year is graded based on an internal rank, although we see letter grades and our % compared to the class average. The class of 2025 (year below me) is now partially graded during the first year.</p>
         </div>

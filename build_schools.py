@@ -1078,6 +1078,10 @@ def _long_date(date_str):
         return ''
 
 
+# Lead paragraph on school pages: built, but held back until its wording and styling are reworked
+SHOW_SCHOOL_SUMMARY = False
+
+
 def _school_summary(name, city, state, degree, pub, hospital, stats, years):
     """Plain-language lead paragraph built only from the figures already on the page,
     so search engines and AI assistants get the key facts as sentences."""
@@ -1170,7 +1174,7 @@ def render_page(school_slug, data, interviews, page=None):
     interviews = sorted(interviews, key=lambda iv: (order.index(iv[2]) if iv[2] in order else len(order), iv[2]))
     interviews = sorted(interviews, key=lambda iv: str(iv[0].get('date', '')), reverse=True)
     iv_years = [str(iv[0].get('date', ''))[:4] for iv in interviews]
-    summary  = _school_summary(name, city, state, degree, pub, hospital, stats, iv_years) if page else ''
+    summary  = _school_summary(name, city, state, degree, pub, hospital, stats, iv_years) if page and SHOW_SCHOOL_SUMMARY else ''
     checked  = _long_date((page or {}).get('checked', ''))
 
     n = len(interviews)
@@ -1264,11 +1268,11 @@ def render_page(school_slug, data, interviews, page=None):
 
     summary_html = ''
     if summary:
-        checked_html = (f'\n      <p class="font-body-md text-xs text-slate-gray mt-sm flex items-center gap-1">'
-                        f'<span class="material-symbols-outlined text-[14px]" aria-hidden="true">verified</span>'
-                        f'Figures checked against official sources {checked}</p>') if checked else ''
-        summary_html = (f'      <p class="font-body-md text-body-md text-primary leading-relaxed mt-md max-w-[70ch]">{summary}</p>'
-                        f'{checked_html}\n')
+        summary_html += f'      <p class="font-body-md text-body-md text-primary leading-relaxed mt-md max-w-[70ch]">{summary}</p>\n'
+    if checked:
+        summary_html += (f'      <p class="font-body-md text-xs text-slate-gray mt-sm flex items-center gap-1">'
+                         f'<span class="material-symbols-outlined text-[14px]" aria-hidden="true">verified</span>'
+                         f'Figures checked against official sources {checked}</p>\n')
 
     page_title, description = _seo_title_description(name, city, state, degree, stats, n)
     page_path = f'/schools/{school_slug}/'
