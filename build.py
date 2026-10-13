@@ -258,7 +258,6 @@ def render_interview_page(iv, all_interviews):
     date_str  = format_date(meta.get("date", ""))
     updated   = str(meta.get("updated", "") or "")
     summary   = " ".join(str(meta.get("summary", "") or "").split())
-    standout  = " ".join(str(meta.get("standout", "") or "").split())   # optional: only when something in the interview is unusual
     ini       = initials(name)
     type_label, type_cls = school_type_tag(meta)
     rel       = related_interviews(iv, all_interviews)
@@ -283,10 +282,6 @@ def render_interview_page(iv, all_interviews):
         facts += f'<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Written</span><span class="font-body-md text-body-md text-primary font-medium">{date_str}</span></li>\n'
 
     updated_html = f" · Updated by the author {format_date(updated)}" if updated else ""
-    standout_html = ""
-    if standout:
-        standout_html = f"""
-        <p class="font-body-md text-body-md text-primary leading-relaxed mt-sm"><strong class="text-vibrant-iris font-semibold">What stands out:</strong> {html.escape(standout)}</p>"""
     glance_html = ""
     if summary:
         glance_html = f"""
@@ -295,7 +290,7 @@ def render_interview_page(iv, all_interviews):
         <h2 id="glance-title" class="font-label-md text-label-md text-vibrant-iris uppercase tracking-wider flex items-center gap-xs mb-xs">
           <span class="material-symbols-outlined text-[18px]" aria-hidden="true">summarize</span>At a glance
         </h2>
-        <p class="font-body-md text-body-md text-primary leading-relaxed">{html.escape(summary)}</p>{standout_html}
+        <p class="font-body-md text-body-md text-primary leading-relaxed">{html.escape(summary)}</p>
         <p class="font-body-md text-xs text-slate-gray mt-sm">Summary by DocStory, based on this interview. The full answers follow in the student’s own words.</p>
       </section>
 """

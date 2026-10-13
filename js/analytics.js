@@ -5,6 +5,9 @@
  * - Page views: Vercel Web Analytics (cookieless; on whenever the site runs on Vercel).
  * - Attribution: remembers which ad or link first brought someone here (utm_* tags or the
  *   referring site), so the contribute form can include it with each submission.
+ * - AI assistants: visits from ChatGPT, Perplexity, Claude, Gemini or Copilot are labeled by name
+ *   (from the referring site or the utm_source they add), so "Came from" says e.g. "AI assistant: ChatGPT".
+ *   Vercel's Referrers panel counts the same visits; filter it by these sites to see the trend.
  *
  * Nothing here sets cookies or records personal information.
  */
@@ -31,8 +34,18 @@
   });
   var ref = '';
   try { ref = document.referrer && new URL(document.referrer).hostname !== location.hostname ? new URL(document.referrer).hostname : ''; } catch (e) { /* ignore */ }
+  var AI_SOURCES = [
+    [/(^|\.)(chatgpt\.com|chat\.openai\.com)$/, 'ChatGPT'], [/(^|\.)perplexity\.ai$/, 'Perplexity'],
+    [/(^|\.)claude\.ai$/, 'Claude'], [/^gemini\.google\.com$/, 'Gemini'],
+    [/(^|\.)(copilot\.microsoft\.com|copilot\.cloud\.microsoft)$/, 'Copilot'],
+  ];
+  var ai = '';
+  [ref, (utm.utm_source || '').toLowerCase()].forEach(function (host) {
+    AI_SOURCES.forEach(function (s) { if (!ai && host && s[0].test(host)) ai = s[1]; });
+  });
   if (Object.keys(utm).length || ref) {
     var touch = Object.assign({ referrer: ref, landing: location.pathname, date: new Date().toISOString().slice(0, 10) }, utm);
+    if (ai) touch.ai = ai;
     if (!store.get('docstoryFirstTouch')) store.set('docstoryFirstTouch', JSON.stringify(touch));
     store.set('docstoryLastTouch', JSON.stringify(touch));
   }
@@ -51,6 +64,7 @@
       var t = read('docstoryFirstTouch'), last = read('docstoryLastTouch');
       if (!t) return 'Direct or unknown';
       var line = function (x) {
+        if (x.ai) return 'AI assistant: ' + x.ai;
         return [x.utm_source, x.utm_medium, x.utm_campaign, x.utm_content].filter(Boolean).join(' / ') ||
           (x.referrer ? 'Referral from ' + x.referrer : 'Direct') + '';
       };

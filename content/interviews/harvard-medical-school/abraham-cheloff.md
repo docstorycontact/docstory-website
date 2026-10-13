@@ -6,8 +6,7 @@ year: "MS2"
 undergraduate: "Brandeis University (Biology, Neuroscience, Chemical Biology, Legal Studies, B.S./M.S.)"
 location: "Greater Boston Area, Massachusetts"
 date: "2020-03-20"
-summary: "Abraham describes Harvard's 14-month preclinical phase, taught as a flipped classroom: students prepare with videos the night before, then work through cases in small groups each morning, with Wednesdays spent at a clinical site. Grading was pass/fail with no class ranking, which Abraham credits for a collaborative culture, and the weekly clinical days left Abraham feeling well prepared for the clerkship year."
-standout: "Even in the clinical year, each rotation includes a set number of “flex” afternoons off for appointments and other must-do tasks."
+summary: "Abraham describes Harvard's 14-month preclinical phase, taught as a flipped classroom: students prepare with videos the night before, then work through cases in small groups each morning, with Wednesdays spent at a clinical site. Grading was pass/fail with no class ranking, which Abraham credits for a collaborative culture, and the weekly clinical days left Abraham feeling well prepared for the clerkship year. Even in the clinical year, each rotation includes a set number of “flex” afternoons off for appointments and other must-do tasks."
 url: "https://docstoryorg.wordpress.com/2020/03/20/abraham-cheloff-ms2/"
 ---
 

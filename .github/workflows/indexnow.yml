@@ -1,0 +1,29 @@
+# After Vercel finishes a production deploy, tell Bing/IndexNow which pages changed (see indexnow.py).
+# "Run workflow" on the Actions tab sends every page in the sitemap instead.
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  ping:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          ref: ${{ github.event.deployment.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Send changed pages
+        if: github.event_name == 'deployment_status'
+        run: python3 indexnow.py --changed HEAD~1 HEAD
+      - name: Send every page
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 indexnow.py --all
