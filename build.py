@@ -66,18 +66,63 @@ def format_date(date_str):
         return str(date_str)
 
 
+# Every question is filed under one topic, so answers get stable links (…/#culture) and a jump list,
+# and so answers on the same topic can later be gathered across schools. First match wins.
+TOPICS = [
+    ("typical-day",     "Typical day",         r"typical day"),
+    ("grading",         "Grading",             r"graded|grading|pass/fail"),
+    ("clinical-skills", "Clinical skills",     r"clinical skills|exposure to clinical"),
+    ("clerkships",      "Clerkships",          r"clerkship|rotation|third year|preceptor|clinical responsibilities"),
+    ("classes",         "Classes & curriculum", r"classes and lectures|teaching practices|curriculum|lecture recordings|unique aspect of education|maximize the time you spend in lecture"),
+    ("research",        "Research",            r"research"),
+    ("studying",        "Studying",            r"studying|study habits|self-learning|resources|study groups|study outside|step exams|learning process"),
+    ("culture",         "Culture",             r"culture|community|social scene|favorite event"),
+    ("strengths",       "Strengths",           r"strengths|unique about your medical school|most valuable"),
+    ("activities",      "Activities",          r"organizations|clubs"),
+    ("location",        "Location",            r"area surrounding|close to where they grew up"),
+    ("mentorship",      "Mentorship",          r"mentor"),
+    ("wellbeing",       "Well-being",          r"mental health|well-being|doubtful|difficult part|balance"),
+    ("choosing",        "Choosing a school",   r"deciding which school|during your interviews"),
+    ("outlook",         "Outlook on medicine", r"outlook|surprised|contributed the most|specialty|career goals"),
+    ("advice",          "Advice for applicants", r"advice|do differently|wish you had known|classes in undergrad|go back|unique background|share with future"),
+]
+
+
+def question_topic(question):
+    q = question.lower()
+    for key, label, pattern in TOPICS:
+        if re.search(pattern, q):
+            return key, label
+    return None, None
+
+
 def preprocess_body(body):
     """Strip the first # heading (already shown in article header), then convert
-    **Q: ...** question lines into ### headings before markdown parsing."""
+    **Q: ...** question lines into ### headings (with a topic id) before markdown parsing.
+    Returns (markdown, [(id, label), …]) for the page's jump list."""
     # Remove the top-level h1 (first line starting with a single #)
     body = re.sub(r"^# .+\n?", "", body, count=1)
-    body = re.sub(r"^\*\*Q: (.+?)\*\*\s*$", r"### \1", body, flags=re.MULTILINE)
-    return body.strip()
+    toc, used = [], set()
+
+    def heading(m):
+        key, label = question_topic(m.group(1))
+        if not key:
+            return f"### {m.group(1)}"
+        anchor, n = key, 2
+        while anchor in used:
+            anchor, n = f"{key}-{n}", n + 1
+        used.add(anchor)
+        if label not in [l for _, l in toc]:
+            toc.append((anchor, label))
+        return f"### {m.group(1)} {{#{anchor}}}"
+
+    body = re.sub(r"^\*\*Q: (.+?)\*\*\s*$", heading, body, flags=re.MULTILINE)
+    return body.strip(), toc
 
 
 def md_to_html(body):
-    processed = preprocess_body(body)
-    return markdown.markdown(processed, extensions=["extra"])
+    processed, toc = preprocess_body(body)
+    return markdown.markdown(processed, extensions=["extra"]), toc
 
 
 def slug_from_path(path):
@@ -193,7 +238,7 @@ def ask_box(meta, name, school):
 
 def render_interview_page(iv, all_interviews):
     meta         = iv["meta"]
-    body_html    = md_to_html(iv["body"])
+    body_html, toc = md_to_html(iv["body"])
     school_slug  = iv["school_slug"]
     student_slug = iv["student_slug"]
 
@@ -205,6 +250,8 @@ def render_interview_page(iv, all_interviews):
     hometown  = meta.get("hometown", "")
     age       = meta.get("age", "")
     date_str  = format_date(meta.get("date", ""))
+    updated   = str(meta.get("updated", "") or "")
+    summary   = " ".join(str(meta.get("summary", "") or "").split())
     ini       = initials(name)
     type_label, type_cls = school_type_tag(meta)
     rel       = related_interviews(iv, all_interviews)
@@ -226,18 +273,40 @@ def render_interview_page(iv, all_interviews):
     if age:
         facts += f'<li class="flex justify-between items-center pb-sm border-b border-primary/5"><span class="font-body-md text-body-md text-slate-gray">Age</span><span class="font-body-md text-body-md text-primary font-medium">{age}</span></li>\n'
     if date_str:
-        facts += f'<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Published</span><span class="font-body-md text-body-md text-primary font-medium">{date_str}</span></li>\n'
+        facts += f'<li class="flex justify-between items-center"><span class="font-body-md text-body-md text-slate-gray">Written</span><span class="font-body-md text-body-md text-primary font-medium">{date_str}</span></li>\n'
 
+    updated_html = f" · Updated by the author {format_date(updated)}" if updated else ""
+    glance_html = ""
+    if summary:
+        glance_html = f"""
+      <!-- At a glance: written by DocStory from this interview (front-matter `summary`) -->
+      <section class="mb-lg bg-soft-surface border border-primary/10 rounded-xl p-md md:p-lg" aria-labelledby="glance-title">
+        <h2 id="glance-title" class="font-label-md text-label-md text-vibrant-iris uppercase tracking-wider flex items-center gap-xs mb-xs">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">summarize</span>At a glance
+        </h2>
+        <p class="font-body-md text-body-md text-primary leading-relaxed">{html.escape(summary)}</p>
+        <p class="font-body-md text-xs text-slate-gray mt-sm">Summary by DocStory, based on this interview. The full answers follow in the student’s own words.</p>
+      </section>
+"""
+    toc_html = ""
+    if len(toc) >= 3:
+        links = "".join(f'<li><a href="#{a}" class="inline-block px-sm py-1 rounded-full border border-primary/10 bg-white text-primary hover:border-vibrant-iris hover:text-vibrant-iris transition-colors">{html.escape(l)}</a></li>' for a, l in toc)
+        toc_html = f"""
+      <nav class="mb-lg" aria-label="In this interview">
+        <div class="font-label-md text-xs text-slate-gray mb-xs">In this interview</div>
+        <ul class="flex flex-wrap gap-xs font-label-md text-xs">{links}</ul>
+      </nav>
+"""
     who_short  = f"{name} ({year})" if year else name
-    page_title = f"{who_short} on {school}: Student Interview | DocStory"
+    page_title = f"{school} Student Interview: {who_short} | DocStory"
     known_school = school_slug != "misc"
     if known_school:
         who = f"{name}, {year} at {school}," if year else f"{name}, a student at {school},"
     else:
         who = f"{name}, a medical student ({year}),"  if year else f"{name}, a medical student,"
         page_title = f"{who_short}: Medical Student Interview | DocStory"
-    description = seo.clip(f"{who} describes a typical day, the curriculum, class culture, "
-                           f"clinical training, and life outside class.")
+    description = seo.clip(summary or f"{who} describes a typical day, the curriculum, class culture, "
+                                      f"clinical training, and life outside class.")
     page_path = f"/interviews/{school_slug}/{student_slug}/"
     article = {
         '@type': 'Article',
@@ -257,8 +326,15 @@ def render_interview_page(iv, all_interviews):
         trail = [('Home', '/'), ('Interviews', '/directory/'), (name, page_path)]
     if name and name.lower() != 'anonymous':
         article['author'] = {'@type': 'Person', 'name': name}
+        if known_school:
+            article['author']['affiliation'] = {'@type': 'CollegeOrUniversity', 'name': school}
+    if summary:
+        article['abstract'] = summary
     if meta.get("date"):
         article['datePublished'] = str(meta.get("date"))
+        article['dateModified'] = updated or str(meta.get("date"))
+    if toc:
+        article['keywords'] = [label for _, label in toc]
     head_seo = seo.head_tags(page_title, description, page_path, og_type='article', jsonld=[
         article,
         seo.breadcrumbs(trail),
@@ -281,6 +357,7 @@ def render_interview_page(iv, all_interviews):
     .interview-body h3 {{
       font-size: 0.875rem; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.06em; color: #9580FF; margin: 2rem 0 0.5rem;
+      scroll-margin-top: 90px;
     }}
     .interview-body p  {{ color: #4A5565; line-height: 1.75; margin-bottom: 1rem; }}
     .interview-body strong {{ color: #333e4d; }}
@@ -348,11 +425,12 @@ def render_interview_page(iv, all_interviews):
           <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-base">{ini}</div>
           <div>
             <div class="font-label-md text-label-md text-primary">{name}</div>
-            <div class="font-body-md text-xs text-slate-gray">{year} at {school} · {date_str}</div>
+            <div class="font-body-md text-xs text-slate-gray">{year} at {school} at the time · Written {date_str}{updated_html}</div>
           </div>
         </div>
       </header>
 
+{glance_html}{toc_html}
       <div id="article-body-wrapper">
         <div class="interview-body">
           {body_html}

@@ -7,6 +7,7 @@ Run from the project root: python3 build_schools.py
 """
 
 import re, math, json, html as html_mod
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -378,7 +379,12 @@ def load_school_data(slug):
     path = DATA_DIR / f'{slug}.yaml'
     if not path.exists():
         return None
-    data = yaml.safe_load(path.read_text(encoding='utf-8')) or {}
+    text = path.read_text(encoding='utf-8')
+    data = yaml.safe_load(text) or {}
+    if not data.get('checked'):            # header comment "Checked 2026-10-08." doubles as the page's last-updated date
+        m = re.search(r'Checked (\d{4}-\d{2}-\d{2})', text)
+        if m:
+            data['checked'] = m.group(1)
     for key in set(data.get('stats') or {}) - KNOWN_STATS:
         print(f'  WARN  {slug}.yaml: unknown stats field "{key}" (typo?)')
     return data
@@ -1035,6 +1041,9 @@ def render_voice_card(school_slug, fm, body, student_slug, quote=None):
 
     meta_parts = [p for p in [iv_year, (ug_short + ' undergrad') if ug_short else '', iv_home] if p]
     meta_str = ' · '.join(meta_parts)
+    written = _month_year(fm.get('date', ''))
+    written_html = (f'<div class="inline-flex items-center gap-1 mt-1 font-label-md text-[11px] text-vibrant-iris font-semibold">'
+                    f'<span class="material-symbols-outlined text-[14px]" aria-hidden="true">calendar_today</span>Written {written}</div>') if written else ''
 
     quote  = _esc(' '.join(quote.split())) if quote else extract_quote(body)
     inits  = initials(iv_name)
@@ -1047,11 +1056,71 @@ def render_voice_card(school_slug, fm, body, student_slug, quote=None):
           <div>
             <div class="font-semibold text-primary text-sm group-hover:text-vibrant-iris transition-colors leading-tight">{html_mod.escape(iv_name, quote=False)}</div>
             <div class="font-body-md text-[11px] text-slate-gray mt-0.5">{html_mod.escape(meta_str, quote=False)}</div>
+            {written_html}
           </div>
         </div>
         <p class="font-body-md text-xs text-slate-gray leading-relaxed line-clamp-4">{quote}</p>
         <div class="mt-sm font-label-md text-[11px] text-vibrant-iris font-semibold group-hover:underline transition-all">Read Interview →</div>
       </a>'''
+
+
+def _month_year(date_str):
+    try:
+        return datetime.strptime(str(date_str), '%Y-%m-%d').strftime('%b %Y')
+    except ValueError:
+        return ''
+
+
+def _long_date(date_str):
+    try:
+        return datetime.strptime(str(date_str), '%Y-%m-%d').strftime('%B %-d, %Y')
+    except ValueError:
+        return ''
+
+
+def _school_summary(name, city, state, degree, pub, hospital, stats, years):
+    """Plain-language lead paragraph built only from the figures already on the page,
+    so search engines and AI assistants get the key facts as sentences."""
+    out = [f'{name} is a {pub.lower()} {degree} school in {city}, {state}.']
+    if hospital and 'various' not in hospital.lower():
+        out.append(f'Its primary teaching hospital is {hospital}.')
+
+    cohort = f'the entering class of {stats["entering_class"]}' if stats.get('entering_class') else 'its latest entering class'
+    applied, admitted = _to_number(stats.get('applied', '')), _to_number(stats.get('admitted', ''))
+    sel = ''
+    if applied and admitted:
+        sel = f'For {cohort}, it admitted {_count(stats["admitted"])} of {_count(stats["applied"])} applicants ({admitted / applied * 100:.1f}%)'
+    elif stats.get('acceptance_rate'):
+        sel = f'For {cohort}, it reports a {_esc(stats["acceptance_rate"])} acceptance rate'
+    kind = stats.get('stats_kind', 'median')
+    kind_word = {'reported': 'an', 'average': 'an average', 'median': 'a median'}.get(kind, 'an')
+    scores = []
+    if stats.get('mcat'):
+        scores.append(f'{kind_word} MCAT of {round(float(stats["mcat"]))}')
+    if stats.get('gpa_overall'):
+        scores.append(f'a GPA of {float(stats["gpa_overall"]):.2f}')
+    if sel and scores:
+        out.append(f'{sel}; entering students had {" and ".join(scores)}.')
+    elif sel:
+        out.append(sel + '.')
+    elif scores:
+        out.append(f'Students in {cohort} had {" and ".join(scores)}.')
+
+    yr = f' for {stats["cost_year"]}' if stats.get('cost_year') else ''
+    if stats.get('tuition_in_state') and stats.get('tuition_out_of_state'):
+        out.append(f'Tuition and fees{yr} are {_money_k(stats["tuition_in_state"])} a year in-state and '
+                   f'{_money_k(stats["tuition_out_of_state"])} out-of-state.')
+    elif stats.get('tuition_in_state'):
+        out.append(f'In-state tuition and fees{yr} are {_money_k(stats["tuition_in_state"])} a year.')
+    elif stats.get('tuition'):
+        out.append(f'Annual tuition{yr} is {_money_k(stats["tuition"])}.')
+
+    years = sorted(y for y in years if y)
+    n = len(years)
+    if n:
+        span = years[0] if years[0] == years[-1] else f'{years[0]} to {years[-1]}'
+        out.append(f'DocStory has {n} student interview{"s" if n != 1 else ""} from {name}, written {"in " if years[0] == years[-1] else ""}{span}.')
+    return ' '.join(out)
 
 
 def _seo_title_description(name, city, state, degree, stats, n):
@@ -1095,10 +1164,14 @@ def render_page(school_slug, data, interviews, page=None):
     founded_badge = (f'<span class="px-sm py-1 bg-surface-container-high text-slate-gray rounded-full'
                      f' font-label-md text-[11px]">Founded {founded}</span>') if founded else ''
 
-    # Featured quotes from the YAML also set card order; unlisted interviews follow alphabetically
+    # Newest interview first; ties keep the featured-quote order from the YAML, then alphabetical
     quotes = page.get('quotes') or {}
     order  = list(quotes)
     interviews = sorted(interviews, key=lambda iv: (order.index(iv[2]) if iv[2] in order else len(order), iv[2]))
+    interviews = sorted(interviews, key=lambda iv: str(iv[0].get('date', '')), reverse=True)
+    iv_years = [str(iv[0].get('date', ''))[:4] for iv in interviews]
+    summary  = _school_summary(name, city, state, degree, pub, hospital, stats, iv_years) if page else ''
+    checked  = _long_date((page or {}).get('checked', ''))
 
     n = len(interviews)
     iv_label   = f'{n} interview{"s" if n != 1 else ""}'
@@ -1189,6 +1262,14 @@ def render_page(school_slug, data, interviews, page=None):
     </div>
   </div>'''
 
+    summary_html = ''
+    if summary:
+        checked_html = (f'\n      <p class="font-body-md text-xs text-slate-gray mt-sm flex items-center gap-1">'
+                        f'<span class="material-symbols-outlined text-[14px]" aria-hidden="true">verified</span>'
+                        f'Figures checked against official sources {checked}</p>') if checked else ''
+        summary_html = (f'      <p class="font-body-md text-body-md text-primary leading-relaxed mt-md max-w-[70ch]">{summary}</p>'
+                        f'{checked_html}\n')
+
     page_title, description = _seo_title_description(name, city, state, degree, stats, n)
     page_path = f'/schools/{school_slug}/'
     school_ld = {'@type': 'CollegeOrUniversity', 'name': name,
@@ -1198,7 +1279,9 @@ def render_page(school_slug, data, interviews, page=None):
         school_ld['foundingDate'] = str(founded)
     head_seo = seo.head_tags(page_title, description, page_path, jsonld=[
         {'@type': 'WebPage', 'name': page_title.replace(' | DocStory', ''), 'url': seo.url(page_path),
-         'description': description, 'about': school_ld, 'publisher': {'@id': seo.SITE_URL + '/#organization'}},
+         'description': description, 'about': school_ld, 'publisher': {'@id': seo.SITE_URL + '/#organization'},
+         **({'abstract': summary} if summary else {}),
+         **({'dateModified': max([(page or {}).get('checked', '')] + [str(iv[0].get('date', '')) for iv in interviews])} if page else {})},
         seo.breadcrumbs([('Home', '/'), ('Schools', '/directory/'), (name, page_path)]),
     ])
 
@@ -1256,7 +1339,7 @@ def render_page(school_slug, data, interviews, page=None):
       </div>
       <h1 class="font-display-lg text-[36px] md:text-display-lg text-primary leading-tight tracking-tight">{html_mod.escape(name, quote=False)}</h1>
       <p class="font-body-lg text-body-lg text-slate-gray mt-sm">{hero_sub}</p>
-    </div>
+{summary_html}    </div>
   </div>
 
 {middle}
@@ -1472,18 +1555,26 @@ def write_sitemap_and_llms(content_dir):
         for f in files:
             fm, _ = parse_md(f)
             interviews.append((f'/interviews/{slug}/{f.stem}/', fm.get('name', 'Anonymous'), fm.get('year', ''),
-                               data['name'], str(fm.get('date', ''))))
+                               data['name'], str(fm.get('date', '')), fm.get('summary', ''), fm.get('updated') or fm.get('date', '')))
     for f in sorted((content_dir / 'misc').glob('*.md')):
         fm, _ = parse_md(f)
         interviews.append((f'/interviews/misc/{f.stem}/', fm.get('name', 'Anonymous'), fm.get('year', ''),
-                           'School not given', str(fm.get('date', ''))))
+                           'School not given', str(fm.get('date', '')), fm.get('summary', ''), fm.get('updated') or fm.get('date', '')))
 
-    urls = [seo.url(path) for path, _ in STATIC_PAGES]
-    urls += [seo.url(f'/schools/{slug}/') for slug, _, _ in schools]
-    urls += [seo.url(path) for path, *_ in interviews]
+    # lastmod: when a page's content last changed (interview written/updated; school figures checked or newest interview)
+    newest = {}
+    for path, *_rest, changed in interviews:
+        school_slug = path.split('/')[2]
+        newest[school_slug] = max(newest.get(school_slug, ''), str(changed))
+    urls = [(seo.url(path), '') for path, _ in STATIC_PAGES]
+    for slug, _, _ in schools:
+        checked = str((load_school_data(slug) or {}).get('checked', ''))
+        urls.append((seo.url(f'/schools/{slug}/'), max(checked, newest.get(slug, ''))))
+    urls += [(seo.url(path), str(changed)) for path, *_rest, changed in interviews]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    sitemap += [f'  <url><loc>{html_mod.escape(u)}</loc></url>' for u in urls]
+    sitemap += [f'  <url><loc>{html_mod.escape(u)}</loc>' + (f'<lastmod>{d}</lastmod>' if re.match(r'\d{4}-\d{2}-\d{2}$', d) else '') + '</url>'
+                for u, d in urls]
     sitemap.append('</urlset>')
     (ROOT / 'sitemap.xml').write_text('\n'.join(sitemap) + '\n', encoding='utf-8')
 
@@ -1513,9 +1604,9 @@ def write_sitemap_and_llms(content_dir):
         lines.append(f'- [{data["name"]}]({seo.url(f"/schools/{slug}/")}): {kind}, {data["city"]}, '
                      f'{data["state"]}; {n} interview{"s" if n != 1 else ""}')
     lines += ['', '## Interviews', '']
-    for path, name, year, school, date in sorted(interviews, key=lambda x: (x[3].lower(), x[1].lower())):
+    for path, name, year, school, date, summary, _ in sorted(interviews, key=lambda x: (x[3].lower(), x[1].lower())):
         meta = ', '.join(x for x in (str(year), date[:4]) if x)
-        lines.append(f'- [{name} — {school}]({seo.url(path)}){f" ({meta})" if meta else ""}')
+        lines.append(f'- [{name} — {school}]({seo.url(path)}){f" ({meta})" if meta else ""}{f": {summary}" if summary else ""}')
     lines += ['', '## Contact', '', f'- {seo.CONTACT_EMAIL}', '']
     (ROOT / 'llms.txt').write_text('\n'.join(lines), encoding='utf-8')
     print(f'  seo   sitemap.xml ({len(urls)} URLs), llms.txt')
