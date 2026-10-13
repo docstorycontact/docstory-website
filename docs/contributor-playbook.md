@@ -77,6 +77,9 @@ Add a row to the tracker with status **Received**, and send Template H so they k
   Together with generic wording, a mostly-pasted answer written in under a minute is a strong sign of AI
   text. Ask for a rewrite in their own words (Template E) or decline under the terms (section 2).
   "No record" means the answer was written before tracking began (2026-10-12) or in another browser.
+- **Referred by:** `Link from DS-…` (they opened a contributor's referral link), `Typed: …` (they named
+  someone in the optional box), or `No one`. Referred submissions end their subject in `· Referred`.
+  See step 9.
 
 ### 2. Screen it (within 7 days)
 - **Domain matches the school.** Rush students use `@rush.edu`, not some other college's
@@ -170,6 +173,34 @@ It includes the interview link, the reader's email and first name, and the quest
    DocStory address, without the student's email. Mark **Relayed**.
 4. **Opt-outs:** if a student asks to stop, delete `reader_questions` and `questions_until` from
    their interview file, rebuild, and update the tracker.
+
+### 9. Referrals (thank-yous for published contributors)
+Only contributors whose own interview is **published** get a referral link, and only while
+`payEnabled` is on. Amounts live in `js/contribute-config.js` (`referralNewSchool`, `referralOpenSchool`)
+and the terms (Payment section) fill them in automatically.
+
+**Inviting someone.** Their link is the site address plus their own reference number:
+`https://www.docstory.org/contribute/?ref=DS-XXXXXX-XXXX`. It works on any DocStory page, upper or
+lower case, and the form remembers it in that browser even if the friend browses around first. The
+code reveals nothing about the contributor, so it's fine for anonymous contributors too. Send
+Template I (append it to Template D, or on its own to someone already published).
+
+**When a referred submission arrives** (subject ends `· Referred`):
+1. **Link from DS-…:** look up that reference in the tracker. **Typed: …:** match the name or email
+   to a published contributor by hand. If you can't match it, or the referrer isn't published yet,
+   no thank-you is owed; leave a note in the row.
+2. Record it in the tracker's **Referred by** column (the referrer's DS- number).
+3. **Work out the amount when you accept the interview,** from the school's published count at that
+   moment (the submission's Payment line shows the count at submission, usually the same):
+   0 published = $15 · 1–4 = $5 · 5 or more = nothing. Write the amount in the row.
+4. **Check for self-referrals:** if the referred person's payment handle, gift card email, or name
+   matches the referrer's, stop and ask before paying.
+5. Once the referred interview is **published**, pay the referrer within 7 days, the same way as
+   interview payments (step 7), with the note `DocStory referral thank-you DS-[referred ref]`. Send
+   Template J. Use the referrer's payment method already on file; if they don't have one (an unpaid
+   interview), ask them for one from their verified .edu address first.
+
+Only direct referrals count: never pay for someone a referred contributor goes on to refer.
 
 ### Safety rules
 - Never pay before the interview is published.
@@ -309,3 +340,48 @@ Replace the bracketed parts. Keep the reference number in every subject line.
 > we'll email this address with your edited interview to verify and approve before anything goes live.
 >
 > [Signature]
+
+### Template I: Referral invite (after publishing)
+Send it right after Template D (or add it to the end of D), while they're happy with how the interview
+turned out. Keep it to one ask, no follow-up nudges.
+
+**Subject:** Know anyone at another med school? ([REF])
+
+> Hi [First name],
+>
+> Thanks again for your interview. Applicants read every one of these closely.
+>
+> We're trying to cover as many medical schools as we can, so applicants can compare more than a
+> handful. If you have friends at other schools (from college, the interview trail, research,
+> anywhere) who might be up for writing one, here's a link you can pass along:
+>
+> https://www.docstory.org/contribute/?ref=[REF]
+>
+> As a thank-you, we'll send you $15 for each person whose interview we publish from a school we
+> don't cover yet, and $5 if their school already has a few. They're still paid for their own
+> interview as usual. Classmates at [School] are welcome too. We just like to keep things balanced,
+> so the thank-yous stop once a school reaches 5 interviews.
+>
+> A few details:
+> - They can also just type your name in the "Did a current student refer you?" box if they don't use the link.
+> - It only counts for people you refer yourself, not anyone they refer after that.
+> - Every interview goes through the same .edu check and review as yours.
+>
+> No pressure at all. If nobody comes to mind, that's completely fine. Full details are in the
+> Contributor Terms: https://www.docstory.org/contribute/terms/#referrals
+>
+> [Signature]
+
+### Template J: Referral thank-you sent
+**Subject:** A thank-you from DocStory ([REF])
+
+> Hi [First name],
+>
+> Someone you referred just had their interview published on DocStory ([their school]), so we've
+> sent you [$15/$5] [by PayPal/Venmo to [handle] / as an Amazon.com eGift card to [email]] with the
+> note "DocStory referral thank-you [referred REF]".
+>
+> Thank you for helping us cover more schools.
+>
+> [Signature]
+

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-  <script src="/js/analytics.js?v=3"></script>
+  <script src="/js/analytics.js?v=4"></script>
   <meta property="og:site_name" content="DocStory">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Your Interview: Contribute to DocStory">
@@ -351,6 +351,13 @@
         </div>
       </div>
 
+      <div class="field" id="referWrap">
+        <label for="referredBy">Did a current student refer you? <span class="opt-tag">(optional)</span></label>
+        <input type="text" id="referredBy" class="in" maxlength="120" placeholder="Their name or school email" aria-describedby="referHint">
+        <span class="hint" id="referHint">So we can thank them. Leave it blank if you found us on your own.</span>
+      </div>
+      <p class="notice info" id="referLinked" hidden><span class="material-symbols-outlined" aria-hidden="true">groups</span><span>You came through another student’s DocStory link, so we’ll credit them. Nothing else to fill in.</span></p>
+
       <p class="err" id="e1" role="alert" hidden></p>
       <div class="actions"><button class="btn primary" type="submit">Continue <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span></button></div>
     </form>
@@ -488,10 +495,10 @@
 
 </main>
 
-<script src="../../js/contribute-config.js?v=4"></script>
+<script src="../../js/contribute-config.js?v=5"></script>
 <script src="../../js/contribute-data.js"></script>
-<script src="../../js/contribute-common.js"></script>
-<script src="../../js/contribute.js?v=18"></script>
+<script src="../../js/contribute-common.js?v=2"></script>
+<script src="../../js/contribute.js?v=19"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>
