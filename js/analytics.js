@@ -7,6 +7,7 @@
  *   referring site), so the contribute form can include it with each submission.
  * - AI assistants: visits from ChatGPT, Perplexity, Claude, Gemini or Copilot are labeled by name
  *   (from the referring site or the utm_source they add), so "Came from" says e.g. "AI assistant: ChatGPT".
+ * - Referrals: a contributor's referral link (?ref=DS-…) is remembered so the form can credit them.
  *   Vercel's Referrers panel counts the same visits; filter it by these sites to see the trend.
  *
  * Nothing here sets cookies or records personal information.
@@ -50,6 +51,13 @@
     store.set('docstoryLastTouch', JSON.stringify(touch));
   }
 
+  // Contributor referral links (?ref=DS-261012-BRH7): the first one someone opens is kept, so the
+  // contribute form can credit that contributor even if they browse around before submitting
+  var refCode = (params.get('ref') || '').trim().toUpperCase();
+  if (/^DS-\d{6}-[A-Z0-9]{4}$/.test(refCode) && !store.get('docstoryReferral')) {
+    store.set('docstoryReferral', JSON.stringify({ code: refCode, date: new Date().toISOString().slice(0, 10) }));
+  }
+
   // People who came from an ad, or who have opened the contribute pages, never see the reading gate
   var medium = (utm.utm_medium || '').toLowerCase(), source = (utm.utm_source || '').toLowerCase();
   if (/^(paid|cpc|ads?|paid_social|paidsocial)$/.test(medium) || source === 'reddit' || /^\/contribute(\/|$)/.test(location.pathname)) {
@@ -73,5 +81,7 @@
       return out;
     },
     isContributor: function () { return store.get('docstoryContributor') === 'true'; },
+    /** The contributor referral link this visitor arrived through, as { code, date }, or null. */
+    referral: function () { return read('docstoryReferral'); },
   };
 })();

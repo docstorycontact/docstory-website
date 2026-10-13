@@ -25,7 +25,7 @@ window.DocStoryContribute = (function () {
 
   /**
    * Fill program values into the page:
-   *   data-c="amount|cap|methods|reviewDays|replyDays|payDays|contact|paidSchools|totalSchools"
+   *   data-c="amount|cap|methods|reviewDays|replyDays|payDays|refNew|refOpen|contact|paidSchools|totalSchools"
    *   data-if-paid  — element hidden when payment is switched off
    *   data-if-unpaid — element shown only when payment is switched off
    */
@@ -37,6 +37,8 @@ window.DocStoryContribute = (function () {
       reviewDays: String(C.reviewDays),
       replyDays: String(C.replyDays),
       payDays: String(C.payDays),
+      refNew: money(C.referralNewSchool),
+      refOpen: money(C.referralOpenSchool),
       contact: C.contactEmail || 'a DocStory email address',
       paidSchools: String(paidSchoolCount()),
       totalSchools: String(SCHOOLS.length),

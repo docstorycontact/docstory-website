@@ -112,7 +112,7 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
   gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0,
-  rq: false, rqTo: 'edu', rqEmail: '' });   // rq: open to reader questions until graduation
+  rq: false, rqTo: 'edu', rqEmail: '', referredBy: '' });   // rq: open to reader questions until graduation
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -186,6 +186,17 @@ function creditName() {
   return S.credit === 'first' ? S.name.trim().split(/\s+/)[0] : S.name.trim();
 }
 const creditLine = () => creditName() + (stageLabel() ? ' · ' + stageLabel() : '');
+
+/* ---------- Referrals ----------
+   A contributor's referral link (?ref=DS-…) is remembered by js/analytics.js on whatever page it
+   opens. Without one, step 1 asks who referred them instead. Either way it goes only into the
+   submission email, for the referral thank-you (Contributor Terms, Payment). */
+const referralLink = () => (window.DocStoryTrack && window.DocStoryTrack.referral()) || null;
+function referralLine() {
+  const link = referralLink(), typed = S.referredBy.trim();
+  if (link) return 'Link from ' + link.code + ' (first opened ' + link.date + ')' + (typed ? ' · also typed: ' + typed : '');
+  return typed ? 'Typed: ' + typed + ' (match to a contributor by hand)' : '';
+}
 
 /* ---------- Questions a student sees ---------- */
 const pool = d => Q.filter(q => q[2].indexOf(d) > -1);
@@ -271,7 +282,10 @@ function buildStep1() {
   $('gradYear').innerHTML = o;
 
   $('school').value = S.school; if ($('school').value !== S.school) S.school = '';
-  ['schoolOther', 'name', 'email', 'undergrad', 'hometown'].forEach(k => { $(k).value = S[k]; });
+  ['schoolOther', 'name', 'email', 'undergrad', 'hometown', 'referredBy'].forEach(k => { $(k).value = S[k]; });
+  const linked = !!referralLink();
+  $('referWrap').hidden = linked;
+  $('referLinked').hidden = !linked;
   $('gradYear').value = S.gradYear; if ($('gradYear').value !== S.gradYear) S.gradYear = '';
   if (S.degree && $('degree-' + S.degree)) $('degree-' + S.degree).checked = true;
   if (S.year && $('year-' + S.year)) $('year-' + S.year).checked = true;
@@ -293,7 +307,7 @@ function readStep1() {
   S.school = $('school').value;
   S.schoolOther = $('schoolOther').value.trim();
   const dg = document.querySelector('input[name=degree]:checked'); S.degree = dg ? dg.value : '';
-  ['name', 'email', 'undergrad', 'hometown'].forEach(k => { S[k] = $(k).value.trim(); });
+  ['name', 'email', 'undergrad', 'hometown', 'referredBy'].forEach(k => { S[k] = $(k).value.trim(); });
   S.gradYear = $('gradYear').value;
   const f = document.querySelector('input[name=focus]:checked'); S.focus = f ? f.value : '';
   const c = document.querySelector('input[name=credit]:checked'); S.credit = c ? c.value : 'named';
@@ -611,8 +625,9 @@ async function submit() {
   const fd = new FormData();
   fd.append('access_key', C.web3formsKey);
   const wr = writingReport();
+  const referral = referralLine();
   fd.append('subject', 'Interview ' + ref + ' · ' + schoolName() + ' · ' + stageLabel() + ' · ' + (st.paid ? 'Paid ' + D.money(C.payAmount) : 'Unpaid') +
-    (wr.flagged ? ' · ⚠ check writing' : ''));
+    (referral ? ' · Referred' : '') + (wr.flagged ? ' · ⚠ check writing' : ''));
   fd.append('from_name', 'DocStory Contribute');
   fd.append('email', S.email);                       // reply-to: replying starts verification
   fd.append('Reference', ref);
@@ -627,6 +642,7 @@ async function submit() {
   if (S.hometown) fd.append('Hometown', S.hometown);
   fd.append('Submitted', today);
   fd.append('Came from', window.DocStoryTrack ? window.DocStoryTrack.source() : 'Unknown');
+  fd.append('Referred by', referral || 'No one');
   fd.append('Answers', ids.length + ' answers · ' + ids.reduce((s, id) => s + words(S.answers[id]), 0) + ' words');
   fd.append('Reader questions', S.rq
     ? 'OPTED IN · send to ' + rqAddress() + ' (' + (S.rqTo === 'personal' ? 'personal email' : 'school email') + ') · until June 1, ' + S.gradYear

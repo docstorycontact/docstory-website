@@ -11,6 +11,12 @@ window.DOCSTORY_CONTRIBUTE = {
   paidCap: 5,               // schools with this many published interviews or more are no longer paid
   payMethods: 'PayPal, Venmo, or an Amazon.com eGift card',
 
+  // Referral thank-yous, paid to a published contributor for each person they refer whose interview
+  // is published. Weighted toward schools DocStory doesn't cover yet, so referrals spread across
+  // schools instead of piling up at one. Off whenever payEnabled is off. Rebuild after changing.
+  referralNewSchool: 15,    // the referred person's school had no published interviews
+  referralOpenSchool: 5,    // it had some, but fewer than paidCap (no thank-you at paidCap or more)
+
   // Web3Forms access key. It's meant to be public (it only lets people send TO your inbox).
   // Submissions are emailed to the address you signed up to Web3Forms with.
   web3formsKey: '0f6bf157-5949-423d-b2c2-22b4aba34487',

@@ -1377,7 +1377,7 @@ def render_page(school_slug, data, interviews, page=None):
   </div>
 </footer>
 
-<script src="/js/contribute-config.js?v=4"></script>
+<script src="/js/contribute-config.js?v=5"></script>
 <script src="/js/main.js?v=6"></script>
 </body>
 </html>'''
@@ -1873,6 +1873,7 @@ def write_contribute_values():
     values = {
         'amount': f"${num('payAmount'):,}", 'cap': str(cap), 'methods': txt('payMethods'),
         'reviewDays': str(num('reviewDays')), 'replyDays': str(num('replyDays')), 'payDays': str(num('payDays')),
+        'refNew': f"${num('referralNewSchool'):,}", 'refOpen': f"${num('referralOpenSchool'):,}",
         'contact': txt('contactEmail') or 'a DocStory email address',
         'paidSchools': 'all' if paid == len(schools) else str(paid), 'totalSchools': str(len(schools)),
     }
