@@ -60,7 +60,7 @@
 </script>
   <!-- /seo -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_downward,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
   <style>
     .faq summary { list-style: none; cursor: pointer; }
@@ -74,7 +74,7 @@
     .ex-answer.clamped { max-height: 13.5em; overflow: hidden;
       -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent); mask-image: linear-gradient(to bottom, #000 65%, transparent); }
   </style>
-  <link rel="stylesheet" href="/css/tw/contribute.css?v=90f9bdf0">
+  <link rel="stylesheet" href="/css/tw/contribute.css?v=1e774d89">
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
 
@@ -138,10 +138,12 @@
         <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">verified</span>Nothing goes live until you approve it</li>
       </ul>
       <div class="flex flex-wrap items-center gap-x-sm gap-y-xs pt-xs">
-        <a href="/contribute/interview/" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-iris-deep text-white px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+        <a href="/contribute/interview/" id="hero-start" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-iris-deep text-white border-2 border-iris-deep px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
           Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
         </a>
-        <a href="#examples" class="inline-flex items-center gap-xs text-primary px-sm md:px-md py-sm rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors">See example answers</a>
+        <a href="#examples" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-surface-container-lowest text-iris-deep border-2 border-iris-deep/30 px-lg py-sm rounded-full font-label-md text-label-md hover:border-iris-deep active:scale-[0.98] transition-all">
+          See real answers <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_downward</span>
+        </a>
       </div>
     </div>
 
@@ -457,7 +459,7 @@
   </section>
 
   <!-- CLOSING CTA -->
-  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
+  <section id="closing-cta" class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
     <div class="bg-primary rounded-2xl px-md py-lg md:px-xl md:py-xl flex flex-col md:flex-row md:items-center md:justify-between gap-md">
       <div class="flex flex-col gap-xs">
         <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-white">Be the interview you wish you’d read.</h2>
@@ -469,6 +471,16 @@
     </div>
   </section>
 </main>
+
+<!-- STICKY START BAR: shows once the hero button has scrolled away, hides at the closing call to action -->
+<div id="sticky-start" class="fixed inset-x-0 bottom-0 z-40 bg-surface-container-lowest/95 backdrop-blur border-t border-primary/10 shadow-[0_-4px_20px_rgba(51,62,77,0.08)] translate-y-full transition-transform duration-300 ease-out motion-reduce:transition-none" style="padding-bottom: env(safe-area-inset-bottom)" inert>
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xs flex items-center justify-between gap-sm">
+    <p class="text-slate-gray text-body-md leading-tight whitespace-nowrap"><span data-if-paid><strong class="text-primary font-semibold"><span data-c="amount">$20</span></strong><span class="hidden sm:inline"> once published</span> · </span>30–45 min<span class="hidden sm:inline"> · anonymous if you like</span></p>
+    <a href="/contribute/interview/" class="shrink-0 inline-flex items-center gap-xs bg-iris-deep text-white px-md py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+      Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+    </a>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
@@ -500,6 +512,22 @@
     var d = DocStoryContribute;
     var el = document.querySelector('[data-c="paidSchools"]');
     if (el && d.paidSchoolCount() === d.schools.length) el.textContent = 'all';
+  })();
+  // Sticky start bar: visible between the hero button and the closing call to action
+  (function () {
+    var bar = document.getElementById('sticky-start'), hero = document.getElementById('hero-start'),
+        end = document.getElementById('closing-cta'), shown = false, ticking = false;
+    function update() {
+      ticking = false;
+      var on = hero.getBoundingClientRect().bottom < 0 && end.getBoundingClientRect().top > window.innerHeight;
+      if (on === shown) return;
+      shown = on;
+      bar.classList.toggle('translate-y-full', !on);
+      bar.inert = !on;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
   // Example answers start collapsed; "Show full answer" opens them in place
   document.querySelectorAll('.ex-answer').forEach(function (a) {
