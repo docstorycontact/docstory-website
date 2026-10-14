@@ -1433,6 +1433,7 @@ def main():
 
     write_contribute_data(content_dir)
     write_contribute_values()
+    warned += write_contribute_showcase(content_dir)
     warned += write_site_data(content_dir)
     write_sitemap_and_llms(content_dir)
     write_static_heads(content_dir)
@@ -1899,6 +1900,108 @@ def write_contribute_values():
             path.write_text(new, encoding='utf-8')
     print(f'  data  contribute pages ({values["totalSchools"]} schools, {values["paidSchools"]} paid)'
           if paid else '  data  contribute pages (payment OFF: volunteer wording)')
+
+
+# Example answers on /contribute/: (interview path under content/interviews, start of the question
+# as it appears in the interview, topic label, first paragraph to show). The answer is copied verbatim
+# from the interview; starting past paragraph 0 shows an excerpt that opens with "…".
+CONTRIBUTE_EXAMPLES = [
+    ('texas-a-and-m-college-of-medicine/caleb', 'How would you describe the student culture', 'Class culture', 0),
+    ('ucla-geffen-school-of-medicine/tim-ellis-caleo', 'What would you consider strengths', 'Big picture', 1),
+    ('uc-san-diego-school-of-medicine/neela', 'What organizations or activities', 'Service', 0),
+]
+_ORD = {'1': '1st', '2': '2nd', '3': '3rd', '4': '4th'}
+
+
+def _years_note(years):
+    """'34' -> 'For 3rd and 4th years'; '' when a question is offered to every year."""
+    if years == '1234':
+        return ''
+    o = [_ORD[y] for y in years]
+    if len(o) == 1:
+        return f'For {o[0]} years'
+    if len(o) == 2:
+        return f'For {o[0]} and {o[1]} years'
+    return f'For {o[0]}–{o[-1]} years'
+
+
+def _replace_block(text, name, body):
+    return re.sub(rf'(<!-- {name} -->).*?(<!-- /{name} -->)', lambda m: m.group(1) + '\n' + body + '\n      ' + m.group(2),
+                  text, count=1, flags=re.S)
+
+
+def write_contribute_showcase(content_dir):
+    """Fill /contribute/ with real example answers (verbatim from the interviews) and the full question
+    bank from js/contribute.js, so the page always matches what the form asks. Returns warnings."""
+    warned = 0
+    esc = lambda s: html_mod.escape(s, quote=False)
+    cards, counts = [], []
+    for i, (rel, q_start, topic, start) in enumerate(CONTRIBUTE_EXAMPLES, 1):
+        path = content_dir / f'{rel}.md'
+        if not path.exists():
+            print(f'  WARN  contribute example: {rel}.md not found'); warned += 1; continue
+        text = path.read_text(encoding='utf-8')
+        meta = yaml.safe_load(text.split('---', 2)[1])
+        m = re.search(r'\*\*Q: (' + re.escape(q_start) + r'.*?)\*\*\n\n(.*?)(?=\n\*\*Q:|\Z)', text, re.S)
+        if not m:
+            print(f'  WARN  contribute example: no question starting "{q_start}" in {rel}.md'); warned += 1; continue
+        question = re.match(r'.+?[?.](?=\s|$)', m.group(1)).group(0)   # first sentence of the question
+        paras = [p.strip() for p in m.group(2).strip().split('\n\n') if p.strip()][start:]
+        words = sum(len(p.split()) for p in paras)
+        counts.append(words)
+        name = meta['name']
+        initials = ''.join(w[0] for w in name.split()[:2]).upper()
+        body = ''.join(f'<p>{"…" if start and n == 0 else ""}{esc(p)}</p>' for n, p in enumerate(paras))
+        cards.append(f'''        <article class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm">
+          <div class="flex items-center justify-between gap-sm">
+            <p class="font-label-md text-label-md uppercase text-tertiary">{esc(topic)}</p>
+            <span class="shrink-0 rounded-full bg-surface-container px-2 py-[3px] text-[12px] font-semibold text-slate-gray whitespace-nowrap">{"Excerpt, " if start else ""}{words} words</span>
+          </div>
+          <h3 class="font-semibold text-primary text-body-lg">{esc(question)}</h3>
+          <div id="ex-{i}" class="ex-answer text-on-surface-variant text-body-md leading-relaxed">{body}</div>
+          <button type="button" class="ex-more self-start text-iris-deep font-label-md text-label-md hover:underline" aria-controls="ex-{i}" aria-expanded="false" hidden>Show full answer</button>
+          <div class="mt-auto pt-sm border-t border-primary/10 flex items-center gap-sm">
+            <div class="w-10 h-10 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">{esc(initials)}</div>
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-primary text-body-md">{esc(name)}</div>
+              <div class="text-slate-gray text-body-md">{esc(meta['year'])} · {esc(meta['school'])}</div>
+            </div>
+          </div>
+        </article>''')
+
+    js = (ROOT / 'js' / 'contribute.js').read_text(encoding='utf-8')
+    lo, hi = (int(re.search(rf'{k} = (\d+)', js).group(1)) for k in ('MIN_PICK', 'MAX_PICK'))
+    cats = re.findall(r"\['(\w+)', '([^']+)'\]", js.split('const CATS', 1)[1].split('];', 1)[0])
+    qs = [(cid, cat, years, q.replace("\\'", "'"))
+          for cid, cat, years, _core, q in re.findall(r"\['(\w+)','(\w+)','(\d+)','(\d*)','((?:[^'\\]|\\.)*)'\]", js)]
+    order = [c for c in cats if c[0] == 'big'] + [c for c in cats if c[0] != 'big']   # big picture first
+    groups = []
+    for n, (cat, label) in enumerate(order):
+        items = [q for q in qs if q[1] == cat]
+        lis = ''.join(
+            f'\n              <li>{esc(q)}' + (f' <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">{_years_note(y)}</span>' if _years_note(y) else '') + '</li>'
+            for _, _, y, q in items)
+        groups.append(f'''        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md"{' open' if n == 0 else ''}>
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>{esc(label)} <span class="font-normal text-slate-gray text-body-md">· {len(items)} questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">{lis}
+          </ol>
+        </details>''')
+    min_words = int(re.search(r'MIN_WORDS = (\d+)', js).group(1))
+    intro = (f'Choose {lo}–{hi} of these {len(qs)} questions, or add one of your own. When you start, we suggest a set '
+             f'based on your year and the topics you care about. Each answer needs at least {min_words} words'
+             + (f'; the examples above run {min(counts)} to {max(counts)}.' if counts else '.'))
+
+    path = ROOT / 'contribute' / 'index.html'
+    text = path.read_text(encoding='utf-8')
+    new = _replace_block(text, 'examples', '\n'.join(cards))
+    new = _replace_block(new, 'question-intro', f'      <p class="text-slate-gray text-body-lg max-w-[65ch]">{esc(intro)}</p>')
+    new = _replace_block(new, 'question-list', '\n'.join(groups))
+    if new != text:
+        path.write_text(new, encoding='utf-8')
+    print(f'  data  contribute page ({len(cards)} example answers, {len(qs)} questions in {len(cats)} topics)')
+    return warned
 
 
 def write_contribute_data(content_dir):
