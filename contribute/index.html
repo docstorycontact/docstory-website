@@ -60,7 +60,7 @@
 </script>
   <!-- /seo -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,school,science,search,sports_football,star,stethoscope,summarize,train,verified,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
   <style>
     .faq summary { list-style: none; cursor: pointer; }
@@ -70,8 +70,11 @@
     @media (prefers-reduced-motion: reduce) { .faq summary .chev { transition: none; } }
     :focus-visible { outline: 2px solid #6c5ce7; outline-offset: 2px; border-radius: 4px; }
     [hidden] { display: none !important; }
+    .ex-answer p + p { margin-top: 0.75em; }
+    .ex-answer.clamped { max-height: 13.5em; overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent); mask-image: linear-gradient(to bottom, #000 65%, transparent); }
   </style>
-  <link rel="stylesheet" href="/css/tw/contribute.css?v=d789a326">
+  <link rel="stylesheet" href="/css/tw/contribute.css?v=f5ec9c36">
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
 
@@ -116,7 +119,7 @@
 <main class="flex-grow">
 
   <!-- HERO -->
-  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-xl pb-xl md:pt-[96px] md:pb-[96px] grid md:grid-cols-12 gap-lg md:gap-xl items-center">
+  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-lg md:pt-[96px] md:pb-[96px] grid md:grid-cols-12 gap-lg md:gap-xl items-center">
     <div class="md:col-span-7 flex flex-col gap-md">
       <p class="font-label-md text-label-md uppercase text-tertiary">For current medical students</p>
       <h1 class="font-display-lg font-bold text-[36px] leading-[44px] md:text-display-lg text-primary tracking-tight [text-wrap:balance]" data-if-paid>
@@ -126,19 +129,26 @@
         Tell applicants what your school is really like.
       </h1>
       <p class="font-body-lg text-body-lg text-slate-gray max-w-[56ch]">
-        Answer 8–10 questions about your medical school in your own words. It takes 30–45 minutes, and your draft saves as you go.
+        Answer 8–10 questions about your medical school in your own words, the way you’d tell a friend.
         <span data-if-paid>Once we verify your school email and publish your interview, <strong class="font-semibold text-primary">we send you <span data-c="amount">$20</span></strong>.</span>
       </p>
-      <div class="flex flex-wrap items-center gap-sm pt-xs">
-        <a href="/contribute/interview/" class="inline-flex items-center gap-xs bg-iris-deep text-white px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+      <ul class="flex flex-col gap-xs text-primary text-body-md">
+        <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">schedule</span>30–45 minutes; your draft saves on this device</li>
+        <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">visibility_off</span>Full name, first name only, or anonymous</li>
+        <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">verified</span>Nothing goes live until you approve it</li>
+      </ul>
+      <div class="flex flex-wrap items-center gap-x-sm gap-y-xs pt-xs">
+        <a href="/contribute/interview/" id="hero-start" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-iris-deep text-white border-2 border-iris-deep px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
           Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
         </a>
-        <a href="#how" class="inline-flex items-center gap-xs text-primary px-md py-sm rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors">How it works</a>
+        <a href="#examples" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-surface-container-lowest text-iris-deep border-2 border-iris-deep/30 px-lg py-sm rounded-full font-label-md text-label-md hover:border-iris-deep active:scale-[0.98] transition-all">
+          Or see some examples…
+        </a>
       </div>
     </div>
 
-    <!-- What a published interview looks like -->
-    <figure class="md:col-span-5 bg-surface-container-lowest border border-primary/10 rounded-2xl shadow-[0_8px_30px_rgba(51,62,77,0.08)] p-md md:p-lg flex flex-col gap-sm" aria-label="Example of a published DocStory interview">
+    <!-- What a published interview looks like (desktop only; on phones the example answers follow the hero) -->
+    <figure class="hidden md:flex md:col-span-5 bg-surface-container-lowest border border-primary/10 rounded-2xl shadow-[0_8px_30px_rgba(51,62,77,0.08)] p-md md:p-lg flex-col gap-sm" aria-label="Example of a published DocStory interview">
       <figcaption class="font-label-md text-label-md uppercase text-slate-gray">What gets published</figcaption>
       <div class="flex items-center gap-sm">
         <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">KP</div>
@@ -154,8 +164,70 @@
     </figure>
   </section>
 
+  <!-- EXAMPLE ANSWERS (filled by build_schools.py from the interviews) -->
+  <section id="examples" class="bg-surface-container-low border-t border-primary/10 scroll-mt-[70px]">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-lg">
+      <div class="flex flex-col gap-xs">
+        <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-primary">What a good answer looks like</h2>
+        <p class="text-slate-gray text-body-lg max-w-[65ch]">Real answers, as published on DocStory. No essays needed: a few honest, specific details are what applicants can’t find anywhere else.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-md">
+      <!-- examples -->
+        <article class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm">
+          <div class="flex items-center justify-between gap-sm">
+            <p class="font-label-md text-label-md uppercase text-tertiary">Class culture</p>
+            <span class="shrink-0 rounded-full bg-surface-container px-2 py-[3px] text-[12px] font-semibold text-slate-gray whitespace-nowrap">124 words</span>
+          </div>
+          <h3 class="font-semibold text-primary text-body-lg">How would you describe the student culture at your school?</h3>
+          <div id="ex-1" class="ex-answer text-on-surface-variant text-body-md leading-relaxed"><p>My medical school cohort is very small (34 students), which has a big impact on the culture. We also have dedicated "social chairs" which help organize and plan events to help students get involved and have fun. I also think our cohort has a very collaborative and supportive culture. We frequently pick each other up when students have car troubles, help drive each other to the airports, go on vacations together, etc. Although it sounds trite, it does feel like a family in many regards! There are some cons of it being small/family-like; there is more gossip and it is harder to keep as much privacy as in larger classes, so you definitely take the good with the bad in regards to class size.</p></div>
+          <button type="button" class="ex-more self-start text-iris-deep font-label-md text-label-md hover:underline" aria-controls="ex-1" aria-expanded="false" hidden>Show full answer</button>
+          <div class="mt-auto pt-sm border-t border-primary/10 flex items-center gap-sm">
+            <div class="w-10 h-10 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">C</div>
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-primary text-body-md">Caleb</div>
+              <div class="text-slate-gray text-body-md">MS3 · Texas A&amp;M College of Medicine (EnMed)</div>
+            </div>
+          </div>
+        </article>
+        <article class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm">
+          <div class="flex items-center justify-between gap-sm">
+            <p class="font-label-md text-label-md uppercase text-tertiary">Big picture</p>
+            <span class="shrink-0 rounded-full bg-surface-container px-2 py-[3px] text-[12px] font-semibold text-slate-gray whitespace-nowrap">Excerpt, 68 words</span>
+          </div>
+          <h3 class="font-semibold text-primary text-body-lg">What would you consider strengths of your medical school?</h3>
+          <div id="ex-2" class="ex-answer text-on-surface-variant text-body-md leading-relaxed"><p>…The real strength of UCLA lies in the excellent clinical training across a variety of sites. Being exposed to strong residents and faculty who will delegate significant responsibility to you as a medical student is the best way to maximize your learning during third year. If I was applying to medical school again, I would focus intensely on the amount of responsibility given to medical students as MS3s.</p></div>
+          <button type="button" class="ex-more self-start text-iris-deep font-label-md text-label-md hover:underline" aria-controls="ex-2" aria-expanded="false" hidden>Show full answer</button>
+          <div class="mt-auto pt-sm border-t border-primary/10 flex items-center gap-sm">
+            <div class="w-10 h-10 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">TE</div>
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-primary text-body-md">Tim Ellis-Caleo</div>
+              <div class="text-slate-gray text-body-md">MS4 · David Geffen School of Medicine at UCLA</div>
+            </div>
+          </div>
+        </article>
+        <article class="bg-surface-container-lowest border border-primary/10 rounded-2xl p-md md:p-lg flex flex-col gap-sm">
+          <div class="flex items-center justify-between gap-sm">
+            <p class="font-label-md text-label-md uppercase text-tertiary">Service</p>
+            <span class="shrink-0 rounded-full bg-surface-container px-2 py-[3px] text-[12px] font-semibold text-slate-gray whitespace-nowrap">86 words</span>
+          </div>
+          <h3 class="font-semibold text-primary text-body-lg">What organizations or activities are you involved in outside of your regular classwork?</h3>
+          <div id="ex-3" class="ex-answer text-on-surface-variant text-body-md leading-relaxed"><p>At UCSD, we have a Free Clinic so awesome that almost every single student is able to participate in it. I manage the neurology and psychiatry free clinics with some of my fellow students, and it is by far the most fulfilling thing I have done in medical school. The patients are incredible teachers, and it is a genuine honor to be able to learn from them. If you come to UCSD’s Second Look, I really recommend touring the Free Clinic and learning more about it.</p></div>
+          <button type="button" class="ex-more self-start text-iris-deep font-label-md text-label-md hover:underline" aria-controls="ex-3" aria-expanded="false" hidden>Show full answer</button>
+          <div class="mt-auto pt-sm border-t border-primary/10 flex items-center gap-sm">
+            <div class="w-10 h-10 shrink-0 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm" aria-hidden="true">N</div>
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-primary text-body-md">Neela</div>
+              <div class="text-slate-gray text-body-md">MS1 · UC San Diego School of Medicine</div>
+            </div>
+          </div>
+        </article>
+      <!-- /examples -->
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
-  <section id="how" class="bg-surface-container-low border-y border-primary/10 scroll-mt-[70px]">
+  <section id="how" class="border-y border-primary/10 scroll-mt-[70px]">
     <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
       <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-primary mb-lg">How it works</h2>
       <ol class="grid md:grid-cols-3 gap-lg">
@@ -176,6 +248,125 @@
           <p class="text-slate-gray text-body-lg">Your interview goes live on DocStory<span data-if-paid>, and we send payment by <span data-c="methods">PayPal, Venmo, or an Amazon.com eGift card</span> within <span class="whitespace-nowrap"><span data-c="payDays">7</span> days</span></span>.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- THE QUESTIONS (filled by build_schools.py from js/contribute.js) -->
+  <section id="questions" class="bg-surface-container-low border-b border-primary/10 scroll-mt-[70px]">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-lg">
+      <div class="flex flex-col gap-xs">
+        <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-primary">What we’ll ask you</h2>
+      <!-- question-intro -->
+      <p class="text-slate-gray text-body-lg max-w-[65ch]">Choose 8–10 of these 44 questions, or add one of your own. When you start, we suggest a set based on your year and the topics you care about. Each answer needs at least 40 words; the examples above run 68 to 124.</p>
+      <!-- /question-intro -->
+      </div>
+      <div class="grid md:grid-cols-2 gap-sm items-start">
+      <!-- question-list -->
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md" open>
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Big picture <span class="font-normal text-slate-gray text-body-md">· 6 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>What do you think is a shortcoming of your school or an area that could be improved? Be specific.</li>
+              <li>Who thrives here, and who would be happier somewhere else?</li>
+              <li>Why did you choose this school over your other options, and would you make the same choice today?</li>
+              <li>Have there been moments or experiences you've had that made you glad you chose this medical school/reaffirmed your choice? Have there been some moments that made you question it?</li>
+              <li>What has been different from what you expected based on interview day or the school's materials, for better or worse?</li>
+              <li>What is one thing about this school that deserves more credit than it gets?</li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Pre-clinical <span class="font-normal text-slate-gray text-body-md">· 8 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>Walk us through a typical week in the pre-clinical curriculum. Roughly how much is lecture, small group, lab, and self-study?</li>
+              <li>How are the preclinical years graded (pass/fail, tiers, internal ranking, etc.)? Do you think this has a major impact on the student culture at your school?</li>
+              <li>Is lecture attendance required? What do most of your classmates actually do (attend, stream, study from outside resources, etc.)?</li>
+              <li>What was the adjustment to the first semester like, and what would you tell an incoming student to do differently? Did your school do anything specific to help you through the first semester and where did you feel on your own?</li>
+              <li>Which course, block, or professor has been the best part of the curriculum, and why?</li>
+              <li>Which part of the curriculum do you think has room for improvement, and what specifically is not working?</li>
+              <li>What experiences have you had before clerkships (preceptorships, student-run clinics, standardized patients, simulation) to give you at least some exposure to clinical work prior to third year? What experiences provided by your medical school do you think are most helpful in making this transition successful?</li>
+              <li>How is clinical skills teaching organized, and how confident do you feel taking a history and doing a physical exam right now?</li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Clinical <span class="font-normal text-slate-gray text-body-md">· 8 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>Briefly describe the main hospitals and clinics you work at and what sort of patient population you see at each. Has one of these clinical sites or clinics been particularly rewarding or influential for you? We want to know about experiences that might be unique to your medical school. <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>Walk us through a recent day on your current or most recent rotation. <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>During clinical rotations, were you happy with how directly involved you were in patient care and your value on the team? What did you think about the balance between autonomy and guidance/teaching during your rotations? This is going to differ for every rotation and team you are a part of, so feel free to give examples you feel are representative. <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>Which rotation was your strongest and which was your weakest, and what made the difference? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>Have there been particular challenges with the logistics of clinical rotations that you wish were different? For example, distance between sites, number of sites to be covered, challenge getting select rotations you want, etc. <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>How would you describe the culture of feedback during rotations? Were you happy with how/when feedback was given and did you find that it was generally constructive feedback? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>Looking back, how well did the pre-clinical years prepare you for the wards? Did you feel by the time clerkships came about, you had an adequate foundation of knowledge to start building clinical skills? Do you feel that foundation of knowledge was a result of structured course work or self-study? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+              <li>While residents, attendings, and fellows you work with are going to differ from rotation to rotation, can you describe an experience that you think is representative of the housestaff culture at the clinical sites you are at? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 3rd and 4th years</span></li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Research <span class="font-normal text-slate-gray text-body-md">· 4 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>Was it challenging to find a research mentor and do you think a medical student that arrives with no research experience would be able to find a research mentor if they desired? Describe how you or a classmate actually got connected with one.</li>
+              <li>Beyond finding a mentor, you also need the time to be able to conduct research projects you are a part of. Is it feasible for medical students to participate in research during pre-clinical and clinical years? Does the program do something to facilitate this participation?</li>
+              <li>What research are you a part of and what is your specific role in it?</li>
+              <li>Have you presented or published your work? What support did the school give you, such as funding, conference travel, or help with abstracts? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 2nd–4th years</span></li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Global health <span class="font-normal text-slate-gray text-body-md">· 4 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>Have you participated in global health opportunities? If so, describe what the opportunity was and how it was valuable as a personal experience and as a part of your medical education.</li>
+              <li>For an applicant who wants a career in global health, what makes this school a good or a poor choice?</li>
+              <li>Are there chances to work with underserved populations? If so, describe the population you work with, the experience itself, and how it contributes to your medical training.</li>
+              <li>If you were interested in global health but haven't done anything abroad, what got in the way: cost, timing, or how the curriculum is set up?</li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Advocacy <span class="font-normal text-slate-gray text-body-md">· 4 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>What community service or outreach are you involved in? What does the work look like and how has it been meaningful to you? If you are not involved in any, is there work that other medical students are doing at your school that you think is particularly meaningful?</li>
+              <li>If you've done a track or elective in equity, advocacy, or policy, what did it involve, and was it worth the time?</li>
+              <li>Have students organized around an issue on campus or in the community? What happened?</li>
+              <li>Does the community within which your medical school is located have a significant impact on the clinical work that you are doing? Is the patient population unique in a way that gives medical students significantly more exposure to a particular type of medicine that may not be the case at other schools?</li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Lifestyle <span class="font-normal text-slate-gray text-body-md">· 5 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>How would you describe your class: collaborative, competitive, diverse, close? Give an example that shows it.</li>
+              <li>What area do you live in? Do you think this area makes it easy to do things to decompress when you have down time? Give examples of things you or other students might do in the area for fun.</li>
+              <li>How responsive is the administration to student feedback? Give an example of something that is currently being discussed, was recently changed, or did not change after students spoke up.</li>
+              <li>When school got hard, what helped you cope, and did the school's own support make a difference?</li>
+              <li>Roughly what does a month cost you here (rent, food, getting around), and how far does the financial aid budget really stretch?</li>
+          </ol>
+        </details>
+        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md">
+          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
+            <span>Boards, advising &amp; the Match <span class="font-normal text-slate-gray text-body-md">· 5 questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
+          </summary>
+          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">
+              <li>How well did the curriculum prepare you for Step 1 or Level 1? To expand, did you feel the designed curriculum was a major contributor to your success on the exams, or was this mainly a result of dedicated study on your own? How much dedicated study time did you get, and did you feel it was enough? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 2nd–4th years</span></li>
+              <li>How does specialty and career advising work? Who advised you, and how useful was it?</li>
+              <li>Broadly speaking, how do you feel about the success of students at your medical school in the match? While there is always going to be variation in the match rate across specialties, did you feel there were specialties that were difficult to match into from your medical school? Or residency programs/institutions that were difficult to match to from your medical school?</li>
+              <li>Are you happy with the extent to which your school supported you in your efforts to match at the program of your choice (in terms of letters of recommendation, phone calls to program leadership, providing general guidance, etc.)? <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">For 4th years</span></li>
+              <li>Are there specialties at your school that are particularly strong and therefore typically garner a lot of interest amongst students?</li>
+          </ol>
+        </details>
+      <!-- /question-list -->
+      </div>
+      <a href="/contribute/interview/" class="self-start inline-flex items-center gap-xs bg-iris-deep text-white px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+        Pick your questions <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+      </a>
     </div>
   </section>
 
@@ -268,7 +459,7 @@
   </section>
 
   <!-- CLOSING CTA -->
-  <section class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
+  <section id="closing-cta" class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop pb-xl">
     <div class="bg-primary rounded-2xl px-md py-lg md:px-xl md:py-xl flex flex-col md:flex-row md:items-center md:justify-between gap-md">
       <div class="flex flex-col gap-xs">
         <h2 class="font-headline-lg font-semibold text-[26px] leading-[34px] md:text-headline-lg text-white">Be the interview you wish you’d read.</h2>
@@ -280,6 +471,16 @@
     </div>
   </section>
 </main>
+
+<!-- STICKY START BAR: shows once the hero button has scrolled away, hides at the closing call to action -->
+<div id="sticky-start" class="fixed inset-x-0 bottom-0 z-40 bg-surface-container-lowest/95 backdrop-blur border-t border-primary/10 shadow-[0_-4px_20px_rgba(51,62,77,0.08)] translate-y-full transition-transform duration-300 ease-out motion-reduce:transition-none" style="padding-bottom: env(safe-area-inset-bottom)" inert>
+  <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xs flex items-center justify-between gap-sm">
+    <p class="hidden lg:block text-slate-gray text-body-md leading-tight whitespace-nowrap"><strong class="text-primary font-semibold">Contribute<span data-if-paid> and get paid for your time</span></strong> · 30–45 minutes · Anonymous if you prefer</p>
+    <a href="/contribute/interview/" class="w-full lg:w-auto justify-center shrink-0 inline-flex items-center gap-xs bg-iris-deep text-white px-md py-sm lg:py-xs rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+      Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+    </a>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="bg-surface-container-low border-t border-primary/10 mt-auto">
@@ -312,6 +513,34 @@
     var el = document.querySelector('[data-c="paidSchools"]');
     if (el && d.paidSchoolCount() === d.schools.length) el.textContent = 'all';
   })();
+  // Sticky start bar: visible between the hero button and the closing call to action
+  (function () {
+    var bar = document.getElementById('sticky-start'), hero = document.getElementById('hero-start'),
+        end = document.getElementById('closing-cta'), shown = false, ticking = false;
+    function update() {
+      ticking = false;
+      var on = hero.getBoundingClientRect().bottom < 0 && end.getBoundingClientRect().top > window.innerHeight;
+      if (on === shown) return;
+      shown = on;
+      bar.classList.toggle('translate-y-full', !on);
+      bar.inert = !on;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+  // Example answers start collapsed; "Show full answer" opens them in place
+  document.querySelectorAll('.ex-answer').forEach(function (a) {
+    var btn = a.parentNode.querySelector('.ex-more');
+    a.classList.add('clamped');
+    if (a.scrollHeight <= a.clientHeight + 4) { a.classList.remove('clamped'); return; }
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var open = a.classList.toggle('clamped') === false;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show less' : 'Show full answer';
+    });
+  });
 </script>
 <script src="../js/main.js?v=6"></script>
 </body>
