@@ -212,6 +212,8 @@
     .handoff { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; padding: 4px 0; color: var(--accent); font: 600 14px/1.2 Inter, sans-serif; cursor: pointer; }
     .handoff .material-symbols-outlined { font-size: 18px; }
     .handoff:hover { text-decoration: underline; }
+    .handoff-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .handoff-opts .btn { flex: 1 1 140px; text-decoration: none; }
     .qprog-bar span { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width 250ms ease-out; }
     #s3.paged .actions .btn { flex: 1 1 0; }
     #s3.paged .acard-top .chip:first-child { display: none; }
@@ -408,7 +410,11 @@
     <div class="qprog" id="qprog" hidden>
       <div class="qprog-top"><b id="qprogLabel"></b><span id="qprogDone"></span></div>
       <div class="qprog-bar" role="progressbar" aria-labelledby="qprogLabel" aria-valuemin="0" id="qprogBar"><span id="qprogFill"></span></div>
-      <button type="button" class="handoff" id="handoff"><span class="material-symbols-outlined" aria-hidden="true">laptop_mac</span>Finish on your computer</button>
+      <button type="button" class="handoff" id="handoff" aria-expanded="false" aria-controls="handoffOpts"><span class="material-symbols-outlined" aria-hidden="true">laptop_mac</span>Finish on your computer</button>
+      <div class="handoff-opts" id="handoffOpts" hidden>
+        <a class="btn primary" id="handoffEmail" href="#">Email me the link</a>
+        <button class="btn" type="button" id="handoffShare">Text or AirDrop</button>
+      </div>
       <p class="hint" id="handoffMsg" role="status" hidden></p>
       <input class="in" id="handoffLink" readonly aria-label="Link to your draft" hidden>
     </div>
@@ -505,7 +511,7 @@
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js?v=2"></script>
 <script src="../../js/contribute-handoff.js?v=1"></script>
-<script src="../../js/contribute.js?v=21"></script>
+<script src="../../js/contribute.js?v=22"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>
