@@ -481,12 +481,36 @@ function copyHandoff(url) {
   };
   try { navigator.clipboard.writeText(url).then(done, manual); } catch (e) { manual(); }
 }
+/* Tapping "Finish on your computer" offers two ways to send it: a ready-to-send email to themselves
+   (mailto, so no email service is needed) or the share sheet (AirDrop, Messages, which show a preview card) */
+const MAILTO_MAX = 6000;     // longer mailto links can get cut off by some mail apps
+function handoffEmailHref(url) {
+  const ids = orderedPicks(), school = schoolName();
+  const body = 'Here’s your DocStory interview draft: ' + answeredCount(ids) + ' of ' + ids.length + ' questions answered' +
+    (school ? ' (' + school + ')' : '') + '.\n\n' +
+    'Open this link on your computer to pick up where you left off:\n\n' + url + '\n\n' +
+    'For your privacy, your school email isn’t saved in the link, so you’ll enter it again when you open it.\n\n' +
+    'DocStory\nhttps://www.docstory.org';
+  return 'mailto:' + encodeURIComponent(S.email || '') + '?subject=' + encodeURIComponent('Your DocStory interview draft') +
+    '&body=' + encodeURIComponent(body);
+}
 if ($('handoff')) $('handoff').addEventListener('click', () => {
+  const open = $('handoffOpts').hidden;
+  $('handoffOpts').hidden = !open;
+  $('handoff').setAttribute('aria-expanded', open);
+  handoffNote(''); $('handoffLink').hidden = true;
+  if (!open) return;
+  const href = handoffEmailHref(handoffUrl || H.linkNow(S));
+  $('handoffEmail').hidden = href.length > MAILTO_MAX;
+  $('handoffEmail').href = href;
+  $('handoffShare').textContent = navigator.share ? 'Text or AirDrop' : 'Copy the link';
+});
+if ($('handoffShare')) $('handoffShare').addEventListener('click', () => {
   const url = handoffUrl || H.linkNow(S), ids = orderedPicks();
   const progress = answeredCount(ids) + ' of ' + ids.length + ' answered';
   handoffNote(''); $('handoffLink').hidden = true;
   if (navigator.share) {
-    // Link only, no message text: Mail and Messages then show a preview card (title + image from
+    // Link only, no message text: Messages and AirDrop then show a preview card (title + image from
     // /contribute/continue/) instead of a sentence and a very long link
     navigator.share({ title: 'My DocStory interview draft (' + progress + ')', url })
       .catch(e => { if (!e || e.name !== 'AbortError') copyHandoff(url); });
