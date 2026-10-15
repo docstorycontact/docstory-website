@@ -74,7 +74,7 @@
     .ex-answer.clamped { max-height: 13.5em; overflow: hidden;
       -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent); mask-image: linear-gradient(to bottom, #000 65%, transparent); }
   </style>
-  <link rel="stylesheet" href="/css/tw/contribute.css?v=f5ec9c36">
+  <link rel="stylesheet" href="/css/tw/contribute.css?v=e5a00d2a">
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-vibrant-iris selection:text-white">
 
@@ -133,10 +133,18 @@
         <span data-if-paid>Once we verify your school email and publish your interview, <strong class="font-semibold text-primary">we send you <span data-c="amount">$20</span></strong>.</span>
       </p>
       <ul class="flex flex-col gap-xs text-primary text-body-md">
-        <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">schedule</span>30–45 minutes; your draft saves on this device</li>
+        <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">schedule</span><span class="hidden sm:inline">30–45 minutes; your draft saves on this device</span><span class="sm:hidden">30–45 minutes · <button type="button" id="sendLater" class="text-iris-deep font-semibold underline underline-offset-2" aria-expanded="false" aria-controls="sendLaterOpts">Send it to your computer</button></span></li>
         <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">visibility_off</span>Full name, first name only, or anonymous</li>
         <li class="flex items-center gap-xs"><span class="material-symbols-outlined text-iris-deep text-[20px]" aria-hidden="true">verified</span>Nothing goes live until you approve it</li>
       </ul>
+      <!-- Phones: send this page to yourself to come back to on a computer -->
+      <div id="sendLaterOpts" class="sm:hidden flex flex-col gap-xs" hidden>
+        <div class="flex gap-xs">
+          <a id="sendLaterEmail" href="#" class="flex-1 justify-center inline-flex items-center bg-surface-container-lowest text-iris-deep border-2 border-iris-deep/30 px-md py-xs rounded-full font-label-md text-label-md hover:border-iris-deep">Email it to me</a>
+          <button type="button" id="sendLaterShare" class="flex-1 justify-center inline-flex items-center bg-surface-container-lowest text-iris-deep border-2 border-iris-deep/30 px-md py-xs rounded-full font-label-md text-label-md hover:border-iris-deep">Text or AirDrop</button>
+        </div>
+        <p id="sendLaterMsg" class="text-slate-gray text-body-md" role="status" hidden></p>
+      </div>
       <div class="flex flex-wrap items-center gap-x-sm gap-y-xs pt-xs">
         <a href="/contribute/interview/" id="hero-start" class="w-full sm:w-auto justify-center inline-flex items-center gap-xs bg-iris-deep text-white border-2 border-iris-deep px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
           Start your interview <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
@@ -512,6 +520,35 @@
     var d = DocStoryContribute;
     var el = document.querySelector('[data-c="paidSchools"]');
     if (el && d.paidSchoolCount() === d.schools.length) el.textContent = 'all';
+  })();
+  // Phones: "Send it to your computer" emails or shares this page to come back to later. The link is
+  // tagged so a later submission's "Came from" line shows it arrived this way.
+  (function () {
+    var d = DocStoryContribute, c = d.config;
+    var url = 'https://www.docstory.org/contribute/?utm_source=docstory&utm_medium=send-to-self&utm_campaign=contribute-page';
+    var body = 'The DocStory link you saved: current medical students answer 8–10 questions about their school in their own words' +
+      (c.payEnabled ? ', and get ' + d.money(c.payAmount) + ' once the interview is published' : '') + '.\n\n' +
+      'Open it on your computer when you have 30–45 minutes:\n' + url + '\n\nDocStory';
+    var btn = document.getElementById('sendLater'), opts = document.getElementById('sendLaterOpts'),
+        msg = document.getElementById('sendLaterMsg'), share = document.getElementById('sendLaterShare');
+    document.getElementById('sendLaterEmail').href = 'mailto:?subject=' + encodeURIComponent('DocStory: write your interview later') +
+      '&body=' + encodeURIComponent(body);
+    if (!navigator.share) share.textContent = 'Copy the link';
+    btn.addEventListener('click', function () {
+      opts.hidden = !opts.hidden;
+      btn.setAttribute('aria-expanded', String(!opts.hidden));
+      msg.hidden = true;
+    });
+    share.addEventListener('click', function () {
+      var said = function (t) { msg.textContent = t; msg.hidden = false; };
+      var copy = function () {
+        try { navigator.clipboard.writeText(url).then(function () { said('Link copied. Paste it into a message or email to yourself.'); },
+          function () { said(url); }); } catch (e) { said(url); }
+      };
+      if (navigator.share) navigator.share({ title: 'DocStory: tell applicants what your school is really like', url: url })
+        .catch(function (e) { if (!e || e.name !== 'AbortError') copy(); });
+      else copy();
+    });
   })();
   // Sticky start bar: visible between the hero button and the closing call to action
   (function () {
