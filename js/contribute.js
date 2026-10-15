@@ -146,7 +146,7 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 const hasDraft = () => !!(S.school || S.name || S.email || S.picks.length || Object.values(S.answers).some(a => String(a || '').trim()));
 const SAVE_HELP = {
   ok: '<b>Your draft saves automatically</b> in this browser on this device, so you can close the tab and come back to it later. ' +
-      'It won’t carry over to a different browser or device, and a private window deletes it when you close it.',
+      'It won’t carry over to a different browser or device on its own (on a phone, “Finish on your computer” sends it), and a private window deletes it when you close it.',
   err: '<b>This browser is blocking saved drafts</b>, so leaving or closing this page will lose your answers. ' +
        'Use Safari or Chrome in a regular (not private) window, or write your answers somewhere else and paste them in.'
 };
