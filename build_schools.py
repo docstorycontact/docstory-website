@@ -1848,7 +1848,12 @@ def write_vercel_config(content_dir):
     # One address per page: /directory/index.html → /directory/, so search engines don't index both copies
     clean = [{'source': '/index.html', 'destination': '/', 'permanent': True},
              {'source': '/:path(.+)/index.html', 'destination': '/:path/', 'permanent': True}]
-    (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + clean + rules}, indent=2) + '\n', encoding='utf-8')
+    # Same page, different address, so Vercel's Pages list counts it separately: /contribute/saved/ is
+    # where "Send it to your computer" links land (the canonical tag still says /contribute/)
+    rewrites = [{'source': '/contribute/saved', 'destination': '/contribute/index.html'},
+                {'source': '/contribute/saved/', 'destination': '/contribute/index.html'}]
+    (ROOT / 'vercel.json').write_text(json.dumps({'redirects': [host] + clean + rules, 'rewrites': rewrites}, indent=2) + '\n',
+                                      encoding='utf-8')
     print(f'  seo   vercel.json ({len(rules)} old-address redirects)')
     return warnings
 

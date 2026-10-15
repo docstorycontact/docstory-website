@@ -1841,5 +1841,15 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/contribute/saved",
+      "destination": "/contribute/index.html"
+    },
+    {
+      "source": "/contribute/saved/",
+      "destination": "/contribute/index.html"
+    }
   ]
 }

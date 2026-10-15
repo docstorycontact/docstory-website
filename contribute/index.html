@@ -61,7 +61,7 @@
   <!-- /seo -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,laptop_mac,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
-  <link href="../css/style.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
   <style>
     .faq summary { list-style: none; cursor: pointer; }
     .faq summary::-webkit-details-marker { display: none; }
@@ -510,9 +510,9 @@
   </div>
 </footer>
 
-<script src="../js/contribute-config.js?v=5"></script>
-<script src="../js/contribute-data.js"></script>
-<script src="../js/contribute-common.js?v=2"></script>
+<script src="/js/contribute-config.js?v=5"></script>
+<script src="/js/contribute-data.js"></script>
+<script src="/js/contribute-common.js?v=2"></script>
 <script>
   DocStoryContribute.fill();
   // "all" reads better than "40 of the 40"
@@ -525,7 +525,7 @@
   // tagged so a later submission's "Came from" line shows it arrived this way.
   (function () {
     var d = DocStoryContribute, c = d.config;
-    var url = 'https://www.docstory.org/contribute/?utm_source=docstory&utm_medium=send-to-self&utm_campaign=contribute-page';
+    var url = 'https://www.docstory.org/contribute/saved/?utm_source=docstory&utm_medium=send-to-self&utm_campaign=contribute-page';   // /contribute/saved/ is this same page (vercel.json rewrite) with its own row in Vercel's Pages list
     var body = 'The DocStory link you saved: current medical students answer 8–10 questions about their school in their own words' +
       (c.payEnabled ? ', and get ' + d.money(c.payAmount) + ' once the interview is published' : '') + '.\n\n' +
       'Open it on your computer when you have 30–45 minutes:\n' + url + '\n\nDocStory';
@@ -579,6 +579,6 @@
     });
   });
 </script>
-<script src="../js/main.js?v=6"></script>
+<script src="/js/main.js?v=6"></script>
 </body>
 </html>
