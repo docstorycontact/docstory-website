@@ -112,7 +112,7 @@ const fociRow = {}; FOCI.forEach(f => { fociRow[f[0]] = f; });
 const KEY = 'docstory-contribute-v1';
 const blank = () => ({ step: 1, school: '', schoolOther: '', degree: '', year: '', focus: '', credit: 'named', name: '',
   gradYear: '', email: '', undergrad: '', hometown: '', consent: false, terms: false, picks: [], own: '', answers: {}, writing: {}, qi: 0,
-  rq: false, rqTo: 'edu', rqEmail: '', referredBy: '' });   // rq: open to reader questions until graduation
+  rq: false, rqTo: 'edu', rqEmail: '', referredBy: '', handoffs: 0 });   // rq: open to reader questions until graduation; handoffs: times moved to another device
 let S = blank();
 let submitted = null;   // { ref, text } after a successful submission
 
@@ -133,6 +133,7 @@ function save() {
   saveT = setTimeout(() => {
     try { localStorage.setItem(KEY, JSON.stringify(S)); showSaveState(true); }
     catch (e) { showSaveState(false); }           // storage blocked or full: say so rather than fail quietly
+    refreshHandoff();
   }, 250);
 }
 
@@ -145,7 +146,7 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 const hasDraft = () => !!(S.school || S.name || S.email || S.picks.length || Object.values(S.answers).some(a => String(a || '').trim()));
 const SAVE_HELP = {
   ok: '<b>Your draft saves automatically</b> in this browser on this device, so you can close the tab and come back to it later. ' +
-      'It won’t carry over to a different browser or device, and a private window deletes it when you close it.',
+      'It won’t carry over to a different browser or device on its own (on a phone, “Finish on your computer” sends it), and a private window deletes it when you close it.',
   err: '<b>This browser is blocking saved drafts</b>, so leaving or closing this page will lose your answers. ' +
        'Use Safari or Chrome in a regular (not private) window, or write your answers somewhere else and paste them in.'
 };
@@ -461,6 +462,37 @@ $('alist').addEventListener('paste', e => {
 });
 const shortAnswers = () => orderedPicks().filter(id => words(S.answers[id]) < MIN_WORDS);
 
+/* ---------- Finish on your computer (phones, step 3) ----------
+   Sends the draft to the contributor's other device as a link (js/contribute-handoff.js): the share
+   sheet on phones that have one (AirDrop, Messages, Mail…), otherwise the link is copied. The link is
+   built ahead of time after each save, because iPhones only open the share sheet straight from a tap. */
+const H = window.DocStoryHandoff;
+let handoffUrl = '';
+function refreshHandoff() {
+  if (!H || S.step !== 3 || !paged()) return;
+  H.link(S).then(url => { handoffUrl = url; }, () => { handoffUrl = ''; });
+}
+function handoffNote(text) { const m = $('handoffMsg'); m.textContent = text; m.hidden = !text; }
+function copyHandoff(url) {
+  const done = () => handoffNote('Link copied. Paste it into an email or message to yourself, then open it on your computer.');
+  const manual = () => {      // last resort: show the link so it can be pressed and held to copy
+    handoffNote('Copy this link and open it on your computer:');
+    const t = $('handoffLink'); t.value = url; t.hidden = false; t.focus(); t.select();
+  };
+  try { navigator.clipboard.writeText(url).then(done, manual); } catch (e) { manual(); }
+}
+if ($('handoff')) $('handoff').addEventListener('click', () => {
+  const url = handoffUrl || H.linkNow(S), ids = orderedPicks();
+  const progress = answeredCount(ids) + ' of ' + ids.length + ' answered';
+  handoffNote(''); $('handoffLink').hidden = true;
+  if (navigator.share) {
+    // Link only, no message text: Mail and Messages then show a preview card (title + image from
+    // /contribute/continue/) instead of a sentence and a very long link
+    navigator.share({ title: 'My DocStory interview draft (' + progress + ')', url })
+      .catch(e => { if (!e || e.name !== 'AbortError') copyHandoff(url); });
+  } else copyHandoff(url);
+});
+
 /* ---------- Writing record ----------
    For each answer: characters typed vs pasted, the largest single paste, roughly how long was spent
    writing, and in how many sittings. It goes out with the submission so reviewers can spot answers
@@ -494,7 +526,8 @@ function writingReport() {
   const all = ids.map(id => S.writing[id]).filter(Boolean);
   const total = all.reduce((a, r) => ({ typed: a.typed + r.typed, pasted: a.pasted + r.pasted, ms: a.ms + r.ms }), { typed: 0, pasted: 0, ms: 0 });
   const summary = (flagged.length ? '⚠ ' + flagged.length + ' of ' + ids.length + ' answers mostly pasted · ' : 'No answers mostly pasted · ') +
-    pastedPct(total) + '% pasted overall · ' + minutes(total.ms) + ' writing in total';
+    pastedPct(total) + '% pasted overall · ' + minutes(total.ms) + ' writing in total' +
+    (S.handoffs ? ' · moved to another device ' + (S.handoffs === 1 ? 'once' : S.handoffs + ' times') + ' (typed/pasted counts carried over)' : '');
   return { flagged: flagged.length, summary,
     detail: ids.map((id, i) => 'Q' + (i + 1) + ' (' + words(S.answers[id]) + ' words): ' + writingLine(id)).join('\n') };
 }
@@ -718,7 +751,7 @@ function go(n) {
     b.disabled = k > max && k !== n;
     if (k === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
   });
-  if (n === 3) { $('alist').querySelectorAll('textarea').forEach(grow); showQuestion(S.qi); }
+  if (n === 3) { $('alist').querySelectorAll('textarea').forEach(grow); showQuestion(S.qi); refreshHandoff(); }
   window.scrollTo(0, 0);
 }
 function tryGo(n) {

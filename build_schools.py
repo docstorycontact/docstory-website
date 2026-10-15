@@ -1673,14 +1673,19 @@ def write_static_heads(content_dir):
         'contribute/interview/index.html': (
             'Your Interview: Contribute to DocStory',
             'Choose 8–10 questions about your medical school and answer them in your own words.',
+            []),        'contribute/continue/index.html': (            # the title and image are what a shared draft link previews as
+            'Your DocStory interview draft',
+            'Pick up your interview where you left off. Open this on your computer to keep writing.',
             []),
     }
     for rel, (title, desc, jsonld) in pages.items():
         path = ROOT / rel
         text = path.read_text(encoding='utf-8')
-        noindex = rel == 'contribute/interview/index.html'
+        noindex = rel in ('contribute/interview/index.html', 'contribute/continue/index.html')
         contribute_image = '/images/og-contribute.png?v=2' if paid else '/images/og-contribute-volunteer.png?v=1'
         image = seo.SITE_URL + contribute_image if rel.startswith('contribute/') else seo.OG_IMAGE
+        if rel == 'contribute/continue/index.html':
+            image = seo.SITE_URL + '/images/og-draft.png?v=1'
         tags = seo.head_tags(title, desc, '/' + rel, jsonld=jsonld, image=image, robots='noindex' if noindex else None)
         if rel == 'index.html':
             tags += f'\n  <meta name="msvalidate.01" content="{seo.BING_SITE_VERIFICATION}">'

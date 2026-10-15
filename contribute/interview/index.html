@@ -44,7 +44,7 @@
   <!-- /seo -->
   <meta name="robots" content="noindex">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=account_balance,add,alt_route,arrow_back,arrow_forward,auto_awesome,back_hand,beach_access,biotech,calendar_today,campaign,celebration,check_circle,close,diversity_3,edit_note,expand_less,expand_more,favorite,forest,forum,groups,hiking,home,home_health,how_to_reg,info,landscape,laptop_mac,local_hospital,location_city,lock,mail,map,mark_email_read,medical_services,menu,menu_book,park,payments,precision_manufacturing,public,remove,rocket_launch,savings,schedule,school,science,search,sports_football,star,stethoscope,summarize,train,verified,visibility_off,volunteer_activism,workspace_premium&amp;display=block" rel="stylesheet">
   <link href="../../css/style.css" rel="stylesheet">
   <style>
     /* Form styles: brand tokens, one deep-iris accent for interactive states, 8px spacing scale */
@@ -209,6 +209,9 @@
     .qprog-top { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
     .qprog-top b { color: var(--text); font-weight: 600; }
     .qprog-bar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+    .handoff { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; padding: 4px 0; color: var(--accent); font: 600 14px/1.2 Inter, sans-serif; cursor: pointer; }
+    .handoff .material-symbols-outlined { font-size: 18px; }
+    .handoff:hover { text-decoration: underline; }
     .qprog-bar span { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width 250ms ease-out; }
     #s3.paged .actions .btn { flex: 1 1 0; }
     #s3.paged .acard-top .chip:first-child { display: none; }
@@ -405,6 +408,9 @@
     <div class="qprog" id="qprog" hidden>
       <div class="qprog-top"><b id="qprogLabel"></b><span id="qprogDone"></span></div>
       <div class="qprog-bar" role="progressbar" aria-labelledby="qprogLabel" aria-valuemin="0" id="qprogBar"><span id="qprogFill"></span></div>
+      <button type="button" class="handoff" id="handoff"><span class="material-symbols-outlined" aria-hidden="true">laptop_mac</span>Finish on your computer</button>
+      <p class="hint" id="handoffMsg" role="status" hidden></p>
+      <input class="in" id="handoffLink" readonly aria-label="Link to your draft" hidden>
     </div>
     <div id="alist" class="cards"></div>
     <p class="err" id="e3" role="alert" hidden></p>
@@ -498,7 +504,8 @@
 <script src="../../js/contribute-config.js?v=5"></script>
 <script src="../../js/contribute-data.js"></script>
 <script src="../../js/contribute-common.js?v=2"></script>
-<script src="../../js/contribute.js?v=19"></script>
+<script src="../../js/contribute-handoff.js?v=1"></script>
+<script src="../../js/contribute.js?v=21"></script>
 <script src="../../js/main.js?v=6"></script>
 </body>
 </html>
