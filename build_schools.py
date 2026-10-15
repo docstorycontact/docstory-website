@@ -1991,13 +1991,14 @@ def write_contribute_showcase(content_dir):
         lis = ''.join(
             f'\n              <li>{esc(q)}' + (f' <span class="whitespace-nowrap text-[12px] font-semibold text-tertiary">{_years_note(y)}</span>' if _years_note(y) else '') + '</li>'
             for _, _, y, q in items)
-        groups.append(f'''        <details class="faq bg-surface-container-lowest border border-primary/10 rounded-2xl px-md"{' open' if n == 0 else ''}>
-          <summary class="flex justify-between items-center gap-sm py-sm font-semibold text-primary text-body-lg">
-            <span>{esc(label)} <span class="font-normal text-slate-gray text-body-md">· {len(items)} questions</span></span><span class="chev material-symbols-outlined text-slate-gray" aria-hidden="true">expand_more</span>
-          </summary>
-          <ol class="list-decimal pl-md pb-md flex flex-col gap-xs text-slate-gray text-body-md">{lis}
-          </ol>
-        </details>''')
+        # Topic groups sit inside the FAQ's "What will I be asked?" answer, so they're a light nested list
+        groups.append(f'''          <details class="faq">
+            <summary class="flex justify-between items-center gap-sm py-xs font-semibold text-primary text-body-md">
+              <span>{esc(label)} <span class="font-normal text-slate-gray">· {len(items)} questions</span></span><span class="chev material-symbols-outlined text-slate-gray text-[20px]" aria-hidden="true">expand_more</span>
+            </summary>
+            <ol class="list-decimal pl-md pb-sm flex flex-col gap-xs text-slate-gray text-body-md">{lis}
+            </ol>
+          </details>''')
     min_words = int(re.search(r'MIN_WORDS = (\d+)', js).group(1))
     intro = (f'Choose {lo}–{hi} of these {len(qs)} questions, or add one of your own. When you start, we suggest a set '
              f'based on your year and the topics you care about. Each answer needs at least {min_words} words'
@@ -2006,7 +2007,7 @@ def write_contribute_showcase(content_dir):
     path = ROOT / 'contribute' / 'index.html'
     text = path.read_text(encoding='utf-8')
     new = _replace_block(text, 'examples', '\n'.join(cards))
-    new = _replace_block(new, 'question-intro', f'      <p class="text-slate-gray text-body-lg max-w-[65ch]">{esc(intro)}</p>')
+    new = _replace_block(new, 'question-intro', f'        <p class="text-slate-gray text-body-lg">{esc(intro)}</p>')
     new = _replace_block(new, 'question-list', '\n'.join(groups))
     if new != text:
         path.write_text(new, encoding='utf-8')
