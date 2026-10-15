@@ -111,7 +111,7 @@ def main():
 
 STATIC_PAGES = {
     'index.html': 'home', 'about/index.html': 'about', 'directory/index.html': 'directory',
-    'contribute/index.html': 'contribute', 'contribute/interview/index.html': 'contribute-interview',
+    'contribute/index.html': 'contribute', 'contribute/interview/index.html': 'contribute-interview', 'contribute/continue/index.html': 'contribute-interview',
     'contribute/terms/index.html': 'legal', 'privacy/index.html': 'legal',
 }
 
