@@ -486,7 +486,9 @@ if ($('handoff')) $('handoff').addEventListener('click', () => {
   const progress = answeredCount(ids) + ' of ' + ids.length + ' answered';
   handoffNote(''); $('handoffLink').hidden = true;
   if (navigator.share) {
-    navigator.share({ title: 'Your DocStory interview draft', text: 'My DocStory interview draft (' + progress + '). Open on my computer to keep writing.', url })
+    // Link only, no message text: Mail and Messages then show a preview card (title + image from
+    // /contribute/continue/) instead of a sentence and a very long link
+    navigator.share({ title: 'My DocStory interview draft (' + progress + ')', url })
       .catch(e => { if (!e || e.name !== 'AbortError') copyHandoff(url); });
   } else copyHandoff(url);
 });
